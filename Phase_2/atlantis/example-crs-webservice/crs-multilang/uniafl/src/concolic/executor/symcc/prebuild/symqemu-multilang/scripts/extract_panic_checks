@@ -1,0 +1,347 @@
+#!/usr/bin/env python3
+
+from capstone import *
+import sys
+import argparse
+from elftools.elf.elffile import ELFFile
+
+panic_func_names = [
+    "runtime.panicCheck1",
+    "runtime.panicCheck2",
+    "runtime.panicdivide",
+    "runtime.panicdottypeE",
+    "runtime.panicdottypeI",
+    "runtime.panicIndex",
+    "runtime.panicIndexU",
+    "runtime.panicnildottype",
+    "runtime.panicshift",
+    "runtime.panicSlice3Alen",
+    "runtime.panicSlice3C",
+    "runtime.panicSliceAcap",
+    "runtime.panicSliceAcapU",
+    "runtime.panicSliceAlen",
+    "runtime.panicSliceAlenU",
+    "runtime.panicSliceB",
+    "runtime.panicSliceBU",
+    "runtime.panicunsafeslicelen",
+    "runtime.panicunsafeslicelen1",
+    "runtime.panicunsafeslicenilptr",
+    "runtime.panicunsafeslicenilptr1",
+    "runtime.panicunsafestringlen",
+    "runtime.panicunsafestringnilptr"
+]
+
+
+'''
+   0x49bc29:   mov    rcx,QWORD PTR [rsp+0xa0]
+   0x49bc31:   mov    rax,QWORD PTR [rcx]
+   0x49bc34:   cmp    rax,0x4                       // `panic_branch`
+   0x49bc38:   jae    0x49bc84 <main.main+452>      // `panic_jmp`
+   0x49bc3a:   movzx  edx,BYTE PTR [rsp+rax*1+0x2c]
+   0x49bc3f:   lea    r8,[rip+0x903a]        # 0x4a4c80
+      ...           ...
+   0x49bc73:   mov    rsi,rdi
+   0x49bc76:   call   0x492260 <fmt.Fprintln>
+   0x49bc7b:   add    rsp,0xa8
+   0x49bc82:   pop    rbp
+   0x49bc83:   ret    
+   0x49bc84:   mov    ecx,0x4                       // `panic_blk` 
+   0x49bc89:   call   0x46c2e0 <runtime.panicIndex> // `panic_call`
+   0x49bc8e:   nop
+'''
+
+panic_func_addrs: list[int] = []
+panic_func_dict: dict = {}
+
+
+base_addr: int = 0x0
+all_insns:list[CsInsn] = []
+# {panic_blk_addr: insn}
+jmp_inst_table: dict[int, CsInsn] = {}
+
+def print_insn(msg, insn: CsInsn):
+    print(f"{msg}0x{insn.address:x}:\t{insn.mnemonic}\t{insn.op_str}")
+
+def print_insn_site(idx: int, size=5):
+
+    for i in range(idx - size, idx + size):
+        print_insn("", all_insns[i])
+
+def extract_elf_info(elf: ELFFile):
+    global base_addr
+    # Find the symbol table section (.symtab)
+    # for section in elf.iter_sections():
+    section = elf.get_section_by_name('.symtab')
+    if section is None:
+        print("no .symtab found")
+        exit(-1)        
+        return None
+    # Symbol table section
+
+    # print(f"Found symbol table section: {section.name}")
+    # Iterate over the symbols in the symbol table
+    for symbol in section.iter_symbols():
+        # Check if it's a function symbol (usually STT_FUNC type)
+        if symbol['st_info']['type'] == 'STT_FUNC':
+            # Extract function name and address
+            func_name = symbol.name
+            if func_name in panic_func_names:
+                func_addr = symbol['st_value']
+                panic_func_addrs.append(func_addr)
+                panic_func_dict[func_name] = func_addr
+                # print(f"Function: {function_name} at address 0x{function_address:x}")
+
+
+    base_addr = 0x0
+    # Iterate over the program headers (PT_LOAD sections)
+    # @TODO: handle segment base address other than 0x400000
+    for segment in elf.iter_segments():
+        if segment.header['p_type'] == 'PT_LOAD':  # PT_LOAD means it's a loadable segment
+            if segment.header['p_vaddr'] != 0x400000:
+                break
+            # Get the virtual address where the segment will be loaded
+            # @TODO: dynamically decide this value
+            base_addr = segment.header['p_vaddr'] + 0x1000
+            # print(f"Loadable segment base address: 0x{p_vaddr:x}")
+
+    if base_addr == 0x0:
+        print("@TODO: base address is not 0x401000")
+        exit(-1)
+
+
+def extract_code(elf: ELFFile) -> bytes|None:
+
+    # Iterate through the sections to find the .text section
+    for section in elf.iter_sections():
+        if section.name == '.text':  # .text section typically holds executable code
+            # print(f"Found .text section at offset {section['sh_offset']} with size {section['sh_size']} bytes")
+            # Extract the content of the .text section
+            code_section = section.data()
+            # txt_secs.append(section)
+            return code_section
+    print("No .text section found in the ELF file.")
+    return None
+
+def extract(target_filepath: str) -> bytes | None:
+    with open(target_filepath, 'rb') as f:
+    # Parse the ELF file
+        elf = ELFFile(f)
+        extract_elf_info(elf)
+        code = extract_code(elf)
+
+    if code == None:
+        print("failed")
+        exit(-1)
+        return None
+    
+    return code
+
+
+def find_panic_blk(panic_idx: int):
+    panic_call_insn: CsInsn = all_insns[panic_idx]        
+
+    # Now, we find `panic_blk`
+    # Example:
+    #    0x49bc29:   mov    rcx,QWORD PTR [rsp+0xa0]
+    #    0x49bc31:   mov    rax,QWORD PTR [rcx]
+    #    0x49bc34:   cmp    rax,0x4                       // `panic_branch`
+    #    0x49bc38:   jae    0x49bc84 <main.main+452>      // `panic_jmp`
+    #    0x49bc3a:   movzx  edx,BYTE PTR [rsp+rax*1+0x2c]
+    #    0x49bc3f:   lea    r8,[rip+0x903a]        # 0x4a4c80
+    #       ...           ...
+    #    0x49bc73:   mov    rsi,rdi
+    #    0x49bc76:   call   0x492260 <fmt.Fprintln>
+    #    0x49bc7b:   add    rsp,0xa8
+    #    0x49bc82:   pop    rbp
+    #    0x49bc83:   ret    
+    #    0x49bc84:   mov    ecx,0x4  **find here**        // `panic_blk` 
+    #    0x49bc89:   call   0x46c2e0 <runtime.panicIndex> // `panic_call`
+    #    0x49bc8e:   nop
+    panic_blk_idx = None
+    cur_idx = panic_idx
+    while cur_idx > 0:
+        cur_insn: CsInsn = all_insns[cur_idx]  
+
+        try:
+            # find jmp instruction from the pre-built table
+            panic_jmp_idx = jmp_inst_table[cur_insn.address]
+            panic_blk_idx = cur_idx
+
+            # if it's not a conditional jmp, adjust it
+            if all_insns[panic_jmp_idx].mnemonic == 'jmp':
+                #  Example:
+                #    0x491534 <+212>:   cmp    rdx,0x4     // panic_branch
+                #    0x491538 <+216>:   jb     0x49149f    // real panic_jmp_idx
+                #    0x49153e <+222>:   xchg   ax,ax
+                #    0x491540 <+224>:   jmp    0x491548    // `panic_jmp_idx` is pointing here now
+                #    0x491542 <+226>:   add    rsp,0x78
+                #    0x491546 <+230>:   pop    rbp
+                #    0x491547 <+231>:   ret    
+                #    0x491548 <+232>:   mov    rax,rdx      // panic block
+                #    0x49154b <+235>:   mov    ecx,0x4
+                #    0x491550 <+240>:   call   0x46bd40 <runtime.panicIndex>
+                while panic_jmp_idx > 0:
+                    panic_jmp_idx = panic_jmp_idx - 1
+                    if CS_GRP_JUMP not in all_insns[panic_jmp_idx].groups:
+                        continue
+
+                    if all_insns[panic_jmp_idx].mnemonic == 'jmp':
+                        print("Unhandled case")
+                        exit(-1)
+
+                    break
+                
+                if panic_jmp_idx == 0:
+                    print("Unhandled case")
+                    exit(-1)
+
+            break
+        except KeyError:
+            pass
+
+        if CS_GRP_CALL in cur_insn.groups and cur_idx != panic_idx:
+            # It's an invalid panic call
+            # 0x40139e <+222>:   xchg   ax,ax
+            # 0x4013a0 <+224>:   call   0x45d6a0 <runtime.panicunsafestringlen>
+            # 0x4013a5 <+229>:   call   0x45d6e0 <runtime.panicunsafestringnilptr>
+            # 0x4013aa <+234>:   call   0x45d6a0 <runtime.panicunsafestringlen>
+            # 0x4013af <+239>:   call   0x430ac0 <runtime.panicshift>
+            # 0x4013b4 <+244>:   call   0x430ac0 <runtime.panicshift>            
+            break
+
+        if CS_GRP_RET in cur_insn.groups:
+            # It's an invalid panic call
+            break
+
+
+        if CS_GRP_JUMP in cur_insn.groups and cur_insn.mnemonic != 'jmp':
+            #   It's a panic call by NOT-jump
+            #    0x42761f <+1343>:  mov    rcx,QWORD PTR [rsp+0x68]
+            #    0x427624 <+1348>:  mov    rdx,QWORD PTR [rsp+0x30]
+            #    0x427629 <+1353>:  cmp    rcx,rdx  // panic_branch
+            #    0x42762c <+1356>:  jb     0x4275b2 // panic_jmp
+            #    0x42762e <+1358>:  mov    rax,rcx  // This will be assumed as a `panic_blk`
+            #    0x427631 <+1361>:  mov    rcx,rdx 
+            #    0x427634 <+1364>:  call   0x46bd60 <runtime.panicIndexU>
+            #    0x427639 <+1369>:  mov    rax,r9
+            #    0x42763c <+1372>:  mov    ecx,0x2000
+            
+            panic_jmp_idx = cur_idx
+            panic_blk_idx = cur_idx - 1
+            break
+
+        cur_idx = cur_idx - 1
+        continue
+
+    if panic_blk_idx is None:
+        print_insn_site(cur_idx)
+        print("==========================")
+        print_insn_site(panic_idx)
+        print("No jmp found")
+        exit(-1)
+
+    return (panic_jmp_idx, panic_blk_idx)
+
+
+def identify_panic_calls(code: bytes):
+    md = Cs(CS_ARCH_X86, CS_MODE_64)
+    md.detail = True
+
+    panic_call_idx_list = []
+    panic_blks: list[tuple[int, int, int]] = []
+
+    idx = 0
+    results = []
+
+    for insn in md.disasm(code, base_addr):
+        all_insns.append(insn)
+        inst_idx = idx
+        idx = idx + 1
+        # if insn.address in panic_func_addrs:
+        #     print(f"0x{insn.address:x}:\t{insn.mnemonic}\t{insn.op_str}")
+
+        # check if it's a panic call
+        if insn.mnemonic == 'call':
+            try:
+                call_target =  int(insn.op_str, 16)
+            except ValueError:
+                # this call instruction is indirect call, skip it
+                continue
+
+            if call_target in panic_func_addrs:
+                # print(f"panic call found 0x{insn.address:x}:\t{insn.mnemonic}\t{insn.op_str}")
+                panic_call_idx_list.append(inst_idx)
+
+        if CS_GRP_JUMP in insn.groups:
+            try:
+                panic_blk_addr =  int(insn.op_str, 16)
+            except ValueError:
+                # this call instruction is indirect call, skip it
+                continue
+            jmp_inst_table[panic_blk_addr] = inst_idx
+
+
+    for panic_idx in panic_call_idx_list:
+        # panic_call_insn: CsInsn = all_insns[panic_idx]        
+        panic_jmp_idx, panic_blk_idx = find_panic_blk(panic_idx)
+
+        # create tuple
+        panic_blks.append((panic_jmp_idx, panic_blk_idx, panic_idx))
+
+
+    # Now we find `cmp` branches from `panic_jmp_idx`
+    for panic_jmp_idx, panic_blk_idx, panic_idx in panic_blks:
+        cur_idx = panic_jmp_idx - 1
+        while cur_idx > 0:
+            cur_insn = all_insns[cur_idx]
+
+            if cur_insn.mnemonic in ['cmp', 'test']:
+                panic_branch = cur_idx
+                results.append((panic_branch, panic_jmp_idx, panic_blk_idx, panic_idx))
+
+                break 
+
+
+            cur_idx = cur_idx - 1
+
+    # for panic_branch, panic_jmp_idx, panic_blk_idx, panic_idx in results:
+        # print("jmp target", panic_blk_idx)
+
+        # print(f"=========== panic calls =================")
+        # for i in range(0, 5):
+            # print_insn("", all_insns[panic_branch + i])
+        # print(f"...")
+
+        # for i in range(0, 3):
+            # print_insn("", all_insns[panic_blk_idx + i])
+
+    # all_insns[tup[0]]: panic_branch
+    # all_insns[tup[1]]: panic_jmp_idx (used in SymQEMU for panic branch detection)
+    result_branches = [(hex(all_insns[tup[0]].address), hex(all_insns[tup[1]].address) ) for tup in results]
+
+    return result_branches
+
+def main():
+    target_filename = sys.argv[1]
+
+    # extract_functions(target_filename)
+
+    # code = extract_code_section(target_filename)
+    code = extract(target_filename)
+
+    # md = Cs(CS_ARCH_X86, CS_MODE_64)
+
+    # print('runtime', hex(panic_func_addrs['runtime.panicIndex']))
+    # for insn in md.disasm(code, base_addr):
+    #     print(f"0x{insn.address:x}:\t{insn.mnemonic}\t{insn.op_str}")
+
+    panic_branches = identify_panic_calls(code)
+
+    # print(panic_branches)
+    print(len(panic_branches))
+    # pb: panic_branch
+    # pj: panic_jmp
+    for pb, pj in panic_branches: print(f"{pb},{pj}")
+
+if __name__ == "__main__":
+    main()

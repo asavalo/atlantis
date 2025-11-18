@@ -1,0 +1,59 @@
+17:public class ZipArchiverTest {
+18:
+19:    @Rule public TemporaryFolder tmp = new TemporaryFolder();
+20:
+21:    @Issue("JENKINS-9942")
+22:    @Test
+23:    public void backwardsSlashesOnWindows() throws IOException {
+24:        // create foo/bar/baz/Test.txt
+25:        Path baz = tmp.newFolder().toPath().resolve("foo").resolve("bar").resolve("baz");
+26:        Files.createDirectories(baz);
+27:        Path tmpFile = baz.resolve("Test.txt");
+28:        Files.createFile(tmpFile);
+29:
+30:        // a file to store the zip archive in
+31:        Path zipFile = Files.createTempFile(tmp.getRoot().toPath(), "test", ".zip");
+32:
+33:        // create zip from tmpDir
+34:        try (ZipArchiver archiver = new ZipArchiver(Files.newOutputStream(zipFile))) {
+35:            archiver.visit(tmpFile.toFile(), "foo\\bar\\baz\\Test.txt");
+36:        }
+37:
+38:        // examine zip contents and assert that none of the entry names (paths) have
+39:        // back-slashes ("\")
+40:        try (ZipFile zipFileVerify = new ZipFile(zipFile.toFile())) {
+41:            assertEquals(1, zipFileVerify.size());
+42:            ZipEntry zipEntry = zipFileVerify.entries().nextElement();
+43:            assertEquals("foo/bar/baz/Test.txt", zipEntry.getName());
+44:        }
+45:    }
+46:
+47:    @Test
+48:    public void huge64bitFile() throws IOException {
+49:        // create huge64bitFileTest.txt
+50:        Path hugeFile = tmp.newFolder().toPath().resolve("huge64bitFileTest.txt");
+51:        long length = 4L * 1024 * 1024 * 1024 + 2;
+52:        try (RandomAccessFile largeFile = new RandomAccessFile(hugeFile.toFile(), "rw")) {
+53:            largeFile.setLength(length);
+54:        } catch (IOException e) {
+55:            // We probably don't have enough free disk space. That's ok, we'll skip this test...
+56:            Assume.assumeNoException(e);
+57:        }
+58:
+59:        // a file to store the zip archive in
+60:        Path zipFile = Files.createTempFile(tmp.getRoot().toPath(), "test", ".zip");
+61:
+62:        // create zip from tmpDir
+63:        try (ZipArchiver archiver = new ZipArchiver(Files.newOutputStream(zipFile))) {
+64:            archiver.visit(hugeFile.toFile(), "huge64bitFileTest.txt");
+65:        }
+66:
+67:        // examine zip contents and assert that there's an item there...
+68:        try (ZipFile zipFileVerify = new ZipFile(zipFile.toFile())) {
+69:            assertEquals(1, zipFileVerify.size());
+70:            ZipEntry zipEntry = zipFileVerify.entries().nextElement();
+71:            assertEquals("huge64bitFileTest.txt", zipEntry.getName());
+72:            assertEquals(length, zipEntry.getSize());
+73:        }
+74:    }
+75:}

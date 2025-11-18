@@ -1,0 +1,12 @@
+#!/bin/bash -eu
+echo "Copying precompiled SymCC/Sym++"
+
+cp -f /symcc/libSymCCFuzzingEngine.a $LIB_FUZZING_ENGINE
+
+export CC=/symcc/cc_wrapper
+export CXX=/symcc/cxx_wrapper
+export ATLANTIS_CC_INSTRUMENTATION_MODE=symcc
+export LIBSYMCC_RT_PATH=/symcc/libsymcc-rt.so
+export SYMCC_PASS_PATH=/symcc/libsymcc.so
+
+echo "done."

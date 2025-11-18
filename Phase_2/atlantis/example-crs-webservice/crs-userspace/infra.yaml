@@ -1,0 +1,62 @@
+x-common-profiles: &common-profiles
+  - development
+  - evaluation
+  
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    restart: always
+    expose:
+      - "2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    attach: false
+
+  kafka:
+    image: confluentinc/cp-kafka:7.9.2
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT_INTERNAL://kafka:9092,PLAINTEXT_EXTERNAL://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT_INTERNAL:PLAINTEXT,PLAINTEXT_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    restart: always
+    expose:
+      - "9092"
+      - "29092"
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "kafka-topics --bootstrap-server localhost:9092 --topic cp_config --describe /dev/null 2>&1 || exit 1"
+      ] # wait for cp_config topic to be created
+      start_period: 20s
+      interval: 10s
+      timeout: 5s
+      retries: 3 # TODO: configure
+    attach: false
+
+  # kafka-ui:
+  #   image: provectuslabs/kafka-ui
+  #   container_name: kafka-ui
+  #   ports:
+  #     - "18080:8080"
+  #   restart: always
+  #   environment:
+  #     - KAFKA_CLUSTERS_0_NAME=local
+  #     - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+  #     - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+  #   networks:
+  #     - crs-internal
+  #   profiles:
+  #     - development

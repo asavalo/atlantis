@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueMedium",
+    "message": "Server Side Request Forgery (SSRF)",
+    "loc_file_full_name": "ParsedURLData.java",
+    "loc_file_short_name": "ParsedURLData.java",
+    "loc_line": 554,
+    "loc_function_full_name": "org.apache.batik.util.ParsedURLData.openStreamInternal",
+    "loc_function_short_name": "openStreamInternal"
+}

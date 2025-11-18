@@ -1,0 +1,46 @@
+628:    /**
+629:     * Collects all the atoms in the expression.
+630:     */
+631:    private static final LabelVisitor<Void, Set<LabelAtom>> ATOM_COLLECTOR = new LabelVisitor<>() {
+632:        @Override
+633:        public Void onAtom(LabelAtom a, Set<LabelAtom> param) {
+634:            param.add(a);
+635:            return null;
+636:        }
+637:
+638:        @Override
+639:        public Void onParen(Paren p, Set<LabelAtom> param) {
+640:            return p.base.accept(this, param);
+641:        }
+642:
+643:        @Override
+644:        public Void onNot(Not p, Set<LabelAtom> param) {
+645:            return p.base.accept(this, param);
+646:        }
+647:
+648:        @Override
+649:        public Void onAnd(And p, Set<LabelAtom> param) {
+650:            return onBinary(p, param);
+651:        }
+652:
+653:        @Override
+654:        public Void onOr(Or p, Set<LabelAtom> param) {
+655:            return onBinary(p, param);
+656:        }
+657:
+658:        @Override
+659:        public Void onIff(Iff p, Set<LabelAtom> param) {
+660:            return onBinary(p, param);
+661:        }
+662:
+663:        @Override
+664:        public Void onImplies(Implies p, Set<LabelAtom> param) {
+665:            return onBinary(p, param);
+666:        }
+667:
+668:        private Void onBinary(Binary b, Set<LabelAtom> param) {
+669:            b.lhs.accept(this, param);
+670:            b.rhs.accept(this, param);
+671:            return null;
+672:        }
+673:    };

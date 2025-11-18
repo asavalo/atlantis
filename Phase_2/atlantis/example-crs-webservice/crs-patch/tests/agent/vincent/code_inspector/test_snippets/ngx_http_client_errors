@@ -1,0 +1,14 @@
+77:static char *ngx_http_client_errors[] = {
+78:
+79:    /* NGX_HTTP_PARSE_INVALID_METHOD */
+80:    "client sent invalid method",
+81:
+82:    /* NGX_HTTP_PARSE_INVALID_REQUEST */
+83:    "client sent invalid request",
+84:
+85:    /* NGX_HTTP_PARSE_INVALID_VERSION */
+86:    "client sent invalid version",
+87:
+88:    /* NGX_HTTP_PARSE_INVALID_09_METHOD */
+89:    "client sent invalid method in HTTP/0.9 request"
+90:};

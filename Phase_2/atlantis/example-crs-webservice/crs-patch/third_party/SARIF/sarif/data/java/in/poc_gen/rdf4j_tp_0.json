@@ -1,0 +1,1098 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                    "message": {
+                        "text": "Server Side Request Forgery (SSRF)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                },
+                                "region": {
+                                    "startLine": 328,
+                                    "startColumn": 20
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/rdf4j-harness-one/src/main/java/com/aixcc/rdf4j/harnesses/one/Rdf4jOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 24,
+                                                        "startColumn": 29
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.rdf4j.harnesses.one.Rdf4jOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/rdf4j-harness-one/src/main/java/com/aixcc/rdf4j/harnesses/one/Rdf4jOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 28,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.rdf4j.harnesses.one.Rdf4jOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/rdf4j-harness-one/src/main/java/com/aixcc/rdf4j/harnesses/one/Rdf4jOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 32,
+                                                        "startColumn": 42
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.rdf4j.harnesses.one.Rdf4jOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/rdf4j-harness-one/src/main/java/com/aixcc/rdf4j/harnesses/one/Rdf4jOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 35,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.rdf4j.harnesses.one.Rdf4jOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/rdf4j-harness-one/src/main/java/com/aixcc/rdf4j/harnesses/one/Rdf4jOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 50,
+                                                        "startColumn": 73
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.rdf4j.harnesses.one.Rdf4jOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/rdf4j-harness-one/src/main/java/com/aixcc/rdf4j/harnesses/one/Rdf4jOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 47,
+                                                        "startColumn": 50
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.rdf4j.harnesses.one.Rdf4jOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 195,
+                                                        "startColumn": 7
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(java.io.InputStream,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 202,
+                                                        "startColumn": 15
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(java.io.InputStream,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 203,
+                                                        "startColumn": 3
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(java.io.InputStream,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 205,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(java.io.InputStream,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 248,
+                                                        "startColumn": 4
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 251,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/helpers/AbstractRDFParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 180,
+                                                        "startColumn": 3
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.helpers.AbstractRDFParser.getParserConfig:org.eclipse.rdf4j.rio.ParserConfig()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/helpers/AbstractRDFParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 179,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.helpers.AbstractRDFParser.getParserConfig:org.eclipse.rdf4j.rio.ParserConfig()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 251,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/RioConfig.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 51,
+                                                        "startColumn": 32
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.RioConfig.get:java.lang.Object(org.eclipse.rdf4j.rio.RioSetting)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/RioConfig.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 54,
+                                                        "startColumn": 11
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.RioConfig.get:java.lang.Object(org.eclipse.rdf4j.rio.RioSetting)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/helpers/RioSettingImpl.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 76,
+                                                        "startColumn": 3
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.helpers.RioSettingImpl.getDefaultValue:java.lang.Object()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/helpers/RioSettingImpl.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 75,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.helpers.RioSettingImpl.getDefaultValue:java.lang.Object()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/RioConfig.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 54,
+                                                        "startColumn": 4
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.RioConfig.get:java.lang.Object(org.eclipse.rdf4j.rio.RioSetting)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/RioConfig.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 50,
+                                                        "startColumn": 28
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.RioConfig.get:java.lang.Object(org.eclipse.rdf4j.rio.RioSetting)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 251,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/SAXFilter.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 155,
+                                                        "startColumn": 3
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.SAXFilter.setParseStandAloneDocuments:void(boolean)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 250,
+                                                        "startColumn": 4
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 254,
+                                                        "startColumn": 4
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 258,
+                                                        "startColumn": 8
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 259,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 265,
+                                                        "startColumn": 32
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 266,
+                                                        "startColumn": 30
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 270,
+                                                        "startColumn": 40
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 272,
+                                                        "startColumn": 46
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 275,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 278,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 284,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 286,
+                                                        "startColumn": 47
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 289,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 292,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 298,
+                                                        "startColumn": 40
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 300,
+                                                        "startColumn": 10
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 301,
+                                                        "startColumn": 47
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 305,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 308,
+                                                        "startColumn": 6
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 314,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 316,
+                                                        "startColumn": 10
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/RioConfig.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 101,
+                                                        "startColumn": 31
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.RioConfig.isSet:boolean(org.eclipse.rdf4j.rio.RioSetting)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 316,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 317,
+                                                        "startColumn": 29
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/helpers/RioSettingImpl.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 66,
+                                                        "startColumn": 3
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.helpers.RioSettingImpl.getKey:java.lang.String()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/api/src/main/java/org/eclipse/rdf4j/rio/helpers/RioSettingImpl.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 65,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.helpers.RioSettingImpl.getKey:java.lang.String()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 317,
+                                                        "startColumn": 7
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 328,
+                                                        "startColumn": 20
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.rdfxml.RDFXMLParser.parse:void(org.xml.sax.InputSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

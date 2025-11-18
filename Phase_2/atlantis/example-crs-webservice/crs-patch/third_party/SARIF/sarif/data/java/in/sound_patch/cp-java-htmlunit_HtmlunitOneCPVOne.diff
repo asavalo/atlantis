@@ -1,0 +1,16 @@
+--- a/src/main/java/org/htmlunit/javascript/host/xml/XSLTProcessor.java
++++ b/src/main/java/org/htmlunit/javascript/host/xml/XSLTProcessor.java
+@@ -128,10 +128,10 @@
+      */
+     private void configureTransformerFactory(TransformerFactory factory)
+         throws TransformerConfigurationException {
+-        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "file");
++        factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
++        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
++        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+         factory.setURIResolver(new AllowlistURIResolver());
+-
+-        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+ 
+         // For TransformerFactory, there is no need to set XMLConstants.ACCESS_EXTERNAL_SCHEMA
+         // (https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html#transformerfactory)

@@ -1,0 +1,197 @@
+fuzzer_entry: "LLVMFuzzerTestOneInput"
+
+
+breakpoint: "hit Breakpoint"
+
+
+callee_tree: |
+  import scala.util.Try
+  import scala.collection.mutable
+  def getCalleeTree(method: Method, visited: mutable.Set[Long], maxDepth: Int = 13): List[Map[String, Any]] = {
+    def getCallee(method: Method): List[Method] = {
+      def base(): List[Method] = {
+        method.callee
+          .whereNot(_.name("^<operator>.*"))
+          .whereNot(_.name("^<operators>.*"))
+          .l
+      }
+      def functionPointer(): List[Method] = {
+        def findValidType(node: StoredNode): Option[(String, String)] = node match {
+            case call: Call if call.typeFullName == "ANY" =>
+                call.astChildren.collectFirst {
+                    case id: Identifier if id.typeFullName != "ANY" =>
+                        Some((id.name, id.typeFullName.replaceFirst("\\*+$", "")))
+                    case nestedCall: Call =>
+                        findValidType(nestedCall)
+                }.flatten
+            case _ => None
+        }
+
+        val identifiers: List[(String, String)] = method.call
+          .nameExact("<operator>.pointerCall")
+          .l
+          .flatMap { target =>
+            val relevantNodes = target.astChildren.collect {
+              case x: Call if x.argumentIndex == -1 => x
+              case x: Identifier if x.argumentIndex == -1 => x
+            }.toList
+
+            relevantNodes
+              .flatMap(_.astChildren)
+              .sliding(2)
+              .flatMap {
+                case List(id: Identifier, field: FieldIdentifier) if id.typeFullName != "ANY" =>
+                  Some((id.typeFullName.replaceFirst("\\*+$", ""), field.canonicalName))
+                case List(field: FieldIdentifier, id: Identifier) if id.typeFullName != "ANY" =>
+                  Some((id.typeFullName.replaceFirst("\\*+$", ""), field.canonicalName))
+                case List(call: Call, field: FieldIdentifier) if call.typeFullName == "ANY" =>
+                  findValidType(call).map {
+                    case (_, tpe) => (tpe, field.canonicalName)
+                  }
+                case List(field: FieldIdentifier, call: Call) if call.typeFullName == "ANY" =>
+                  findValidType(call).map {
+                      case (_, tpe) => (tpe, field.canonicalName)
+                  }
+                case _ => None
+              }
+              .toList
+          }
+
+        val resultList: List[(String, String, String)] = identifiers.flatMap {
+          case (originalType, fieldName) =>
+            val resolvedTypeName = cpg.typeDecl
+              .aliasTypeFullNameExact(originalType)
+              .distinctBy(x => (x.filename, x.lineNumber))
+              .headOption
+              .map(_.name)
+              .getOrElse(originalType)
+            cpg.member
+              .name(fieldName)
+              .where(_.typeDecl.name(resolvedTypeName))
+              .headOption
+              .map { member =>
+                (originalType, fieldName, member.typeFullName)
+              }
+        }.toList
+
+        val retParamPairs: List[(String, List[String])] = resultList.flatMap {
+          case (_, _, typeName) =>
+            cpg.method.name(typeName)
+            .distinctBy(_.signature)
+            .l
+            .map { m =>
+                val ret = m.methodReturn.typeFullName
+                val params = Try(m.parameter.typeFullName.l).getOrElse(Nil)
+                (ret, params)
+            }
+        }
+
+        val matchingMethods = retParamPairs.flatMap { case (ret, param) =>
+          cpg.method
+          .filter(m => Try(m.parameter.typeFullName.l).getOrElse(Nil) == param)
+          .distinctBy(x => (x.filename, x.lineNumber))
+          .where(_.methodReturn.typeFullNameExact(ret))
+          .fullName
+          .distinct
+          .l
+        }
+
+        cpg.method
+          .filter(m => matchingMethods.contains(m.fullName))
+          .l
+      }
+
+      (base() ++ functionPointer()).distinctBy(_.fullName)
+    }
+
+    val queue = mutable.Queue[(Method, Int)]((method, 1))
+    val result = mutable.ListBuffer[Map[String, Any]]()
+
+    while (queue.nonEmpty) {
+      val (currentMethod, depth) = queue.dequeue()
+
+      if (!visited.contains(currentMethod.id) && depth <= maxDepth) {
+        visited += currentMethod.id
+
+        val callees = getCallee(currentMethod)
+          .filterNot(_.filename.contains("/src/test/"))
+          .map(_.id)
+
+          val nodeData = Map(
+              "id" -> currentMethod.id,
+              "callees" -> callees
+          )
+          result += nodeData
+
+          queue ++= callees.flatMap(callee =>
+              cpg.method.id(callee).l.map(m => (m, depth + 1))
+          )
+      }
+    }
+    result.toList
+  }
+
+
+build_callee_tree: |
+  val visited: mutable.Set[Long] = List({visited_ids}).to(mutable.Set)
+  List({harness_list})
+    .flatMap(x => cpg.method.where(_.filename(x)))
+    .nameExact("LLVMFuzzerTestOneInput")
+    .flatMap(x => getCalleeTree(x, visited, {call_depth})).l
+
+
+sink_from_sarif: |
+  def nodes = cpg.method
+  .where(_.astParentType("TYPE_DECL"))
+  .where(_.filename(".*{uri}"))
+  .where(_.lineNumberLte({start_line}))
+  .sortBy(_.lineNumber)(Ordering[Option[Int]].reverse)
+  .headOption
+  .cfgNode
+  .filter(_.lineNumber.contains({start_line}))
+  val copiedNodes = nodes
+  nodes match {{
+       case nodes => {{
+            if (nodes.exists(_.columnNumber.contains({start_column}))) {{
+                  def filteredNodes = copiedNodes.filter(_.columnNumber.contains({start_column})).toList
+                  filteredNodes.headOption.map(_.id).toList
+            }} else {{
+                  copiedNodes.headOption.map(_.id).toList
+            }}
+       }}
+  }}
+
+
+sta: |
+  def entry = cpg.method.where(_.filename("^.*{harness}")).where(_.nameExact("LLVMFuzzerTestOneInput"))
+  def src = entry.parameter
+  def sink = cpg.ids({sink_ids})
+      .collect{{case x: CfgNode => x}}
+  val paths = sink.reachableByFlows(src).l
+  paths.map(_.elements.collect{{case x: CfgNode => x}})
+      .groupBy(_.lastOption.id.headOption)
+      .collect{{case (Some(a), b) => (a, b)}}
+      .view.mapValues(_
+          .map(_.filterNot(x => x.isInstanceOf[MethodParameterIn] || x.isInstanceOf[MethodParameterOut])
+          .map(x => (x.method.filename, x.method.fullName, x.lineNumber, x.columnNumber.getOrElse(-1)))
+          .collect{{case (a, b, Some(c), d) => Map("filename" -> a, "fullName" -> b, "linNumber" -> c, "columnNumber" -> d)}}))
+      .toMap
+
+
+cg: |
+  def srcs = cpg.method.where(_.filename("^.*{harness}")).where(_.nameExact("LLVMFuzzerTestOneInput")).id
+  def dsts = cpg.ids({sink_ids})
+      .collect{{case x: CfgNode => x}}
+      .groupBy(_.method.id).view.mapValues(_.map(_.id))
+  Map(
+      "srcs" -> srcs.l,
+      "dst_table" -> dsts.toMap
+  )
+
+
+create_code_table: |
+  List({method_list})
+    .flatMap(x => cpg.method.fullNameExact(x).head)
+    .collect{{case x => (x.filename, x.lineNumber, x.lineNumberEnd)}}
+    .collect{{case (a, Some(b), Some(c)) =>  Map("filename" -> a, "lineNumber" -> b, "lineNumberEnd" -> c)}}
+    .l

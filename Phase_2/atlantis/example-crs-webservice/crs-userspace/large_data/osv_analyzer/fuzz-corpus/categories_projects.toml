@@ -1,0 +1,762 @@
+png = [
+  "kimageformats",
+  "libpng-proto",
+  "lodepng",
+  "libpng",
+  "guetzli",
+  "spng",
+  "libspng",
+  "GraphicsMagick",
+  "imagemagick",
+  "stb",
+  "gdk-pixbuf",
+  "skia",
+  "wxwidgets",
+  "skcms",
+  "opencv",
+  "gfwx",
+  "openexr"
+]
+
+jpeg = [
+  "libjpeg-turbo",
+  "openjpeg",
+  "graphicsmagick",
+  "freeimage",
+  "piex",
+  "librawspeed",
+  "brunsli",
+  "piex"
+]
+
+image_formats = [
+  "lcms",
+  "libtiff",
+  "tesseract-ocr",
+  "giflib",
+  "libexif",
+  "libheif",
+  "libredwg",
+  "kimageformats",
+  "librsvg",
+  "poppler",
+  "libraw",
+  "libgd",
+  "freeimage",
+  "jbig2dec",
+  "cgif",
+  "dng_sdk",
+  "exiv2",
+  "libvips",
+  "libwebp",
+  "wuffs",
+  "woff2"
+]
+
+audio_formats = [
+  "mpg123",
+  "ffmpeg",
+  "faad2",
+  "libfdk-aac",
+  "aac",
+  "wavpack",
+  "libsndfile",
+  "flac",
+  "opus",
+  "vorbis",
+  "speex",
+  "lame",
+  "libass",
+  "gstreamer",
+  "wuffs",
+  "libldac"
+]
+
+video_formats = [
+  "ffmpeg",
+  "libmpeg2",
+  "openh264",
+  "libhevc",
+  "libvpx",
+  "dav1d",
+  "gpac",
+  "xvid",
+  "ogre",
+  "libaom",
+  "libavc",
+  "libxaac",
+  "ffms2",
+  "gstreamer",
+  "wuffs",
+  "nestegg"
+]
+
+pdf = [
+  "poppler",
+  "mupdf",
+  "xpdf",
+  "libspectre",
+  "ghostscript",
+  "libarchive",
+  "pdfium",
+  "qpdf"
+]
+
+html = [
+  "tidy-html5",
+  "hoextdown",
+  "md4c",
+  "cmark",
+  "pygments",
+  "serenity",
+  "wxwidgets",
+  "w3m"
+]
+
+markdown = [
+  "md4c",
+  "cmark",
+  "hoextdown",
+  "serenity"
+]
+
+xml = [
+  "pugixml",
+  "libxml2",
+  "expat",
+  "nokogiri",
+  "xmlsec",
+  "tinyxml2",
+  "libxslt",
+  "augeas",
+  "wxwidgets",
+  "gdal",
+  "libreoffice",
+  "odp",
+  "libyang"
+]
+
+yaml = [
+  "libyaml",
+  "libucl"
+]
+
+build_tools = [
+  "cmake",
+  "ninja"
+]
+
+json = [
+  "simdjson",
+  "boost-json",
+  "jsoncons",
+  "jsoncpp",
+  "cjson",
+  "jansson",
+  "json-c",
+  "arduinojson",
+  "yajl-ruby",
+  "jq",
+  "mongo",
+  "python3-libraries",
+  "flatbuffers",
+  "rapidjson",
+  "json"
+]
+
+python = [
+  "cpython",
+  "cpython3",
+  "python3-libraries",
+  "pybind11",
+  "osquery",
+  "requests",
+  "python-multipart",
+  "scapy",
+  "urllib3"
+]
+
+javascript = [
+  "nodejs",
+  "quickjs",
+  "njs",
+  "jazzer.js",
+  "xs",
+  "javascript_test_cases",
+  "hermes"
+]
+
+lua = [
+  "lua"
+]
+
+ruby = [
+  "ruby",
+  "yajl-ruby",
+  "mruby"
+]
+
+"c++" = [
+  "libstdcpp",
+  "fmt",
+  "cppitertools",
+  "gtest",
+  "cxxopts",
+  "libfmt"
+]
+
+protobuf = [
+  "swift-protobuf",
+  "nanopb",
+  "libprotobuf-mutator",
+  "upb",
+  "capnproto"
+]
+
+data_serialization = [
+  "libcbor",
+  "libtasn1",
+  "libplist"
+]
+
+wasm = [
+  "wasm3",
+  "wasmedge",
+  "wasmer"
+]
+
+sql = [
+  "sqlite3",
+  "duckdb",
+  "postgresql",
+  "mariadb",
+  "mysql-server",
+  "osquery",
+  "mdbtools",
+  "postgis"
+]
+
+http = [
+  "curl",
+  "apache-httpd",
+  "cpp-httplib",
+  "civetweb",
+  "trafficserver",
+  "haproxy",
+  "nginx",
+  "unit",
+  "uwebsockets",
+  "crow",
+  "mongoose",
+  "proxygen",
+  "serenity",
+  "envoy",
+  "thrift",
+  "haproxy",
+  "rapidhttp",
+  "cpp-httplib",
+  "h2o",
+  "nghttp2",
+  "http-pattern-matcher",
+  "libwebsockets",
+  "freerdp",
+  "open5gs",
+  "open62541",
+  "lwan",
+  "muduo",
+  "pupnp",
+  "hiredis",
+  "libevent",
+  "coturn",
+  "rtpproxy",
+  "libhtp",
+  "qpid-proton"
+]
+
+tls = [
+  "openssl",
+  "wolfssl",
+  "mbedtls",
+  "boringssl",
+  "gnutls",
+  "s2n-tls",
+  "nss",
+  "wolfssl",
+  "opensips",
+  "botan",
+  "s2n-tls",
+  "libressl",
+  "p11-kit"
+]
+
+ssh = [
+  "openssh",
+  "dropbear",
+  "hpn-ssh",
+  "libssh",
+  "libssh2"
+]
+
+dns = [
+  "knot-dns",
+  "dnsmasq",
+  "unbound",
+  "powerdns",
+  "libidn",
+  "libidn2",
+  "libpsl",
+  "avahi",
+  "bind9",
+  "c-ares"
+]
+
+sip = [
+  "pjsip",
+  "pjproject",
+  "resiprocate",
+  "kamailio",
+  "opensips",
+  "janus-gateway"
+]
+
+bluetooth = [
+  "bluez"
+]
+
+usb = [
+  "libusb",
+  "usbguard"
+]
+
+remote_desktop = [
+  "libvnc"
+]
+
+network_virtualization = [
+  "openvswitch"
+]
+
+tpm = [
+  "tpm2",
+  "ibmswtpm2",
+  "ms-tpm-20-ref",
+  "libtpms"
+]
+
+bpf = [
+  "libbpf"
+]
+
+binary_file_formats = [
+  "elfutils",
+  "binutils",
+  "bloaty",
+  "file",
+  "lwn",
+  "libdwarf",
+  "sleuthkit"
+]
+
+cryptography = [
+  "wolfssl",
+  "mbedtls",
+  "openssl",
+  "boringssl",
+  "cryptofuzz",
+  "botan",
+  "bls-signatures",
+  "circl",
+  "relic",
+  "krb5",
+  "tink",
+  "oscrypto",
+  "libfido2",
+  "cryptsetup",
+  "rustcrypto"
+]
+
+privacy_tools = [
+  "tor",
+  "opensc",
+  "gnupg",
+  "rnp",
+  "gss-ntlmssp"
+]
+
+cryptocurrency = [
+  "bitcoin-core",
+  "monero"
+]
+
+opengl = [
+  "ogre",
+  "vulkan-loader",
+  "Vulkan-Loader",
+  "skia",
+  "draco",
+  "assimp",
+  "halide",
+  "openexr",
+  "assimp",
+  "ogre",
+  "tinygltf",
+  "astc-encoder"
+]
+
+gis = [
+  "gdal",
+  "mapserver",
+  "geos",
+  "proj4",
+  "s2geometry",
+  "opennavsurf-bag",
+  "h3"
+]
+
+network_traffic = [
+  "libpcap",
+  "pcapplusplus",
+  "ntopng",
+  "wireshark",
+  "ndpi"
+]
+
+calendar = [
+  "libical"
+]
+
+currency_finance = [
+  "quantlib"
+]
+
+org_chart = [
+  "igraph"
+]
+
+font = [
+  "freetype2",
+  "harfbuzz",
+  "ots"
+]
+
+spell = [
+  "aspell",
+  "hunspell",
+  "liblouis"
+]
+
+ocr = [
+  "tesseract-ocr",
+  "leptonica",
+  "espeak-ng",
+  "lcms"
+]
+
+mail = [
+  "neomutt",
+  "cyrus",
+  "mutt"
+]
+
+chat = [
+  "irssi"
+]
+ 
+configuration = [
+  "augeas",
+  "ini",
+  "inih",
+  "libucl",
+  "cfengine"
+]
+
+office_suite = [
+  "libreoffice",
+  "libxls",
+  "libxlsxwriter"
+]
+
+archiving_formats = [
+  "libarchive",
+  "tarantool",
+  "libzip",
+  "zip",
+  "unzip",
+  "minizip",
+  "p7zip",
+  "unrar"
+]
+
+compression_algorithms = [
+  "brotli",
+  "brunsli",
+  "lz4",
+  "lzma",
+  "zlib",
+  "zlib-ng",
+  "zstd",
+  "snappy",
+  "lzo",
+  "miniz",
+  "zopfli",
+  "xz",
+  "c-blosc",
+  "c-blosc2",
+  "miniz_oxide"
+]
+
+iot_protocols = [
+  "libcoap",
+  "openthread",
+  "openweave",
+  "mosquitto",
+  "wolfmqtt"
+]
+
+industrial_protocols = [
+  "opendnp3",
+  "s2opc",
+  "cyclonedds",
+  "fast-dds",
+  "libiec61850",
+  "libmodbus",
+  "libsrtp",
+  "usrsctp"
+]
+
+network_management_protocols = [
+  "net-snmp",
+  "ntp"
+]
+
+email_protocols = [
+  "neomutt",
+  "cyrus",
+  "proftpd"
+]
+
+security_protocols = [
+  "gnupg",
+  "rnp",
+  "tpm2",
+  "ibmswtpm2",
+  "ms-tpm-20-ref",
+  "libtpms"
+]
+
+messaging_protocols = [
+  "libzmq",
+  "rabbitmq-c",
+  "librdkafka",
+  "brpc",
+  "grpc",
+  "thrift",
+  "cyclonedx",
+  "fast-dds",
+  "msgpack-c"
+]
+
+text_processing = [
+  "fribidi",
+  "utf8proc",
+  "icu",
+  "oniguruma",
+  "pcre2",
+  "re2",
+  "tremor",
+  "grok",
+  "libphonenumber",
+  "kcodecs",
+  "libsass"
+]
+
+unix_utilities = [
+  "systemd",
+  "util-linux",
+  "coreutils",
+  "selinux",
+  "plan9port",
+  "qubes-os",
+  "u-root",
+  "lxc",
+  "binutils",
+  "fio",
+  "wget",
+  "wget2",
+  "e2fsprogs",
+  "fwupd",
+  "rauc",
+  "tmux",
+  "cras",
+  "casync"
+]
+
+version_control = [
+  "git",
+  "gitdb",
+  "mercurial",
+  "libgit2"
+]
+
+security_tools = [
+  "sudo",
+  "sudoers",
+  "clamav",
+  "opensc",
+  "yara",
+  "freeradius",
+  "mosh"
+]
+
+file_sharing_protocols = [
+  "samba"
+]
+
+scientific_computing = [
+  "hdf5",
+  "netcdf",
+  "matio",
+  "pcl",
+  "rdkit",
+  "readstat",
+  "arrow",
+  "nccl"
+]
+
+hashing = [
+  "highwayhash"
+]
+
+kv_stores = [
+  "leveldb",
+  "rocksdb",
+  "gdbm",
+  "firestore"
+]
+
+binary_analysis = [
+  "capstone",
+  "radare2",
+  "zydis",
+  "unicorn",
+  "libyal"
+]
+
+llvm = [
+  "llvm"
+]
+
+php = [
+  "php"
+]
+
+janet = [
+  "janet"
+]
+
+dart = [
+  "dart"
+]
+
+solidity = [
+  "solidity"
+]
+
+swift = [
+  "swift-nio"
+]
+
+vlc = [
+  "vlc"
+]
+
+logging_tools = [
+  "glog",
+  "fluent-bit",
+  "gprof2dot",
+  "perfetto"
+]
+
+device_drivers = [
+  "cups",
+  "libcups",
+  "hostap",
+  "wpantund",
+  "libtsm",
+  "sof",
+  "gpsd"
+]
+
+math_libraries = [
+  "bignum-fuzzer",
+  "num-bigint",
+  "fast_float",
+  "muparser",
+  "exprtk",
+  "cel-cpp",
+  "simd",
+  "immer"
+]
+
+machine_learning = [
+  "xnnpack"
+]
+
+bioinformatics = [
+  "htslib"
+]
+
+# fuzzing_examples FIXME remove!
+fuzzing_examples = [
+  "cifuzz-example",
+  "ecc-diff-fuzzer",
+  "example",
+  "vulnerable-project"
+]
+
+web_browsers = [
+  "firefox"
+]
+
+graphics_libraries = [
+  "alembic",
+  "spirv-tools",
+  "tint"
+]
+
+core_libraries = [
+  "glib",
+  "poco"
+]
+
+cue = [
+  "libcue"
+]
+
+torrent = [
+  "libtorrent"
+]
+
+url_parsing = [
+  "ada-url",
+  "uriparser"
+]
+
+gui_frameworks = [
+  "Qt",
+  "qt",
+  "wt"
+]
+
+web_frameworks = [
+  "yoga",
+  "ampproject"
+]
+
+memory_management = [
+  "tcmalloc"
+]
+
+time_libraries = [
+  "cctz"
+]

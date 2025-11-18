@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logs - {{ experiment_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="stdout-container">
+            <div class="stdout-header">
+                <h1>Experiment Logs</h1>
+
+                <!-- Tab Navigation -->
+                <div class="log-tabs">
+                    <a href="/date/{{ current_date }}/experiment/{{ config_hash }}/{{ target }}/{{ harness }}/logs/docker_stdout"
+                       class="log-tab {{ 'active' if log_type == 'docker_stdout' else '' }}">
+                        Docker Stdout
+                    </a>
+                    <a href="/date/{{ current_date }}/experiment/{{ config_hash }}/{{ target }}/{{ harness }}/logs/metadata"
+                       class="log-tab {{ 'active' if log_type == 'metadata' else '' }} {{ 'disabled' if not available_logs.metadata else '' }}">
+                        LLM Metadata
+                    </a>
+                    <a href="/date/{{ current_date }}/experiment/{{ config_hash }}/{{ target }}/{{ harness }}/logs/uniafl"
+                       class="log-tab {{ 'active' if log_type == 'uniafl' else '' }} {{ 'disabled' if not available_logs.uniafl else '' }}">
+                        UniAFL Log
+                    </a>
+                    <a href="/date/{{ current_date }}/experiment/{{ config_hash }}/{{ target }}/{{ harness }}/logs/mlla"
+                       class="log-tab {{ 'active' if log_type == 'mlla' else '' }} {{ 'disabled' if not available_logs.mlla else '' }}">
+                        MLLA Log
+                    </a>
+                    <a href="/date/{{ current_date }}/experiment/{{ config_hash }}/{{ target }}/{{ harness }}/logs/testlang"
+                       class="log-tab {{ 'active' if log_type == 'testlang' else '' }} {{ 'disabled' if not available_logs.testlang else '' }}">
+                        TestLang Log
+                    </a>
+                    <a href="/date/{{ current_date }}/experiment/{{ config_hash }}/{{ target }}/{{ harness }}/logs/reverser"
+                       class="log-tab {{ 'active' if log_type == 'reverser' else '' }} {{ 'disabled' if not available_logs.reverser else '' }}">
+                        Reverser Log
+                    </a>
+                </div>
+
+                <!-- Disclaimer for Docker Stdout and Metadata -->
+                {% if log_type == 'docker_stdout' %}
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 10px; margin: 10px 0; color: #856404;">
+                    <strong>⚠️ Note:</strong> This stdout file is shared across all harnesses for the same target and configuration.
+                </div>
+                {% endif %}
+                {% if log_type == 'metadata' %}
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 10px; margin: 10px 0; color: #856404;">
+                    <strong>⚠️ Note:</strong> This metadata file is shared across all harnesses for the same target and configuration.
+                </div>
+                {% endif %}
+
+                <div class="stdout-meta">
+                    <!-- Row 1: Experiment (2 cols) + Target + Harness + Config Hash -->
+                    <div class="meta-item meta-experiment">
+                        <span class="meta-label">Experiment</span>
+                        <span class="meta-value">{{ experiment_name }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Target</span>
+                        <span class="meta-value">{{ target }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Harness</span>
+                        <span class="meta-value">{{ harness }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Config Hash</span>
+                        <span class="meta-value">{{ config_hash }}</span>
+                    </div>
+
+                    <!-- Row 2: Start Time + Duration + Input Generators (2 cols) + File Path -->
+                    <div class="meta-item meta-input-generators">
+                        <span class="meta-label">Input Generators</span>
+                        <span class="meta-value">{{ input_generators }}</span>
+                    </div>
+                    <div class="meta-item meta-file-path">
+                        <span class="meta-label">File Path</span>
+                        <span class="meta-value">{{ log_file }}</span>
+                    </div>
+                    {% if not error_message %}
+                    <div class="meta-item">
+                        <span class="meta-label">File Size</span>
+                        <span class="meta-value">
+                            {% if is_truncated %}
+                            Displaying: 10MB of {{ file_size_display }}
+                            <span style="color: #dc3545; font-weight: 600;">⚠️ Truncated</span>
+                            {% else %}
+                            {{ file_size_display }}
+                            {% if file_size > 10 * 1024 * 1024 %}
+                            <span style="color: #fd7e14; font-weight: 600;">⚠️ Large</span>
+                            {% endif %}
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
+                    <div class="meta-item">
+                        <span class="meta-label">Start Time</span>
+                        <span class="meta-value">{{ start_time or 'N/A' }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">End Time</span>
+                        <span class="meta-value">{{ end_time or 'N/A' }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Duration</span>
+                        <span class="meta-value">{{ duration or 'N/A' }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="/date/{{ current_date }}/" class="action-button secondary">← Back to Experiments</a>
+                <a href="/date/{{ current_date }}/reports/{{ experiment_name|urlencode }}/linux/" class="action-button secondary">View Report</a>
+                {% if not error_message %}
+                <button id="copy-button" class="action-button copy-button" onclick="copyToClipboard()">📋 Copy Content</button>
+                <button class="action-button" onclick="downloadRaw()">💾 Download Raw</button>
+                {% endif %}
+            </div>
+
+            {% if log_type == 'metadata' and litellm_stats and not error_message %}
+            <!-- LLM Statistics Section -->
+            <div class="llm-stats-section" style="background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 20px; margin: 20px 0;">
+                <h3 style="margin-top: 0; color: #495057; border-bottom: 2px solid #007bff; padding-bottom: 10px;">LLM Usage Statistics</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #6c757d; margin-bottom: 10px;">Cost & Tokens</h4>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Cost:</td><td style="padding: 5px 0;">${{ "%.4f"|format(litellm_stats.total_spend) if litellm_stats.total_spend else "0.0000" }}</td></tr>
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Total Tokens:</td><td style="padding: 5px 0;">{{ "{:,}".format(litellm_stats.total_tokens) if litellm_stats.total_tokens else "0" }}</td></tr>
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Prompt Tokens:</td><td style="padding: 5px 0;">{{ "{:,}".format(litellm_stats.total_prompt_tokens) if litellm_stats.total_prompt_tokens else "0" }}</td></tr>
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Completion Tokens:</td><td style="padding: 5px 0;">{{ "{:,}".format(litellm_stats.total_completion_tokens) if litellm_stats.total_completion_tokens else "0" }}</td></tr>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 style="color: #6c757d; margin-bottom: 10px;">Cache & Requests</h4>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Cache Read Tokens:</td><td style="padding: 5px 0;">{{ "{:,}".format(litellm_stats.total_cache_read_input_tokens) if litellm_stats.total_cache_read_input_tokens else "0" }}</td></tr>
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Cache Creation Tokens:</td><td style="padding: 5px 0;">{{ "{:,}".format(litellm_stats.total_cache_creation_input_tokens) if litellm_stats.total_cache_creation_input_tokens else "0" }}</td></tr>
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Successful Requests:</td><td style="padding: 5px 0;">{{ litellm_stats.total_successful_requests or 0 }}</td></tr>
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Failed Requests:</td><td style="padding: 5px 0;">{{ litellm_stats.total_failed_requests or 0 }}</td></tr>
+                            <tr><td style="padding: 5px 0; font-weight: 600;">Total API Requests:</td><td style="padding: 5px 0;">{{ litellm_stats.total_api_requests or 0 }}</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if error_message %}
+            <div class="error-message">
+                <h3>{{ error_message }}</h3>
+                <p>This log file may not be available for this experiment.</p>
+            </div>
+            {% else %}
+            {% if is_truncated %}
+            <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; padding: 10px; margin: 10px 0; color: #721c24;">
+                <strong>⚠️ Content Truncated:</strong> This file is {{ file_size_display }} but only the first 10MB is displayed for performance.
+                Use the "Download Raw" button to get the complete file.
+            </div>
+            {% endif %}
+            <div class="stdout-content" id="stdout-content">{{ content }}</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const content = document.getElementById('stdout-content').textContent;
+            const button = document.getElementById('copy-button');
+
+            // Try modern clipboard API first
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(content).then(function() {
+                    showCopySuccess(button);
+                }).catch(function(err) {
+                    console.error('Clipboard API failed: ', err);
+                    fallbackCopyTextToClipboard(content, button);
+                });
+            } else {
+                // Fallback for older browsers or non-secure contexts
+                fallbackCopyTextToClipboard(content, button);
+            }
+        }
+
+        function fallbackCopyTextToClipboard(text, button) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopySuccess(button);
+                } else {
+                    showCopyError(button);
+                }
+            } catch (err) {
+                console.error('Fallback copy failed: ', err);
+                showCopyError(button);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess(button) {
+            const originalText = button.textContent;
+            button.textContent = '✅ Copied!';
+            button.classList.add('copy-success');
+
+            setTimeout(function() {
+                button.textContent = originalText;
+                button.classList.remove('copy-success');
+            }, 2000);
+        }
+
+        function showCopyError(button) {
+            const originalText = button.textContent;
+            button.textContent = '❌ Copy Failed';
+            button.style.background = '#dc3545';
+
+            setTimeout(function() {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        }
+
+        function downloadRaw() {
+            const content = document.getElementById('stdout-content').textContent;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '{{ config_hash }}_{{ target.replace("/", "-") }}_{{ harness }}_{{ log_type }}{% if log_type == "metadata" %}.json{% else %}.txt{% endif %}';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

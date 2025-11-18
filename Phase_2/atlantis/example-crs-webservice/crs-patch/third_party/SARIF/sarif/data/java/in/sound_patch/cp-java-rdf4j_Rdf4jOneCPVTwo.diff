@@ -1,0 +1,58 @@
+--- a/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java
++++ b/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java
+@@ -188,22 +188,39 @@
+ 	 * @throws IllegalArgumentException
+ 	 *         If the supplied input stream or base URI is <tt>null</tt>.
+ 	 */
+-	@Override
+-	public synchronized void parse(InputStream in, String baseURI)
+-		throws IOException, RDFParseException, RDFHandlerException
+-	{
+-		if (in == null) {
+-			throw new IllegalArgumentException("Input stream cannot be 'null'");
+-		}
+-		if (baseURI == null) {
+-			throw new IllegalArgumentException("Base URI cannot be 'null'");
+-		}
+-
+-		InputSource inputSource = new InputSource(new BOMInputStream(in, false));
+-		inputSource.setSystemId(baseURI);
+-
+-		parse(inputSource);
+-	}
++@Override
++public synchronized void parse(InputStream in, String baseURI)
++	throws IOException, RDFParseException, RDFHandlerException
++{
++	if (in == null) {
++		throw new IllegalArgumentException("Input stream cannot be 'null'");
++	}
++	if (baseURI == null) {
++		throw new IllegalArgumentException("Base URI cannot be 'null'");
++	}
++
++	if (!isValidBaseURI(baseURI)) {
++		throw new IllegalArgumentException("Base URI is not valid or safe: " + baseURI);
++	}
++
++	InputSource inputSource = new InputSource(new BOMInputStream(in, false));
++	inputSource.setSystemId(baseURI);
++
++	parse(inputSource);
++}
++
++private boolean isValidBaseURI(String baseURI) {
++	try {
++		java.net.URI uri = new java.net.URI(baseURI);
++		if (uri.getScheme() == null) {
++			return false;
++		}
++		// Add additional checks here if needed (e.g., disallowing local addresses)
++		return true;
++	} catch (java.net.URISyntaxException e) {
++		return false;
++	}
++}
+ 
+ 	/**
+ 	 * Parses the data from the supplied Reader, using the supplied baseURI to resolve any relative URI

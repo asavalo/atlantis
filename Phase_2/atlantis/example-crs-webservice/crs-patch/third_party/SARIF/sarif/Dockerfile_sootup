@@ -1,0 +1,10 @@
+
+FROM aixcc-afc/aixcc/jvm/imaging
+
+ENV SOOTUP_DIR=/opt/sootup
+COPY deps/sootup  /opt/sootup
+RUN cd /opt/sootup/deps/SootUp && mvn clean install -DskipTests
+RUN cd /opt/sootup/ && mvn clean package
+WORKDIR /src
+CMD ["/bin/bash"]
+        

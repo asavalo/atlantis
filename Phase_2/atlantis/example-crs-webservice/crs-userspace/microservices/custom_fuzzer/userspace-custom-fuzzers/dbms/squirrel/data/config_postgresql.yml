@@ -1,0 +1,13 @@
+---
+required: ["init_lib", "data_lib", "db", "passwd", "user_name", "host", "db_name", "startup_cmd"]
+should_exist: ["init_lib", "data_lib"]
+init_lib: /root/data/fuzz_root/postgresql_init_lib
+data_lib: /root/data/fuzz_root/global_data_lib_postgresql
+db: postgresql
+passwd: ''
+user_name: fuzzuser
+db_name: postgres
+host: localhost
+port: 5432
+startup_cmd: "/usr/local/pgsql/bin/postgres -D /root/data &"
+# FIXME

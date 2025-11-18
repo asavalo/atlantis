@@ -1,0 +1,32 @@
+306:        /**
+307:         * Respond to HTTP request with simple diagnostics.
+308:         * Primarily used to test the low-level connectivity.
+309:         */
+310:        private void respondHello(String header, Socket s) throws IOException {
+311:            try (s) {
+312:                DataOutputStream out = new DataOutputStream(s.getOutputStream());
+313:                String response;
+314:                if (header.startsWith("GET / ")) {
+315:                    response = "HTTP/1.0 200 OK\r\n" +
+316:                            "Content-Type: text/plain;charset=UTF-8\r\n" +
+317:                            "\r\n" +
+318:                            "Jenkins-Agent-Protocols: " + getAgentProtocolNames() + "\r\n" +
+319:                            "Jenkins-Version: " + Jenkins.VERSION + "\r\n" +
+320:                            "Jenkins-Session: " + Jenkins.SESSION_HASH + "\r\n" +
+321:                            "Client: " + s.getInetAddress().getHostAddress() + "\r\n" +
+322:                            "Server: " + s.getLocalAddress().getHostAddress() + "\r\n" +
+323:                            "Remoting-Minimum-Version: " + getRemotingMinimumVersion() + "\r\n";
+324:                } else {
+325:                    response = DEFAULT_RESPONSE_404;
+326:                }
+327:                out.write(response.getBytes(StandardCharsets.UTF_8));
+328:                out.flush();
+329:                s.shutdownOutput();
+330:
+331:                InputStream i = s.getInputStream();
+332:                try (OutputStream o = OutputStream.nullOutputStream()) {
+333:                    IOUtils.copy(i, o);
+334:                }
+335:                s.shutdownInput();
+336:            }
+337:        }

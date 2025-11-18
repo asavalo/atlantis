@@ -1,0 +1,438 @@
+info:
+  contact: {}
+  title: VAPI
+  version: "1.1"
+swagger: "2.0"
+paths:
+  /submit/pov/:
+    post:
+      consumes:
+        - application/json
+      description: submit a POV
+      parameters:
+        - description: Submission body
+          in: body
+          name: payload
+          required: true
+          schema:
+            $ref: "#/definitions/types.POVSubmission"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/types.POVSubmissionResponse"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/types.Error"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/types.Error"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/types.Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/types.Error"
+  /submit/pov/{pov_id}:
+    get:
+      consumes:
+        - application/json
+      description: yield the status of vuln testing
+      parameters:
+        - description: POV ID
+          format: uuid
+          in: path
+          name: pov_id
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/types.POVSubmissionResponse"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/types.Error"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/types.Error"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/types.Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/types.Error"
+  /submit/patch/pov/{pov_id}:
+    post:
+      consumes:
+        - application/json
+      description: submit a patch for pov
+      parameters:
+        - description: POV ID
+          format: uuid
+          in: path
+          name: pov_id
+          required: true
+          type: string
+        - description: Submission body
+          in: body
+          name: payload
+          required: true
+          schema:
+            $ref: "#/definitions/types.PatchSubmission"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/types.PatchSubmissionResponse"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/types.Error"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/types.Error"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/types.Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/types.Error"
+  /submit/patch/{patch_id}:
+    get:
+      consumes:
+        - application/json
+      description: yield the status of vuln testing
+      parameters:
+        - description: Patch ID
+          format: uuid
+          in: path
+          name: patch_id
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/types.PatchSubmissionResponse"
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/types.Error"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/types.Error"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/types.Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/types.Error"
+  /submit/sarif/:
+    post:
+      consumes:
+        - application/json
+      description: submit a SARIF Assessment
+      parameters:
+        - description: Submission body
+          in: body
+          name: payload
+          required: true
+          schema:
+            $ref: "#/definitions/types.SarifAssessmentSubmission"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/types.Error"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/types.Error"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/types.Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/types.Error"
+  /broadcast/sarif/:
+    post:
+      consumes:
+        - application/json
+      description: submit a SARIF Assessment
+      parameters:
+        - description: Submission body
+          in: body
+          name: payload
+          required: true
+          schema:
+            $ref: "#/definitions/types.SarifAssessmentBroadcast"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/types.Error"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/types.Error"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/types.Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/types.Error"
+  /task/sarif/:
+    post:
+      consumes:
+        - application/json
+      description: Reqeust a SARIF Assessment
+      parameters:
+        - description: SARIF body
+          in: body
+          name: payload
+          required: true
+          schema:
+            $ref: "#/definitions/types.Sarif"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/types.Error"
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: "#/definitions/types.Error"
+        "404":
+          description: Not Found
+          schema:
+            $ref: "#/definitions/types.Error"
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: "#/definitions/types.Error"
+definitions:
+  types.Error:
+      properties:
+        fields:
+          additionalProperties:
+            type: string
+          type: object
+        message:
+          type: string
+      required:
+        - message
+      type: object
+  types.Assessment:
+    enum:
+      - correct
+      - incorrect
+    type: string
+    x-enum-varnames:
+      - AssessmentCorrect
+      - AssessmentIncorrect
+  types.POVSubmission:
+    properties:
+      finder:
+        description: |-
+          Finder of this PoV
+        maxLength: 4096
+        type: string
+      fuzzer_name:
+        description: |-
+          Fuzz Tooling fuzzer that exercises this vuln
+
+          4KiB max size
+        maxLength: 4096
+        type: string
+      sanitizer:
+        description: |-
+          Fuzz Tooling Sanitizer that exercises this vuln
+
+          4KiB max size
+        maxLength: 4096
+        type: string
+      testcase:
+        description: |-
+          Base64 encoded vuln trigger
+
+          2MiB max size before Base64 encoding
+        format: base64
+        type: string
+    required:
+      - fuzzer_name
+      - sanitizer
+      - testcase
+      - finder
+    type: object
+  types.POVSubmissionResponse:
+    properties:
+      pov_id:
+        format: uuid
+        type: string
+      status:
+        $ref: "#/definitions/types.SubmissionStatus"
+    required:
+      - pov_id
+      - status
+    type: object
+  types.SubmissionStatus:
+    enum:
+      - accepted
+      - passed
+      - failed
+      - deadline_exceeded
+      - errored
+      - duplicated
+    type: string
+    x-enum-comments:
+      SubmissionStatusAccepted: Successfully submitted
+      SubmissionStatusDeadlineExceeded:
+        Task deadline exceeded. All submissions marked
+        accepted before the deadline will be evaluated.
+      SubmissionStatusErrored: Server side error when testing submission
+      SubmissionStatusFailed: Submission failed testing
+      SubmissionStatusPassed: Successfully evaluated submission
+      SubmissionStatusDuplicated: Submission is duplicated
+    x-enum-varnames:
+      - SubmissionStatusAccepted
+      - SubmissionStatusPassed
+      - SubmissionStatusFailed
+      - SubmissionStatusDeadlineExceeded
+      - SubmissionStatusErrored
+      - SubmissionStatusDuplicated
+  types.PatchSubmission:
+    properties:
+      patched_again_pov_ids:
+        description: |-
+          POV IDs patched before but the given patch prevents again
+        type: array
+        items:
+          type: string
+      patch:
+        description: |-
+          Base64 encoded patch in unified diff format
+
+          100KiB max size before Base64 encoding
+        format: base64
+        type: string
+    required:
+      - patch
+    type: object
+  types.PatchSubmissionResponse:
+    properties:
+      functionality_tests_passing:
+        description: null indicates the tests have not been run
+        type: boolean
+      patch_id:
+        format: uuid
+        type: string
+      status:
+        $ref: "#/definitions/types.SubmissionStatus"
+    required:
+      - patch_id
+      - status
+    type: object
+  types.SarifAssessmentSubmission:
+    properties:
+      assessment:
+        $ref: "#/definitions/types.Assessment"
+      description:
+        description: |-
+          Plain text reasoning for the assessment
+
+          128KiB max size
+        maxLength: 131072
+        type: string
+      sarif_id:
+        format: uuid
+        type: string
+      pov_id:
+        format: uuid
+        type: string
+    required:
+      - assessment
+      - description
+      - sarif_id
+    type: object
+  types.SarifAssessmentBroadcast:
+    properties:
+      analysis_result:
+        description: |-
+          Analysis result in form of object
+          # TODO: Fix fields
+          128KiB max size
+        maxLength: 131072
+        type: object
+        additionalProperties: true
+      sarif_id:
+        format: uuid
+        type: string
+      fuzzer_name:
+        description: |-
+          Fuzz Tooling fuzzer that exercises this vuln
+
+          4KiB max size
+        maxLength: 4096
+        type: string
+    required:
+      - analysis_result
+      - sarif_id
+      - fuzzer_name
+    type: object
+  types.Sarif:
+    properties:
+      metadata:
+        description:
+          String to string map containing data that should be attached
+          to outputs like log messages and OpenTelemetry trace attributes for traceability
+        type: object
+      sarif:
+        description: SARIF Report compliant with provided schema
+        type: object
+      sarif_id:
+        format: uuid
+        type: string
+    required:
+      - metadata
+      - sarif
+      - sarif_id
+    type: object

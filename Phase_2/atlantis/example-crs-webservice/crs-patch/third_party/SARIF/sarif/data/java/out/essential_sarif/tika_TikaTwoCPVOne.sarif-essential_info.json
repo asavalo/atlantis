@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "OS Command Injection",
+    "loc_file_full_name": "ExternalParser.java",
+    "loc_file_short_name": "ExternalParser.java",
+    "loc_line": 161,
+    "loc_function_full_name": "org.apache.tika.parser.external.ExternalParser.check",
+    "loc_function_short_name": "check"
+}

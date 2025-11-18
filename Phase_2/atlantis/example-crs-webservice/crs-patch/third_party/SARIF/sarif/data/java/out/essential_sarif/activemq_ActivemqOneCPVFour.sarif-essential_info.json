@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueHigh",
+    "message": "Remote Code Execution",
+    "loc_file_full_name": "BaseDataStreamMarshaller.java",
+    "loc_file_short_name": "BaseDataStreamMarshaller.java",
+    "loc_line": 233,
+    "loc_function_full_name": "org.apache.activemq.openwire.v4.BaseDataStreamMarshaller.createThrowable",
+    "loc_function_short_name": "createThrowable"
+}

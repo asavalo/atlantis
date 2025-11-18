@@ -1,0 +1,3820 @@
+{
+    "func_coverages": [
+        {
+            "class_name": "org/zeroturnaround/zip/timestamps/Java8TimestampStrategy",
+            "file_name": "Java8TimestampStrategy.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/timestamps/Java8TimestampStrategy",
+            "file_name": "Java8TimestampStrategy.java",
+            "func_name": "setTime",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/timestamps/PreJava8TimestampStrategy",
+            "file_name": "PreJava8TimestampStrategy.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/timestamps/PreJava8TimestampStrategy",
+            "file_name": "PreJava8TimestampStrategy.java",
+            "func_name": "setTime",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/timestamps/TimestampStrategyFactory",
+            "file_name": "TimestampStrategyFactory.java",
+            "func_name": "hasZipEntryFileTimeMethods",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/timestamps/TimestampStrategyFactory",
+            "file_name": "TimestampStrategyFactory.java",
+            "func_name": "getStrategy",
+            "desc": "()Lorg/zeroturnaround/zip/timestamps/TimestampStrategy;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/timestamps/TimestampStrategyFactory",
+            "file_name": "TimestampStrategyFactory.java",
+            "func_name": "getInstance",
+            "desc": "()Lorg/zeroturnaround/zip/timestamps/TimestampStrategy;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/timestamps/TimestampStrategyFactory",
+            "file_name": "TimestampStrategyFactory.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/StringBuilderWriter",
+            "file_name": "StringBuilderWriter.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/StringBuilder;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/StringBuilderWriter",
+            "file_name": "StringBuilderWriter.java",
+            "func_name": "append",
+            "desc": "(Ljava/lang/CharSequence;II)Ljava/io/Writer;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/StringBuilderWriter",
+            "file_name": "StringBuilderWriter.java",
+            "func_name": "close",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/StringBuilderWriter",
+            "file_name": "StringBuilderWriter.java",
+            "func_name": "flush",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/StringBuilderWriter",
+            "file_name": "StringBuilderWriter.java",
+            "func_name": "write",
+            "desc": "([CII)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/StringBuilderWriter",
+            "file_name": "StringBuilderWriter.java",
+            "func_name": "getBuilder",
+            "desc": "()Ljava/lang/StringBuilder;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/StringBuilderWriter",
+            "file_name": "StringBuilderWriter.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/IOUtils",
+            "file_name": "IOUtils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/IOUtils",
+            "file_name": "IOUtils.java",
+            "func_name": "closeQuietly",
+            "desc": "(Ljava/io/Closeable;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/IOUtils",
+            "file_name": "IOUtils.java",
+            "func_name": "toByteArray",
+            "desc": "(Ljava/io/InputStream;)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/IOUtils",
+            "file_name": "IOUtils.java",
+            "func_name": "toString",
+            "desc": "(Ljava/io/InputStream;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/IOUtils",
+            "file_name": "IOUtils.java",
+            "func_name": "copy",
+            "desc": "(Ljava/io/Reader;Ljava/io/Writer;)I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/IOUtils",
+            "file_name": "IOUtils.java",
+            "func_name": "copyLarge",
+            "desc": "(Ljava/io/Reader;Ljava/io/Writer;[C)J"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/IOUtils",
+            "file_name": "IOUtils.java",
+            "func_name": "contentEquals",
+            "desc": "(Ljava/io/InputStream;Ljava/io/InputStream;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/IOUtils",
+            "file_name": "IOUtils.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FilenameUtils",
+            "file_name": "FilenameUtils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FilenameUtils",
+            "file_name": "FilenameUtils.java",
+            "func_name": "isSystemWindows",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FilenameUtils",
+            "file_name": "FilenameUtils.java",
+            "func_name": "isSeparator",
+            "desc": "(C)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FilenameUtils",
+            "file_name": "FilenameUtils.java",
+            "func_name": "getPrefixLength",
+            "desc": "(Ljava/lang/String;)I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FilenameUtils",
+            "file_name": "FilenameUtils.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtils",
+            "file_name": "FileUtils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtils",
+            "file_name": "FileUtils.java",
+            "func_name": "copy",
+            "desc": "(Ljava/io/InputStream;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtils",
+            "file_name": "FileUtils.java",
+            "func_name": "getTempFileFor",
+            "desc": "(Ljava/io/File;)Ljava/io/File;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "openInputStream",
+            "desc": "(Ljava/io/File;)Ljava/io/FileInputStream;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "openOutputStream",
+            "desc": "(Ljava/io/File;Z)Ljava/io/FileOutputStream;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "contentEquals",
+            "desc": "(Ljava/io/File;Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "copyFileToDirectory",
+            "desc": "(Ljava/io/File;Ljava/io/File;Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "copyFile",
+            "desc": "(Ljava/io/File;Ljava/io/File;Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "doCopyFile",
+            "desc": "(Ljava/io/File;Ljava/io/File;Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "copyDirectory",
+            "desc": "(Ljava/io/File;Ljava/io/File;Ljava/io/FileFilter;Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "doCopyDirectory",
+            "desc": "(Ljava/io/File;Ljava/io/File;Ljava/io/FileFilter;ZLjava/util/List;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "deleteDirectory",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "deleteQuietly",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "cleanDirectory",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "readFileToString",
+            "desc": "(Ljava/io/File;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "forceDelete",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "forceDeleteOnExit",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "deleteDirectoryOnExit",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "cleanDirectoryOnExit",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "forceMkdir",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "sizeOf",
+            "desc": "(Ljava/io/File;)J"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "sizeOfDirectory",
+            "desc": "(Ljava/io/File;)J"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "moveDirectory",
+            "desc": "(Ljava/io/File;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "moveFile",
+            "desc": "(Ljava/io/File;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "isSymlink",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileUtilsV2_2",
+            "file_name": "FileUtilsV2_2.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/commons/FileExistsException",
+            "file_name": "FileExistsException.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$4",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$4",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$3",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/List;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$3",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$6",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$6",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$5",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$5",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$21",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Ljava/lang/String;Lorg/zeroturnaround/zip/transform/ZipEntryTransformer;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$21",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$22",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/transform/ZipEntryTransformerEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$22",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$23",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;[Lorg/zeroturnaround/zip/transform/ZipEntryTransformerEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$23",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$2",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$2",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$1",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$1",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "containsEntry",
+            "desc": "(Ljava/io/File;Ljava/lang/String;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "getCompressionLevelOfEntry",
+            "desc": "(Ljava/io/File;Ljava/lang/String;)I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "getCompressionMethodOfEntry",
+            "desc": "(Ljava/io/File;Ljava/lang/String;)I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "containsAnyEntry",
+            "desc": "(Ljava/io/File;[Ljava/lang/String;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "unpackEntry",
+            "desc": "(Ljava/io/InputStream;Ljava/lang/String;Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "doUnpackEntry",
+            "desc": "(Ljava/util/zip/ZipFile;Ljava/lang/String;Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "iterate",
+            "desc": "(Ljava/io/InputStream;[Ljava/lang/String;Lorg/zeroturnaround/zip/ZipEntryCallback;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "newCloseShieldZipInputStream",
+            "desc": "(Ljava/io/InputStream;Ljava/nio/charset/Charset;)Ljava/util/zip/ZipInputStream;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "handle",
+            "desc": "(Ljava/io/InputStream;Ljava/lang/String;Lorg/zeroturnaround/zip/ZipEntryCallback;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "unpack",
+            "desc": "(Ljava/io/InputStream;Ljava/io/File;Lorg/zeroturnaround/zip/NameMapper;Ljava/nio/charset/Charset;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "unwrap",
+            "desc": "(Ljava/io/InputStream;Ljava/io/File;Lorg/zeroturnaround/zip/NameMapper;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "explode",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "packEntry",
+            "desc": "(Ljava/io/File;Ljava/io/File;Lorg/zeroturnaround/zip/NameMapper;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "pack",
+            "desc": "([Lorg/zeroturnaround/zip/ZipEntrySource;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "packEntries",
+            "desc": "([Ljava/io/File;Ljava/io/File;Lorg/zeroturnaround/zip/NameMapper;I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "repack",
+            "desc": "(Ljava/io/File;I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "unexplode",
+            "desc": "(Ljava/io/File;I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "addEntry",
+            "desc": "(Lorg/zeroturnaround/zip/ZipEntrySource;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "addEntries",
+            "desc": "(Ljava/io/File;[Lorg/zeroturnaround/zip/ZipEntrySource;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "removeEntry",
+            "desc": "(Ljava/io/File;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "removeEntries",
+            "desc": "(Ljava/io/File;[Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "copyEntries",
+            "desc": "(Ljava/io/File;Ljava/util/zip/ZipOutputStream;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "filterDirEntries",
+            "desc": "(Ljava/io/File;Ljava/util/Collection;)Ljava/util/Set;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "replaceEntry",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/ZipEntrySource;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "replaceEntries",
+            "desc": "(Ljava/io/File;[Lorg/zeroturnaround/zip/ZipEntrySource;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "addOrReplaceEntries",
+            "desc": "(Ljava/io/File;[Lorg/zeroturnaround/zip/ZipEntrySource;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "entriesByPath",
+            "desc": "([Lorg/zeroturnaround/zip/ZipEntrySource;)Ljava/util/Map;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "transformEntry",
+            "desc": "(Ljava/io/InputStream;Lorg/zeroturnaround/zip/transform/ZipEntryTransformerEntry;Ljava/io/OutputStream;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "transformEntries",
+            "desc": "(Ljava/io/InputStream;[Lorg/zeroturnaround/zip/transform/ZipEntryTransformerEntry;Ljava/io/OutputStream;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "transformersByPath",
+            "desc": "(Ljava/util/List;)Ljava/util/Map;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "archiveEquals",
+            "desc": "(Ljava/io/File;Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "archiveEqualsInternal",
+            "desc": "(Ljava/io/File;Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "metaDataEquals",
+            "desc": "(Ljava/lang/String;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipEntry;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "entryEquals",
+            "desc": "(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipFile;Ljava/lang/String;Ljava/lang/String;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "doEntryEquals",
+            "desc": "(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipFile;Ljava/lang/String;Ljava/lang/String;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "closeQuietly",
+            "desc": "(Ljava/util/zip/ZipFile;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "operateInPlace",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/ZipUtil$InPlaceAction;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil",
+            "file_name": "ZipUtil.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "setUp",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "tearDown",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "testDontPreserveTime",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "testPreserveTime",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "testPreserveTimeWithSetter",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "validateTimeStampEquality",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$8",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$8",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$7",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$7",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$9",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$9",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "getDefaultStategy",
+            "desc": "()Lorg/zeroturnaround/zip/ZTFilePermissionsStrategy;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "toPosixFileMode",
+            "desc": "(Lorg/zeroturnaround/zip/ZTFilePermissions;)I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "addFlag",
+            "desc": "(ZI)I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "fromPosixFileMode",
+            "desc": "(I)Lorg/zeroturnaround/zip/ZTFilePermissions;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "fetchDefaultStrategy",
+            "desc": "()Lorg/zeroturnaround/zip/ZTFilePermissionsStrategy;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "tryInstantiateStrategy",
+            "desc": "(Ljava/lang/Class;)Lorg/zeroturnaround/zip/ZTFilePermissionsStrategy;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilInPlaceTest$1",
+            "file_name": "ZipUtilInPlaceTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilInPlaceTest;[B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilInPlaceTest$1",
+            "file_name": "ZipUtilInPlaceTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;[B)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil$1",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil$1",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "setPermissions",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/ZTFilePermissions;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissionsUtil$1",
+            "file_name": "ZTFilePermissionsUtil.java",
+            "func_name": "getPermissions",
+            "desc": "(Ljava/io/File;)Lorg/zeroturnaround/zip/ZTFilePermissions;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "file",
+            "desc": "(Ljava/lang/String;)Ljava/io/File;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntryStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntryFile",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntryFileWithNameParameter",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntryFileWithNameMapper",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnpackEntryFromFile",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnpackEntryFromStreamToFile",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnpackEntryFromStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testDuplicateEntryAtAdd",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testDuplicateEntryAtReplace",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testDuplicateEntryAtAddOrReplace",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnexplode",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntriesWithCompressionLevel",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntries",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntriesToStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testAddEntriesToStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "convertToEntries",
+            "desc": "(Ljava/util/List;Ljava/lang/String;)[Lorg/zeroturnaround/zip/ZipEntrySource;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "assertEntries",
+            "desc": "(Ljava/util/List;[BLjava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntriesWithNameMapper",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testZipException",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPackEntriesWithNamesList",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testPreserveRoot",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "unexplodeWithException",
+            "desc": "(Ljava/io/File;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testArchiveEquals",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testRepackArchive",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testContainsAnyEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testAddEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testKeepEntriesState",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testRemoveEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testRemoveMissingEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testRemoveDirs",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testHandle",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testIterate",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testIterateGivenEntriesZipInfoCallback",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testIterateGivenEntriesZipEntryCallback",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testIterateGivenEntriesFromStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testIterateAndBreak",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnwrapFile",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnwrapStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnwrapEntriesInRoot",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnwrapMultipleRoots",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnwrapSingleRootWithStructure",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnwrapEmptyRootDir",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnpackEntryDir",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testAddEntryWithCompressionMethodAndDestFile",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "doTestAddEntryWithCompressionMethodAndDestFile",
+            "desc": "(I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testAddEntryWithCompressionMethodStoredInPlace",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testAddEntryWithCompressionMethodDeflatedInPlace",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "doTestAddEntryWithCompressionMethodInPlace",
+            "desc": "(Ljava/io/File;I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testReplaceEntryWithCompressionMethod",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "testUnpackBackslashes",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$14",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Ljava/lang/String;[B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$14",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$15",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Ljava/lang/String;[BI)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$15",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$16",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/ZipEntrySource;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$16",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$17",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/util/Set;Ljava/util/Map;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$17",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$RepackZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$RepackZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$RepackZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "closeStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$10",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/util/Set;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$10",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$11",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/util/Set;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$11",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$12",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/util/Set;Ljava/util/Set;Ljava/util/Set;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$12",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTZipReflectionUtil",
+            "file_name": "ZTZipReflectionUtil.java",
+            "func_name": "getClassForName",
+            "desc": "(Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/Class;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTZipReflectionUtil",
+            "file_name": "ZTZipReflectionUtil.java",
+            "func_name": "getDeclaredMethod",
+            "desc": "(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTZipReflectionUtil",
+            "file_name": "ZTZipReflectionUtil.java",
+            "func_name": "invoke",
+            "desc": "(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$13",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Ljava/lang/String;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$13",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$18",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;[Lorg/zeroturnaround/zip/ZipEntrySource;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$18",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "testPreserveExecuteFlag",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "testPreserveReadFlag",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "testPreserveWriteFlag",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "doZipAndUnpack",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "directoryHasFiles",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "canExecute",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "setExecutable",
+            "desc": "(Ljava/io/File;Z)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "canWrite",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "setWritable",
+            "desc": "(Ljava/io/File;Z)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "canRead",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FilePermissionsTest",
+            "file_name": "FilePermissionsTest.java",
+            "func_name": "setReadable",
+            "desc": "(Ljava/io/File;Z)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$19",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/util/Set;Ljava/util/Map;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$19",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/SkipIfZipEntryFileTimeNotAvailableRule$IgnoreStatement",
+            "file_name": "SkipIfZipEntryFileTimeNotAvailableRule.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/SkipIfZipEntryFileTimeNotAvailableRule;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/SkipIfZipEntryFileTimeNotAvailableRule$IgnoreStatement",
+            "file_name": "SkipIfZipEntryFileTimeNotAvailableRule.java",
+            "func_name": "evaluate",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$20",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;[Lorg/zeroturnaround/zip/ZipEntrySource;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$20",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$Unwraper",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/NameMapper;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$Unwraper",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$Unwraper",
+            "file_name": "ZipUtil.java",
+            "func_name": "getUnrootedName",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$Unwraper",
+            "file_name": "ZipUtil.java",
+            "func_name": "getRootName",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "setUp",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "tearDown",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "testPreservingTimestamps",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "testPreservingTimestampsSetter",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "validateTimeStamps",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$1",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;Ljava/util/zip/ZipFile;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$1",
+            "file_name": "ZipsTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$2",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$2",
+            "file_name": "ZipsTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$3",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$3",
+            "file_name": "ZipsTest.java",
+            "func_name": "accept",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "get",
+            "desc": "(Ljava/io/File;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "create",
+            "desc": "()Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "addEntry",
+            "desc": "(Lorg/zeroturnaround/zip/ZipEntrySource;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "addEntries",
+            "desc": "([Lorg/zeroturnaround/zip/ZipEntrySource;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "addFile",
+            "desc": "(Ljava/io/File;ZLjava/io/FileFilter;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "getRelativePath",
+            "desc": "(Ljava/io/File;Ljava/io/File;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "removeEntry",
+            "desc": "(Ljava/lang/String;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "removeEntries",
+            "desc": "([Ljava/lang/String;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "preserveTimestamps",
+            "desc": "()Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "setPreserveTimestamps",
+            "desc": "(Z)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "charset",
+            "desc": "(Ljava/nio/charset/Charset;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "destination",
+            "desc": "(Ljava/io/File;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "nameMapper",
+            "desc": "(Lorg/zeroturnaround/zip/NameMapper;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "unpack",
+            "desc": "()Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "isInPlace",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "isUnpack",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "addTransformer",
+            "desc": "(Ljava/lang/String;Lorg/zeroturnaround/zip/transform/ZipEntryTransformer;)Lorg/zeroturnaround/zip/Zips;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "process",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "processAllEntries",
+            "desc": "(Lorg/zeroturnaround/zip/ZipEntryOrInfoAdapter;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "getDestinationFile",
+            "desc": "()Ljava/io/File;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "iterate",
+            "desc": "(Lorg/zeroturnaround/zip/ZipInfoCallback;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "getEntry",
+            "desc": "(Ljava/lang/String;)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "containsEntry",
+            "desc": "(Ljava/lang/String;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "iterateExistingExceptRemoved",
+            "desc": "(Lorg/zeroturnaround/zip/ZipEntryOrInfoAdapter;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "iterateChangedAndAdded",
+            "desc": "(Lorg/zeroturnaround/zip/ZipEntryOrInfoAdapter;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "handleInPlaceActions",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "isEntryInDir",
+            "desc": "(Ljava/util/Set;Ljava/lang/String;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips",
+            "file_name": "Zips.java",
+            "func_name": "getZipFile",
+            "desc": "()Ljava/util/zip/ZipFile;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$4",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;[B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$4",
+            "file_name": "ZipsTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;[B)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$9",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;[Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$9",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$5",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;[B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$5",
+            "file_name": "ZipsTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;[B)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$5",
+            "file_name": "ZipsTest.java",
+            "func_name": "preserveTimestamps",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$6",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;Ljava/util/zip/ZipFile;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$6",
+            "file_name": "ZipsTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$7",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$7",
+            "file_name": "ZipsTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;[B)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$7",
+            "file_name": "ZipsTest.java",
+            "func_name": "preserveTimestamps",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSource",
+            "file_name": "FileSource.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSource",
+            "file_name": "FileSource.java",
+            "func_name": "getPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSource",
+            "file_name": "FileSource.java",
+            "func_name": "getEntry",
+            "desc": "()Ljava/util/zip/ZipEntry;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSource",
+            "file_name": "FileSource.java",
+            "func_name": "getInputStream",
+            "desc": "()Ljava/io/InputStream;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSource",
+            "file_name": "FileSource.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSource",
+            "file_name": "FileSource.java",
+            "func_name": "pair",
+            "desc": "([Ljava/io/File;[Ljava/lang/String;)[Lorg/zeroturnaround/zip/FileSource;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$8",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$8",
+            "file_name": "ZipsTest.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$6",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/ZipEntrySource;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$6",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$9",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$9",
+            "file_name": "ZipsTest.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$5",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Ljava/lang/String;[BI)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$5",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$8",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$8",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$7",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;[Lorg/zeroturnaround/zip/ZipEntrySource;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$7",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$2",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$2",
+            "file_name": "ZipUtil.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$1",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$1",
+            "file_name": "ZipUtil.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$4",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Ljava/lang/String;[B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$4",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$3",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Ljava/lang/String;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$3",
+            "file_name": "ZipUtil.java",
+            "func_name": "act",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipFileUtil",
+            "file_name": "ZipFileUtil.java",
+            "func_name": "createZipInputStream",
+            "desc": "(Ljava/io/InputStream;Ljava/nio/charset/Charset;)Ljava/util/zip/ZipInputStream;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipFileUtil",
+            "file_name": "ZipFileUtil.java",
+            "func_name": "createZipOutputStream",
+            "desc": "(Ljava/io/BufferedOutputStream;Ljava/nio/charset/Charset;)Ljava/util/zip/ZipOutputStream;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipFileUtil",
+            "file_name": "ZipFileUtil.java",
+            "func_name": "getZipFile",
+            "desc": "(Ljava/io/File;Ljava/nio/charset/Charset;)Ljava/util/zip/ZipFile;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipFileUtil",
+            "file_name": "ZipFileUtil.java",
+            "func_name": "isCharsetSupported",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$SingleZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Lorg/zeroturnaround/zip/ZipEntryCallback;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$SingleZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$SingleZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "found",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$11",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$11",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$10",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipUtilTest;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilTest$10",
+            "file_name": "ZipUtilTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtilTest$1",
+            "file_name": "ZTFileUtilTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZTFileUtilTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtilTest$1",
+            "file_name": "ZTFileUtilTest.java",
+            "func_name": "accept",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipBreakException",
+            "file_name": "ZipBreakException.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$4",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$4",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest$1",
+            "file_name": "CharsetTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$5",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$5",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$6",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$6",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$Unpacker",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/NameMapper;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$Unpacker",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest$4",
+            "file_name": "CharsetTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/CharsetTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest$4",
+            "file_name": "CharsetTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$1",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$1",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest$2",
+            "file_name": "CharsetTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/CharsetTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest$2",
+            "file_name": "CharsetTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$2",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$2",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$3",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest$3",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest$3",
+            "file_name": "CharsetTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/CharsetTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest$3",
+            "file_name": "CharsetTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "ignoreTestIfJava6",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "testIterateWithCharset",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "testIterateWithEntryNamesAndCharset",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "testZipFileGetEntriesWithCharset",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "testIterateExtractWithCharset",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "testExtractWithCharset",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "testExtractEntryWithCharset",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "testExtractWithCharsetUsingStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CharsetTest",
+            "file_name": "CharsetTest.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/SkipIfZipEntryFileTimeNotAvailableRule",
+            "file_name": "SkipIfZipEntryFileTimeNotAvailableRule.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/SkipIfZipEntryFileTimeNotAvailableRule",
+            "file_name": "SkipIfZipEntryFileTimeNotAvailableRule.java",
+            "func_name": "apply",
+            "desc": "(Lorg/junit/runners/model/Statement;Lorg/junit/runner/Description;)Lorg/junit/runners/model/Statement;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isDirectory",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setDirectory",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isOwnerCanRead",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setOwnerCanRead",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isOwnerCanWrite",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setOwnerCanWrite",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isOwnerCanExecute",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setOwnerCanExecute",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isGroupCanRead",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setGroupCanRead",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isGroupCanWrite",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setGroupCanWrite",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isGroupCanExecute",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setGroupCanExecute",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isOthersCanRead",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setOthersCanRead",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isOthersCanWrite",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setOthersCanWrite",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "isOthersCanExecute",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFilePermissions",
+            "file_name": "ZTFilePermissions.java",
+            "func_name": "setOthersCanExecute",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$BackslashUnpacker",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$BackslashUnpacker",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$12",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$12",
+            "file_name": "ZipsTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$11",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$11",
+            "file_name": "ZipsTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$2",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipTransformTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$2",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/io/InputStream;Ljava/io/OutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$13",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$13",
+            "file_name": "ZipsTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;[B)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$13",
+            "file_name": "ZipsTest.java",
+            "func_name": "preserveTimestamps",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$1",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipTransformTest;[B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$1",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;[B)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$4",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipTransformTest;[B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$4",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;[B)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipException",
+            "file_name": "ZipException.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Ljava/lang/Throwable;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$3",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipTransformTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$3",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/io/InputStream;Ljava/io/OutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$6",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipTransformTest;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$6",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$5",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipTransformTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest$5",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "transform",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/io/File;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java6FileApiPermissionsStrategy",
+            "file_name": "Java6FileApiPermissionsStrategy.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java6FileApiPermissionsStrategy",
+            "file_name": "Java6FileApiPermissionsStrategy.java",
+            "func_name": "getPermissions",
+            "desc": "(Ljava/io/File;)Lorg/zeroturnaround/zip/ZTFilePermissions;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java6FileApiPermissionsStrategy",
+            "file_name": "Java6FileApiPermissionsStrategy.java",
+            "func_name": "setPermissions",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/ZTFilePermissions;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java6FileApiPermissionsStrategy",
+            "file_name": "Java6FileApiPermissionsStrategy.java",
+            "func_name": "setExecutable",
+            "desc": "(Ljava/io/File;ZZ)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java6FileApiPermissionsStrategy",
+            "file_name": "Java6FileApiPermissionsStrategy.java",
+            "func_name": "setWritable",
+            "desc": "(Ljava/io/File;ZZ)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java6FileApiPermissionsStrategy",
+            "file_name": "Java6FileApiPermissionsStrategy.java",
+            "func_name": "setReadable",
+            "desc": "(Ljava/io/File;ZZ)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java6FileApiPermissionsStrategy",
+            "file_name": "Java6FileApiPermissionsStrategy.java",
+            "func_name": "canExecute",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryOrInfoAdapter",
+            "file_name": "ZipEntryOrInfoAdapter.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipEntryCallback;Lorg/zeroturnaround/zip/ZipInfoCallback;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryOrInfoAdapter",
+            "file_name": "ZipEntryOrInfoAdapter.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "testByteArrayTransformer",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "testStreamTransformerIdentity",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "testStreamTransformer",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "testByteArrayTransformerInStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "testFileZipEntryTransformerInStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipTransformTest",
+            "file_name": "ZipTransformTest.java",
+            "func_name": "testStringZipEntryTransformerInStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtilTest",
+            "file_name": "ZTFileUtilTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtilTest",
+            "file_name": "ZTFileUtilTest.java",
+            "func_name": "testGetTempFileFor",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtilTest",
+            "file_name": "ZTFileUtilTest.java",
+            "func_name": "testCopy",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtilTest",
+            "file_name": "ZTFileUtilTest.java",
+            "func_name": "testListFiles",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtilTest",
+            "file_name": "ZTFileUtilTest.java",
+            "func_name": "testListFilesFromFile",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtilTest",
+            "file_name": "ZTFileUtilTest.java",
+            "func_name": "testListFilesFromNonExistent",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtil",
+            "file_name": "ZTFileUtil.java",
+            "func_name": "listFiles",
+            "desc": "(Ljava/io/File;Ljava/io/FileFilter;)Ljava/util/Collection;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtil",
+            "file_name": "ZTFileUtil.java",
+            "func_name": "innerListFiles",
+            "desc": "(Ljava/io/File;Ljava/util/Collection;Ljava/io/FileFilter;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$TransformerZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/util/List;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$TransformerZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$TransformerZipEntryCallback",
+            "file_name": "ZipUtil.java",
+            "func_name": "found",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSourceTest",
+            "file_name": "FileSourceTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSourceTest",
+            "file_name": "FileSourceTest.java",
+            "func_name": "testPair",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSourceTest",
+            "file_name": "FileSourceTest.java",
+            "func_name": "testPairThrowsExceptionWhenNotEnoughNames",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/FileSourceTest",
+            "file_name": "FileSourceTest.java",
+            "func_name": "testPairDoesNotThrowExceptionWhenTooManyNames",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipExceptionUtil",
+            "file_name": "ZipExceptionUtil.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipExceptionUtil",
+            "file_name": "ZipExceptionUtil.java",
+            "func_name": "rethrow",
+            "desc": "(Ljava/io/IOException;)Lorg/zeroturnaround/zip/ZipException;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest$1",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipPreserveTimeStampTest;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampTest$1",
+            "file_name": "ZipPreserveTimeStampTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips$CopyingCallback",
+            "file_name": "Zips.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/util/List;Ljava/util/zip/ZipOutputStream;Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips$CopyingCallback",
+            "file_name": "Zips.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java7Nio2ApiPermissionsStrategy",
+            "file_name": "Java7Nio2ApiPermissionsStrategy.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java7Nio2ApiPermissionsStrategy",
+            "file_name": "Java7Nio2ApiPermissionsStrategy.java",
+            "func_name": "getPermissions",
+            "desc": "(Ljava/io/File;)Lorg/zeroturnaround/zip/ZTFilePermissions;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java7Nio2ApiPermissionsStrategy",
+            "file_name": "Java7Nio2ApiPermissionsStrategy.java",
+            "func_name": "setPermissions",
+            "desc": "(Ljava/io/File;Lorg/zeroturnaround/zip/ZTFilePermissions;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java7Nio2ApiPermissionsStrategy",
+            "file_name": "Java7Nio2ApiPermissionsStrategy.java",
+            "func_name": "addIf",
+            "desc": "(ZLjava/util/Set;Ljava/lang/Object;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java7Nio2ApiPermissionsStrategy",
+            "file_name": "Java7Nio2ApiPermissionsStrategy.java",
+            "func_name": "toPath",
+            "desc": "(Ljava/io/File;)Ljava/lang/Object;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java7Nio2ApiPermissionsStrategy",
+            "file_name": "Java7Nio2ApiPermissionsStrategy.java",
+            "func_name": "setPosixFilePermissions",
+            "desc": "(Ljava/io/File;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java7Nio2ApiPermissionsStrategy",
+            "file_name": "Java7Nio2ApiPermissionsStrategy.java",
+            "func_name": "getPosixFilePermissions",
+            "desc": "(Ljava/io/File;)Ljava/util/Set;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Java7Nio2ApiPermissionsStrategy",
+            "file_name": "Java7Nio2ApiPermissionsStrategy.java",
+            "func_name": "isPosix",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testContains",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testUnpackEntryImMemory",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testUnpackEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testUnpack",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testUnpackInPlace",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "unpackDocOnly",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "unpackWithoutPrefix",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "listClasses",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "printTexts",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testEntryEquals",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testEntryEqualsDifferentNames",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testArchiveEquals",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "testArchiveEqualsNo",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "pack",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "packInPlace",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "packWithPrefix",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "addEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "addEntryInMemory",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "addEntryCustom",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "replaceEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "replaceEntryInPlace",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "replaceEntryCustom",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/MainExamplesTest",
+            "file_name": "MainExamplesTest.java",
+            "func_name": "transformEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtilTest",
+            "file_name": "ZipEntryUtilTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtilTest",
+            "file_name": "ZipEntryUtilTest.java",
+            "func_name": "testSetUnixFileMode",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtilTest",
+            "file_name": "ZipEntryUtilTest.java",
+            "func_name": "testGetUnixModeOnEntryWithoutExtra",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtil$1",
+            "file_name": "ZTFileUtil.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZTFileUtil$1",
+            "file_name": "ZTFileUtil.java",
+            "func_name": "accept",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/IdentityNameMapper",
+            "file_name": "IdentityNameMapper.java",
+            "func_name": "map",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/IdentityNameMapper",
+            "file_name": "IdentityNameMapper.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test$2",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipPreserveTimeStampJava8Test;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test$2",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test$1",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipPreserveTimeStampJava8Test;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipPreserveTimeStampJava8Test$1",
+            "file_name": "ZipPreserveTimeStampJava8Test.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips$UnpackingCallback$1",
+            "file_name": "Zips.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/Zips$UnpackingCallback;Lorg/zeroturnaround/zip/transform/ZipEntryTransformer;Ljava/io/InputStream;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips$UnpackingCallback$1",
+            "file_name": "Zips.java",
+            "func_name": "run",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$FileUnpacker",
+            "file_name": "ZipUtil.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$FileUnpacker",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testDuplicateEntryAtAdd",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testAddEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testRemoveEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testRemoveDirs",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testAddRemoveEntries",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testInPlaceAddEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testInPlaceAddRemoveEntries",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testOverwritingTimestamps",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testAddRemovePriorities",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testCharsetEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testIterateAndBreak",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testAddEntryFile",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testAddEntryFilter",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testPackEntries",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testPreserveRoot",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testPreserveRootWithSubdirectories",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "assertContainsEntryWithSeparatorrs",
+            "desc": "(Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testIgnoringRoot",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testByteArrayTransformer",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testTransformationPreservesTimestamps",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testTransformAddedEntries",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testPackWithPrefixNameMapper",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testPackWithSuffixOnlyNameMapper",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testUnpack",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testUnpackInPlace",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testUnpackImplicit",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest",
+            "file_name": "ZipsTest.java",
+            "func_name": "testUnpackWithTransofrmer",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$ByteArrayUnpacker",
+            "file_name": "ZipUtil.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtil$ByteArrayUnpacker",
+            "file_name": "ZipUtil.java",
+            "func_name": "getBytes",
+            "desc": "()[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ByteSource",
+            "file_name": "ByteSource.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;[BJI)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ByteSource",
+            "file_name": "ByteSource.java",
+            "func_name": "getPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ByteSource",
+            "file_name": "ByteSource.java",
+            "func_name": "getEntry",
+            "desc": "()Ljava/util/zip/ZipEntry;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ByteSource",
+            "file_name": "ByteSource.java",
+            "func_name": "getInputStream",
+            "desc": "()Ljava/io/InputStream;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ByteSource",
+            "file_name": "ByteSource.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilInPlaceTest",
+            "file_name": "ZipUtilInPlaceTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilInPlaceTest",
+            "file_name": "ZipUtilInPlaceTest.java",
+            "func_name": "file",
+            "desc": "(Ljava/lang/String;)Ljava/io/File;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilInPlaceTest",
+            "file_name": "ZipUtilInPlaceTest.java",
+            "func_name": "testAddEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilInPlaceTest",
+            "file_name": "ZipUtilInPlaceTest.java",
+            "func_name": "testRemoveEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilInPlaceTest",
+            "file_name": "ZipUtilInPlaceTest.java",
+            "func_name": "testRemoveDirs",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilInPlaceTest",
+            "file_name": "ZipUtilInPlaceTest.java",
+            "func_name": "testByteArrayTransformer",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CloseShieldInputStream",
+            "file_name": "CloseShieldInputStream.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/io/InputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/CloseShieldInputStream",
+            "file_name": "CloseShieldInputStream.java",
+            "func_name": "close",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilDirTest",
+            "file_name": "ZipUtilDirTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipUtilDirTest",
+            "file_name": "ZipUtilDirTest.java",
+            "func_name": "testPackDirectoryToStream",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtil",
+            "file_name": "ZipEntryUtil.java",
+            "func_name": "copy",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/lang/String;)Ljava/util/zip/ZipEntry;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtil",
+            "file_name": "ZipEntryUtil.java",
+            "func_name": "copyEntry",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/io/InputStream;Ljava/util/zip/ZipOutputStream;Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtil",
+            "file_name": "ZipEntryUtil.java",
+            "func_name": "addEntry",
+            "desc": "(Ljava/util/zip/ZipEntry;Ljava/io/InputStream;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtil",
+            "file_name": "ZipEntryUtil.java",
+            "func_name": "fromFile",
+            "desc": "(Ljava/lang/String;Ljava/io/File;)Ljava/util/zip/ZipEntry;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtil",
+            "file_name": "ZipEntryUtil.java",
+            "func_name": "setZTFilePermissions",
+            "desc": "(Ljava/util/zip/ZipEntry;Lorg/zeroturnaround/zip/ZTFilePermissions;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtil",
+            "file_name": "ZipEntryUtil.java",
+            "func_name": "getZTFilePermissions",
+            "desc": "(Ljava/util/zip/ZipEntry;)Lorg/zeroturnaround/zip/ZTFilePermissions;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipEntryUtil",
+            "file_name": "ZipEntryUtil.java",
+            "func_name": "getFirstAsiExtraField",
+            "desc": "(Ljava/util/List;)Lorg/zeroturnaround/zip/extra/AsiExtraField;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips$UnpackingCallback",
+            "file_name": "Zips.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/util/List;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips$UnpackingCallback",
+            "file_name": "Zips.java",
+            "func_name": "process",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/Zips$UnpackingCallback",
+            "file_name": "Zips.java",
+            "func_name": "transformIntoFile",
+            "desc": "(Lorg/zeroturnaround/zip/transform/ZipEntryTransformer;Ljava/io/InputStream;Ljava/util/zip/ZipEntry;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$10",
+            "file_name": "ZipsTest.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipsTest;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/ZipsTest$10",
+            "file_name": "ZipsTest.java",
+            "func_name": "process",
+            "desc": "(Ljava/util/zip/ZipEntry;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ZipEntrySourceZipEntryTransformer",
+            "file_name": "ZipEntrySourceZipEntryTransformer.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/zeroturnaround/zip/ZipEntrySource;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ZipEntrySourceZipEntryTransformer",
+            "file_name": "ZipEntrySourceZipEntryTransformer.java",
+            "func_name": "transform",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ZipEntrySourceZipEntryTransformer",
+            "file_name": "ZipEntrySourceZipEntryTransformer.java",
+            "func_name": "addEntry",
+            "desc": "(Lorg/zeroturnaround/zip/ZipEntrySource;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/StreamZipEntryTransformer",
+            "file_name": "StreamZipEntryTransformer.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/StreamZipEntryTransformer",
+            "file_name": "StreamZipEntryTransformer.java",
+            "func_name": "transform",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/FileZipEntryTransformer",
+            "file_name": "FileZipEntryTransformer.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/FileZipEntryTransformer",
+            "file_name": "FileZipEntryTransformer.java",
+            "func_name": "transform",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/FileZipEntryTransformer",
+            "file_name": "FileZipEntryTransformer.java",
+            "func_name": "copy",
+            "desc": "(Ljava/io/InputStream;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/StringZipEntryTransformer",
+            "file_name": "StringZipEntryTransformer.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/StringZipEntryTransformer",
+            "file_name": "StringZipEntryTransformer.java",
+            "func_name": "transform",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ByteArrayZipEntryTransformer",
+            "file_name": "ByteArrayZipEntryTransformer.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ByteArrayZipEntryTransformer",
+            "file_name": "ByteArrayZipEntryTransformer.java",
+            "func_name": "transform",
+            "desc": "(Ljava/io/InputStream;Ljava/util/zip/ZipEntry;Ljava/util/zip/ZipOutputStream;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ByteArrayZipEntryTransformer",
+            "file_name": "ByteArrayZipEntryTransformer.java",
+            "func_name": "preserveTimestamps",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ZipEntryTransformerEntry",
+            "file_name": "ZipEntryTransformerEntry.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Lorg/zeroturnaround/zip/transform/ZipEntryTransformer;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ZipEntryTransformerEntry",
+            "file_name": "ZipEntryTransformerEntry.java",
+            "func_name": "getPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ZipEntryTransformerEntry",
+            "file_name": "ZipEntryTransformerEntry.java",
+            "func_name": "getTransformer",
+            "desc": "()Lorg/zeroturnaround/zip/transform/ZipEntryTransformer;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/transform/ZipEntryTransformerEntry",
+            "file_name": "ZipEntryTransformerEntry.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "com/aixcc/ztzip/harnesses/one/ZTZIPOne",
+            "file_name": "ZTZIPOne.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/ztzip/harnesses/one/ZTZIPOne",
+            "file_name": "ZTZIPOne.java",
+            "func_name": "main",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "com/aixcc/ztzip/harnesses/one/ZTZIPOne",
+            "file_name": "ZTZIPOne.java",
+            "func_name": "fuzzerTestOneInput",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "com/aixcc/ztzip/harnesses/one/ZTZIPOne",
+            "file_name": "ZTZIPOne.java",
+            "func_name": "fuzz",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "com/aixcc/ztzip/harnesses/one/ZTZIPOne",
+            "file_name": "ZTZIPOne.java",
+            "func_name": "readInput",
+            "desc": "(Ljava/nio/file/Path;Ljava/lang/String;)[B"
+        },
+        {
+            "class_name": "com/aixcc/ztzip/harnesses/one/ZTZIPOne",
+            "file_name": "ZTZIPOne.java",
+            "func_name": "getDummyInput",
+            "desc": "()[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ExtraFieldUtils",
+            "file_name": "ExtraFieldUtils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ExtraFieldUtils",
+            "file_name": "ExtraFieldUtils.java",
+            "func_name": "register",
+            "desc": "(Ljava/lang/Class;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ExtraFieldUtils",
+            "file_name": "ExtraFieldUtils.java",
+            "func_name": "createExtraField",
+            "desc": "(Lorg/zeroturnaround/zip/extra/ZipShort;)Lorg/zeroturnaround/zip/extra/ZipExtraField;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ExtraFieldUtils",
+            "file_name": "ExtraFieldUtils.java",
+            "func_name": "parseA",
+            "desc": "([B)[Lorg/zeroturnaround/zip/extra/ZipExtraField;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ExtraFieldUtils",
+            "file_name": "ExtraFieldUtils.java",
+            "func_name": "parse",
+            "desc": "([B)Ljava/util/List;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ExtraFieldUtils",
+            "file_name": "ExtraFieldUtils.java",
+            "func_name": "mergeLocalFileDataData",
+            "desc": "(Ljava/util/List;)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ExtraFieldUtils",
+            "file_name": "ExtraFieldUtils.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipLong",
+            "file_name": "ZipLong.java",
+            "func_name": "<init>",
+            "desc": "([BI)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipLong",
+            "file_name": "ZipLong.java",
+            "func_name": "getBytes",
+            "desc": "(J)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipLong",
+            "file_name": "ZipLong.java",
+            "func_name": "getValue",
+            "desc": "([B)J"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipLong",
+            "file_name": "ZipLong.java",
+            "func_name": "equals",
+            "desc": "(Ljava/lang/Object;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipLong",
+            "file_name": "ZipLong.java",
+            "func_name": "hashCode",
+            "desc": "()I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipLong",
+            "file_name": "ZipLong.java",
+            "func_name": "clone",
+            "desc": "()Ljava/lang/Object;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipLong",
+            "file_name": "ZipLong.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipLong",
+            "file_name": "ZipLong.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "setHeaderId",
+            "desc": "(Lorg/zeroturnaround/zip/extra/ZipShort;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "getHeaderId",
+            "desc": "()Lorg/zeroturnaround/zip/extra/ZipShort;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "setLocalFileDataData",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "getLocalFileDataLength",
+            "desc": "()Lorg/zeroturnaround/zip/extra/ZipShort;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "getLocalFileDataData",
+            "desc": "()[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "setCentralDirectoryData",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "getCentralDirectoryLength",
+            "desc": "()Lorg/zeroturnaround/zip/extra/ZipShort;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "getCentralDirectoryData",
+            "desc": "()[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "parseFromLocalFileData",
+            "desc": "([BII)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "parseFromCentralDirectoryData",
+            "desc": "([BII)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/UnrecognizedExtraField",
+            "file_name": "UnrecognizedExtraField.java",
+            "func_name": "copy",
+            "desc": "([B)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipShort",
+            "file_name": "ZipShort.java",
+            "func_name": "<init>",
+            "desc": "([BI)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipShort",
+            "file_name": "ZipShort.java",
+            "func_name": "getBytes",
+            "desc": "(I)[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipShort",
+            "file_name": "ZipShort.java",
+            "func_name": "getValue",
+            "desc": "([B)I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipShort",
+            "file_name": "ZipShort.java",
+            "func_name": "equals",
+            "desc": "(Ljava/lang/Object;)Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipShort",
+            "file_name": "ZipShort.java",
+            "func_name": "hashCode",
+            "desc": "()I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipShort",
+            "file_name": "ZipShort.java",
+            "func_name": "clone",
+            "desc": "()Ljava/lang/Object;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/ZipShort",
+            "file_name": "ZipShort.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getHeaderId",
+            "desc": "()Lorg/zeroturnaround/zip/extra/ZipShort;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getLocalFileDataLength",
+            "desc": "()Lorg/zeroturnaround/zip/extra/ZipShort;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getCentralDirectoryLength",
+            "desc": "()Lorg/zeroturnaround/zip/extra/ZipShort;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getLocalFileDataData",
+            "desc": "()[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getCentralDirectoryData",
+            "desc": "()[B"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "setUserId",
+            "desc": "(I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getUserId",
+            "desc": "()I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "setGroupId",
+            "desc": "(I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getGroupId",
+            "desc": "()I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "setLinkedFile",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getLinkedFile",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "isLink",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "setMode",
+            "desc": "(I)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "getMode",
+            "desc": "(I)I"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "setDirectory",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "isDirectory",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "parseFromLocalFileData",
+            "desc": "([BII)V"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "clone",
+            "desc": "()Ljava/lang/Object;"
+        },
+        {
+            "class_name": "org/zeroturnaround/zip/extra/AsiExtraField",
+            "file_name": "AsiExtraField.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/UnpackEntryExample",
+            "file_name": "UnpackEntryExample.java",
+            "func_name": "usual",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/UnpackEntryExample",
+            "file_name": "UnpackEntryExample.java",
+            "func_name": "withUs",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/ReplaceEntryExample",
+            "file_name": "ReplaceEntryExample.java",
+            "func_name": "main",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "example/ReplaceEntryExample",
+            "file_name": "ReplaceEntryExample.java",
+            "func_name": "replaceEntry",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/PackEntryExample",
+            "file_name": "PackEntryExample.java",
+            "func_name": "usual",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/PackEntryExample",
+            "file_name": "PackEntryExample.java",
+            "func_name": "withUs",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/UnpackExample",
+            "file_name": "UnpackExample.java",
+            "func_name": "usual",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/UnpackExample",
+            "file_name": "UnpackExample.java",
+            "func_name": "withUs",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/AddOrReplaceEntries",
+            "file_name": "AddOrReplaceEntries.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/AddOrReplaceEntries",
+            "file_name": "AddOrReplaceEntries.java",
+            "func_name": "main",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "example/PackExample",
+            "file_name": "PackExample.java",
+            "func_name": "usual",
+            "desc": "()V"
+        },
+        {
+            "class_name": "example/PackExample",
+            "file_name": "PackExample.java",
+            "func_name": "withUs",
+            "desc": "()V"
+        }
+    ]
+}

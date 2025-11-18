@@ -1,0 +1,3 @@
+16:typedef struct {
+17:    ngx_uint_t  engine;   /* unsigned  engine:1; */
+18:} ngx_openssl_conf_t;

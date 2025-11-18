@@ -1,0 +1,9 @@
+{
+    "ruleId": "stack-use-after-return",
+    "message": "AddressSanitizer: stack-use-after-return /src/fuzz/../cp-tkctf-rpn-calculator-source/stackmachine.c:123:20 in dump",
+    "loc_file_full_name": "/src/fuzz/../cp-tkctf-rpn-calculator-source/stackmachine.c",
+    "loc_file_short_name": "stackmachine.c",
+    "loc_line": 123,
+    "loc_function_full_name": "dump",
+    "loc_function_short_name": "dump"
+}

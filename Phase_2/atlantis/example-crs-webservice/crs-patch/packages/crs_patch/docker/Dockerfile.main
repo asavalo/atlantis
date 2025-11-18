@@ -1,0 +1,29 @@
+FROM ghcr.io/astral-sh/uv:0.7.2 as uv
+
+FROM cruizba/ubuntu-dind:latest
+
+COPY --from=uv /uv /bin/uv
+COPY --from=uv /uvx /bin/uvx
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install -y build-essential git libtool python3-dev rsync xxd
+
+RUN git config --global user.email "atlanta@team.com"
+RUN git config --global user.name "Team Atlanta"
+
+WORKDIR /app
+
+COPY packages ./packages
+COPY scripts ./scripts
+COPY third_party ./third_party
+COPY wrappers ./wrappers
+
+COPY pyproject.toml .
+COPY uv.lock .
+COPY README.md .
+
+RUN uv sync --no-dev --frozen
+
+ENV COLUMNS=200
+
+CMD ["sh", "-c", "uv run --no-dev --frozen uvicorn crs_patch.main:app --host 0.0.0.0 --port 80 --log-level debug"]

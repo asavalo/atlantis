@@ -1,0 +1,187 @@
+[+] Processing user-nginx_pov_harness_cpv_8.log...
+/home/user/work/team-atlanta/SARIF/sarif_generator/.venv/lib/python3.10/site-packages/pydantic/main.py:426: UserWarning: Pydantic serializer warnings:
+  Expected `enum` but got `str` with value `'localizedData'` - serialized value may not be as expected
+  Expected `enum` but got `str` with value `'nonLocalizedData'` - serialized value may not be as expected
+  Expected `enum` but got `str` with value `'fail'` - serialized value may not be as expected
+  return self.__pydantic_serializer__.to_python(
+[-] Mismatch for user-nginx_pov_harness_cpv_8.log
+custom: /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc, -1, 1671, 1
+ossfuzz: src/http/ngx_http_parse.c, 0, 765, 1
+[+] Done processing user-nginx_pov_harness_cpv_8.log
+[+] Processing mock-c_ossfuzz-1_cpv_0.log...
+[-] Mismatch for mock-c_ossfuzz-1_cpv_0.log
+custom: /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp, -1, 63, 3
+ossfuzz: mock.c, 0, 11, 1
+[+] Done processing mock-c_ossfuzz-1_cpv_0.log
+[+] Processing user-nginx_pov_harness_cpv_4.log...
+[-] Mismatch for user-nginx_pov_harness_cpv_4.log
+custom: /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp, -1, 63, 3
+ossfuzz: src/http/modules/ngx_http_dav_module.c, 0, 980, 1
+[+] Done processing user-nginx_pov_harness_cpv_4.log
+[+] Processing asc-nginx_pov_harness_cpv_1.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_1.log
+custom: /src/nginx/src/http/ngx_http_request.c, -1, 4093, 25
+ossfuzz: src/http/ngx_http_request.c, 0, 4093, 1
+[+] Done processing asc-nginx_pov_harness_cpv_1.log
+[+] Processing asc-nginx_pov_harness_cpv_10.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_10.log
+custom: /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp, -1, 52, 3
+ossfuzz: src/http/ngx_http_request.c, 0, 4018, 1
+[+] Done processing asc-nginx_pov_harness_cpv_10.log
+[+] Processing user-nginx_pov_harness_cpv_7.log...
+[-] Mismatch for user-nginx_pov_harness_cpv_7.log
+custom: /src/nginx/src/http/ngx_http_parse.c, -1, 1277, 14
+ossfuzz: src/http/ngx_http_parse.c, 0, 1277, 1
+[+] Done processing user-nginx_pov_harness_cpv_7.log
+[+] Processing asc-nginx_pov_harness_cpv_12.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_12.log
+custom: /src/nginx/src/os/unix/ngx_linux_sendfile_chain.c, -1, 80, 16
+ossfuzz: src/os/unix/ngx_linux_sendfile_chain.c, 0, 80, 1
+[+] Done processing asc-nginx_pov_harness_cpv_12.log
+[+] Processing rpn-calculator_filein_harness_cpv_1.log...
+[-] Error parsing rpn-calculator_filein_harness_cpv_1.log in ossfuzz mode: list index out of range
+[-] Mismatch for rpn-calculator_filein_harness_cpv_1.log
+custom: /src/fuzz/../cp-tkctf-rpn-calculator-source/stackmachine.c, -1, 188, 17
+ossfuzz: None, None, None, None
+[+] Done processing rpn-calculator_filein_harness_cpv_1.log
+[+] Processing asc-nginx_pov_harness_cpv_11.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_11.log
+custom: /src/nginx/src/http/ngx_http_variables.c, -1, 2870, 64
+ossfuzz: src/http/ngx_http_variables.c, 0, 2870, 1
+[+] Done processing asc-nginx_pov_harness_cpv_11.log
+[+] Processing asc-nginx_smtp_harness_cpv_17.log...
+[-] Mismatch for asc-nginx_smtp_harness_cpv_17.log
+custom: /src/nginx/src/mail/ngx_mail_smtp_handler.c, -1, 556, 12
+ossfuzz: src/mail/ngx_mail_smtp_handler.c, 0, 556, 1
+[+] Done processing asc-nginx_smtp_harness_cpv_17.log
+[+] Processing rpn-calculator_filein_harness_cpv_0.log...
+[-] Mismatch for rpn-calculator_filein_harness_cpv_0.log
+custom: /src/fuzz/../cp-tkctf-rpn-calculator-source/stackmachine.c, -1, 123, 20
+ossfuzz: stackmachine.c, 0, 123, 1
+[+] Done processing rpn-calculator_filein_harness_cpv_0.log
+[+] Processing babynote_filein_harness_cpv_0.log...
+[-] Mismatch for babynote_filein_harness_cpv_0.log
+custom: /src/fuzz/../cp-user-babynote-src/mock_vp.c, -1, 120, 21
+ossfuzz: mock_vp.c, 0, 120, 1
+[+] Done processing babynote_filein_harness_cpv_0.log
+[+] Processing mock-c_ossfuzz-2_cpv_1.log...
+[-] Mismatch for mock-c_ossfuzz-2_cpv_1.log
+custom: /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp, -1, 63, 3
+ossfuzz: mock.c, 0, 22, 1
+[+] Done processing mock-c_ossfuzz-2_cpv_1.log
+[+] Processing concolic-test_scanf_harness_cpv_1.log...
+[-] Mismatch for concolic-test_scanf_harness_cpv_1.log
+custom: /src/fuzz/../cp-user-concolic-test-src/mock_vp.c, -1, 28, 17
+ossfuzz: mock_vp.c, 0, 28, 1
+[+] Done processing concolic-test_scanf_harness_cpv_1.log
+[+] Processing user-nginx_pov_harness_cpv_9.log...
+[-] Error parsing user-nginx_pov_harness_cpv_9.log in ossfuzz mode: list index out of range
+[-] Mismatch for user-nginx_pov_harness_cpv_9.log
+custom: , -1, 1, 1
+ossfuzz: None, None, None, None
+[+] Done processing user-nginx_pov_harness_cpv_9.log
+[+] Processing concolic-test_basic_harness_cpv_0.log...
+[-] Mismatch for concolic-test_basic_harness_cpv_0.log
+custom: /src/fuzz/../cp-user-concolic-test-src/mock_vp.c, -1, 15, 17
+ossfuzz: mock_vp.c, 0, 15, 1
+[+] Done processing concolic-test_basic_harness_cpv_0.log
+[+] Processing asc-nginx_mail_request_harness_cpv_13.log...
+[-] Mismatch for asc-nginx_mail_request_harness_cpv_13.log
+custom: /src/nginx/src/mail/ngx_mail_pop3_handler.c, -1, 377, 42
+ossfuzz: src/mail/ngx_mail_pop3_handler.c, 0, 377, 1
+[+] Done processing asc-nginx_mail_request_harness_cpv_13.log
+[+] Processing mock-cp_filein_harness_cpv_1.log...
+[-] Mismatch for mock-cp_filein_harness_cpv_1.log
+custom: /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc, -1, 1207, 5
+ossfuzz: mock_vp.c, 0, 14, 1
+[+] Done processing mock-cp_filein_harness_cpv_1.log
+[+] Processing itoa_filein_harness_cpv_0.log...
+[-] Mismatch for itoa_filein_harness_cpv_0.log
+custom: /src/fuzz/../cp-user-itoa/mock_vp.c, -1, 27, 10
+ossfuzz: mock_vp.c, 0, 27, 1
+[+] Done processing itoa_filein_harness_cpv_0.log
+[+] Processing babynginx_http_request_fuzzer_cpv_0.log...
+[-] Mismatch for babynginx_http_request_fuzzer_cpv_0.log
+custom: /src/nginx/src/http/ngx_http_request.c, -1, 2006, 5
+ossfuzz: src/http/ngx_http_request.c, 0, 2006, 1
+[+] Done processing babynginx_http_request_fuzzer_cpv_0.log
+[+] Processing asc-nginx_pov_harness_cpv_5.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_5.log
+custom: , -1, 1, 1
+ossfuzz: src/http/ngx_http_variables.c, 0, 2851, 1
+[+] Done processing asc-nginx_pov_harness_cpv_5.log
+[+] Processing asc-nginx_pov_harness_cpv_3.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_3.log
+custom: /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp, -1, 63, 3
+ossfuzz: src/http/ngx_http_request.c, 0, 4217, 1
+[+] Done processing asc-nginx_pov_harness_cpv_3.log
+[+] Processing mock-cp_filein_harness_cpv_2.log...
+[-] Mismatch for mock-cp_filein_harness_cpv_2.log
+custom: , -1, 1, 1
+ossfuzz: mock_vp.c, 0, 27, 1
+[+] Done processing mock-cp_filein_harness_cpv_2.log
+[+] Processing user-nginx_pov_harness_cpv_2.log...
+[-] Mismatch for user-nginx_pov_harness_cpv_2.log
+custom: /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp, -1, 63, 3
+ossfuzz: src/http/modules/ngx_http_sub_filter_module.c, 0, 735, 1
+[+] Done processing user-nginx_pov_harness_cpv_2.log
+[+] Processing asc-nginx_mail_request_harness_cpv_8.log...
+[-] Mismatch for asc-nginx_mail_request_harness_cpv_8.log
+custom: /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp, -1, 63, 3
+ossfuzz: src/mail/ngx_mail_pop3_handler.c, 0, 337, 1
+[+] Done processing asc-nginx_mail_request_harness_cpv_8.log
+[+] Processing user-nginx_pov_harness_cpv_6.log...
+[-] Mismatch for user-nginx_pov_harness_cpv_6.log
+custom: /src/nginx/src/http/ngx_http_parse.c, -1, 2171, 18
+ossfuzz: src/http/ngx_http_parse.c, 0, 2171, 1
+[+] Done processing user-nginx_pov_harness_cpv_6.log
+[+] Processing user-nginx_pov_harness_cpv_5.log...
+[-] Mismatch for user-nginx_pov_harness_cpv_5.log
+custom: /src/nginx/src/core/ngx_string.c, -1, 26, 14
+ossfuzz: src/core/ngx_string.c, 0, 26, 1
+[+] Done processing user-nginx_pov_harness_cpv_5.log
+[+] Processing asc-nginx_pov_harness_cpv_2.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_2.log
+custom: /src/nginx/src/core/ngx_string.c, -1, 1330, 14
+ossfuzz: src/core/ngx_string.c, 0, 1330, 1
+[+] Done processing asc-nginx_pov_harness_cpv_2.log
+[+] Processing asc-nginx_pov_harness_cpv_9.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_9.log
+custom: /src/nginx/src/core/ngx_cycle.c, -1, 1663, 20
+ossfuzz: src/core/ngx_cycle.c, 0, 1663, 1
+[+] Done processing asc-nginx_pov_harness_cpv_9.log
+[+] Processing itoa_filein_harness_cpv_1.log...
+[-] Mismatch for itoa_filein_harness_cpv_1.log
+custom: /src/fuzz/../cp-user-itoa/mock_vp.c, -1, 24, 14
+ossfuzz: mock_vp.c, 0, 24, 1
+[+] Done processing itoa_filein_harness_cpv_1.log
+[+] Processing user-nginx_pov_harness_cpv_3.log...
+[-] Mismatch for user-nginx_pov_harness_cpv_3.log
+custom: /src/nginx/src/http/modules/ngx_http_flv_module.c, -1, 192, 27
+ossfuzz: src/http/modules/ngx_http_flv_module.c, 0, 192, 1
+[+] Done processing user-nginx_pov_harness_cpv_3.log
+[+] Processing user-nginx_pov_harness_cpv_0.log...
+[-] Mismatch for user-nginx_pov_harness_cpv_0.log
+custom: /src/nginx/src/core/ngx_string.c, -1, 1330, 14
+ossfuzz: src/core/ngx_string.c, 0, 1330, 1
+[+] Done processing user-nginx_pov_harness_cpv_0.log
+[+] Processing libcue_fuzz_cpv_0.log...
+[-] Mismatch for libcue_fuzz_cpv_0.log
+custom: /src/libcue/cd.c, -1, 347, 18
+ossfuzz: cd.c, 0, 347, 1
+[+] Done processing libcue_fuzz_cpv_0.log
+[+] Processing asc-nginx_pov_harness_cpv_15.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_15.log
+custom: /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.h, -1, 37, 7
+ossfuzz: compiler-rt/lib/asan/asan_interceptors_memintrinsics.h, 0, 37, 1
+[+] Done processing asc-nginx_pov_harness_cpv_15.log
+[+] Processing asc-nginx_pov_harness_cpv_4.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_4.log
+custom: /src/nginx/src/core/ngx_string.c, -1, 581, 24
+ossfuzz: src/core/ngx_string.c, 0, 581, 1
+[+] Done processing asc-nginx_pov_harness_cpv_4.log
+[+] Processing asc-nginx_pov_harness_cpv_14.log...
+[-] Mismatch for asc-nginx_pov_harness_cpv_14.log
+custom: /src/nginx/src/http/modules/ngx_http_rewrite_module.c, -1, 178, 12
+ossfuzz: src/http/modules/ngx_http_rewrite_module.c, 0, 178, 1
+[+] Done processing asc-nginx_pov_harness_cpv_14.log

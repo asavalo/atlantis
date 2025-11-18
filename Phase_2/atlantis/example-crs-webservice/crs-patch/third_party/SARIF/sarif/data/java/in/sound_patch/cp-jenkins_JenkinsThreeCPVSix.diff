@@ -1,0 +1,11 @@
+--- a/src/main/java/io/jenkins/plugins/toyplugin/StateMonitor.java
++++ b/src/main/java/io/jenkins/plugins/toyplugin/StateMonitor.java
+@@ -55,7 +55,7 @@
+                 response.getWriter().write("{\"status\": \"" + state + "\"}");
+                 return;
+             } else {
+-                logger.error(password);
++                logger.error("Unauthorized access attempt with invalid password.");
+                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                 return;
+             }

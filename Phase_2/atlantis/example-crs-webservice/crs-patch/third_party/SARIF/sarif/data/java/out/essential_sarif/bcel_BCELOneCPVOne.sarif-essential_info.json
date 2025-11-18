@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "File read/write hook path: ../../jazzer-traversal",
+    "loc_file_full_name": "Pass2Verifier.java",
+    "loc_file_short_name": "Pass2Verifier.java",
+    "loc_line": 973,
+    "loc_function_full_name": "org.apache.bcel.verifier.statics.Pass2Verifier$CPESSC_Visitor.visitSourceFile",
+    "loc_function_short_name": "visitSourceFile"
+}

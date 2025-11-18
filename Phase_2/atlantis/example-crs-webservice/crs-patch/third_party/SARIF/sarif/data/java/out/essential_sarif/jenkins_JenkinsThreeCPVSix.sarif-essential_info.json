@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "Remote JNDI Lookup",
+    "loc_file_full_name": "JndiManager.java",
+    "loc_file_short_name": "JndiManager.java",
+    "loc_line": 172,
+    "loc_function_full_name": "org.apache.logging.log4j.core.net.JndiManager.lookup",
+    "loc_function_short_name": "lookup"
+}

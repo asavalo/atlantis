@@ -1,0 +1,14 @@
+# build SVF
+# we put it in a separate file to force cmake to fetch and build at configure time
+
+cmake_minimum_required(VERSION 3.29)
+project(svf-build NONE)
+include(ExternalProject)
+
+ExternalProject_Add(SVF
+  SOURCE_DIR    ${CMAKE_SOURCE_DIR}/../../third_party/SVF-llvm-18
+  PREFIX        "build"
+  CMAKE_ARGS    -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DLLVM_DIR=${LLVM_DIR}
+  -DCMAKE_CXX_FLAGS=-Wno-null-dereference\ -Wno-error=return-type\ -D_GLIBCXX_USE_CXX11_ABI=0
+  INSTALL_COMMAND ""
+)

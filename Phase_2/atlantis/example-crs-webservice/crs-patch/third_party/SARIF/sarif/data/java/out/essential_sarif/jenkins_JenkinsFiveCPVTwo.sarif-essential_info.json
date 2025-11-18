@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "OS Command Injection",
+    "loc_file_full_name": "EmailConfig.java",
+    "loc_file_short_name": "EmailConfig.java",
+    "loc_line": 37,
+    "loc_function_full_name": "hudson.plugins.emailext.EmailConfig.debugOnlyAndPrivate",
+    "loc_function_short_name": "debugOnlyAndPrivate"
+}

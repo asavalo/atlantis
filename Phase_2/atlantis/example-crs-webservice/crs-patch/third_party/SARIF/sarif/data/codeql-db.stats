@@ -1,0 +1,39 @@
+user-nginx						158.34141874313354
+imaging						    122.15217971801758
+bcel						    74.60088872909546
+libcue						    12.552834272384644
+geonetwork						1492.8900792598724
+kylin						    816.387556552887
+concolic-test-no-symcc			7.010797500610352
+jakarta-mail-api			    661.590304851532
+olingo						    91.4159722328186 
+beanutils						115.50126075744629
+tika						    BUILD SUCCESSED, BUT TIME IS WRONG
+jenkins						    3020.03951215744
+cxf						        33.657750606536865
+widoco						    97.65990948677063
+fuzzy						    62.17507529258728
+fuzzy						    62.17507529258728
+aerospike						21.912182807922363
+itoa						    BUILD FAILED (4.751851797103882)
+babynginx						124.87469911575317
+mock-java						57.34365439414978
+batik						    223.9358491897583
+pac4j						    97.10813617706299
+htmlunit						157.20845127105713
+mock-c						    BUILD_FAILED (1.6961255073547363)
+mock-cp						    6.254881858825684
+jackson-databind				362.3474154472351
+rdf4j						    200.05470395088196
+rpn-calculator					6.639069318771362
+simple-switch					6.219711542129517
+asc-nginx						61.29576230049133
+concolic-test					6.904577732086182
+babynote						6.409724235534668
+oripa						    123.66657710075378
+cp-user-opencv                  1227.6013798713684 
+cp-user-openssl                 2339.5383422374725
+cp-user-sqlite                  129.1647469997406  
+mock-cpp                        6.7819929122924805
+zstd-16541                      159.57851457595825
+libzip-553                      BUILD FAILED (4.625362157821655)

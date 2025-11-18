@@ -1,0 +1,16 @@
+{
+  "name": "mongodb-sink-connector",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "tasks.max": "1",
+    "topics": "topic1,topic2,topic3",
+    "connection.uri": "mongodb://mongodb:27017",
+    "database": "kafka",
+    "topic.override.topic1.collection": "topic1",
+    "topic.override.topic2.collection": "topic2",
+    "topic.override.topic3.collection": "topic3",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "com.teamatlanta.kafka.converter.MongoDbConverter",
+    "value.converter.schemas.enable": "false"
+  }
+}

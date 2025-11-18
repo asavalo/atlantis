@@ -1,0 +1,282 @@
+[
+    {
+        "func_name": "ngx_hash_init",
+        "file_name": "ngx_hash.c",
+        "line_start": 435,
+        "column_start": 9,
+        "line_end": 435,
+        "column_end": 18,
+        "location": "file:///src/nginx/src/core/ngx_hash.c:435:9:435:18",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_init_cycle",
+        "file_name": "ngx_cycle.c",
+        "line_start": 222,
+        "column_start": 5,
+        "line_end": 222,
+        "column_end": 14,
+        "location": "file:///src/nginx/src/core/ngx_cycle.c:222:5:222:14",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_decode_base64url",
+        "file_name": "ngx_string.c",
+        "line_start": 1300,
+        "column_start": 12,
+        "line_end": 1300,
+        "column_end": 37,
+        "location": "file:///src/nginx/src/core/ngx_string.c:1300:12:1300:37",
+        "sink_func_name": "ngx_decode_base64_internal"
+    },
+    {
+        "func_name": "ngx_decode_base64",
+        "file_name": "ngx_string.c",
+        "line_start": 1273,
+        "column_start": 12,
+        "line_end": 1273,
+        "column_end": 37,
+        "location": "file:///src/nginx/src/core/ngx_string.c:1273:12:1273:37",
+        "sink_func_name": "ngx_decode_base64_internal"
+    },
+    {
+        "func_name": "ngx_resolver_copy",
+        "file_name": "ngx_resolver.c",
+        "line_start": 4063,
+        "column_start": 13,
+        "line_end": 4063,
+        "column_end": 22,
+        "location": "file:///src/nginx/src/core/ngx_resolver.c:4063:13:4063:22",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_vslprintf",
+        "file_name": "ngx_string.c",
+        "line_start": 255,
+        "column_start": 23,
+        "line_end": 255,
+        "column_end": 37,
+        "location": "file:///src/nginx/src/core/ngx_string.c:255:23:255:37",
+        "sink_func_name": "ngx_sprintf_str"
+    },
+    {
+        "func_name": "ngx_vslprintf",
+        "file_name": "ngx_string.c",
+        "line_start": 263,
+        "column_start": 23,
+        "line_end": 263,
+        "column_end": 37,
+        "location": "file:///src/nginx/src/core/ngx_string.c:263:23:263:37",
+        "sink_func_name": "ngx_sprintf_str"
+    },
+    {
+        "func_name": "ngx_vslprintf",
+        "file_name": "ngx_string.c",
+        "line_start": 271,
+        "column_start": 23,
+        "line_end": 271,
+        "column_end": 37,
+        "location": "file:///src/nginx/src/core/ngx_string.c:271:23:271:37",
+        "sink_func_name": "ngx_sprintf_str"
+    },
+    {
+        "func_name": "ngx_http_get_variable_index",
+        "file_name": "ngx_http_variables.c",
+        "line_start": 596,
+        "column_start": 5,
+        "line_end": 596,
+        "column_end": 14,
+        "location": "file:///src/nginx/src/http/ngx_http_variables.c:596:5:596:14",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_add_variable",
+        "file_name": "ngx_http_variables.c",
+        "line_start": 469,
+        "column_start": 5,
+        "line_end": 469,
+        "column_end": 14,
+        "location": "file:///src/nginx/src/http/ngx_http_variables.c:469:5:469:14",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_scgi_process_header",
+        "file_name": "ngx_http_scgi_module.c",
+        "line_start": 1111,
+        "column_start": 17,
+        "line_end": 1111,
+        "column_end": 26,
+        "location": "file:///src/nginx/src/http/modules/ngx_http_scgi_module.c:1111:17:1111:26",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_request_body_chunked_filter",
+        "file_name": "ngx_http_request_body.c",
+        "line_start": 1134,
+        "column_start": 18,
+        "line_end": 1134,
+        "column_end": 39,
+        "location": "file:///src/nginx/src/http/ngx_http_request_body.c:1134:18:1134:39",
+        "sink_func_name": "ngx_http_parse_chunked"
+    },
+    {
+        "func_name": "ngx_http_fastcgi_process_header",
+        "file_name": "ngx_http_fastcgi_module.c",
+        "line_start": 2004,
+        "column_start": 21,
+        "line_end": 2004,
+        "column_end": 30,
+        "location": "file:///src/nginx/src/http/modules/ngx_http_fastcgi_module.c:2004:21:2004:30",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_discard_request_body_filter",
+        "file_name": "ngx_http_request_body.c",
+        "line_start": 873,
+        "column_start": 18,
+        "line_end": 873,
+        "column_end": 39,
+        "location": "file:///src/nginx/src/http/ngx_http_request_body.c:873:18:873:39",
+        "sink_func_name": "ngx_http_parse_chunked"
+    },
+    {
+        "func_name": "ngx_http_v2_string_encode",
+        "file_name": "ngx_http_v2_encode.c",
+        "line_start": 35,
+        "column_start": 9,
+        "line_end": 35,
+        "column_end": 18,
+        "location": "file:///src/nginx/src/http/v2/ngx_http_v2_encode.c:35:9:35:18",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_uwsgi_process_header",
+        "file_name": "ngx_http_uwsgi_module.c",
+        "line_start": 1348,
+        "column_start": 17,
+        "line_end": 1348,
+        "column_end": 26,
+        "location": "file:///src/nginx/src/http/modules/ngx_http_uwsgi_module.c:1348:17:1348:26",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_resolve_name_locked",
+        "file_name": "ngx_resolver.c",
+        "line_start": 619,
+        "column_start": 5,
+        "line_end": 619,
+        "column_end": 14,
+        "location": "file:///src/nginx/src/core/ngx_resolver.c:619:5:619:14",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_core_server_name",
+        "file_name": "ngx_http_core_module.c",
+        "line_start": 4448,
+        "column_start": 13,
+        "line_end": 4448,
+        "column_end": 22,
+        "location": "file:///src/nginx/src/http/ngx_http_core_module.c:4448:13:4448:22",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_proxy_process_trailer",
+        "file_name": "ngx_http_proxy_module.c",
+        "line_start": 2669,
+        "column_start": 17,
+        "line_end": 2669,
+        "column_end": 26,
+        "location": "file:///src/nginx/src/http/modules/ngx_http_proxy_module.c:2669:17:2669:26",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_proxy_non_buffered_chunked_filter",
+        "file_name": "ngx_http_proxy_module.c",
+        "line_start": 2519,
+        "column_start": 14,
+        "line_end": 2519,
+        "column_end": 35,
+        "location": "file:///src/nginx/src/http/modules/ngx_http_proxy_module.c:2519:14:2519:35",
+        "sink_func_name": "ngx_http_parse_chunked"
+    },
+    {
+        "func_name": "ngx_http_proxy_chunked_filter",
+        "file_name": "ngx_http_proxy_module.c",
+        "line_start": 2271,
+        "column_start": 14,
+        "line_end": 2271,
+        "column_end": 35,
+        "location": "file:///src/nginx/src/http/modules/ngx_http_proxy_module.c:2271:14:2271:35",
+        "sink_func_name": "ngx_http_parse_chunked"
+    },
+    {
+        "func_name": "ngx_http_validate_host",
+        "file_name": "ngx_http_request.c",
+        "line_start": 2251,
+        "column_start": 9,
+        "line_end": 2251,
+        "column_end": 18,
+        "location": "file:///src/nginx/src/http/ngx_http_request.c:2251:9:2251:18",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_proxy_process_header",
+        "file_name": "ngx_http_proxy_module.c",
+        "line_start": 1949,
+        "column_start": 17,
+        "line_end": 1949,
+        "column_end": 26,
+        "location": "file:///src/nginx/src/http/modules/ngx_http_proxy_module.c:1949:17:1949:26",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_file_cache_vary",
+        "file_name": "ngx_http_file_cache.c",
+        "line_start": 1131,
+        "column_start": 5,
+        "line_end": 1131,
+        "column_end": 14,
+        "location": "file:///src/nginx/src/http/ngx_http_file_cache.c:1131:5:1131:14",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_process_request_headers",
+        "file_name": "ngx_http_request.c",
+        "line_start": 1519,
+        "column_start": 17,
+        "line_end": 1519,
+        "column_end": 26,
+        "location": "file:///src/nginx/src/http/ngx_http_request.c:1519:17:1519:26",
+        "sink_func_name": "ngx_strlow"
+    },
+    {
+        "func_name": "ngx_http_process_request_uri",
+        "file_name": "ngx_http_request.c",
+        "line_start": 1294,
+        "column_start": 13,
+        "line_end": 1294,
+        "column_end": 38,
+        "location": "file:///src/nginx/src/http/ngx_http_request.c:1294:13:1294:38",
+        "sink_func_name": "ngx_http_parse_complex_uri"
+    },
+    {
+        "func_name": "ngx_http_process_request_line",
+        "file_name": "ngx_http_request.c",
+        "line_start": 1140,
+        "column_start": 14,
+        "line_end": 1140,
+        "column_end": 40,
+        "location": "file:///src/nginx/src/http/ngx_http_request.c:1140:14:1140:40",
+        "sink_func_name": "ngx_http_parse_request_line"
+    },
+    {
+        "func_name": "ngx_http_add_prefix_variable",
+        "file_name": "ngx_http_variables.c",
+        "line_start": 536,
+        "column_start": 5,
+        "line_end": 536,
+        "column_end": 14,
+        "location": "file:///src/nginx/src/http/ngx_http_variables.c:536:5:536:14",
+        "sink_func_name": "ngx_strlow"
+    }
+]

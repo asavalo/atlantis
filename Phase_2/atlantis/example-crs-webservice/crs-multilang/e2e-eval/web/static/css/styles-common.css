@@ -1,0 +1,715 @@
+/* Common styles shared between card and table layouts */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 40px;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #212529;
+    margin-bottom: 10px;
+}
+
+/* Cache Status Section */
+.cache-status-section {
+    margin-bottom: 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.cache-status-section small {
+    color: #6c757d;
+    font-size: 0.85em;
+}
+
+/* Unified Controls Styles */
+.unified-controls {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.unified-controls::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 50%, #10b981 100%);
+}
+
+/* Row Layout */
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.downloads-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-group label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.875rem;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.control-group select {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 8px 12px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    color: #374151;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 140px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.control-group select:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.control-group select:hover {
+    border-color: #9ca3af;
+}
+
+/* Action Button */
+.action-button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+.action-button:hover {
+    background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+}
+
+/* Downloads Row */
+.downloads-label {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.downloads-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.download-button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: inline-block;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(16, 185, 129, 0.2);
+}
+
+.download-button:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    text-decoration: none;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.download-button.disabled {
+    background: #6c757d !important;
+    color: #adb5bd !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.download-button.disabled:hover {
+    background: #6c757d !important;
+    color: #adb5bd !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Special styling for filter dropdown */
+.controls-left .control-group:nth-child(3) select {
+    min-width: 200px;
+    max-width: 300px;
+}
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+    background: #f8f9fa;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #212529;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    color: #dc3545;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* Git Info Modal Styles */
+.git-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.git-info-table th {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: none;
+}
+
+.git-info-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+    font-size: 0.875rem;
+}
+
+.git-info-table tr:hover {
+    background: #f9fafb;
+}
+
+.git-info-table .repo-name {
+    font-weight: 600;
+    color: #374151;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.git-info-table .commit-hash {
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+    color: #6366f1;
+    font-weight: 600;
+}
+
+.git-info-table .commit-date {
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.git-info-table .repo-link {
+    text-align: center;
+}
+
+.git-link {
+    display: inline-block;
+    padding: 4px 8px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(16, 185, 129, 0.2);
+}
+
+.git-link:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    text-decoration: none;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.git-warning {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 6px;
+    color: #92400e;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* LLM Stats Modal Specific Styles */
+#llm-stats-modal .modal-content {
+    max-width: 700px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+#llm-stats-modal .modal-header {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    padding: 24px 28px;
+    border-bottom: none;
+}
+
+#llm-stats-modal .modal-header h3 {
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#llm-stats-modal .modal-header h3::before {
+    content: '📊';
+    font-size: 1.5rem;
+}
+
+#llm-stats-modal .modal-close {
+    color: rgba(255,255,255,0.8);
+    font-size: 28px;
+    font-weight: 300;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    background: rgba(255,255,255,0.1);
+}
+
+#llm-stats-modal .modal-close:hover {
+    color: white;
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+}
+
+#llm-stats-modal .modal-body {
+    padding: 0;
+    background: #fafbfc;
+}
+
+#llm-stats-modal .llm-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    background: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#llm-stats-modal .llm-stats-table tr {
+    transition: background-color 0.2s ease;
+}
+
+#llm-stats-modal .llm-stats-table tr:hover {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+#llm-stats-modal .llm-stats-table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+#llm-stats-modal .llm-stats-table td:first-child {
+    font-weight: 600;
+    color: #475569;
+    width: 45%;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-right: 1px solid #e2e8f0;
+    position: relative;
+}
+
+#llm-stats-modal .llm-stats-table td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+#llm-stats-modal .llm-stats-table td:last-child {
+    font-family: 'SF Mono', Monaco, monospace;
+    font-weight: 700;
+    text-align: right;
+    color: #1e293b;
+    font-size: 0.95rem;
+}
+
+/* Special styling for different data types */
+#llm-stats-modal .llm-stats-table tr:has(td:first-child:contains("Cost")) td:last-child {
+    color: #dc2626;
+}
+
+#llm-stats-modal .llm-stats-table tr:has(td:first-child:contains("Token")) td:last-child {
+    color: #2563eb;
+}
+
+#llm-stats-modal .llm-stats-table tr:has(td:first-child:contains("Request")) td:last-child {
+    color: #059669;
+}
+
+#llm-stats-modal .llm-stats-table tr:has(td:first-child:contains("Config Hash")) td:last-child {
+    color: #7c3aed;
+    font-size: 0.85rem;
+}
+
+#llm-stats-modal .llm-stats-table tr:has(td:first-child:contains("Start Time")) td:last-child,
+#llm-stats-modal .llm-stats-table tr:has(td:first-child:contains("Duration")) td:last-child {
+    color: #6b7280;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 500;
+}
+
+/* Separator row styling */
+#llm-stats-modal .llm-stats-table tr:has(td[colspan="2"]) {
+    background: transparent;
+}
+
+#llm-stats-modal .llm-stats-table tr:has(td[colspan="2"]) td {
+    padding: 8px 0;
+    border: none;
+}
+
+#llm-stats-modal .llm-stats-table tr:has(td[colspan="2"]) hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #e2e8f0 20%, #e2e8f0 80%, transparent 100%);
+    margin: 0;
+}
+
+/* Animation for modal appearance */
+#llm-stats-modal {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+#llm-stats-modal .modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 1;
+        backdrop-filter: blur(4px);
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-20px) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Enhanced backdrop */
+#llm-stats-modal {
+    backdrop-filter: blur(4px);
+    background-color: rgba(15, 23, 42, 0.6);
+}
+
+/* Finder Stats Modal Specific Styles */
+#finder-stats-modal .modal-content {
+    max-width: 700px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+#finder-stats-modal .modal-header {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 20px 24px;
+    border-bottom: none;
+}
+
+#finder-stats-modal .modal-header h3 {
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#finder-stats-modal .modal-header h3::before {
+    content: '🔍';
+    font-size: 1.3rem;
+}
+
+#finder-stats-modal .modal-close {
+    color: rgba(255,255,255,0.8);
+    font-size: 24px;
+    font-weight: 300;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    background: rgba(255,255,255,0.1);
+}
+
+#finder-stats-modal .modal-close:hover {
+    color: white;
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+}
+
+#finder-stats-modal .modal-body {
+    padding: 20px;
+    background: #fafbfc;
+}
+
+#finder-stats-modal .finder-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+#finder-stats-modal .finder-stats-table th {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    color: white;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: none;
+}
+
+#finder-stats-modal .finder-stats-table th:first-child {
+    border-top-left-radius: 8px;
+}
+
+#finder-stats-modal .finder-stats-table th:last-child {
+    border-top-right-radius: 8px;
+}
+
+#finder-stats-modal .finder-stats-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.8rem;
+    vertical-align: middle;
+}
+
+#finder-stats-modal .finder-stats-table tr:hover {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+#finder-stats-modal .finder-stats-table td:first-child {
+    font-weight: 600;
+    color: #374151;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.75rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-right: 1px solid #e5e7eb;
+    position: relative;
+}
+
+#finder-stats-modal .finder-stats-table td:first-child::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+#finder-stats-modal .finder-stats-table td:not(:first-child) {
+    text-align: center;
+    font-weight: 500;
+}
+
+#finder-stats-modal .finder-stats-summary {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 3px solid #10b981;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+}
+
+#finder-stats-modal .finder-stats-summary h4 {
+    margin: 0 0 8px 0;
+    color: #065f46;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#finder-stats-modal .finder-stats-summary h4::before {
+    content: '📈';
+    font-size: 1.1rem;
+}
+
+#finder-stats-modal .finder-stats-summary p {
+    margin: 4px 0;
+    color: #047857;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Animation for finder stats modal */
+#finder-stats-modal {
+    animation: modalFadeIn 0.3s ease-out;
+    backdrop-filter: blur(4px);
+    background-color: rgba(15, 23, 42, 0.6);
+}
+
+#finder-stats-modal .modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .unified-controls {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .control-group:not(:last-child)::after {
+        display: none;
+    }
+
+    .control-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .control-group select {
+        min-width: 100%;
+    }
+
+    #finder-stats-modal .modal-content,
+    #llm-stats-modal .modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 20px;
+    }
+
+    #finder-stats-modal .modal-body,
+    #llm-stats-modal .modal-body {
+        padding: 16px;
+    }
+
+    #finder-stats-modal .finder-stats-table th,
+    #finder-stats-modal .finder-stats-table td {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}

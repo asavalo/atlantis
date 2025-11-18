@@ -1,0 +1,13 @@
+Your patch segments in the previous patch report have resulted in the following diff.
+
+```
+^DIFF^
+```
+
+However, the patched program seems to crash with the following log.
+
+```
+^CRASH_LOG^
+```
+
+Please fix the errors and provide me with a new patch report.

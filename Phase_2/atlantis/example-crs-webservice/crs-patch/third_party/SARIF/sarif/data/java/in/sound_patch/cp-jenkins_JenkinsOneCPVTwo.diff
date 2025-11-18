@@ -1,0 +1,16 @@
+--- a/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java
++++ b/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java
+@@ -162,7 +162,12 @@
+             counter = 0;
+             return;
+         }
+-        counter++;
++        try {
++            counter = Math.addExact(counter, 1);
++        } catch (ArithmeticException e) {
++            // Handle overflow, e.g., reset counter or log an error
++            counter = 0; // Resetting counter as a simple overflow handling strategy
++        }
+     }
+ 
+     @RequirePOST

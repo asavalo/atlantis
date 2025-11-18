@@ -1,0 +1,9 @@
+{
+    "ruleId": "SEGV",
+    "message": "AddressSanitizer: SEGV /src/nginx/src/http/modules/ngx_http_flv_module.c:192:27 in ngx_http_flv_handler",
+    "loc_file_full_name": "/src/nginx/src/http/modules/ngx_http_flv_module.c",
+    "loc_file_short_name": "ngx_http_flv_module.c",
+    "loc_line": 192,
+    "loc_function_full_name": "ngx_http_flv_handler",
+    "loc_function_short_name": "ngx_http_flv_handler"
+}

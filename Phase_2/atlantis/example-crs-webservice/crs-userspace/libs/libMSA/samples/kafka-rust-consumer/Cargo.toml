@@ -1,0 +1,12 @@
+[package]
+name = "kafka"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+rdkafka = { version = "0.29", features = ["tokio"] }
+prost = "0.13"
+
+[build-dependencies]
+prost-build = "0.13"

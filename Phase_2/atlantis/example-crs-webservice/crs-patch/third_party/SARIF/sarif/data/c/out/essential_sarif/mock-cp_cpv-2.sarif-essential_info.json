@@ -1,0 +1,9 @@
+{
+    "ruleId": "SEGV",
+    "message": "AddressSanitizer: SEGV /src/fuzz/../mock-cp-src/mock_vp.c:27:5 in func_b",
+    "loc_file_full_name": "/src/fuzz/../mock-cp-src/mock_vp.c",
+    "loc_file_short_name": "mock_vp.c",
+    "loc_line": 27,
+    "loc_function_full_name": "func_b",
+    "loc_function_short_name": "func_b"
+}

@@ -1,0 +1,1036 @@
+{
+    "func_coverages": [
+        {
+            "class_name": "me/xdrop/diffutils/structs/MatchingBlock",
+            "file_name": "MatchingBlock.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/structs/MatchingBlock",
+            "file_name": "MatchingBlock.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/structs/OpCode",
+            "file_name": "OpCode.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/structs/OpCode",
+            "file_name": "OpCode.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/structs/EditOp",
+            "file_name": "EditOp.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/structs/EditOp",
+            "file_name": "EditOp.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/structs/EditType",
+            "file_name": "EditType.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ratios/SimpleRatio",
+            "file_name": "SimpleRatio.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ratios/SimpleRatio",
+            "file_name": "SimpleRatio.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ratios/PartialRatio",
+            "file_name": "PartialRatio.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ratios/PartialRatio",
+            "file_name": "PartialRatio.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/BugfixTest",
+            "file_name": "BugfixTest.groovy",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/BugfixTest",
+            "file_name": "BugfixTest.groovy",
+            "func_name": "testIssue39",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ToStringFunction",
+            "file_name": "ToStringFunction.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "setUp",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "testExtractWithoutOrder",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "testExtractOne",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "testExtractBests",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "testExtractBests1",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "getChoices",
+            "desc": "()Ljava/util/List;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "setChoices",
+            "desc": "(Ljava/util/List;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "getExtractor",
+            "desc": "()Lme/xdrop/fuzzywuzzy/Extractor;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ExtractorTest",
+            "file_name": "ExtractorTest.groovy",
+            "func_name": "setExtractor",
+            "desc": "(Lme/xdrop/fuzzywuzzy/Extractor;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "getDefaultMax",
+            "desc": "()I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "getWeightedRatioUnbaseScale",
+            "desc": "()D"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "getWeightedRatioPartialScale",
+            "desc": "()D"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "getWeightedRatioTryPartials",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "getTag",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "getTagXPath",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "getConfig",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "setConfig",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config",
+            "file_name": "Config.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ContractCheck",
+            "file_name": "ContractCheck.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ContractCheck",
+            "file_name": "ContractCheck.java",
+            "func_name": "testContract",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Extractor",
+            "file_name": "Extractor.java",
+            "func_name": "<init>",
+            "desc": "(I)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Extractor",
+            "file_name": "Extractor.java",
+            "func_name": "with",
+            "desc": "(I)Lme/xdrop/fuzzywuzzy/Extractor;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Extractor",
+            "file_name": "Extractor.java",
+            "func_name": "extractWithoutOrder",
+            "desc": "(Ljava/lang/String;Ljava/util/Collection;Lme/xdrop/fuzzywuzzy/ToStringFunction;Lme/xdrop/fuzzywuzzy/Applicable;)Ljava/util/List;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Extractor",
+            "file_name": "Extractor.java",
+            "func_name": "extractOne",
+            "desc": "(Ljava/lang/String;Ljava/util/Collection;Lme/xdrop/fuzzywuzzy/ToStringFunction;Lme/xdrop/fuzzywuzzy/Applicable;)Lme/xdrop/fuzzywuzzy/model/BoundExtractedResult;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Extractor",
+            "file_name": "Extractor.java",
+            "func_name": "extractTop",
+            "desc": "(Ljava/lang/String;Ljava/util/Collection;Lme/xdrop/fuzzywuzzy/ToStringFunction;Lme/xdrop/fuzzywuzzy/Applicable;I)Ljava/util/List;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Extractor",
+            "file_name": "Extractor.java",
+            "func_name": "getCutoff",
+            "desc": "()I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Extractor",
+            "file_name": "Extractor.java",
+            "func_name": "setCutoff",
+            "desc": "(I)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ToStringFunction$1",
+            "file_name": "ToStringFunction.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ToStringFunction$1",
+            "file_name": "ToStringFunction.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "ratio",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "partialRatio",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "tokenSortPartialRatio",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "tokenSortRatio",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "tokenSetRatio",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "tokenSetPartialRatio",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "weightedRatio",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "extractTop",
+            "desc": "(Ljava/lang/String;Ljava/util/Collection;Lme/xdrop/fuzzywuzzy/ToStringFunction;I)Ljava/util/List;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "extractSorted",
+            "desc": "(Ljava/lang/String;Ljava/util/Collection;Lme/xdrop/fuzzywuzzy/ToStringFunction;I)Ljava/util/List;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "extractAll",
+            "desc": "(Ljava/lang/String;Ljava/util/Collection;Lme/xdrop/fuzzywuzzy/ToStringFunction;I)Ljava/util/List;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearch",
+            "file_name": "FuzzySearch.java",
+            "func_name": "extractOne",
+            "desc": "(Ljava/lang/String;Ljava/util/Collection;Lme/xdrop/fuzzywuzzy/ToStringFunction;)Lme/xdrop/fuzzywuzzy/model/BoundExtractedResult;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testPartialRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testTokenSortPartial",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testTokenSortRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testTokenSetRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testTokenSetPartial",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testWeightedRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testExtractTop",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testExtractAll",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testExtractSorted",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "testExtractOne",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "getChoices",
+            "desc": "()Ljava/lang/Object;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "setChoices",
+            "desc": "(Ljava/lang/Object;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "getMoreChoices",
+            "desc": "()Ljava/lang/Object;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/FuzzySearchTest",
+            "file_name": "FuzzySearchTest.groovy",
+            "func_name": "setMoreChoices",
+            "desc": "(Ljava/lang/Object;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/StringProcessor",
+            "file_name": "StringProcessor.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/StringProcessor",
+            "file_name": "StringProcessor.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config$1",
+            "file_name": "Config.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config$1",
+            "file_name": "Config.java",
+            "func_name": "warning",
+            "desc": "(Lorg/xml/sax/SAXParseException;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config$1",
+            "file_name": "Config.java",
+            "func_name": "error",
+            "desc": "(Lorg/xml/sax/SAXParseException;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/Config$1",
+            "file_name": "Config.java",
+            "func_name": "fatalError",
+            "desc": "(Lorg/xml/sax/SAXParseException;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ContractCheck$1",
+            "file_name": "ContractCheck.java",
+            "func_name": "<init>",
+            "desc": "(Lme/xdrop/fuzzywuzzy/ContractCheck;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/ContractCheck$1",
+            "file_name": "ContractCheck.java",
+            "func_name": "process",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "com/aixcc/fuzzy/harnesses/one/FuzzyOneFDP",
+            "file_name": "FuzzyOneFDP.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/fuzzy/harnesses/one/FuzzyOneFDP",
+            "file_name": "FuzzyOneFDP.java",
+            "func_name": "fuzzerTestOneInput",
+            "desc": "(Lcom/code_intelligence/jazzer/api/FuzzedDataProvider;)V"
+        },
+        {
+            "class_name": "com/aixcc/fuzzy/harnesses/one/FuzzyOne",
+            "file_name": "FuzzyOne.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/fuzzy/harnesses/one/FuzzyOne",
+            "file_name": "FuzzyOne.java",
+            "func_name": "fuzzerTestOneInput",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "com/aixcc/fuzzy/harnesses/one/FuzzyOne",
+            "file_name": "FuzzyOne.java",
+            "func_name": "readInput",
+            "desc": "(Ljava/nio/file/Path;Ljava/lang/String;)[B"
+        },
+        {
+            "class_name": "com/aixcc/fuzzy/harnesses/one/FuzzyOne",
+            "file_name": "FuzzyOne.java",
+            "func_name": "getDummyInput",
+            "desc": "()[B"
+        },
+        {
+            "class_name": "com/aixcc/fuzzy/harnesses/one/FuzzyOne",
+            "file_name": "FuzzyOne.java",
+            "func_name": "main",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/ExtractedResult",
+            "file_name": "ExtractedResult.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;II)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/ExtractedResult",
+            "file_name": "ExtractedResult.java",
+            "func_name": "compareTo",
+            "desc": "(Lme/xdrop/fuzzywuzzy/model/ExtractedResult;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/ExtractedResult",
+            "file_name": "ExtractedResult.java",
+            "func_name": "getString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/ExtractedResult",
+            "file_name": "ExtractedResult.java",
+            "func_name": "setString",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/ExtractedResult",
+            "file_name": "ExtractedResult.java",
+            "func_name": "getScore",
+            "desc": "()I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/ExtractedResult",
+            "file_name": "ExtractedResult.java",
+            "func_name": "getIndex",
+            "desc": "()I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/ExtractedResult",
+            "file_name": "ExtractedResult.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/BoundExtractedResult",
+            "file_name": "BoundExtractedResult.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/Object;Ljava/lang/String;II)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/BoundExtractedResult",
+            "file_name": "BoundExtractedResult.java",
+            "func_name": "getReferent",
+            "desc": "()Ljava/lang/Object;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/BoundExtractedResult",
+            "file_name": "BoundExtractedResult.java",
+            "func_name": "getString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/BoundExtractedResult",
+            "file_name": "BoundExtractedResult.java",
+            "func_name": "setString",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/BoundExtractedResult",
+            "file_name": "BoundExtractedResult.java",
+            "func_name": "getScore",
+            "desc": "()I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/BoundExtractedResult",
+            "file_name": "BoundExtractedResult.java",
+            "func_name": "getIndex",
+            "desc": "()I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/BoundExtractedResult",
+            "file_name": "BoundExtractedResult.java",
+            "func_name": "toString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/model/BoundExtractedResult",
+            "file_name": "BoundExtractedResult.java",
+            "func_name": "compareTo",
+            "desc": "(Lme/xdrop/fuzzywuzzy/model/BoundExtractedResult;)I"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "getEditOps",
+            "desc": "(ILjava/lang/String;ILjava/lang/String;)[Lme/xdrop/diffutils/structs/EditOp;"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "editOpsFromCostMatrix",
+            "desc": "(I[CIII[CII[I)[Lme/xdrop/diffutils/structs/EditOp;"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "getMatchingBlocks",
+            "desc": "(II[Lme/xdrop/diffutils/structs/EditOp;)[Lme/xdrop/diffutils/structs/MatchingBlock;"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "editOpsToOpCodes",
+            "desc": "([Lme/xdrop/diffutils/structs/EditOp;II)[Lme/xdrop/diffutils/structs/OpCode;"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "levEditDistance",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;I)I"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "memchr",
+            "desc": "([CICI)I"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "getRatio",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)D"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "getConfigValue",
+            "desc": "(Ljava/lang/String;)I"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtils",
+            "file_name": "DiffUtils.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtilsTest",
+            "file_name": "DiffUtilsTest.groovy",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtilsTest",
+            "file_name": "DiffUtilsTest.groovy",
+            "func_name": "testGetEditDistance",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtilsTest",
+            "file_name": "DiffUtilsTest.groovy",
+            "func_name": "testGetRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/diffutils/DiffUtilsTest",
+            "file_name": "DiffUtilsTest.groovy",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSetTest",
+            "file_name": "TokenSetTest.groovy",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSetTest",
+            "file_name": "TokenSetTest.groovy",
+            "func_name": "testUsesStringProcessor",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSetTest",
+            "file_name": "TokenSetTest.groovy",
+            "func_name": "testUsesRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSetTest",
+            "file_name": "TokenSetTest.groovy",
+            "func_name": "testTokenSet",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/WeightedRatio",
+            "file_name": "WeightedRatio.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/WeightedRatio",
+            "file_name": "WeightedRatio.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSet",
+            "file_name": "TokenSet.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSet",
+            "file_name": "TokenSet.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/Ratio;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/PrimitiveUtils",
+            "file_name": "PrimitiveUtils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/PrimitiveUtils",
+            "file_name": "PrimitiveUtils.java",
+            "func_name": "max",
+            "desc": "([I)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSortTest",
+            "file_name": "TokenSortTest.groovy",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSortTest",
+            "file_name": "TokenSortTest.groovy",
+            "func_name": "testUsesStringProcessor",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSortTest",
+            "file_name": "TokenSortTest.groovy",
+            "func_name": "testUsesRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSortTest",
+            "file_name": "TokenSortTest.groovy",
+            "func_name": "testTokenSort",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSort",
+            "file_name": "TokenSort.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSort",
+            "file_name": "TokenSort.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/Ratio;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/TokenSort",
+            "file_name": "TokenSort.java",
+            "func_name": "processAndSort",
+            "desc": "(Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/WeightedRatioTest",
+            "file_name": "WeightedRatioTest.groovy",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/WeightedRatioTest",
+            "file_name": "WeightedRatioTest.groovy",
+            "func_name": "testUsesStringProcessor",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/WeightedRatioTest",
+            "file_name": "WeightedRatioTest.groovy",
+            "func_name": "testWRatio",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringProcessor",
+            "file_name": "DefaultStringProcessor.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringProcessor",
+            "file_name": "DefaultStringProcessor.java",
+            "func_name": "subNonAlphaNumeric",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringProcessor",
+            "file_name": "DefaultStringProcessor.java",
+            "func_name": "process",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringProcessor",
+            "file_name": "DefaultStringProcessor.java",
+            "func_name": "compilePattern",
+            "desc": "()Ljava/util/regex/Pattern;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringProcessor",
+            "file_name": "DefaultStringProcessor.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/RatioAlgorithm",
+            "file_name": "RatioAlgorithm.java",
+            "func_name": "<init>",
+            "desc": "(Lme/xdrop/fuzzywuzzy/ToStringFunction;Lme/xdrop/fuzzywuzzy/Ratio;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/RatioAlgorithm",
+            "file_name": "RatioAlgorithm.java",
+            "func_name": "with",
+            "desc": "(Lme/xdrop/fuzzywuzzy/Ratio;)Lme/xdrop/fuzzywuzzy/algorithms/RatioAlgorithm;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/RatioAlgorithm",
+            "file_name": "RatioAlgorithm.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lme/xdrop/fuzzywuzzy/ToStringFunction;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/RatioAlgorithm",
+            "file_name": "RatioAlgorithm.java",
+            "func_name": "setRatio",
+            "desc": "(Lme/xdrop/fuzzywuzzy/Ratio;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/RatioAlgorithm",
+            "file_name": "RatioAlgorithm.java",
+            "func_name": "getRatio",
+            "desc": "()Lme/xdrop/fuzzywuzzy/Ratio;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringFunction",
+            "file_name": "DefaultStringFunction.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringFunction",
+            "file_name": "DefaultStringFunction.java",
+            "func_name": "subNonAlphaNumeric",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringFunction",
+            "file_name": "DefaultStringFunction.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringFunction",
+            "file_name": "DefaultStringFunction.java",
+            "func_name": "compilePattern",
+            "desc": "()Ljava/util/regex/Pattern;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringFunction",
+            "file_name": "DefaultStringFunction.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/SetUtils",
+            "file_name": "SetUtils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/SetUtils",
+            "file_name": "SetUtils.java",
+            "func_name": "intersection",
+            "desc": "(Ljava/util/Set;Ljava/util/Set;)Ljava/util/Set;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/SetUtils",
+            "file_name": "SetUtils.java",
+            "func_name": "difference",
+            "desc": "(Ljava/util/Set;Ljava/util/Set;)Ljava/util/Set;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/NoProcess",
+            "file_name": "NoProcess.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/NoProcess",
+            "file_name": "NoProcess.java",
+            "func_name": "process",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/BasicAlgorithm",
+            "file_name": "BasicAlgorithm.java",
+            "func_name": "<init>",
+            "desc": "(Lme/xdrop/fuzzywuzzy/ToStringFunction;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/BasicAlgorithm",
+            "file_name": "BasicAlgorithm.java",
+            "func_name": "apply",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)I"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/BasicAlgorithm",
+            "file_name": "BasicAlgorithm.java",
+            "func_name": "with",
+            "desc": "(Lme/xdrop/fuzzywuzzy/ToStringFunction;)Lme/xdrop/fuzzywuzzy/algorithms/BasicAlgorithm;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/BasicAlgorithm",
+            "file_name": "BasicAlgorithm.java",
+            "func_name": "noProcessor",
+            "desc": "()Lme/xdrop/fuzzywuzzy/algorithms/BasicAlgorithm;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/BasicAlgorithm",
+            "file_name": "BasicAlgorithm.java",
+            "func_name": "setStringFunction",
+            "desc": "(Lme/xdrop/fuzzywuzzy/ToStringFunction;)V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/BasicAlgorithm",
+            "file_name": "BasicAlgorithm.java",
+            "func_name": "getStringFunction",
+            "desc": "()Lme/xdrop/fuzzywuzzy/ToStringFunction;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/Utils",
+            "file_name": "Utils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/Utils",
+            "file_name": "Utils.java",
+            "func_name": "tokenize",
+            "desc": "(Ljava/lang/String;)Ljava/util/List;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/Utils",
+            "file_name": "Utils.java",
+            "func_name": "tokenizeSet",
+            "desc": "(Ljava/lang/String;)Ljava/util/Set;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/Utils",
+            "file_name": "Utils.java",
+            "func_name": "sortAndJoin",
+            "desc": "(Ljava/util/Set;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/Utils",
+            "file_name": "Utils.java",
+            "func_name": "join",
+            "desc": "(Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/Utils",
+            "file_name": "Utils.java",
+            "func_name": "findTopKHeap",
+            "desc": "(Ljava/util/List;I)Ljava/util/List;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/Utils",
+            "file_name": "Utils.java",
+            "func_name": "max",
+            "desc": "([Ljava/lang/Comparable;)Ljava/lang/Comparable;"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringProcessorTest",
+            "file_name": "DefaultStringProcessorTest.groovy",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "me/xdrop/fuzzywuzzy/algorithms/DefaultStringProcessorTest",
+            "file_name": "DefaultStringProcessorTest.groovy",
+            "func_name": "testProcess",
+            "desc": "()V"
+        }
+    ]
+}

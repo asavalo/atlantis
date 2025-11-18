@@ -1,0 +1,9 @@
+{
+    "ruleId": "negative-size-param:",
+    "message": "AddressSanitizer: negative-size-param /src/nginx/src/http/modules/ngx_http_sub_filter_module.c:735:9 in ngx_http_sub_parse",
+    "loc_file_full_name": "/src/nginx/src/http/modules/ngx_http_sub_filter_module.c",
+    "loc_file_short_name": "ngx_http_sub_filter_module.c",
+    "loc_line": 735,
+    "loc_function_full_name": "ngx_http_sub_parse",
+    "loc_function_short_name": "ngx_http_sub_parse"
+}

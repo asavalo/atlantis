@@ -1,0 +1,35 @@
+NOTICE
+
+This project includes modified versions of third-party libraries that are distributed under separate licenses.
+
+1. SWE Library (Modified)
+   - Original License: MIT License
+   - This project's version of SWE retains the original MIT License notice.
+   See [swe repository](https://github.com/Team-Atlanta/SWE-agent) for details.
+
+2. Aider Library (Modified)
+   - Original License: Apache License 2.0
+   - The aider code in this project is derived from aider and continues to be licensed under the Apache License 2.0.
+   All Apache License 2.0 notices and conditions must be observed.
+   See [aider repository](https://github.com/Team-Atlanta/aider) for details.
+
+3. Agentless Code (Partial)
+   - Portions of this project are derived from the Agentless project, which is licensed under the MIT License.
+   - The original Agentless license notice and copyright information must be preserved.
+   See [Agentless repository](https://github.com/OpenAutoCoder/Agentless) for details.
+
+4. Pylspclient Library (Modified)
+   - Original License: MIT License
+   - This project's version of Pylspclient retains the original MIT License notice.
+   See [pylspclient repository](https://github.com/Team-Atlanta/pylspclient) for details.
+
+5. Common weakness enumeration library for Python (Modified)
+   - Original License: MIT License
+   - This project's Python adaptation of CWE preserves the original MIT License notice.
+   See [cwe repository](https://github.com/Julian-Nash/cwe) for details.
+
+6. Custom LLM Model
+   - License: OpenMDW License
+   - Source: https://openmdw.ai/
+   - Notes: This project incorporates a custom LLM model governed by the OpenMDW License.
+

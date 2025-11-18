@@ -1,0 +1,10 @@
+# syntax = devthefuture/dockerfile-x
+
+INCLUDE ./packages/crs_patch/docker/Dockerfile.main
+
+COPY apps ./apps
+
+ENV APP_MODULE=apps.custom.martian
+ENV APP_NAME=martian
+
+CMD ["sh", "-c", "uv run --no-dev --frozen uvicorn crs_patch.sub:app --host 0.0.0.0 --port 80 --log-level debug"]

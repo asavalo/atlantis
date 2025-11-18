@@ -1,0 +1,256 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Say \"Hello, world!\"","role":"user"}],"model":"gpt-4o","max_tokens":10,"n":1,"temperature":1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      host:
+      - llm-base
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.6
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BHfTwE0i7Hfeuhth0ufp0CXBhPQUh","created":1743550732,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_898ac29719","choices":[{"finish_reason":"stop","index":0,"message":{"content":"Hello,
+        world!","role":"assistant","tool_calls":null,"function_call":null}}],"usage":{"completion_tokens":5,"prompt_tokens":13,"total_tokens":18,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '588'
+      content-type:
+      - application/json
+      date:
+      - Tue, 01 Apr 2025 23:38:52 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 929bec2b0c6f07d7-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 01 Apr 2025 23:38:52 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '376'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-ratelimit-limit-requests:
+      - '50000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '49999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149999992'
+      llm_provider-x-ratelimit-reset-requests:
+      - 1ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_b1f3e1a71c0d8b727ffe78f6943182e2
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - a05fc4de295d370e0d34619948047efb;o=1
+      x-litellm-call-id:
+      - d7558990-8bd6-41bb-bdd1-ffd8033bea81
+      x-litellm-key-rpm-limit:
+      - None
+      x-litellm-key-tpm-limit:
+      - None
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-response-cost:
+      - '8.25e-05'
+      x-litellm-version:
+      - 1.56.8
+      x-ratelimit-limit-requests:
+      - '50000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '49999'
+      x-ratelimit-remaining-tokens:
+      - '149999992'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Say \"Hello, world!\"","role":"user"}],"model":"gpt-4o","max_tokens":10,"n":1,"temperature":1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      host:
+      - llm-base
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BKDDSa4p2mzrV6OJiCTmyqQag5zDE","created":1744157062,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_6dd05565ef","choices":[{"finish_reason":"stop","index":0,"message":{"content":"Hello,
+        world!","role":"assistant","tool_calls":null,"function_call":null}}],"usage":{"completion_tokens":5,"prompt_tokens":13,"total_tokens":18,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '588'
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Apr 2025 00:04:23 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 92d5bf2b0d8bd6b1-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Wed, 09 Apr 2025 00:04:23 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '247'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-ratelimit-limit-requests:
+      - '50000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '49999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149999992'
+      llm_provider-x-ratelimit-reset-requests:
+      - 1ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_388444680567be6b9f76c3e7bd68c73d
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 51913070381e840a05b53afb99d21b4d;o=1
+      x-litellm-call-id:
+      - 4115136d-1e66-473d-8989-02f4dfaddb2a
+      x-litellm-key-rpm-limit:
+      - None
+      x-litellm-key-tpm-limit:
+      - None
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-response-cost:
+      - '8.25e-05'
+      x-litellm-version:
+      - 1.56.8
+      x-ratelimit-limit-requests:
+      - '50000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '49999'
+      x-ratelimit-remaining-tokens:
+      - '149999992'
+    status:
+      code: 200
+      message: OK
+version: 1

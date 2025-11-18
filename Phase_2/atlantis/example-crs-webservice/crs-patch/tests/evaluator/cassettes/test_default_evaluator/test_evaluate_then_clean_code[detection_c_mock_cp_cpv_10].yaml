@@ -1,0 +1,48 @@
+interactions:
+- request:
+    body: '{"blob": "ab\nb\n\n501\n", "harness_name": "filein_harness"}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=filein_harness\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+ TESTCASE=/testcase\r\n+
+    '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+ RUN_FUZZER_MODE=interactive\r\n+
+    export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+ export SKIP_SEED_CORPUS=1\r\n+
+    SKIP_SEED_CORPUS=1\r\n+ run_fuzzer filein_harness -runs=100 /testcase\r\nvm.mmap_rnd_bits
+    = 28\r\n/out/filein_harness -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase
+    < /dev/null\r\nINFO: Running with entropic power schedule (0xFF, 100).\r\nINFO:
+    Seed: 2992281252\r\nINFO: Loaded 1 modules   (14 inline 8-bit counters): 14 [0x555555761018,
+    0x555555761026), \r\nINFO: Loaded 1 PC tables (14 PCs): 14 [0x555555761028,0x555555761108),
+    \r\n/out/filein_harness: Running 1 inputs 100 time(s) each.\r\nRunning: /testcase\r\ninput
+    item:input item:input item:done adding items\r\nAddressSanitizer:DEADLYSIGNAL\r\n=================================================================\r\n==14==ERROR:
+    AddressSanitizer: SEGV on unknown address 0x55555616bed2 (pc 0x5555556d2bd0 bp
+    0x7fffffffe090 sp 0x7fffffffd818 T0)\r\n==14==The signal is caused by a READ memory
+    access.\r\nSCARINESS: 20 (wild-addr-read)\r\n    #0 0x5555556d2bd0 in __sanitizer::internal_strlen(char
+    const*) /src/llvm-project/compiler-rt/lib/sanitizer_common/sanitizer_libc.cpp:176:10\r\n
+    \   #1 0x555555646c91 in printf_common(void*, char const*, __va_list_tag*) /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:561:17\r\n
+    \   #2 0x555555648839 in vprintf /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1644:1\r\n
+    \   #3 0x555555648839 in printf /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1702:1\r\n
+    \   #4 0x5555556fadc7 in func_b /src/fuzz/../mock-cp-src/mock_vp.c:29:5\r\n    #5
+    0x5555556fadc7 in LLVMFuzzerTestOneInput /src/fuzz/filein_harness.c:58:3\r\n    #6
+    0x5555555af320 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+    long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #7
+    0x55555559a595 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long)
+    /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #8 0x5555555a002f
+    in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned
+    long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #9
+    0x5555555cb2d2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n
+    \   #10 0x7ffff7c3a082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    (BuildId: 0323ab4806bee6f846d9ad4bccfc29afdca49a58)\r\n    #11 0x55555559277d
+    in _start (/out/filein_harness+0x3e77d)\r\n\r\nDEDUP_TOKEN: __sanitizer::internal_strlen(char
+    const*)--printf_common(void*, char const*, __va_list_tag*)--___interceptor_vprintf\r\nAddressSanitizer
+    can not provide additional info.\r\nSUMMARY: AddressSanitizer: SEGV /src/fuzz/../mock-cp-src/mock_vp.c:29:5
+    in func_b\r\n==14==ABORTING\r\nsubprocess command returned a non-zero exit status:
+    1\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -e HELPER=True -e ARCHITECTURE=x86_64 -v /home/qqor/aixcc/crete/packages/python_oss_fuzz/.oss_fuzz/build/out/aixcc/c/mock-cp:/out
+    -v /tmp/tmpmbw9z4fm:/testcase -t ghcr.io/aixcc-finals/base-runner:v1.1.0 reproduce
+    filein_harness -runs=100.
+
+    '
+  - false
+version: 1

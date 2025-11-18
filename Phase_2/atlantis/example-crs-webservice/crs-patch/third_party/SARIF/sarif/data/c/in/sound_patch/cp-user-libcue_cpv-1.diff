@@ -1,0 +1,21 @@
+--- a/cd.c
++++ b/cd.c
+@@ -339,12 +339,12 @@
+ 
+ void track_set_index(Track *track, int i, long ind)
+ {
+-	if (i > MAXINDEX) {
+-		fprintf(stderr, "too many indexes\n");
+-                return;
+-        }
+-
+-	track->index[i] = ind;
++    if (i < 0 || i >= MAXINDEX) {
++        fprintf(stderr, "too many indexes\n");
++        return;
++    }
++
++    track->index[i] = ind;
+ }
+ 
+ long track_get_index(const Track *track, int i)

@@ -1,0 +1,714 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "VAPI",
+    "contact": {},
+    "version": "1.1"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/submit/pov/": {
+      "post": {
+        "description": "submit a POV",
+        "requestBody": {
+          "description": "Submission body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/types.POVSubmission"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.POVSubmissionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/submit/pov/{pov_id}": {
+      "get": {
+        "description": "yield the status of vuln testing",
+        "parameters": [
+          {
+            "name": "pov_id",
+            "in": "path",
+            "description": "POV ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.POVSubmissionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/submit/patch/pov/{pov_id}": {
+      "post": {
+        "description": "submit a patch for pov",
+        "parameters": [
+          {
+            "name": "pov_id",
+            "in": "path",
+            "description": "POV ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Submission body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/types.PatchSubmission"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.PatchSubmissionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/submit/patch/{patch_id}": {
+      "get": {
+        "description": "yield the status of vuln testing",
+        "parameters": [
+          {
+            "name": "patch_id",
+            "in": "path",
+            "description": "Patch ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.PatchSubmissionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/submit/sarif/": {
+      "post": {
+        "description": "submit a SARIF Assessment",
+        "requestBody": {
+          "description": "Submission body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/types.SarifAssessmentSubmission"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/broadcast/sarif/": {
+      "post": {
+        "description": "submit a SARIF Assessment",
+        "requestBody": {
+          "description": "Submission body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/types.SarifAssessmentBroadcast"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/task/sarif/": {
+      "post": {
+        "description": "Reqeust a SARIF Assessment",
+        "requestBody": {
+          "description": "SARIF body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/types.Sarif"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/types.Error"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "types.Error": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "types.Assessment": {
+        "type": "string",
+        "enum": [
+          "correct",
+          "incorrect"
+        ],
+        "x-enum-varnames": [
+          "AssessmentCorrect",
+          "AssessmentIncorrect"
+        ]
+      },
+      "types.POVSubmission": {
+        "required": [
+          "finder",
+          "fuzzer_name",
+          "sanitizer",
+          "testcase"
+        ],
+        "type": "object",
+        "properties": {
+          "finder": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "Finder of this PoV"
+          },
+          "fuzzer_name": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "Fuzz Tooling fuzzer that exercises this vuln\n\n4KiB max size"
+          },
+          "sanitizer": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "Fuzz Tooling Sanitizer that exercises this vuln\n\n4KiB max size"
+          },
+          "testcase": {
+            "type": "string",
+            "description": "Base64 encoded vuln trigger\n\n2MiB max size before Base64 encoding",
+            "format": "base64"
+          }
+        }
+      },
+      "types.POVSubmissionResponse": {
+        "required": [
+          "pov_id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "pov_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/types.SubmissionStatus"
+          }
+        }
+      },
+      "types.SubmissionStatus": {
+        "type": "string",
+        "enum": [
+          "accepted",
+          "passed",
+          "failed",
+          "deadline_exceeded",
+          "errored",
+          "duplicated"
+        ],
+        "x-enum-comments": {
+          "SubmissionStatusAccepted": "Successfully submitted",
+          "SubmissionStatusDeadlineExceeded": "Task deadline exceeded. All submissions marked accepted before the deadline will be evaluated.",
+          "SubmissionStatusErrored": "Server side error when testing submission",
+          "SubmissionStatusFailed": "Submission failed testing",
+          "SubmissionStatusPassed": "Successfully evaluated submission",
+          "SubmissionStatusDuplicated": "Submission is duplicated"
+        },
+        "x-enum-varnames": [
+          "SubmissionStatusAccepted",
+          "SubmissionStatusPassed",
+          "SubmissionStatusFailed",
+          "SubmissionStatusDeadlineExceeded",
+          "SubmissionStatusErrored",
+          "SubmissionStatusDuplicated"
+        ]
+      },
+      "types.PatchSubmission": {
+        "required": [
+          "patch",
+          "patched_again_pov_ids"
+        ],
+        "type": "object",
+        "properties": {
+          "patched_again_pov_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "POV IDs patched before but the given patch prevents again"
+          },
+          "patch": {
+            "type": "string",
+            "description": "Base64 encoded patch in unified diff format\n\n100KiB max size before Base64 encoding",
+            "format": "base64"
+          }
+        }
+      },
+      "types.PatchSubmissionResponse": {
+        "required": [
+          "patch_id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "functionality_tests_passing": {
+            "type": "boolean",
+            "description": "null indicates the tests have not been run"
+          },
+          "patch_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/types.SubmissionStatus"
+          }
+        }
+      },
+      "types.SarifAssessmentSubmission": {
+        "required": [
+          "assessment",
+          "description",
+          "sarif_id"
+        ],
+        "type": "object",
+        "properties": {
+          "assessment": {
+            "$ref": "#/components/schemas/types.Assessment"
+          },
+          "description": {
+            "maxLength": 131072,
+            "type": "string",
+            "description": "Plain text reasoning for the assessment\n\n128KiB max size"
+          },
+          "sarif_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "pov_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "types.SarifAssessmentBroadcast": {
+        "required": [
+          "analysis_result",
+          "fuzzer_name",
+          "sarif_id"
+        ],
+        "type": "object",
+        "properties": {
+          "analysis_result": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Analysis result in form of object\n# TODO: Fix fields\n128KiB max size"
+          },
+          "sarif_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fuzzer_name": {
+            "maxLength": 4096,
+            "type": "string",
+            "description": "Fuzz Tooling fuzzer that exercises this vuln\n\n4KiB max size"
+          }
+        }
+      },
+      "types.Sarif": {
+        "required": [
+          "metadata",
+          "sarif",
+          "sarif_id"
+        ],
+        "type": "object",
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "properties": {},
+            "description": "String to string map containing data that should be attached to outputs like log messages and OpenTelemetry trace attributes for traceability"
+          },
+          "sarif": {
+            "type": "object",
+            "properties": {},
+            "description": "SARIF Report compliant with provided schema"
+          },
+          "sarif_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      }
+    }
+  },
+  "x-original-swagger-version": "2.0"
+}

@@ -1,0 +1,24 @@
+--- a/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java
++++ b/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java
+@@ -1,6 +1,8 @@
+ package io.jenkins.plugins.toyplugin;
+ 
+ import org.apache.commons.io.IOUtils;
++import java.net.MalformedURLException;
++import java.net.URL;
+ import edu.umd.cs.findbugs.annotations.NonNull;
+ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+ import hudson.EnvVars;
+@@ -55,6 +57,12 @@
+ 
+     private String launchCommandWithCredentials(ArgumentListBuilder args, File workDir,
+             @NonNull String url) throws Exception {
++        // Validate the URL
++        try {
++            new URL(url);
++        } catch (MalformedURLException e) {
++            throw new IllegalArgumentException("Invalid URL: " + url, e);
++        }
+         EnvVars freshEnv = new EnvVars();
+         freshEnv.put("GIT_TERMINAL_PROMPT", "false");
+ 

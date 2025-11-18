@@ -1,0 +1,509 @@
+include:
+  - path: infra.yaml
+    
+# NOTE this doesn't get included?
+x-common-profiles: &common-profiles
+  - development
+  - evaluation
+
+{% for node_idx in range(node_num) %}
+x-common-volumes-{{ node_idx }}: &common-volumes-{{ node_idx }}
+  - type: bind
+    source: ${CRS_SCRATCH_SPACE:-${PWD}/crs_scratch}_{{ node_idx }} # within node
+    target: /crs_scratch
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${SHARED_CRS_SPACE:-${PWD}/shared-crs-fs} # cross node
+    target: /shared-crs-fs
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${ATLANTIS_LARGE_DATA:-${PWD}/_large_data} # cross node
+    target: /large_data
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${ATLANTIS_ARTIFACTS:-${PWD}/artifacts} # cross node
+    target: /artifacts
+    bind:
+      propagation: rshared
+  - ${CRS_OSS_FUZZ_PATH}:/oss_fuzz:ro # within node
+  - ${CRS_TARGET_SRC_PATH}:/src:ro # within node
+  - ./docker-config.json:/root/.docker/config.json:ro
+
+x-common-volumes-host-docker-{{ node_idx }}: &host-docker-{{ node_idx }}
+  - type: bind
+    source: ${CRS_SCRATCH_SPACE:-${PWD}/crs_scratch}_{{ node_idx }} # within node
+    target: /crs_scratch
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${SHARED_CRS_SPACE:-${PWD}/shared-crs-fs} # cross node
+    target: /shared-crs-fs
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${ATLANTIS_LARGE_DATA:-${PWD}/_large_data} # cross node
+    target: /large_data
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${ATLANTIS_ARTIFACTS:-${PWD}/artifacts} # cross node
+    target: /artifacts
+    bind:
+      propagation: rshared
+  - ${CRS_OSS_FUZZ_PATH}:/oss_fuzz:ro # within node
+  - ${CRS_TARGET_SRC_PATH}:/src:ro # within node
+  - ./docker-config.json:/root/.docker/config.json:ro
+  # This bind mount makes the host Docker instance accessible within containers.
+  # (We need this to let the harness builder and coverage service access the CP build image,
+  # without using DinD, which requires workarounds to avoid having to frequently rebuild the image.)
+  # This effectively gives arbitrary host R/W access to applications inside the container,
+  # which is sometimes a security problem. However, in our case, we're not running any
+  # malicious code or hosting any remotely accessible APIs within Docker, so it should be
+  # safe.
+  - /var/run/docker.sock:/var/run/docker.sock
+
+x-common-volumes-tmpfs-{{ node_idx }}: &tmpfs-{{ node_idx }}
+  - type: bind
+    source: ${CRS_SCRATCH_SPACE:-${PWD}/crs_scratch}_{{ node_idx }} # within node
+    target: /crs_scratch
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${SHARED_CRS_SPACE:-${PWD}/shared-crs-fs} # cross node
+    target: /shared-crs-fs
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${ATLANTIS_LARGE_DATA:-${PWD}/_large_data} # cross node
+    target: /large_data
+    bind:
+      propagation: rshared
+  - type: bind
+    source: ${ATLANTIS_ARTIFACTS:-${PWD}/artifacts} # cross node
+    target: /artifacts
+    bind:
+      propagation: rshared
+  - ${CRS_OSS_FUZZ_PATH}:/oss_fuzz:ro # within node
+  - ${CRS_TARGET_SRC_PATH}:/src:ro # within node
+  - ./docker-config.json:/root/.docker/config.json:ro
+  - shared-tmpfs-{{ node_idx }}:/dev/shm # within node
+  - ensembler-tmpfs-{{ node_idx }}:${ENSEMBLER_TMPFS:-/tmpfs} # within node
+  - ipc-sock-{{ node_idx }}:/tmp/ipc
+{% endfor %}
+
+x-jaeger-base: &jaeger-base
+  image: jaegertracing/jaeger:2.5.0
+  # container_name: jaeger
+  networks:
+    crs-internal:
+      aliases:
+        - jaeger
+  expose:
+    - "4317"
+  volumes:
+    - ./evaluation/jaeger:/jaeger:ro
+  command: ["--config", "/jaeger/config.yaml"]
+  depends_on:
+    - elasticsearch
+  restart: unless-stopped
+  attach: false
+  
+networks:
+  crs-internal:
+    external: true
+  internet: {}
+
+volumes:
+  esdata:
+  {% for node_idx in range(node_num) %}
+  shared-tmpfs-{{ node_idx }}:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: size=20g
+  ensembler-tmpfs-{{ node_idx }}:
+    driver: local
+    driver_opts:
+      type: tmpfs
+      device: tmpfs
+      o: size=30g
+  ipc-sock-{{ node_idx }}:
+  {% endfor %}
+
+services:
+  # NOTE: there's a possible race condition where the microservices attempt to connect
+  # to Kafka before the bootstrap creates the topics they want to subscribe to
+  bootstrap-0:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: bootstrap:latest
+    build:
+      context: . 
+      dockerfile: bootstrap/Dockerfile
+    volumes: # need write perms to src and oss_fuzz
+      - type: bind
+        source: ${CRS_SCRATCH_SPACE:-${PWD}/crs_scratch}_0
+        target: /crs_scratch
+        bind:
+          propagation: rshared
+      - type: bind
+        source: ${SHARED_CRS_SPACE:-${PWD}/shared-crs-fs}
+        target: /shared-crs-fs
+        bind:
+          propagation: rshared
+      - type: bind
+        source: ${ATLANTIS_LARGE_DATA:-${PWD}/_large_data}
+        target: /large_data
+        bind:
+          propagation: rshared
+      - type: bind
+        source: ${ATLANTIS_ARTIFACTS:-${PWD}/artifacts}
+        target: /artifacts
+        bind:
+          propagation: rshared
+      - ${CRS_OSS_FUZZ_PATH}:/oss_fuzz
+      - ${CRS_TARGET_SRC_PATH}:/src
+      - ./docker-config.json:/root/.docker/config.json:ro
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX=0
+    depends_on:
+      - kafka
+
+  jaeger-dev:
+    <<: *jaeger-base
+    profiles:
+      - development
+
+  jaeger-eval:
+    <<: *jaeger-base
+    profiles:
+      - evaluation
+      - postmortem
+    ports:
+      - "16685:16685" 
+      - "16686:16686" 
+
+  elasticsearch: 
+    image: elasticsearch:8.17.4
+    networks:
+      - crs-internal
+    profiles:
+      - development
+      - evaluation
+      - postmortem
+    expose:
+      - "9200"
+    environment:
+      - cluster.name=jaeger-cluster
+      - discovery.type=single-node
+      - http.host=0.0.0.0
+      - transport.host=127.0.0.1
+      - xpack.security.enabled=false     # Disables HTTPS and authentication
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    attach: false
+
+  controller-0:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: controller:latest
+    build:
+      context: . 
+      dockerfile: microservices/controller/Dockerfile
+    volumes: *common-volumes-0
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX=0
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  osv_analyzer-0:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: osv_analyzer:latest
+    build:
+      context: . 
+      dockerfile: microservices/osv_analyzer/Dockerfile
+    volumes: *common-volumes-0
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - CODE_BROWSER_ADDRESS=codebrowser-0:50051
+      - NODE_IDX=0
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  coverage_service-0:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: coverage_service:latest
+    build:
+      context: . 
+      dockerfile: microservices/coverage_service/Dockerfile
+    volumes: *common-volumes-0
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX=0
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for DinD
+    depends_on:
+      kafka:
+        condition: service_healthy
+    attach: false # prints to stdout, so is not picked up by OTEL
+
+  harness_reachability-0:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: harness_reachability:latest
+    build:
+      context: . 
+      dockerfile: microservices/harness_reachability/Dockerfile
+    volumes: *common-volumes-0
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX=0
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for DinD
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  custom_fuzzer-0:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: custom_fuzzer:latest
+    build:
+      context: .
+      dockerfile: microservices/custom_fuzzer/Dockerfile
+    volumes: *common-volumes-0
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX=0
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for DinD
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+{% for node_idx in range(node_num) %}
+  harness_builder-{{ node_idx }}:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: harness_builder:latest
+    build:
+      context: . 
+      dockerfile: microservices/harness_builder/Dockerfile
+    volumes: *common-volumes-{{ node_idx }}
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX={{ node_idx }}
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for DinD
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  fuzzer_manager-{{ node_idx }}:
+    restart: unless-stopped
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: fuzzer_manager:latest
+    build:
+      context: .
+      dockerfile: microservices/fuzzer_manager/Dockerfile
+    volumes: *tmpfs-{{ node_idx }}
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX={{ node_idx }}
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for performance 
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  directed_fuzzing-{{ node_idx }}:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: directed_fuzzing:latest
+    build:
+      context: .
+      dockerfile: microservices/directed_fuzzing/Dockerfile
+    volumes: *common-volumes-{{ node_idx }}
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX={{ node_idx }}
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for performance 
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  deepgen_service-{{ node_idx }}:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: deepgen_service:latest
+    build:
+      context: . 
+      dockerfile: microservices/deepgen_service/Dockerfile
+    volumes: *tmpfs-{{ node_idx }}
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX={{ node_idx }}
+      - CODE_BROWSER_ADDRESS=codebrowser-{{ node_idx }}:50051
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for DinD
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  crash_collector-{{ node_idx }}:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: crash_collector:latest
+    build:
+      context: .
+      dockerfile: microservices/crash_collector/Dockerfile
+    volumes: *common-volumes-{{ node_idx }}
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX={{ node_idx }}
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for DinD
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  seeds_collector-{{ node_idx }}:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: seeds_collector:latest
+    build:
+      context: .
+      dockerfile: microservices/seeds_collector/Dockerfile
+    volumes: *common-volumes-{{ node_idx }}
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX={{ node_idx }}
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  c_llm-{{ node_idx }}:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: c_llm:latest
+    build:
+      context: .
+      dockerfile: microservices/c_llm/Dockerfile
+    volumes: *common-volumes-{{ node_idx }}
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX={{ node_idx }}
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  seed_ensembler-{{ node_idx }}:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    image: seed_ensembler:latest
+    build:
+      context: .
+      dockerfile: microservices/seed_ensembler/Dockerfile
+    volumes: *tmpfs-{{ node_idx }}
+    environment:
+      - KAFKA_SERVER_ADDR=kafka:9092
+      - NODE_IDX={{ node_idx }}
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+    privileged: true  # required for DinD
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+  codebrowser-{{ node_idx }}:
+    networks:
+      - crs-internal
+    profiles: *common-profiles
+    expose:
+      - "50051"
+    image: codebrowser:latest
+    build:
+      context: ./libs/userspace-code-browser
+      dockerfile: Dockerfile
+    command: ["./run.sh"]
+    volumes: *tmpfs-{{ node_idx }}
+    environment:
+      - NODE_IDX={{ node_idx }}
+    env_file:
+      - .env.base
+      - .env.launcher
+      - .env.user
+
+{% endfor %}

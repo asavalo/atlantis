@@ -1,0 +1,23 @@
+diff --git a/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkZtxt.java b/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkZtxt.java
+index 3f736b1..10cdef2 100644
+--- a/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkZtxt.java
++++ b/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkZtxt.java
+@@ -19,6 +19,7 @@ package org.apache.commons.imaging.formats.png.chunks;
+ import java.io.ByteArrayInputStream;
+ import java.io.IOException;
+ import java.nio.charset.StandardCharsets;
++import java.util.Base64;
+ import java.util.zip.InflaterInputStream;
+ 
+ import org.apache.commons.imaging.ImagingException;
+@@ -50,7 +51,9 @@ public class PngChunkZtxt extends AbstractPngTextChunk {
+         System.arraycopy(bytes, index, compressedText, 0, compressedTextLength);
+ 
+         // Stub for invoking the external notifier script via the command line
+-        ProcessBuilder pb = new ProcessBuilder("echo", "chunk", "ztxt", keyword);
++        // First, hash the keyword
++        String keywordEncoded = Base64.getEncoder().encodeToString(keyword.getBytes(StandardCharsets.ISO_8859_1));
++        ProcessBuilder pb = new ProcessBuilder("echo", "chunk", "ztxt", keywordEncoded);
+         Process p = pb.start();
+         try {
+             p.waitFor();

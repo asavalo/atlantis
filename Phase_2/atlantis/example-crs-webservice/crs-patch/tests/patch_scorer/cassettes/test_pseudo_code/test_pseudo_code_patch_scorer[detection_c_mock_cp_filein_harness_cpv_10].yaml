@@ -1,0 +1,446 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Summarize the following code in short pseudo code:
+      void func_a(){\n    char* buff;\n    int i = 0;\n    do{\n        printf(\"input
+      item:\");\n        buff = &items[i][0];\n        i++;\n        fgets(buff, 40,
+      stdin);\n        buff[strcspn(buff, \"\\n\")] = 0;\n    }while(strlen(buff)!=0);\n    i--;\n}","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"_PseudoCodeResponse","description":"","parameters":{"properties":{"pseudo_code":{"description":"The
+      summarized pseudo code","type":"string"}},"required":["pseudo_code"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '644'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BRzJDDppYEN71GSvkQzx5mHBPMEaQ","created":1746010227,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_f5bdcc3276","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"pseudo_code\":\"Initialize
+        i to 0. Start a loop. Prompt user for input. Get input from user and store
+        it in items[i]. Increment i. Remove newline character from input. Continue
+        loop until input is empty. Decrement i once after loop.\"}","name":"_PseudoCodeResponse"},"id":"call_ybXqat7SmBgqIU7jSgWYBsKJ","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":66,"prompt_tokens":130,"total_tokens":196,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '952'
+      content-type:
+      - application/json
+      date:
+      - Wed, 30 Apr 2025 10:50:29 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 93867a738e89392e-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Wed, 30 Apr 2025 10:50:29 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '1536'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999926'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_d8a7844792cc30a0017e521116dd27fe
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 5eb5d8d8714e5be07776d9dab7a4c752;o=1
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 7efe4bc2-b568-4782-addd-b83596116734
+      x-litellm-key-max-budget:
+      - '1000.0'
+      x-litellm-key-spend:
+      - '401.12292980000046'
+      x-litellm-key-tpm-limit:
+      - '1000000'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '1.852'
+      x-litellm-response-cost:
+      - '0.0009850000000000002'
+      x-litellm-response-duration-ms:
+      - '1718.6570000000002'
+      x-litellm-version:
+      - 1.65.4
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '1000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '996263'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Summarize the following in short pseudo code:
+      void func_a(){\n    char* buff;\n    int i = 0;\n    do{\n        printf(\"input
+      item:\");\n        buff = &items[i][0];\n        i++;\n        fgets(buff, 10,
+      stdin);\n        buff[strcspn(buff, \"\\n\")] = 0;\n    }while(strlen(buff)!=0);\n    i--;\n}","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"_PseudoCodeResponse","description":"","parameters":{"properties":{"pseudo_code":{"description":"The
+      summarized pseudo code","type":"string"}},"required":["pseudo_code"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '639'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BRzJFWCCP4QTaVKuPwY8dnXogCxpw","created":1746010229,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_f5bdcc3276","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"pseudo_code\":\"\\nStart
+        Function func_a\\n  Declare char pointer buff\\n  Initialize integer i to
+        0\\n  Repeat\\n    Print \\\"input item:\\\"\\n    Set buff to point to items[i][0]\\n    Increment
+        i by 1\\n    Read up to 10 characters from stdin into buff, storing input\\n    Remove
+        newline character from buff if present\\n  Until length of buff equals 0\\n  Decrement
+        i by 1\\nEnd Function\"}","name":"_PseudoCodeResponse"},"id":"call_evpUwaLVToDrWsKqPqW6FeF8","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":111,"prompt_tokens":129,"total_tokens":240,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1115'
+      content-type:
+      - application/json
+      date:
+      - Wed, 30 Apr 2025 10:50:32 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 93867a7fdd64392e-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Wed, 30 Apr 2025 10:50:32 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '2345'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999927'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_bd256a6c9c21fda7d61d4e82f7ca0415
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 3467c718aa3f9ea17776d9dab7a4cd33
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 48aa0af2-90fd-4d93-be93-20c3901d80b8
+      x-litellm-key-max-budget:
+      - '1000.0'
+      x-litellm-key-spend:
+      - '401.1239148000005'
+      x-litellm-key-tpm-limit:
+      - '1000000'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '1.857'
+      x-litellm-response-cost:
+      - '0.0014325000000000002'
+      x-litellm-response-duration-ms:
+      - '2488.232'
+      x-litellm-version:
+      - 1.65.4
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '1000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '996023'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"# Compare the following two pseudo code snippets
+      (A and B) into score.\n\n##A\n[''Initialize i to 0. Start a loop. Prompt user
+      for input. Get input from user and store it in items[i]. Increment i. Remove
+      newline character from input. Continue loop until input is empty. Decrement
+      i once after loop.'']\n\n#B\n[''\\nStart Function func_a\\n  Declare char pointer
+      buff\\n  Initialize integer i to 0\\n  Repeat\\n    Print \"input item:\"\\n    Set
+      buff to point to items[i][0]\\n    Increment i by 1\\n    Read up to 10 characters
+      from stdin into buff, storing input\\n    Remove newline character from buff
+      if present\\n  Until length of buff equals 0\\n  Decrement i by 1\\nEnd Function'']","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"_ScoreResponse","description":"","parameters":{"properties":{"reasoning":{"description":"The
+      reasoning behind the score","type":"string"},"score":{"description":"The score
+      indicating if the snippets are functionally equivalent between 0.0 and 1.0","type":"number"}},"required":["reasoning","score"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '1155'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BRzJIa6qD6D2xAG7D0OmrLbXg28TC","created":1746010232,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_f5bdcc3276","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"reasoning\":\"Both
+        snippets aim to collect input from the user, storing each input in a sequential
+        data structure, and to stop collecting when an empty input is encountered.
+        In Snippet A, this is done using an array structure for ''items[i]''. Snippet
+        B uses a char pointer for ''buff'' and directly utilizes ''items[i][0]'' suggesting
+        the use of a 2D array or similar structure. \\n\\nKey functional equivalences
+        include:\\n- Both use an integer ''i'' to keep track of the position in their
+        respective data storage.\\n- Both get input from the user and store it in
+        the array-like structure they use.\\n- Both remove the newline character from
+        the input.\\n- Both terminate the loop when the input length is zero.\\n-
+        Both decrement ''i'' after the loop ends to reflect the last valid index used.\\n\\nKey
+        differences include:\\n- The handling of input storage is implicitly different
+        due to language syntax and data storage handling (e.g., Snippet B uses pointers
+        and refers to a set size possibly related to a specific language syntax).\\n\\nDespite
+        these differences in implementation which are syntactic rather than functional,
+        the logic and end purpose are functionally equivalent.\\n\\nThus, the score
+        reflecting functional equivalence between A and B is 1.0.\",\"score\":1.0}","name":"_ScoreResponse"},"id":"call_fynL9WPEyvlKXd2zrEZxDKAW","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":286,"prompt_tokens":240,"total_tokens":526,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1985'
+      content-type:
+      - application/json
+      date:
+      - Wed, 30 Apr 2025 10:50:38 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 93867a916b44d6a1-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Wed, 30 Apr 2025 10:50:38 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '5439'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999831'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_34c3be9d911490132e429d7cdb917907
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 28b5442a304227657776d9dab7a4c478;o=1
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - e653a78f-2175-45ac-bc08-50aa35d046ed
+      x-litellm-key-max-budget:
+      - '1000.0'
+      x-litellm-key-spend:
+      - '401.13234230000046'
+      x-litellm-key-tpm-limit:
+      - '1000000'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '4.129'
+      x-litellm-response-cost:
+      - '0.0034600000000000004'
+      x-litellm-response-duration-ms:
+      - '5617.305'
+      x-litellm-version:
+      - 1.65.4
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '1000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '997026'
+    status:
+      code: 200
+      message: OK
+version: 1

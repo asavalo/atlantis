@@ -1,0 +1,128 @@
+--- a/src/main/java/io/jenkins/plugins/toyplugin/SecretMessage.java
++++ b/src/main/java/io/jenkins/plugins/toyplugin/SecretMessage.java
+@@ -55,63 +55,70 @@
+         return Jenkins.get();
+     }
+ 
+-    public void doPerform(StaplerRequest request, StaplerResponse response) throws IOException {
+-        if (!request.hasParameter("cmd") ||
+-                !request.hasParameter("msg") ||
+-                !request.hasParameter("lib")) {
++public void doPerform(StaplerRequest request, StaplerResponse response) throws IOException {
++    if (!request.hasParameter("cmd") ||
++            !request.hasParameter("msg") ||
++            !request.hasParameter("lib")) {
++        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
++        return;
++    }
++
++    int cmd = 0;
++    try {
++        cmd = Integer.parseInt(request.getParameter("cmd"));
++    } catch (NumberFormatException e) {
++        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
++        return;
++    }
++
++    String msg = null;
++    try {
++        msg = new String(java.util.Base64.getDecoder().decode(request.getParameter("msg")));
++    } catch (IllegalArgumentException e) {
++        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
++        return;
++    }
++    String lib = request.getParameter("lib");
++
++    java.util.List<String> allowedLibs = java.util.Arrays.asList("safeNativeLib.so");
++    if (!allowedLibs.contains(new java.io.File(lib).getName())) {
++        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
++        return;
++    }
++
++    if (lib.contains("..")) {
++        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
++        return;
++    }
++    boolean freeload = false;
++    boolean admin = getJenkins().hasPermission(Jenkins.ADMINISTER);
++    if (admin || request.hasParameter("freeload")) {
++        freeload = Boolean.parseBoolean(request.getParameter("freeload"));
++    }
++    if (java.nio.file.Paths.get(lib).isAbsolute() && !freeload) {
++        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
++        return;
++    }
++
++    String path = freeload ? lib : java.nio.file.Paths.get(System.getProperty("user.dir"), lib).toString();
++    try {
++        Runtime.getRuntime().load(path);
++        String result = null;
++        if (cmd == 1) {
++            result = java.util.Base64.getEncoder().encodeToString(encrypt(msg).getBytes());
++        } else if (cmd == 2) {
++            result = java.util.Base64.getEncoder().encodeToString(decrypt(msg).getBytes());
++        }
++
++        if (result == null) {
+             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+             return;
+         }
+-
+-        int cmd = 0;
+-        try {
+-            cmd = Integer.parseInt(request.getParameter("cmd"));
+-        } catch (NumberFormatException e) {
+-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+-            return;
+-        }
+-
+-        String msg = null;
+-        try {
+-            msg = new String(Base64.getDecoder().decode(request.getParameter("msg")));
+-        } catch (IllegalArgumentException e) {
+-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+-            return;
+-        }
+-        String lib = request.getParameter("lib");
+-        if (lib.contains("..")) {
+-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+-            return;
+-        }
+-        boolean freeload = false;
+-        boolean admin = getJenkins().hasPermission(Jenkins.ADMINISTER);
+-        if (admin || request.hasParameter("freeload")) {
+-            freeload = Boolean.parseBoolean(request.getParameter("freeload"));
+-        }
+-        if (Paths.get(lib).isAbsolute() && !freeload) {
+-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+-            return;
+-        }
+-
+-        String path = freeload ? lib : Paths.get(System.getProperty("user.dir"), lib).toString();
+-        try {
+-            Runtime.getRuntime().load(path);
+-            String result = null;
+-            if (cmd == 1) {
+-                result = Base64.getEncoder().encodeToString(encrypt(msg).getBytes());
+-            } else if (cmd == 2) {
+-                result = Base64.getEncoder().encodeToString(decrypt(msg).getBytes());
+-            }
+-
+-            if (result == null) {
+-                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+-                return;
+-            }
+-            response.setContentType("application/json");
+-            response.getWriter().write("{\"result\": \"" + result + "\"}");
+-        } catch (UnsatisfiedLinkError e) {
+-            System.out.println(e.getMessage());
+-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+-        }
++        response.setContentType("application/json");
++        response.getWriter().write("{\"result\": \"" + result + "\"}");
++    } catch (UnsatisfiedLinkError e) {
++        System.out.println(e.getMessage());
++        response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+     }
+ }
++}

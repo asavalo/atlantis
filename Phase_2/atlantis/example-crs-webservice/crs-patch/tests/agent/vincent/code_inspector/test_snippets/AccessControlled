@@ -1,0 +1,74 @@
+32:/**
+33: * Object that has an {@link ACL}
+34: *
+35: * @since 1.220
+36: */
+37:public interface AccessControlled {
+38:    /**
+39:     * Obtains the ACL associated with this object.
+40:     *
+41:     * @return never null.
+42:     */
+43:    @NonNull ACL getACL();
+44:
+45:    /**
+46:     * Convenient short-cut for {@code getACL().checkPermission(permission)}
+47:     */
+48:    default void checkPermission(@NonNull Permission permission) throws AccessDeniedException {
+49:        if (Jenkins.getAuthentication2().equals(ACL.SYSTEM2)) {
+50:            return;
+51:        }
+52:        getACL().checkPermission(permission);
+53:    }
+54:
+55:    /**
+56:     * Convenient short-cut for {@code getACL().checkAnyPermission(permission)}
+57:     * @see ACL#checkAnyPermission(Permission...)
+58:     *
+59:     * @since 2.222
+60:     */
+61:    default void checkAnyPermission(@NonNull Permission... permission) throws AccessDeniedException {
+62:        getACL().checkAnyPermission(permission);
+63:    }
+64:
+65:    /**
+66:     * Convenient short-cut for {@code getACL().hasPermission(permission)}
+67:     */
+68:    default boolean hasPermission(@NonNull Permission permission) {
+69:        if (Jenkins.getAuthentication2().equals(ACL.SYSTEM2)) {
+70:            return true;
+71:        }
+72:        return getACL().hasPermission(permission);
+73:    }
+74:
+75:    /**
+76:     * Convenient short-cut for {@code getACL().hasAnyPermission(permission)}
+77:     * @see ACL#hasAnyPermission(Permission...)
+78:     *
+79:     * @since 2.222
+80:     */
+81:    default boolean hasAnyPermission(@NonNull Permission... permission) {
+82:        return getACL().hasAnyPermission(permission);
+83:    }
+84:
+85:    /**
+86:     * Convenient short-cut for {@code getACL().hasPermission2(a, permission)}
+87:     * @since 2.266
+88:     */
+89:    default boolean hasPermission2(@NonNull Authentication a, @NonNull Permission permission) {
+90:        if (a.equals(ACL.SYSTEM2)) {
+91:            return true;
+92:        }
+93:        return getACL().hasPermission2(a, permission);
+94:    }
+95:
+96:    /**
+97:     * @deprecated use {@link #hasPermission2}
+98:     * @since 2.92
+99:     */
+100:    @Deprecated
+101:    default boolean hasPermission(@NonNull org.acegisecurity.Authentication a, @NonNull Permission permission) {
+102:        return hasPermission2(a.toSpring(), permission);
+103:    }
+104:
+105:}

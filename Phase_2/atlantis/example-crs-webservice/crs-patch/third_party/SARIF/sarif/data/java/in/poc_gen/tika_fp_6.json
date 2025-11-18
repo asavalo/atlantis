@@ -1,0 +1,243 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueCritical: File read/write hook path",
+                    "message": {
+                        "text": "File read/write hook path"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/tika-detectors/tika-detector-siegfried/src/main/java/org/apache/tika/detect/siegfried/SiegfriedDetector.java"
+                                },
+                                "region": {
+                                    "startLine": 132,
+                                    "startColumn": 65
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/tika-harness-one/src/main/java/com/aixcc/tika/harnesses/one/TikaOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 21,
+                                                        "startColumn": 14
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.tika.harnesses.one.TikaOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/tika-app/src/main/java/org/apache/tika/cli/TikaCLI.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 228,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.tika.cli.TikaCLI.main:void(java.lang.String[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/tika-app/src/main/java/org/apache/tika/cli/TikaCLI.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 347,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.tika.cli.TikaCLI.process:void(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/tika-app/src/main/java/org/apache/tika/cli/TikaCLI.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 193,
+                                                        "startColumn": 25
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.tika.cli.TikaCLI.DETECT.OutputType$8.process:void(java.io.InputStream,java.io.OutputStream,org.apache.tika.metadata.Metadata)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/tika-detectors/tika-detector-siegfried/src/main/java/org/apache/tika/detect/siegfried/SiegfriedDetector.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 112,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.tika.detect.siegfried.SiegfriedDetector.detect:org.apache.tika.mime.MediaType(java.io.InputStream,org.apache.tika.metadata.Metadata)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/tika-detectors/tika-detector-siegfried/src/main/java/org/apache/tika/detect/siegfried/SiegfriedDetector.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 132,
+                                                        "startColumn": 65
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.tika.detect.siegfried.SiegfriedDetector.detect:org.apache.tika.mime.MediaType(java.io.InputStream,org.apache.tika.metadata.Metadata)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

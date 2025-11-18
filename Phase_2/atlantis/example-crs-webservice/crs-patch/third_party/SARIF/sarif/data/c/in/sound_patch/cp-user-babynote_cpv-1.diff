@@ -1,0 +1,12 @@
+--- a/mock_vp.c
++++ b/mock_vp.c
+@@ -146,7 +146,8 @@
+   ptr = note_list[note_idx];
+   free(ptr->page);
+   free(ptr);
+-  ptr= 0;
++  ptr = 0;
++  note_list[note_idx] = 0;
+ 
+   printf("done.\n\n");
+ }

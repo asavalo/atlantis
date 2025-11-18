@@ -1,0 +1,43 @@
+# Patch Report
+
+The root cause of the heap buffer overflow is an inconsistent definition of `CHANNEL_MAX_COUNT` used across different parts of the FreeRDP core library. Specifically, the value used for allocating channel buffers in `libfreerdp/core/mcs.c` (controlled by `CHANNEL_MAX_COUNT` during its compilation) could be different from the value used for validating the received channel count in `libfreerdp/core/gcc.c` (controlled by `CHANNEL_MAX_COUNT` during its compilation).
+
+Analysis suggests that `winpr/include/winpr/wtsapi.h` defines `CHANNEL_MAX_COUNT` as 31, while FreeRDP's own core logic seems to intend a limit of 30, as suggested by `libfreerdp/core/client.h`. If allocation uses 30 and validation uses 31, a received `channelCount` of 31 can pass validation and lead to an out-of-bounds access.
+
+The ASan report indicating a 992-byte allocation is consistent with `sizeof(rdpMcsChannel) == 32` bytes and `CHANNEL_MAX_COUNT == 31` being used for allocation in `mcs.c`. The overflow occurring when index `i=31` implies `mcs->channelCount` (INT8) was 32, and this passed the check `if (mcs->channelCount > CMC_check_gcc)` meaning `CMC_check_gcc >= 32`.
+
+To resolve this robustly, we will ensure that FreeRDP's core definition of `CHANNEL_MAX_COUNT` (which is 30, from `libfreerdp/core/client.h`) is consistently used for both channel buffer allocation and validation checks. This ensures Property 1 (Consistent Channel Count Limits) is satisfied.
+
+The patch involves two parts:
+1.  Modify `libfreerdp/core/client.h` to assertively define `CHANNEL_MAX_COUNT` as 30, overriding any prior definitions from other headers (like `winpr/wtsapi.h`).
+2.  Ensure that `libfreerdp/core/mcs.h` (which is included by both `mcs.c` for allocation and `gcc.c` via `gcc.h` for validation) includes this modified `client.h` *after* other headers like `freerdp/types.h` that might pull in conflicting definitions. This will make `CHANNEL_MAX_COUNT` consistently 30.
+
+With this patch:
+-   `mcs_new` in `libfreerdp/core/mcs.c` will allocate `mcs->channels` for 30 `rdpMcsChannel` elements. Assuming `sizeof(rdpMcsChannel) == 32`, this is `30 * 32 = 960` bytes.
+-   `gcc_read_client_network_data` in `libfreerdp/core/gcc.c` will validate `mcs->channelCount` against `CHANNEL_MAX_COUNT = 30`.
+-   If `mcs->channelCount` from the stream is, for example, 31 (INT8), the check `if (31 > 30)` will be true, and the function will return `FALSE`, preventing the overflow. The maximum allowed `mcs->channelCount` will be 30.
+-   The loop `for (UINT32 i = 0; i < mcs->channelCount; i++)` will iterate with `i` from 0 to 29 at most. This accesses `mcs->channels[29]` which is within the bounds of the 30-element array.
+
+The patched files (`libfreerdp/core/client.h` and `libfreerdp/core/mcs.h`) are core library files, not test code. The changes use standard C preprocessor directives and include statements and should not cause compilation issues.
+
+The line numbers in the patch segments are based on the provided information and standard file structures.
+
+**Patch Segment Overlap Summary:**
+The patch consists of two segments:
+1. [PATCH:`libfreerdp/core/client.h`:39-41]
+2. [PATCH:`libfreerdp/core/mcs.h`:4-4]
+These segments target different files, so there is no overlap.
+
+[PATCH:`libfreerdp/core/client.h`:39-41]
+#ifdef CHANNEL_MAX_COUNT
+#undef CHANNEL_MAX_COUNT
+#endif
+#define CHANNEL_MAX_COUNT 30
+[/PATCH:`libfreerdp/core/client.h`:39-41]
+
+[PATCH:`libfreerdp/core/mcs.h`:4-4]
+#include <freerdp/types.h>
+// Ensure FreeRDP's core CHANNEL_MAX_COUNT (30) definition from client.h is authoritative,
+// by including client.h after types.h (which might include winpr/wtsapi.h's version).
+#include <freerdp/client.h>
+[/PATCH:`libfreerdp/core/mcs.h`:4-4]

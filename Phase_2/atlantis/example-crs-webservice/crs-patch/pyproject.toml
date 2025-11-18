@@ -1,0 +1,127 @@
+[project]
+name = "crete"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "aider-chat",
+    "arize-phoenix>=7.12.0",
+    "ast-grep-py>=0.34.4",
+    "cwe",
+    "docker>=7.1.0",
+    "gdown>=5.2.0",
+    "haystack-ai>=2.4.0,<2.6.0",
+    "joblib>=1.4.2",
+    "langchain>=0.3.18",
+    "langchain-community>=0.3.17",
+    "langchain-core>=0.3.34",
+    "langchain-openai>=0.2.14",
+    "langgraph>=0.2.71",
+    "langsmith>=0.3.8",
+    "markdown>=3.7",
+    "openinference-instrumentation-langchain>=0.1.31",
+    "openinference-instrumentation-litellm>=0.1.9",
+    "ordered-set>=4.1.0",
+    "pydantic>=2.8.2",
+    "pygit2>=1.15.1,<1.16.0",
+    "pylspclient",
+    "python-clangd",
+    "python-dotenv>=1.0.1",
+    "python-gdb-static",
+    "python-jdtls",
+    # "rr",
+    "python-ripgrep",
+    "python-ctags",
+    "pyyaml>=6.0.2",
+    "qdrant-haystack>=7.0.0",
+    "rich>=13.7.1",
+    "sweagent",
+    "swe-rex",
+    "unidiff>=0.7.5",
+    "toml>=0.10.2",
+    "tree-sitter-language-pack>=0.6.0",
+    "sarif",
+    "lark>=1.2.2",
+    "global",
+    "fastapi>=0.115.11",
+    "uvicorn>=0.34.0",
+    "libCRS",
+    "p4>=0.1.0",
+    "pytest-rerunfailures>=15.1",
+    "python-crs-architecture",
+]
+
+[project.scripts]
+benchmark = "scripts.benchmark.__main__:run"
+benchmark-report-merge = "scripts.benchmark.__main__:merge"
+benchmark-multiple-init = "scripts.benchmark_multiple.init_runners:main"
+benchmark-multiple-matrix = "scripts.benchmark_multiple.construct_matrix:main"
+benchmark-multiple-collect = "scripts.benchmark_multiple.collect_results:main"
+
+[dependency-groups]
+dev = [
+    "pyright==1.1.397",
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+    "pytest-html>=4.1.1",
+    "pytest-mock>=3.14.0",
+    "pytest-recording>=0.13.2",
+    "pytest-timeout>=2.3.1",
+    "pytest-xdist>=3.6.1",
+    "ruff>=0.9.6",
+    "vcr-langchain",
+    "vcrpy>=5.1.0",
+    "fastapi-code-generator>=0.5.2",
+    "joblib-stubs>=1.5.0.1.20250510",
+    "pytest-pythonhashseed>=1.0.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "packages/claude_code",
+    "packages/cpp_function_call_logging",
+    "packages/crete",
+    "packages/crs_patch",
+    "packages/jvm_method_call_logging",
+    "packages/python_aixcc_challenge",
+    "packages/python_docker",
+    "packages/python_file_system",
+    "packages/python_llm",
+    "packages/python_lsp",
+    "packages/python_oss_fuzz",
+    "packages/python_process",
+    "scripts",
+]
+
+[tool.uv.sources]
+sweagent = { path = "third_party/SWE-agent" }
+swe-rex = { path = "third_party/SWE-ReX" }
+cwe = { path = "third_party/cwe" }
+aider-chat = { path = "third_party/aider" }
+pylspclient = { path = "third_party/pylspclient" }
+sarif = { path = "third_party/SARIF/sarif" }
+libCRS = { path = "third_party/libCRS" }
+python-clangd = { path = "wrappers/clangd" }
+python-jdtls = { path = "wrappers/jdtls" }
+python-gdb-static = { path = "wrappers/gdb_static" }
+# rr = { path = "wrappers/rr" }
+python-ripgrep = { path = "wrappers/ripgrep" }
+python-ctags = { path = "wrappers/ctags" }
+vcr-langchain = { git = "git+ssh://git@github.com/Team-Atlanta/vcr-langchain.git" }
+# Workaround from https://github.com/kevin1024/vcrpy/issues/880
+vcrpy = { git = "git+ssh://git@github.com/Team-Atlanta/vcrpy.git", branch = "team-atlanta-dev", marker = "platform_python_implementation == 'CPython' and python_version >='3.10'" }
+global = { path = "wrappers/global" }
+p4 = { path = "third_party/p4" }
+python-crs-architecture = { path = "wrappers/crs-architecture" }
+
+[tool.pyright]
+exclude = ["**/node_modules", "**/__pycache__", "**/.*", "third_party"]
+reportMissingTypeStubs = false
+typeCheckingMode = "strict"
+
+[tool.ruff]
+extend-exclude = [".*", "third_party"]

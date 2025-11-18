@@ -1,0 +1,22 @@
+FROM cruizba/ubuntu-dind@sha256:3d829640d326a83054e259f99038268700b848602d8bc83956c54716170c87b6
+
+# Disable interactive dialogs during build
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install -y curl git build-essential libssl-dev zlib1g-dev \
+    sqlite3 libsqlite3-dev libffi-dev libbz2-dev libncurses-dev libreadline-dev liblzma-dev \
+    && curl https://pyenv.run | bash
+ENV PATH="/root/.pyenv/bin:/root/.pyenv/shims:$PATH"
+RUN pyenv install 3.10.14 && pyenv global 3.10.14
+
+RUN apt install -y rsync
+
+RUN git config --global user.email "atlanta@team.com"
+RUN git config --global user.name "Team Atlanta"
+
+RUN pip install docker PyYAML loguru
+
+WORKDIR /app
+COPY build.py bin/crs-sarif.py
+COPY llm-poc-gen/run_gdb.sh bin/scripts/run_gdb.sh
+
+CMD ["/bin/sh", "-c", "python /app/bin/crs-sarif.py && sleep infinity"]

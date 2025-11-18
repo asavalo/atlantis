@@ -1,0 +1,25 @@
+include:
+    - model_config.yaml
+  
+router_settings:
+  routing_strategy: usage-based-routing-v2 # simple-shuffle, least-busy, usage-based-routing,latency-based-routing
+  enable_pre_call_checks: true
+  redis_host: os.environ/REDIS_HOST # faster than redis_url
+  redis_port: os.environ/REDIS_PORT
+
+  #provider_budget_config:
+    #anthropic:
+      #budget_limit: os.environ/ANTHROPIC_BUDGET_LIMIT
+      #time_period: 4mo # cannot be >= 11
+
+litellm_settings:
+  request_timeout: os.environ/LITELLM_REQUEST_TIMEOUT # timeout error after seconds
+  cache: false
+  drop_params: true
+  modify_params: true
+  #max_budget: 20000.0 # total max budget in usd
+  num_retries: 0
+
+general_settings:
+  allow_requests_on_db_unavailable: true
+  

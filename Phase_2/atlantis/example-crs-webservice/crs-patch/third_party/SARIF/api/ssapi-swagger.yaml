@@ -1,0 +1,165 @@
+openapi: 3.0.0
+info:
+  title: SARIF System API
+  version: 1.0.0
+paths:
+  /match/pov/:
+    post:
+      summary: Request POV-SARIF match
+      requestBody:
+        description: POVMatchRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/POVMatchRequest'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /match/sarif/:
+    post:
+      summary: Request POV-SARIF match
+      requestBody:
+        description: SARIFMatchRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SARIFMatchRequest'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /match/patch/:
+    post:
+      summary: Request Patch-SARIF match
+      requestBody:
+        description: PatchMatchRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchMatchRequest'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'  
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        fields:
+          type: object
+          additionalProperties:
+            type: string
+        message:
+          type: string
+    POVMatchRequest:
+        required:
+        - pov_id
+        - fuzzer_name
+        - sanitizer
+        - testcase
+        - crash_log
+        type: object
+        properties:
+          pov_id:
+            format: uuid
+            type: string
+          fuzzer_name:
+            maxLength: 4096
+            type: string
+            description: |-
+              Fuzz Tooling fuzzer that exercises this vuln
+  
+              4KiB max size
+          sanitizer:
+            maxLength: 4096
+            type: string
+            description: |-
+              Fuzz Tooling Sanitizer that exercises this vuln
+  
+              4KiB max size
+          testcase:
+            type: string
+            description: |-
+              Base64 encoded vuln trigger
+  
+              2MiB max size before Base64 encoding
+            format: base64
+          crash_log:
+            type: string
+            description: |-
+              Crash log from the POV
+  
+              2MiB max size
+    SARIFMatchRequest:
+      properties:
+        metadata:
+          description:
+            String to string map containing data that should be attached
+            to outputs like log messages and OpenTelemetry trace attributes for traceability
+          type: object
+        sarif:
+          description: SARIF Report compliant with provided schema
+          type: object
+        sarif_id:
+          format: uuid
+          type: string
+      required:
+        - metadata
+        - sarif
+        - sarif_id
+      type: object
+    PatchMatchRequest:
+      properties:
+        pov_id:
+          description: patched pov id
+          format: uuid
+          type: string
+        patch_id:
+          description: patch id
+          format: uuid
+          type: string
+        diff:
+          description: patch diff
+          type: string
+      required:
+        - pov_id
+        - patch_id
+        - diff
+      type: object

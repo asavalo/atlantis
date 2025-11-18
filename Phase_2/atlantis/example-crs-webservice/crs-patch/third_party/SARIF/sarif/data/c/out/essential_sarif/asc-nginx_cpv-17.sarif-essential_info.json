@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-use-after-free",
+    "message": "AddressSanitizer: heap-use-after-free /src/nginx/src/mail/ngx_mail_smtp_handler.c:556:12 in ngx_mail_smtp_auth_state",
+    "loc_file_full_name": "/src/nginx/src/mail/ngx_mail_smtp_handler.c",
+    "loc_file_short_name": "ngx_mail_smtp_handler.c",
+    "loc_line": 556,
+    "loc_function_full_name": "ngx_mail_smtp_auth_state",
+    "loc_function_short_name": "ngx_mail_smtp_auth_state"
+}

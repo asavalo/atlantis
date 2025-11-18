@@ -1,0 +1,8 @@
+Your analysis target project is ^PROJ_NAME^.
+
+A manual analysis revealed that a brief description and buggy location of the issue as below.
+
+^SARIF_REPORT^
+
+From now on, you will be asked to conduct step by step analysis to patch the program.
+If you are understood, reply with "Understood".

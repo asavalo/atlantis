@@ -1,0 +1,134 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Say \"Hello, world!\"","role":"user"}],"model":"gpt-4o","max_tokens":10,"n":1,"temperature":1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '121'
+      content-type:
+      - application/json
+      host:
+      - llm-base
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.6
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BD3iWubQcvR9j6ugnJOjqTDjwijd1","created":1742452252,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_6ec83003ad","choices":[{"finish_reason":"stop","index":0,"message":{"content":"Hello,
+        world!","role":"assistant","tool_calls":null,"function_call":null}}],"usage":{"completion_tokens":5,"prompt_tokens":13,"total_tokens":18,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '588'
+      content-type:
+      - application/json
+      date:
+      - Thu, 20 Mar 2025 06:30:52 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 923329ce38a839b2-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Thu, 20 Mar 2025 06:30:52 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '334'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-set-cookie:
+      - __cf_bm=GwF50_lEzhpdLzcwT7Y1JMvB8rR7P7Zf0wqH103zeLc-1742452252-1.0.1.1-MQShD4zkZ4Vn3X5uefX10YFC20RaMpuSoNkg7DoigzCAWAIVtZaAwPY0Ftq6XZgBdS38oUOwUuKBrbK8NDQjMUcmD8YHDzJitikJvd6Dpvc;
+        path=/; expires=Thu, 20-Mar-25 07:00:52 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None, _cfuvid=0HJW1bfEynuasZ765O1B5ilVpvHjlWmyZbsUrRYIxXA-1742452252327-0.0.1.1-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-ratelimit-limit-requests:
+      - '50000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '49999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149999993'
+      llm_provider-x-ratelimit-reset-requests:
+      - 1ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_83d29351e003193f474fc1e7467bafa9
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 5c031cbe4eb6c353318ca276513fe2e6
+      x-litellm-call-id:
+      - 5284e537-ba07-4842-853b-23426ad1f5e6
+      x-litellm-key-rpm-limit:
+      - None
+      x-litellm-key-tpm-limit:
+      - None
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-response-cost:
+      - '8.25e-05'
+      x-litellm-version:
+      - 1.56.8
+      x-ratelimit-limit-requests:
+      - '50000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '49999'
+      x-ratelimit-remaining-tokens:
+      - '149999993'
+    status:
+      code: 200
+      message: OK
+version: 1

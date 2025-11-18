@@ -1,0 +1,1111 @@
+interactions:
+- request:
+    body: '{"blob": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "harness_name": "fuzz_process_input_header"}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=fuzz_process_input_header\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+
+    TESTCASE=/testcase\r\n+ '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+
+    RUN_FUZZER_MODE=interactive\r\n+ export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+
+    export SKIP_SEED_CORPUS=1\r\n+ SKIP_SEED_CORPUS=1\r\n+ run_fuzzer fuzz_process_input_header
+    -runs=100 /testcase\r\nvm.mmap_rnd_bits = 28\r\n/out/fuzz_process_input_header
+    -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase < /dev/null\r\nINFO: Running
+    with entropic power schedule (0xFF, 100).\r\nINFO: Seed: 2982238526\r\nINFO: Loaded
+    1 modules   (12 inline 8-bit counters): 12 [0x000000000000, 0x000000000000), \r\nINFO:
+    Loaded 1 PC tables (12 PCs): 12 [0x000000000000,0x000000000000), \r\n/out/fuzz_process_input_header:
+    Running 1 inputs 100 time(s) each.\r\nRunning: /testcase\r\n=================================================================\r\n==14==ERROR:
+    AddressSanitizer: stack-buffer-overflow on address 0x000000000000 at pc 0x000000000000
+    bp 0x000000000000 sp 0x000000000000\r\nWRITE of size 256 at 0x000000000000 thread
+    T0\r\nSCARINESS: 60 (multi-byte-write-stack-buffer-overflow)\r\n    #0 0x000000000000
+    in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3\r\n
+    \   #1 0x000000000000 in process_input_header /src/mock-c/mock.c:11:7\r\n    #2
+    0x000000000000 in LLVMFuzzerTestOneInput /src/fuzz/fuzz_process_input_header.c:4:3\r\n
+    \   #3 0x000000000000 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*,
+    unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n
+    \   #4 0x000000000000 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+    long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #5
+    0x000000000000 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*,
+    unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n
+    \   #6 0x000000000000 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n
+    \   #7 0x000000000000 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    (BuildId: 5792732f783158c66fb4f3756458ca24e46e827d)\r\n    #8 0x000000000000 in
+    _start (/out/fuzz_process_input_header+0x3d73d)\r\n\r\nDEDUP_TOKEN: __asan_memcpy--process_input_header--LLVMFuzzerTestOneInput\r\nAddress
+    0x000000000000 is located in stack of thread T0 at offset 96 in frame\r\n    #0
+    0x000000000000 in process_input_header /src/mock-c/mock.c:8\r\n\r\nDEDUP_TOKEN:
+    process_input_header\r\n  This frame has 1 object(s):\r\n    [32, 96) 'buf' (line
+    9) <== Memory access at offset 96 overflows this variable\r\nHINT: this may be
+    a false positive if your program uses some custom stack unwind mechanism, swapcontext
+    or vfork\r\n      (longjmp and C++ exceptions *are* supported)\r\nSUMMARY: AddressSanitizer:
+    stack-buffer-overflow /src/mock-c/mock.c:11:7 in process_input_header\r\nShadow
+    bytes around the buggy address:\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00
+    00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00
+    00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n  0x000000000000:
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n=>0x000000000000: f1 f1 f1
+    f1 00 00 00 00 00 00 00 00[f3]f3 f3 f3\r\n  0x000000000000: 00 00 00 00 00 00
+    00 00 00 00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00
+    00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00
+    00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\nShadow
+    byte legend (one shadow byte represents 8 application bytes):\r\n  Addressable:
+    \          00\r\n  Partially addressable: 01 02 03 04 05 06 07 \r\n  Heap left
+    redzone:       fa\r\n  Freed heap region:       fd\r\n  Stack left redzone:      f1\r\n
+    \ Stack mid redzone:       f2\r\n  Stack right redzone:     f3\r\n  Stack after
+    return:      f5\r\n  Stack use after scope:   f8\r\n  Global redzone:          f9\r\n
+    \ Global init order:       f6\r\n  Poisoned by user:        f7\r\n  Container
+    overflow:      fc\r\n  Array cookie:            ac\r\n  Intra object redzone:
+    \   bb\r\n  ASan internal:           fe\r\n  Left alloca redzone:     ca\r\n  Right
+    alloca redzone:    cb\r\n==14==ABORTING\r\nsubprocess command returned a non-zero
+    exit status: 1\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -i -e HELPER=True -e ARCHITECTURE=x86_64 -v $PACKAGE_DIR/python_oss_fuzz/.oss_fuzz/build/out/aixcc/c/mock-c:/out
+    -v $TMPFILE/testcase -t ghcr.io/aixcc-finals/base-runner:v1.2.1 reproduce fuzz_process_input_header
+    -runs=100.
+
+    '
+  - false
+- request:
+    body: '{"messages":[{"content":"Your task is to analyze the bug and provide a
+      patch plan to fix the bug in the codebase.\nI will give you the crash log and
+      additional information to help you analyze the bug.\n\nNote that the location
+      of the bug is DIFFERENT from the crash location.\nThe crash location is where
+      the program crashes, but the bug location is where the bug is introduced.\n\nYou''ll
+      have to get enough code context to understand the bug.\nFully utilize the given
+      code inspection tools to find the bug location.\n","role":"user"},{"content":"Generate
+      a bug analysis report.\nThe report should contain the bug location and the patch
+      plan to fix the bug.\n- What is the root cause of the bug?\n- What part of the
+      codebase could be responsible for the bug?\n- What is the correct patch to fix
+      the bug?\n- What is the side effect of the patch?\n\n## FORMAT\n\nFor each bug
+      location, you should provide the file path, function name in below format:\n**File
+      Path**: `path/to/file.c`\n**Function Name**: `function_name`\n\n## Rules\n\n-
+      Fully utilize the given code inspection tools to get the code context.\n- Don''t
+      assume any functions or macros that you did not see in the code. Call the tools
+      to make sure.\n- Don''t ask to get confirmation. Proceed with your best guess.\n-
+      Don''t pinpoint bug location in the fuzz harness or test cases.\n\n\n\n## Crash
+      report\n\n<crash_log>\n==ERROR: AddressSanitizer: stack-buffer-overflow on address
+      0x000000000000 at pc 0x000000000000 bp 0x000000000000 sp 0x000000000000\r\nWRITE
+      of size 256 at 0x000000000000 thread T0\r\nSCARINESS: 60 (multi-byte-write-stack-buffer-overflow)\r\n    #0
+      0x000000000000 in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3\r\n    #1
+      0x000000000000 in process_input_header /src/mock-c/mock.c:11:7\r\n    #2 0x000000000000
+      in LLVMFuzzerTestOneInput /src/fuzz/fuzz_process_input_header.c:4:3\r\n    #3
+      0x000000000000 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #4
+      0x000000000000 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #5
+      0x000000000000 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char
+      const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #6
+      0x000000000000 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n    #7
+      0x000000000000 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+      (BuildId: 5792732f783158c66fb4f3756458ca24e46e827d)\r\n    #8 0x000000000000
+      in _start (/out/fuzz_process_input_header+0x3d73d)\r\n\r\nDEDUP_TOKEN: __asan_memcpy--process_input_header--LLVMFuzzerTestOneInput\r\nAddress
+      0x000000000000 is located in stack of thread T0 at offset 96 in frame\r\n    #0
+      0x000000000000 in process_input_header /src/mock-c/mock.c:8\r\n\r\nDEDUP_TOKEN:
+      process_input_header\r\n  This frame has 1 object(s):\r\n    [32, 96) ''buf''
+      (line 9) <== Memory access at offset 96 overflows this variable\r\nHINT: this
+      may be a false positive if your program uses some custom stack unwind mechanism,
+      swapcontext or vfork\r\n      (longjmp and C++ exceptions *are* supported)\r\nSUMMARY:
+      AddressSanitizer: stack-buffer-overflow /src/mock-c/mock.c:11:7 in process_input_header\r\nShadow
+      bytes around the buggy address:\r\n  0x000000000000: 00 00 00 00 00 00 00 00
+      00 00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00
+      00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+      00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n  0x000000000000:
+      00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n=>0x000000000000: f1 f1 f1
+      f1 00 00 00 00 00 00 00 00[f3]f3 f3 f3\r\n  0x000000000000: 00 00 00 00 00 00
+      00 00 00 00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00
+      00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00
+      00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+      00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\nShadow
+      byte legend (one shadow byte represents 8 application bytes):\r\n  Addressable:           00\r\n  Partially
+      addressable: 01 02 03 04 05 06 07 \r\n  Heap left redzone:       fa\r\n  Freed
+      heap region:       fd\r\n  Stack left redzone:      f1\r\n  Stack mid redzone:       f2\r\n  Stack
+      right redzone:     f3\r\n  Stack after return:      f5\r\n  Stack use after
+      scope:   f8\r\n  Global redzone:          f9\r\n  Global init order:       f6\r\n  Poisoned
+      by user:        f7\r\n  Container overflow:      fc\r\n  Array cookie:            ac\r\n  Intra
+      object redzone:    bb\r\n  ASan internal:           fe\r\n  Left alloca redzone:     ca\r\n  Right
+      alloca redzone:    cb\r\n==14==ABORTING\r\nsubprocess command returned a non-zero
+      exit status: 1\nINFO:__main__:Running: docker run --privileged --shm-size=2g
+      --platform linux/amd64 --rm -i -e HELPER=True -e ARCHITECTURE=x86_64 -v $PACKAGE_DIR/python_oss_fuzz/.oss_fuzz/build/out/aixcc/c/mock-c:/out
+      -v $TMPFILE/testcase -t ghcr.io/aixcc-finals/base-runner:v1.2.1 reproduce fuzz_process_input_header
+      -runs=100.\n\n</crash_log>","role":"user"}],"model":"o4-mini","temperature":1.0,"tools":[{"type":"function","function":{"name":"search_symbol","description":"Search
+      for a symbol in the codebase.","parameters":{"properties":{"symbol_name":{"description":"The
+      symbol name to search for.\nThe query string should be a fixed string, not a
+      regex.\nThe symbol name can be a function, variable, struct, enum, etc.\nUse
+      a concise symbol name. Don''t add any additional information like the parameter
+      types, return type, or keyword like \"class\".\n","type":"string"},"file_or_directory_path":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"The
+      file path or directory path to search for the symbol.\nIf you specify the directory
+      path, the search will be performed in the directory, recursively.\nIf not provided,
+      the search will be performed in the entire codebase.\n"}},"required":["symbol_name","file_or_directory_path"],"type":"object"}}},{"type":"function","function":{"name":"search_string","description":"Search
+      for a string in the codebase.\n\n    Usage:\n    - Use this tool to search for
+      a string in the codebase.\n    - If you want to search for a string in a specific
+      directory, provide the directory path.\n    - If you want to search for a string
+      in the entire codebase, do not provide the directory path.\n","parameters":{"properties":{"string":{"description":"The
+      string to search for. The string should be a fixed string, not a regex.","type":"string"},"file_or_directory_path":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"The
+      file path or directory path to search for the string.\nIf you specify the directory
+      path, the search will be performed in the directory, recursively.\nIf not provided,
+      the search will be performed in the entire codebase.\n"}},"required":["string","file_or_directory_path"],"type":"object"}}},{"type":"function","function":{"name":"view_file","description":"Reads
+      a file from the given file path.\n\n    Usage:\n    - By default, it reads up
+      to 1000 lines starting from the beginning of the file\n    - You can optionally
+      specify a line offset and limit if the file is too large to read or you want
+      to read a specific part of the file\n    - The file content will be returned
+      with line numbers\n    ","parameters":{"properties":{"file_path":{"description":"The
+      file path to read. It could be an absolute path, a relative path, or a file
+      name but be specific as possible","type":"string"},"offset":{"anyOf":[{"type":"integer"},{"type":"null"}],"description":"The
+      start line number to read from. It''s 1-based index. Only provide if the file
+      is too large."},"limit":{"anyOf":[{"type":"integer"},{"type":"null"}],"description":"The
+      number of lines to read. Only provide if the file is too large."}},"required":["file_path","offset","limit"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '8072'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.10
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-Bk3zMg7WcKMkHRYivrsQn6gavhflw","created":1750318120,"model":"o4-mini-2025-04-16","object":"chat.completion","system_fingerprint":null,"choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"symbol_name\":\"process_input_header\",\"file_or_directory_path\":\"\"}","name":"search_symbol"},"id":"call_AdphVS8YJyWPwLcDnuPxC90m","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":122,"prompt_tokens":2280,"total_tokens":2402,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":64,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '776'
+      content-type:
+      - application/json
+      date:
+      - Thu, 19 Jun 2025 07:28:42 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 95214f9a0b9be6ec-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Thu, 19 Jun 2025 07:28:42 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '2284'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '2287'
+      llm_provider-x-ratelimit-limit-requests:
+      - '30000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '29999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149998726'
+      llm_provider-x-ratelimit-reset-requests:
+      - 2ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_8677e3ec921e4206dd82a73e99371f9e
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - cbd98cf7b5487b82f5a8e4e58a523ee6
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - b03e68cd-3907-459f-922a-19132d74688f
+      x-litellm-key-spend:
+      - '1054.9809210499957'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - o4-mini
+      x-litellm-model-id:
+      - fc4ae8a4d06f403bb6c938d8ef911178b45835608aea11d0403925634b76e19e
+      x-litellm-overhead-duration-ms:
+      - '2.433'
+      x-litellm-response-cost:
+      - '0.0030448000000000003'
+      x-litellm-response-duration-ms:
+      - '2371.681'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '30000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '29999'
+      x-ratelimit-remaining-tokens:
+      - '149998726'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Your task is to analyze the bug and provide a
+      patch plan to fix the bug in the codebase.\nI will give you the crash log and
+      additional information to help you analyze the bug.\n\nNote that the location
+      of the bug is DIFFERENT from the crash location.\nThe crash location is where
+      the program crashes, but the bug location is where the bug is introduced.\n\nYou''ll
+      have to get enough code context to understand the bug.\nFully utilize the given
+      code inspection tools to find the bug location.\n","role":"user"},{"content":"Generate
+      a bug analysis report.\nThe report should contain the bug location and the patch
+      plan to fix the bug.\n- What is the root cause of the bug?\n- What part of the
+      codebase could be responsible for the bug?\n- What is the correct patch to fix
+      the bug?\n- What is the side effect of the patch?\n\n## FORMAT\n\nFor each bug
+      location, you should provide the file path, function name in below format:\n**File
+      Path**: `path/to/file.c`\n**Function Name**: `function_name`\n\n## Rules\n\n-
+      Fully utilize the given code inspection tools to get the code context.\n- Don''t
+      assume any functions or macros that you did not see in the code. Call the tools
+      to make sure.\n- Don''t ask to get confirmation. Proceed with your best guess.\n-
+      Don''t pinpoint bug location in the fuzz harness or test cases.\n\n\n\n## Crash
+      report\n\n<crash_log>\n==ERROR: AddressSanitizer: stack-buffer-overflow on address
+      0x000000000000 at pc 0x000000000000 bp 0x000000000000 sp 0x000000000000\r\nWRITE
+      of size 256 at 0x000000000000 thread T0\r\nSCARINESS: 60 (multi-byte-write-stack-buffer-overflow)\r\n    #0
+      0x000000000000 in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3\r\n    #1
+      0x000000000000 in process_input_header /src/mock-c/mock.c:11:7\r\n    #2 0x000000000000
+      in LLVMFuzzerTestOneInput /src/fuzz/fuzz_process_input_header.c:4:3\r\n    #3
+      0x000000000000 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #4
+      0x000000000000 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #5
+      0x000000000000 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char
+      const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #6
+      0x000000000000 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n    #7
+      0x000000000000 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+      (BuildId: 5792732f783158c66fb4f3756458ca24e46e827d)\r\n    #8 0x000000000000
+      in _start (/out/fuzz_process_input_header+0x3d73d)\r\n\r\nDEDUP_TOKEN: __asan_memcpy--process_input_header--LLVMFuzzerTestOneInput\r\nAddress
+      0x000000000000 is located in stack of thread T0 at offset 96 in frame\r\n    #0
+      0x000000000000 in process_input_header /src/mock-c/mock.c:8\r\n\r\nDEDUP_TOKEN:
+      process_input_header\r\n  This frame has 1 object(s):\r\n    [32, 96) ''buf''
+      (line 9) <== Memory access at offset 96 overflows this variable\r\nHINT: this
+      may be a false positive if your program uses some custom stack unwind mechanism,
+      swapcontext or vfork\r\n      (longjmp and C++ exceptions *are* supported)\r\nSUMMARY:
+      AddressSanitizer: stack-buffer-overflow /src/mock-c/mock.c:11:7 in process_input_header\r\nShadow
+      bytes around the buggy address:\r\n  0x000000000000: 00 00 00 00 00 00 00 00
+      00 00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00
+      00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+      00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n  0x000000000000:
+      00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n=>0x000000000000: f1 f1 f1
+      f1 00 00 00 00 00 00 00 00[f3]f3 f3 f3\r\n  0x000000000000: 00 00 00 00 00 00
+      00 00 00 00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00
+      00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00
+      00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+      00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\nShadow
+      byte legend (one shadow byte represents 8 application bytes):\r\n  Addressable:           00\r\n  Partially
+      addressable: 01 02 03 04 05 06 07 \r\n  Heap left redzone:       fa\r\n  Freed
+      heap region:       fd\r\n  Stack left redzone:      f1\r\n  Stack mid redzone:       f2\r\n  Stack
+      right redzone:     f3\r\n  Stack after return:      f5\r\n  Stack use after
+      scope:   f8\r\n  Global redzone:          f9\r\n  Global init order:       f6\r\n  Poisoned
+      by user:        f7\r\n  Container overflow:      fc\r\n  Array cookie:            ac\r\n  Intra
+      object redzone:    bb\r\n  ASan internal:           fe\r\n  Left alloca redzone:     ca\r\n  Right
+      alloca redzone:    cb\r\n==14==ABORTING\r\nsubprocess command returned a non-zero
+      exit status: 1\nINFO:__main__:Running: docker run --privileged --shm-size=2g
+      --platform linux/amd64 --rm -i -e HELPER=True -e ARCHITECTURE=x86_64 -v $PACKAGE_DIR/python_oss_fuzz/.oss_fuzz/build/out/aixcc/c/mock-c:/out
+      -v $TMPFILE/testcase -t ghcr.io/aixcc-finals/base-runner:v1.2.1 reproduce fuzz_process_input_header
+      -runs=100.\n\n</crash_log>","role":"user"},{"content":"","role":"assistant","tool_calls":[{"type":"function","id":"call_AdphVS8YJyWPwLcDnuPxC90m","function":{"name":"search_symbol","arguments":"{\"file_or_directory_path\":
+      \"\", \"symbol_name\": \"process_input_header\"}"}}]},{"content":"     8: void
+      process_input_header(const uint8_t *data, size_t size) {\n     9:   char buf[0x40];\n    10:   if
+      (size > 0 && data[0] == ''A'')\n    11:       memcpy(buf, data, size);\n    12:
+      }","role":"tool","tool_call_id":"call_AdphVS8YJyWPwLcDnuPxC90m"}],"model":"o4-mini","temperature":1.0,"tools":[{"type":"function","function":{"name":"search_symbol","description":"Search
+      for a symbol in the codebase.","parameters":{"properties":{"symbol_name":{"description":"The
+      symbol name to search for.\nThe query string should be a fixed string, not a
+      regex.\nThe symbol name can be a function, variable, struct, enum, etc.\nUse
+      a concise symbol name. Don''t add any additional information like the parameter
+      types, return type, or keyword like \"class\".\n","type":"string"},"file_or_directory_path":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"The
+      file path or directory path to search for the symbol.\nIf you specify the directory
+      path, the search will be performed in the directory, recursively.\nIf not provided,
+      the search will be performed in the entire codebase.\n"}},"required":["symbol_name","file_or_directory_path"],"type":"object"}}},{"type":"function","function":{"name":"search_string","description":"Search
+      for a string in the codebase.\n\n    Usage:\n    - Use this tool to search for
+      a string in the codebase.\n    - If you want to search for a string in a specific
+      directory, provide the directory path.\n    - If you want to search for a string
+      in the entire codebase, do not provide the directory path.\n","parameters":{"properties":{"string":{"description":"The
+      string to search for. The string should be a fixed string, not a regex.","type":"string"},"file_or_directory_path":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"The
+      file path or directory path to search for the string.\nIf you specify the directory
+      path, the search will be performed in the directory, recursively.\nIf not provided,
+      the search will be performed in the entire codebase.\n"}},"required":["string","file_or_directory_path"],"type":"object"}}},{"type":"function","function":{"name":"view_file","description":"Reads
+      a file from the given file path.\n\n    Usage:\n    - By default, it reads up
+      to 1000 lines starting from the beginning of the file\n    - You can optionally
+      specify a line offset and limit if the file is too large to read or you want
+      to read a specific part of the file\n    - The file content will be returned
+      with line numbers\n    ","parameters":{"properties":{"file_path":{"description":"The
+      file path to read. It could be an absolute path, a relative path, or a file
+      name but be specific as possible","type":"string"},"offset":{"anyOf":[{"type":"integer"},{"type":"null"}],"description":"The
+      start line number to read from. It''s 1-based index. Only provide if the file
+      is too large."},"limit":{"anyOf":[{"type":"integer"},{"type":"null"}],"description":"The
+      number of lines to read. Only provide if the file is too large."}},"required":["file_path","offset","limit"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '8572'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.10
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-Bk3zPKR0XJIHCVvWDXcTwVqHTg3wy","created":1750318123,"model":"o4-mini-2025-04-16","object":"chat.completion","system_fingerprint":null,"choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"file_path\":\"mock-c/mock.c\",\"offset\":1,\"limit\":200}","name":"view_file"},"id":"call_zrFPsxlHMGSKSoDplCdNItva","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":291,"prompt_tokens":2385,"total_tokens":2676,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":256,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":2176}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '762'
+      content-type:
+      - application/json
+      date:
+      - Thu, 19 Jun 2025 07:28:48 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 95214fb1287ede83-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Thu, 19 Jun 2025 07:28:48 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '4648'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '4655'
+      llm_provider-x-ratelimit-limit-requests:
+      - '30000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '29999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149998677'
+      llm_provider-x-ratelimit-reset-requests:
+      - 2ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_632163a6630f7db1f15c8c81e0786ab2
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 62a88ef49903da63e7da73ff05c8c1bd
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - a6ebe372-f9b1-41c4-931f-52871ff2a022
+      x-litellm-key-spend:
+      - '1054.9839658499957'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - o4-mini
+      x-litellm-model-id:
+      - fc4ae8a4d06f403bb6c938d8ef911178b45835608aea11d0403925634b76e19e
+      x-litellm-overhead-duration-ms:
+      - '4.476'
+      x-litellm-response-cost:
+      - '0.0021087000000000002'
+      x-litellm-response-duration-ms:
+      - '4781.95'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '30000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '29999'
+      x-ratelimit-remaining-tokens:
+      - '149998677'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Your task is to analyze the bug and provide a
+      patch plan to fix the bug in the codebase.\nI will give you the crash log and
+      additional information to help you analyze the bug.\n\nNote that the location
+      of the bug is DIFFERENT from the crash location.\nThe crash location is where
+      the program crashes, but the bug location is where the bug is introduced.\n\nYou''ll
+      have to get enough code context to understand the bug.\nFully utilize the given
+      code inspection tools to find the bug location.\n","role":"user"},{"content":"Generate
+      a bug analysis report.\nThe report should contain the bug location and the patch
+      plan to fix the bug.\n- What is the root cause of the bug?\n- What part of the
+      codebase could be responsible for the bug?\n- What is the correct patch to fix
+      the bug?\n- What is the side effect of the patch?\n\n## FORMAT\n\nFor each bug
+      location, you should provide the file path, function name in below format:\n**File
+      Path**: `path/to/file.c`\n**Function Name**: `function_name`\n\n## Rules\n\n-
+      Fully utilize the given code inspection tools to get the code context.\n- Don''t
+      assume any functions or macros that you did not see in the code. Call the tools
+      to make sure.\n- Don''t ask to get confirmation. Proceed with your best guess.\n-
+      Don''t pinpoint bug location in the fuzz harness or test cases.\n\n\n\n## Crash
+      report\n\n<crash_log>\n==ERROR: AddressSanitizer: stack-buffer-overflow on address
+      0x000000000000 at pc 0x000000000000 bp 0x000000000000 sp 0x000000000000\r\nWRITE
+      of size 256 at 0x000000000000 thread T0\r\nSCARINESS: 60 (multi-byte-write-stack-buffer-overflow)\r\n    #0
+      0x000000000000 in __asan_memcpy /src/llvm-project/compiler-rt/lib/asan/asan_interceptors_memintrinsics.cpp:63:3\r\n    #1
+      0x000000000000 in process_input_header /src/mock-c/mock.c:11:7\r\n    #2 0x000000000000
+      in LLVMFuzzerTestOneInput /src/fuzz/fuzz_process_input_header.c:4:3\r\n    #3
+      0x000000000000 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #4
+      0x000000000000 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #5
+      0x000000000000 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char
+      const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #6
+      0x000000000000 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n    #7
+      0x000000000000 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+      (BuildId: 5792732f783158c66fb4f3756458ca24e46e827d)\r\n    #8 0x000000000000
+      in _start (/out/fuzz_process_input_header+0x3d73d)\r\n\r\nDEDUP_TOKEN: __asan_memcpy--process_input_header--LLVMFuzzerTestOneInput\r\nAddress
+      0x000000000000 is located in stack of thread T0 at offset 96 in frame\r\n    #0
+      0x000000000000 in process_input_header /src/mock-c/mock.c:8\r\n\r\nDEDUP_TOKEN:
+      process_input_header\r\n  This frame has 1 object(s):\r\n    [32, 96) ''buf''
+      (line 9) <== Memory access at offset 96 overflows this variable\r\nHINT: this
+      may be a false positive if your program uses some custom stack unwind mechanism,
+      swapcontext or vfork\r\n      (longjmp and C++ exceptions *are* supported)\r\nSUMMARY:
+      AddressSanitizer: stack-buffer-overflow /src/mock-c/mock.c:11:7 in process_input_header\r\nShadow
+      bytes around the buggy address:\r\n  0x000000000000: 00 00 00 00 00 00 00 00
+      00 00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00
+      00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+      00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n  0x000000000000:
+      00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n=>0x000000000000: f1 f1 f1
+      f1 00 00 00 00 00 00 00 00[f3]f3 f3 f3\r\n  0x000000000000: 00 00 00 00 00 00
+      00 00 00 00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00
+      00 00 00 00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00
+      00 00 00 00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+      00\r\n  0x000000000000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\nShadow
+      byte legend (one shadow byte represents 8 application bytes):\r\n  Addressable:           00\r\n  Partially
+      addressable: 01 02 03 04 05 06 07 \r\n  Heap left redzone:       fa\r\n  Freed
+      heap region:       fd\r\n  Stack left redzone:      f1\r\n  Stack mid redzone:       f2\r\n  Stack
+      right redzone:     f3\r\n  Stack after return:      f5\r\n  Stack use after
+      scope:   f8\r\n  Global redzone:          f9\r\n  Global init order:       f6\r\n  Poisoned
+      by user:        f7\r\n  Container overflow:      fc\r\n  Array cookie:            ac\r\n  Intra
+      object redzone:    bb\r\n  ASan internal:           fe\r\n  Left alloca redzone:     ca\r\n  Right
+      alloca redzone:    cb\r\n==14==ABORTING\r\nsubprocess command returned a non-zero
+      exit status: 1\nINFO:__main__:Running: docker run --privileged --shm-size=2g
+      --platform linux/amd64 --rm -i -e HELPER=True -e ARCHITECTURE=x86_64 -v $PACKAGE_DIR/python_oss_fuzz/.oss_fuzz/build/out/aixcc/c/mock-c:/out
+      -v $TMPFILE/testcase -t ghcr.io/aixcc-finals/base-runner:v1.2.1 reproduce fuzz_process_input_header
+      -runs=100.\n\n</crash_log>","role":"user"},{"content":"","role":"assistant","tool_calls":[{"type":"function","id":"call_AdphVS8YJyWPwLcDnuPxC90m","function":{"name":"search_symbol","arguments":"{\"file_or_directory_path\":
+      \"\", \"symbol_name\": \"process_input_header\"}"}}]},{"content":"     8: void
+      process_input_header(const uint8_t *data, size_t size) {\n     9:   char buf[0x40];\n    10:   if
+      (size > 0 && data[0] == ''A'')\n    11:       memcpy(buf, data, size);\n    12:
+      }","role":"tool","tool_call_id":"call_AdphVS8YJyWPwLcDnuPxC90m"},{"content":"","role":"assistant","tool_calls":[{"type":"function","id":"call_zrFPsxlHMGSKSoDplCdNItva","function":{"name":"view_file","arguments":"{\"file_path\":
+      \"mock-c/mock.c\", \"limit\": 200, \"offset\": 1}"}}]},{"content":"     1: #include
+      \"mock.h\"\n     2: #include <stdlib.h>\n     3: #include <string.h>\n     4:
+      \n     5: // Without this, target_1 and target_2 will be optimized as NOP functions.\n     6:
+      #pragma clang optimize off\n     7: \n     8: void process_input_header(const
+      uint8_t *data, size_t size) {\n     9:   char buf[0x40];\n    10:   if (size
+      > 0 && data[0] == ''A'')\n    11:       memcpy(buf, data, size);\n    12: }\n    13:
+      \n    14: void parse_buffer_section(const uint8_t *data, size_t size) {\n    15:   if
+      (size < 0x8 || size > 0x100)\n    16:     return;\n    17:   uint32_t buf_size
+      = ((uint32_t *)data)[0];\n    18:   uint32_t idx = ((uint32_t *)data)[1];\n    19:   if
+      (buf_size + 8 != size)\n    20:     return;\n    21:   uint8_t *buf = (uint8_t
+      *)malloc(buf_size);\n    22:   memcpy(&buf[idx], &data[8],  buf_size);\n    23:
+      }\n    24: \n    25: #pragma clang optimize on","role":"tool","tool_call_id":"call_zrFPsxlHMGSKSoDplCdNItva"}],"model":"o4-mini","temperature":1.0,"tools":[{"type":"function","function":{"name":"search_symbol","description":"Search
+      for a symbol in the codebase.","parameters":{"properties":{"symbol_name":{"description":"The
+      symbol name to search for.\nThe query string should be a fixed string, not a
+      regex.\nThe symbol name can be a function, variable, struct, enum, etc.\nUse
+      a concise symbol name. Don''t add any additional information like the parameter
+      types, return type, or keyword like \"class\".\n","type":"string"},"file_or_directory_path":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"The
+      file path or directory path to search for the symbol.\nIf you specify the directory
+      path, the search will be performed in the directory, recursively.\nIf not provided,
+      the search will be performed in the entire codebase.\n"}},"required":["symbol_name","file_or_directory_path"],"type":"object"}}},{"type":"function","function":{"name":"search_string","description":"Search
+      for a string in the codebase.\n\n    Usage:\n    - Use this tool to search for
+      a string in the codebase.\n    - If you want to search for a string in a specific
+      directory, provide the directory path.\n    - If you want to search for a string
+      in the entire codebase, do not provide the directory path.\n","parameters":{"properties":{"string":{"description":"The
+      string to search for. The string should be a fixed string, not a regex.","type":"string"},"file_or_directory_path":{"anyOf":[{"type":"string"},{"type":"null"}],"description":"The
+      file path or directory path to search for the string.\nIf you specify the directory
+      path, the search will be performed in the directory, recursively.\nIf not provided,
+      the search will be performed in the entire codebase.\n"}},"required":["string","file_or_directory_path"],"type":"object"}}},{"type":"function","function":{"name":"view_file","description":"Reads
+      a file from the given file path.\n\n    Usage:\n    - By default, it reads up
+      to 1000 lines starting from the beginning of the file\n    - You can optionally
+      specify a line offset and limit if the file is too large to read or you want
+      to read a specific part of the file\n    - The file content will be returned
+      with line numbers\n    ","parameters":{"properties":{"file_path":{"description":"The
+      file path to read. It could be an absolute path, a relative path, or a file
+      name but be specific as possible","type":"string"},"offset":{"anyOf":[{"type":"integer"},{"type":"null"}],"description":"The
+      start line number to read from. It''s 1-based index. Only provide if the file
+      is too large."},"limit":{"anyOf":[{"type":"integer"},{"type":"null"}],"description":"The
+      number of lines to read. Only provide if the file is too large."}},"required":["file_path","offset","limit"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '9751'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.10
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: "{\"id\":\"chatcmpl-Bk3zUMNSnHnxbqWf00VShjLiC9mkZ\",\"created\":1750318128,\"model\":\"o4-mini-2025-04-16\",\"object\":\"chat.completion\",\"system_fingerprint\":null,\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"content\":\"Bug
+        Analysis Report\\n\\n1) Bug Location  \\n**File Path**: `mock-c/mock.c`  \\n**Function
+        Name**: `process_input_header`  \\n\\n2) Root Cause  \\nThe function allocates
+        a fixed-size stack buffer (`char buf[0x40];`) but blindly calls  \\n    memcpy(buf,
+        data, size);  \\nwithout verifying that `size` is \u2264 64. A malicious or
+        malformed header with `size > 64` overruns `buf`, leading to stack-buffer-overflow.\\n\\n3)
+        Responsible Code  \\nIn `mock-c/mock.c`:\\n```\\nvoid process_input_header(const
+        uint8_t *data, size_t size) {\\n  char buf[0x40];\\n  if (size > 0 && data[0]
+        == 'A')\\n      memcpy(buf, data, size);\\n}\\n```\\n\\n4) Patch Plan  \\n\u2013
+        Add an explicit length check against `sizeof(buf)` before calling `memcpy`.
+        \ \\n\u2013 Preferably reorder the condition to fail early if `size` exceeds
+        the buffer capacity.\\n\\nProposed diff:\\n```diff\\n--- a/mock-c/mock.c\\n+++
+        b/mock-c/mock.c\\n@@ -8,7 +8,9 @@ void process_input_header(const uint8_t
+        *data, size_t size) {\\n   char buf[0x40];\\n-  if (size > 0 && data[0] ==
+        'A')\\n+  /* enforce buffer bounds */\\n+  if (size > 0 && size <= sizeof(buf)
+        && data[0] == 'A') {\\n       memcpy(buf, data, size);\\n+  }\\n }\\n```\\n\\n5)
+        Side Effects  \\n\u2013 Inputs with a valid \u2018A\u2019 header but larger
+        than 64 bytes will be silently ignored (no copy occurs).  \\n\u2013 Upstream
+        logic relying on processing oversized headers may need to handle or log this
+        rejection.\",\"role\":\"assistant\",\"tool_calls\":null,\"function_call\":null,\"annotations\":[]}}],\"usage\":{\"completion_tokens\":907,\"prompt_tokens\":2739,\"total_tokens\":3646,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":512,\"rejected_prediction_tokens\":0},\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":2176}},\"service_tier\":\"default\"}"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1973'
+      content-type:
+      - application/json
+      date:
+      - Thu, 19 Jun 2025 07:29:01 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 95214fd09f83a504-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Thu, 19 Jun 2025 07:29:01 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '12962'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '12966'
+      llm_provider-x-ratelimit-limit-requests:
+      - '30000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '29999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149998461'
+      llm_provider-x-ratelimit-reset-requests:
+      - 2ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_0b3fb162092497d4488df77a28fa2144
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 47e2b4124d5e16fd4201b3199597c133
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 4f8eb5e0-1bff-4a07-b5a2-d3b852db28ad
+      x-litellm-key-spend:
+      - '1054.9839658499957'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - o4-mini
+      x-litellm-model-id:
+      - fc4ae8a4d06f403bb6c938d8ef911178b45835608aea11d0403925634b76e19e
+      x-litellm-overhead-duration-ms:
+      - '2.706'
+      x-litellm-response-cost:
+      - '0.0052085'
+      x-litellm-response-duration-ms:
+      - '13053.256'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '30000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '29999'
+      x-ratelimit-remaining-tokens:
+      - '149998461'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"content": [{"text": "Generate a patch
+      on function process_input_header in file mock.c to fix the vulnerability.\nRefer
+      to the report to understand the bug.\n\n## Report\n\nBug Analysis Report\n\n1)
+      Bug Location  \n**File Path**: `mock-c/mock.c`  \n**Function Name**: `process_input_header`  \n\n2)
+      Root Cause  \nThe function allocates a fixed-size stack buffer (`char buf[0x40];`)
+      but blindly calls  \n    memcpy(buf, data, size);  \nwithout verifying that
+      `size` is \u2264 64. A malicious or malformed header with `size > 64` overruns
+      `buf`, leading to stack-buffer-overflow.\n\n3) Responsible Code  \nIn `mock-c/mock.c`:\n```\nvoid
+      process_input_header(const uint8_t *data, size_t size) {\n  char buf[0x40];\n  if
+      (size > 0 && data[0] == ''A'')\n      memcpy(buf, data, size);\n}\n```\n\n4)
+      Patch Plan  \n\u2013 Add an explicit length check against `sizeof(buf)` before
+      calling `memcpy`.  \n\u2013 Preferably reorder the condition to fail early if
+      `size` exceeds the buffer capacity.\n\nProposed diff:\n```diff\n--- a/mock-c/mock.c\n+++
+      b/mock-c/mock.c\n@@ -8,7 +8,9 @@ void process_input_header(const uint8_t *data,
+      size_t size) {\n   char buf[0x40];\n-  if (size > 0 && data[0] == ''A'')\n+  /*
+      enforce buffer bounds */\n+  if (size > 0 && size <= sizeof(buf) && data[0]
+      == ''A'') {\n       memcpy(buf, data, size);\n+  }\n }\n```\n\n5) Side Effects  \n\u2013
+      Inputs with a valid \u2018A\u2019 header but larger than 64 bytes will be silently
+      ignored (no copy occurs).  \n\u2013 Upstream logic relying on processing oversized
+      headers may need to handle or log this rejection.\n\n## Rules\n- Do not change
+      the function signature.\n- Do not assume macros or functions that you did not
+      see in the code.\n- Do not use fuzzer-specific macros/flags in the patch.\n-
+      Do not remove assert or abort statements in the code guarded by fuzzer-specific
+      build flag like `FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION`.\n- If you want to
+      generate a patch that only deletes a code block, be careful not to delete the
+      functionality of the code block.\nRemoving backdoor code is good but removing
+      the legitimate API calls is not encouraged.", "type": "text"}], "role": "user"}],
+      "model": "claude-3-7-sonnet-20250219", "temperature": 1.0, "tools": [{"description":
+      "View the function", "input_schema": {"properties": {"function_name": {"type":
+      "string"}}, "required": ["function_name"], "type": "object"}, "name": "view_function"},
+      {"description": "Edit the function\n\nArgs:\n    function_name: The name of
+      the function to edit\n    old_string: The string to replace\n    new_string:
+      The new string to replace the old_string\n\nReturns:\n    A message indicating
+      whether the function was edited successfully\n\nUsage:\n- Edit the function
+      by providing the function name, old string, and new string\n- old_string must
+      be unique within the function, and must match the function contents exactly,
+      including all whitespace and indentation\n- new_string is the edited text to
+      replace the old_string", "input_schema": {"properties": {"function_name": {"type":
+      "string"}, "new_string": {"type": "string"}, "old_string": {"type": "string"}},
+      "required": ["function_name", "old_string", "new_string"], "type": "object"},
+      "name": "edit_function"}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3249'
+      content-type:
+      - application/json
+      user-agent:
+      - litellm/1.67.4.post1
+    method: POST
+    uri: https://llm-base/v1/messages
+  response:
+    body:
+      string: '{"id":"msg_01LAp3n3DZ94je6TFcdnWcRg","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"I''ll
+        help you generate a patch to fix the vulnerability in the `process_input_header`
+        function. Let me first view the function to understand its current implementation."},{"type":"tool_use","id":"toolu_01Dga3bx5DupMDe5yZMcuYU7","name":"view_function","input":{"function_name":"process_input_header"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":1238,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":94,"service_tier":"standard"}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '627'
+      content-type:
+      - application/json
+      date:
+      - Thu, 19 Jun 2025 07:29:05 GMT
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 3320039323de523f5239071bac1067bf;o=1
+      x-litellm-key-spend:
+      - '1054.9860745499957'
+      x-litellm-version:
+      - 1.71.1
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"content": [{"text": "Generate a patch
+      on function process_input_header in file mock.c to fix the vulnerability.\nRefer
+      to the report to understand the bug.\n\n## Report\n\nBug Analysis Report\n\n1)
+      Bug Location  \n**File Path**: `mock-c/mock.c`  \n**Function Name**: `process_input_header`  \n\n2)
+      Root Cause  \nThe function allocates a fixed-size stack buffer (`char buf[0x40];`)
+      but blindly calls  \n    memcpy(buf, data, size);  \nwithout verifying that
+      `size` is \u2264 64. A malicious or malformed header with `size > 64` overruns
+      `buf`, leading to stack-buffer-overflow.\n\n3) Responsible Code  \nIn `mock-c/mock.c`:\n```\nvoid
+      process_input_header(const uint8_t *data, size_t size) {\n  char buf[0x40];\n  if
+      (size > 0 && data[0] == ''A'')\n      memcpy(buf, data, size);\n}\n```\n\n4)
+      Patch Plan  \n\u2013 Add an explicit length check against `sizeof(buf)` before
+      calling `memcpy`.  \n\u2013 Preferably reorder the condition to fail early if
+      `size` exceeds the buffer capacity.\n\nProposed diff:\n```diff\n--- a/mock-c/mock.c\n+++
+      b/mock-c/mock.c\n@@ -8,7 +8,9 @@ void process_input_header(const uint8_t *data,
+      size_t size) {\n   char buf[0x40];\n-  if (size > 0 && data[0] == ''A'')\n+  /*
+      enforce buffer bounds */\n+  if (size > 0 && size <= sizeof(buf) && data[0]
+      == ''A'') {\n       memcpy(buf, data, size);\n+  }\n }\n```\n\n5) Side Effects  \n\u2013
+      Inputs with a valid \u2018A\u2019 header but larger than 64 bytes will be silently
+      ignored (no copy occurs).  \n\u2013 Upstream logic relying on processing oversized
+      headers may need to handle or log this rejection.\n\n## Rules\n- Do not change
+      the function signature.\n- Do not assume macros or functions that you did not
+      see in the code.\n- Do not use fuzzer-specific macros/flags in the patch.\n-
+      Do not remove assert or abort statements in the code guarded by fuzzer-specific
+      build flag like `FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION`.\n- If you want to
+      generate a patch that only deletes a code block, be careful not to delete the
+      functionality of the code block.\nRemoving backdoor code is good but removing
+      the legitimate API calls is not encouraged.", "type": "text"}], "role": "user"},
+      {"content": [{"text": "I''ll help you generate a patch to fix the vulnerability
+      in the `process_input_header` function. Let me first view the function to understand
+      its current implementation.", "type": "text"}, {"id": "toolu_01Dga3bx5DupMDe5yZMcuYU7",
+      "input": {"function_name": "process_input_header"}, "name": "view_function",
+      "type": "tool_use"}], "role": "assistant"}, {"content": [{"content": "void process_input_header(const
+      uint8_t *data, size_t size) {\n  char buf[0x40];\n  if (size > 0 && data[0]
+      == ''A'')\n      memcpy(buf, data, size);\n}", "tool_use_id": "toolu_01Dga3bx5DupMDe5yZMcuYU7",
+      "type": "tool_result"}], "role": "user"}], "model": "claude-3-7-sonnet-20250219",
+      "temperature": 1.0, "tools": [{"description": "View the function", "input_schema":
+      {"properties": {"function_name": {"type": "string"}}, "required": ["function_name"],
+      "type": "object"}, "name": "view_function"}, {"description": "Edit the function\n\nArgs:\n    function_name:
+      The name of the function to edit\n    old_string: The string to replace\n    new_string:
+      The new string to replace the old_string\n\nReturns:\n    A message indicating
+      whether the function was edited successfully\n\nUsage:\n- Edit the function
+      by providing the function name, old string, and new string\n- old_string must
+      be unique within the function, and must match the function contents exactly,
+      including all whitespace and indentation\n- new_string is the edited text to
+      replace the old_string", "input_schema": {"properties": {"function_name": {"type":
+      "string"}, "new_string": {"type": "string"}, "old_string": {"type": "string"}},
+      "required": ["function_name", "old_string", "new_string"], "type": "object"},
+      "name": "edit_function"}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '3892'
+      content-type:
+      - application/json
+      user-agent:
+      - litellm/1.67.4.post1
+    method: POST
+    uri: https://llm-base/v1/messages
+  response:
+    body:
+      string: '{"id":"msg_01GMDRphjpgUWM9oipkAgKV7","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"Now
+        I''ll create a patch to fix the vulnerability. Based on the report, the issue
+        is that the function doesn''t check if `size` is less than or equal to the
+        buffer size (0x40 or 64 bytes) before copying data into the buffer."},{"type":"tool_use","id":"toolu_019SjFkdzypUKHAEQ37Xy72b","name":"edit_function","input":{"function_name":"process_input_header","old_string":"void
+        process_input_header(const uint8_t *data, size_t size) {\n  char buf[0x40];\n  if
+        (size > 0 && data[0] == ''A'')\n      memcpy(buf, data, size);\n}","new_string":"void
+        process_input_header(const uint8_t *data, size_t size) {\n  char buf[0x40];\n  if
+        (size > 0 && size <= sizeof(buf) && data[0] == ''A'')\n      memcpy(buf, data,
+        size);\n}"}}],"stop_reason":"tool_use","stop_sequence":null,"usage":{"input_tokens":1405,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":284,"service_tier":"standard"}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1037'
+      content-type:
+      - application/json
+      date:
+      - Thu, 19 Jun 2025 07:29:09 GMT
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 833082929e079f0884895f51a66a7c6c
+      x-litellm-key-spend:
+      - '1054.9891743499957'
+      x-litellm-version:
+      - 1.71.1
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"max_tokens": 4096, "messages": [{"content": [{"text": "Generate a patch
+      on function process_input_header in file mock.c to fix the vulnerability.\nRefer
+      to the report to understand the bug.\n\n## Report\n\nBug Analysis Report\n\n1)
+      Bug Location  \n**File Path**: `mock-c/mock.c`  \n**Function Name**: `process_input_header`  \n\n2)
+      Root Cause  \nThe function allocates a fixed-size stack buffer (`char buf[0x40];`)
+      but blindly calls  \n    memcpy(buf, data, size);  \nwithout verifying that
+      `size` is \u2264 64. A malicious or malformed header with `size > 64` overruns
+      `buf`, leading to stack-buffer-overflow.\n\n3) Responsible Code  \nIn `mock-c/mock.c`:\n```\nvoid
+      process_input_header(const uint8_t *data, size_t size) {\n  char buf[0x40];\n  if
+      (size > 0 && data[0] == ''A'')\n      memcpy(buf, data, size);\n}\n```\n\n4)
+      Patch Plan  \n\u2013 Add an explicit length check against `sizeof(buf)` before
+      calling `memcpy`.  \n\u2013 Preferably reorder the condition to fail early if
+      `size` exceeds the buffer capacity.\n\nProposed diff:\n```diff\n--- a/mock-c/mock.c\n+++
+      b/mock-c/mock.c\n@@ -8,7 +8,9 @@ void process_input_header(const uint8_t *data,
+      size_t size) {\n   char buf[0x40];\n-  if (size > 0 && data[0] == ''A'')\n+  /*
+      enforce buffer bounds */\n+  if (size > 0 && size <= sizeof(buf) && data[0]
+      == ''A'') {\n       memcpy(buf, data, size);\n+  }\n }\n```\n\n5) Side Effects  \n\u2013
+      Inputs with a valid \u2018A\u2019 header but larger than 64 bytes will be silently
+      ignored (no copy occurs).  \n\u2013 Upstream logic relying on processing oversized
+      headers may need to handle or log this rejection.\n\n## Rules\n- Do not change
+      the function signature.\n- Do not assume macros or functions that you did not
+      see in the code.\n- Do not use fuzzer-specific macros/flags in the patch.\n-
+      Do not remove assert or abort statements in the code guarded by fuzzer-specific
+      build flag like `FUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION`.\n- If you want to
+      generate a patch that only deletes a code block, be careful not to delete the
+      functionality of the code block.\nRemoving backdoor code is good but removing
+      the legitimate API calls is not encouraged.", "type": "text"}], "role": "user"},
+      {"content": [{"text": "I''ll help you generate a patch to fix the vulnerability
+      in the `process_input_header` function. Let me first view the function to understand
+      its current implementation.", "type": "text"}, {"id": "toolu_01Dga3bx5DupMDe5yZMcuYU7",
+      "input": {"function_name": "process_input_header"}, "name": "view_function",
+      "type": "tool_use"}], "role": "assistant"}, {"content": [{"content": "void process_input_header(const
+      uint8_t *data, size_t size) {\n  char buf[0x40];\n  if (size > 0 && data[0]
+      == ''A'')\n      memcpy(buf, data, size);\n}", "tool_use_id": "toolu_01Dga3bx5DupMDe5yZMcuYU7",
+      "type": "tool_result"}], "role": "user"}, {"content": [{"text": "Now I''ll create
+      a patch to fix the vulnerability. Based on the report, the issue is that the
+      function doesn''t check if `size` is less than or equal to the buffer size (0x40
+      or 64 bytes) before copying data into the buffer.", "type": "text"}, {"id":
+      "toolu_019SjFkdzypUKHAEQ37Xy72b", "input": {"function_name": "process_input_header",
+      "new_string": "void process_input_header(const uint8_t *data, size_t size) {\n  char
+      buf[0x40];\n  if (size > 0 && size <= sizeof(buf) && data[0] == ''A'')\n      memcpy(buf,
+      data, size);\n}", "old_string": "void process_input_header(const uint8_t *data,
+      size_t size) {\n  char buf[0x40];\n  if (size > 0 && data[0] == ''A'')\n      memcpy(buf,
+      data, size);\n}"}, "name": "edit_function", "type": "tool_use"}], "role": "assistant"},
+      {"content": [{"content": "Successfully edited the function", "tool_use_id":
+      "toolu_019SjFkdzypUKHAEQ37Xy72b", "type": "tool_result"}], "role": "user"}],
+      "model": "claude-3-7-sonnet-20250219", "temperature": 1.0, "tools": [{"description":
+      "View the function", "input_schema": {"properties": {"function_name": {"type":
+      "string"}}, "required": ["function_name"], "type": "object"}, "name": "view_function"},
+      {"description": "Edit the function\n\nArgs:\n    function_name: The name of
+      the function to edit\n    old_string: The string to replace\n    new_string:
+      The new string to replace the old_string\n\nReturns:\n    A message indicating
+      whether the function was edited successfully\n\nUsage:\n- Edit the function
+      by providing the function name, old string, and new string\n- old_string must
+      be unique within the function, and must match the function contents exactly,
+      including all whitespace and indentation\n- new_string is the edited text to
+      replace the old_string", "input_schema": {"properties": {"function_name": {"type":
+      "string"}, "new_string": {"type": "string"}, "old_string": {"type": "string"}},
+      "required": ["function_name", "old_string", "new_string"], "type": "object"},
+      "name": "edit_function"}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '4830'
+      content-type:
+      - application/json
+      user-agent:
+      - litellm/1.67.4.post1
+    method: POST
+    uri: https://llm-base/v1/messages
+  response:
+    body:
+      string: '{"id":"msg_01A4Ufz8o4FcoyBqdLU7qsQn","type":"message","role":"assistant","model":"claude-3-7-sonnet-20250219","content":[{"type":"text","text":"The
+        patch has been successfully applied. Here''s an explanation of the changes:\n\n1.
+        Added a check to ensure that `size <= sizeof(buf)` before performing the memcpy
+        operation.\n2. This prevents buffer overflow by ensuring we never copy more
+        data than the buffer can hold.\n3. The fix maintains the original function
+        signature and behavior while adding a safety check.\n\nThe updated condition
+        now has three parts:\n- `size > 0`: Ensures there''s data to copy\n- `size
+        <= sizeof(buf)`: Ensures the data will fit in the buffer\n- `data[0] == ''A''`:
+        Maintains the original requirement that the first byte is ''A''\n\nThis patch
+        aligns with the report''s recommendation and addresses the stack-buffer-overflow
+        vulnerability by properly validating the input size before performing the
+        memory copy operation."}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":1704,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":185,"service_tier":"standard"}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1127'
+      content-type:
+      - application/json
+      date:
+      - Thu, 19 Jun 2025 07:29:14 GMT
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 97ee7c008a8e2dfde5c1ea980e5e932f
+      x-litellm-key-spend:
+      - '1054.9911985499957'
+      x-litellm-version:
+      - 1.71.1
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"blob": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "harness_name": "fuzz_process_input_header"}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=fuzz_process_input_header\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+
+    TESTCASE=/testcase\r\n+ '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+
+    RUN_FUZZER_MODE=interactive\r\n+ export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+
+    export SKIP_SEED_CORPUS=1\r\n+ SKIP_SEED_CORPUS=1\r\n+ run_fuzzer fuzz_process_input_header
+    -runs=100 /testcase\r\nvm.mmap_rnd_bits = 28\r\n/out/fuzz_process_input_header
+    -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase < /dev/null\r\nINFO: Running
+    with entropic power schedule (0xFF, 100).\r\nINFO: Seed: 3020219251\r\nINFO: Loaded
+    1 modules   (11 inline 8-bit counters): 11 [0x000000000000, 0x000000000000), \r\nINFO:
+    Loaded 1 PC tables (11 PCs): 11 [0x000000000000,0x000000000000), \r\n/out/fuzz_process_input_header:
+    Running 1 inputs 100 time(s) each.\r\nRunning: /testcase\r\nExecuted /testcase
+    in 1 ms\r\n***\r\n*** NOTE: fuzzing was not performed, you have only\r\n***       executed
+    the target code on a fixed set of inputs.\r\n***\r\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -i -e HELPER=True -e ARCHITECTURE=x86_64 -v $PACKAGE_DIR/python_oss_fuzz/.oss_fuzz/build/out/aixcc/c/mock-c:/out
+    -v $TMPFILE/testcase -t ghcr.io/aixcc-finals/base-runner:v1.2.1 reproduce fuzz_process_input_header
+    -runs=100.
+
+    '
+  - true
+- request:
+    body: '{"detection": {"blobs": [{"blob": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "harness_name": "fuzz_process_input_header", "sanitizer_name": "address"}],
+      "language": "c", "mode": {"base_ref": "602b58633e288ae320a3b24cc4779337dba18e57",
+      "type": "full"}, "project_name": "aixcc/c/mock-c", "sarif_report": null, "vulnerability_identifier":
+      "custom-c-mock-c-cpv-0-full"}, "diff": "diff --git a/mock.c b/mock.c\nindex
+      b7ec61d..fb9e7d1 100644\n--- a/mock.c\n+++ b/mock.c\n@@ -7,7 +7,7 @@\n \n void
+      process_input_header(const uint8_t *data, size_t size) {\n   char buf[0x40];\n-  if
+      (size > 0 && data[0] == ''A'')\n+  if (size > 0 && size <= sizeof(buf) && data[0]
+      == ''A'')\n       memcpy(buf, data, size);\n }\n \n"}'
+    headers: {}
+    method: POST
+    uri: tool://MockEvaluator/evaluate
+  response: !!python/object:crete.atoms.action.SoundDiffAction
+    __dict__:
+      diff: !!binary |
+        ZGlmZiAtLWdpdCBhL21vY2suYyBiL21vY2suYwppbmRleCBiN2VjNjFkLi5mYjllN2QxIDEwMDY0
+        NAotLS0gYS9tb2NrLmMKKysrIGIvbW9jay5jCkBAIC03LDcgKzcsNyBAQAogCiB2b2lkIHByb2Nl
+        c3NfaW5wdXRfaGVhZGVyKGNvbnN0IHVpbnQ4X3QgKmRhdGEsIHNpemVfdCBzaXplKSB7CiAgIGNo
+        YXIgYnVmWzB4NDBdOwotICBpZiAoc2l6ZSA+IDAgJiYgZGF0YVswXSA9PSAnQScpCisgIGlmIChz
+        aXplID4gMCAmJiBzaXplIDw9IHNpemVvZihidWYpICYmIGRhdGFbMF0gPT0gJ0EnKQogICAgICAg
+        bWVtY3B5KGJ1ZiwgZGF0YSwgc2l6ZSk7CiB9CiAK
+      variant: sound
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      diff: null
+    __pydantic_private__: null
+version: 1

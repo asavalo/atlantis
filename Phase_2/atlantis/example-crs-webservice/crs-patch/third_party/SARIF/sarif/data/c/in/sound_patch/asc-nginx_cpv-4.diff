@@ -1,0 +1,27 @@
+--- a/src/http/ngx_http_core_module.c
++++ b/src/http/ngx_http_core_module.c
+@@ -5278,7 +5278,15 @@
+     browser_cookie->next = NULL;
+     ngx_str_set(&browser_cookie->key, "Browser-Cookie");
+ 
+-    browser_cookie->value.data = ngx_pnalloc(r->pool, NGX_OFF_T_LEN + NGX_TIME_T_LEN + 3);
++    {
++        size_t extra = 15;
++        size_t alloc_size = NGX_OFF_T_LEN + NGX_TIME_T_LEN + extra;
++        if (r->headers_in.cookie) {
++            alloc_size += r->headers_in.cookie->value.len;
++        }
++        browser_cookie->value.data = ngx_pnalloc(r->pool, alloc_size);
++    }
++
+     if (browser_cookie->value.data == NULL) {
+         browser_cookie->hash = 0;
+         return NGX_ERROR;
+@@ -5297,7 +5305,6 @@
+                                   r->headers_out.content_length_n)
+                                 - browser_cookie->value.data; 
+     }
+-    
+ 
+     return NGX_OK;
+ }

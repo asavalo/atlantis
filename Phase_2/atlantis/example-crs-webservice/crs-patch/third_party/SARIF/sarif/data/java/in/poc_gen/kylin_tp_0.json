@@ -1,0 +1,262 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueCritical: OS Command Injection",
+                    "message": {
+                        "text": "OS Command Injection"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/core-common/src/main/java/org/apache/kylin/common/util/CliCommandExecutor.java"
+                                },
+                                "region": {
+                                    "startLine": 130,
+                                    "startColumn": 24
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/kylin-harness-one/src/main/java/com/aixcc/kylin/harnesses/one/KylinOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 48,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.kylin.harnesses.one.KylinOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/kylin-harness-one/src/main/java/com/aixcc/kylin/harnesses/one/KylinOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 54,
+                                                        "startColumn": 20
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.kylin.harnesses.one.KylinOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/server-base/src/main/java/org/apache/kylin/rest/controller/CubeController.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1036,
+                                                        "startColumn": 22
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.kylin.rest.controller.CubeController.migrateCube:void(java.lang.String,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/server-base/src/main/java/org/apache/kylin/rest/service/CubeService.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 855,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.kylin.rest.service.CubeService.migrateCube:void(org.apache.kylin.cube.CubeInstance,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/core-common/src/main/java/org/apache/kylin/common/util/CliCommandExecutor.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 85,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.kylin.common.util.CliCommandExecutor.execute:org.apache.kylin.common.util.Pair(java.lang.String,org.apache.kylin.common.util.Logger)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/core-common/src/main/java/org/apache/kylin/common/util/CliCommandExecutor.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 117,
+                                                        "startColumn": 18
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.kylin.common.util.CliCommandExecutor.runNativeCommand:org.apache.kylin.common.util.Pair(java.lang.String,org.apache.kylin.common.util.Logger)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/core-common/src/main/java/org/apache/kylin/common/util/CliCommandExecutor.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 130,
+                                                        "startColumn": 24
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.kylin.common.util.CliCommandExecutor.runNativeCommand:org.apache.kylin.common.util.Pair(java.lang.String,org.apache.kylin.common.util.Logger)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

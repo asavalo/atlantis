@@ -1,0 +1,2 @@
+python_on_whales==0.76.1
+zstandard==0.23.0

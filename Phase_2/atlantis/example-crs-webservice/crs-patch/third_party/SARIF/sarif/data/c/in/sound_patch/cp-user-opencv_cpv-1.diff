@@ -1,0 +1,14 @@
+--- a/modules/objdetect/src/cascadedetect.hpp
++++ b/modules/objdetect/src/cascadedetect.hpp
+@@ -512,7 +512,10 @@
+                 idx = val < node.threshold ? node.left : node.right;
+             }
+             while( idx > 0 );
+-            sum += cascadeLeaves[leafOfs - idx];
++            int leafIndex = leafOfs - idx;
++            if( leafIndex < 0 || leafIndex >= (int)cascade.data.leaves.size() )
++                return -si;
++            sum += cascadeLeaves[leafIndex];
+             nodeOfs += weak.nodeCount;
+             leafOfs += weak.nodeCount + 1;
+         }

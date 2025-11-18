@@ -1,0 +1,423 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Describe the following code in a one sentence:
+      void func_a(){\n    char* buff;\n    int i = 0;\n    do{\n        printf(\"input
+      item:\");\n        buff = &items[i][0];\n        i++;\n        fgets(buff, 40,
+      stdin);\n        buff[strcspn(buff, \"\\n\")] = 0;\n    }while(strlen(buff)!=0);\n    i--;\n}","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"_DescriptionResponse","description":"","parameters":{"properties":{"description":{"description":"One
+      sentence description of the code","type":"string"}},"required":["description"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '651'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BeSFYdMFQWX61DkUuJcOsLrCpxnoG","created":1748981412,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_07871e2ad8","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"description\":\"The
+        function reads user input strings into a 2D array ''items'' until an empty
+        string is entered, removing newline characters and counting the total inputs.\"}","name":"_DescriptionResponse"},"id":"call_GMsumE7PyC44p5Xwarwuxhls","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":45,"prompt_tokens":128,"total_tokens":173,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '891'
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Jun 2025 20:10:13 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 94a1d52469942894-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 03 Jun 2025 20:10:13 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '1302'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '1310'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999927'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_e889beb5f999920e5d8054417f4f4caf
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 0d98ad5eaf8b7ed1ae17ae3623a81ef4;o=1
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - eba78785-d447-4c6b-9783-ec4de98411ee
+      x-litellm-key-spend:
+      - '5633.284841470033'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '2.405'
+      x-litellm-response-cost:
+      - '0.0007700000000000001'
+      x-litellm-response-duration-ms:
+      - '1468.4360000000001'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999927'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Describe the following in a one sentence: void
+      func_a(){\n    char* buff;\n    int i = 0;\n    do{\n        printf(\"input
+      item:\");\n        buff = &items[i][0];\n        i++;\n        fgets(buff, 10,
+      stdin);\n        buff[strcspn(buff, \"\\n\")] = 0;\n    }while(strlen(buff)!=0);\n    i--;\n}","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"_DescriptionResponse","description":"","parameters":{"properties":{"description":{"description":"One
+      sentence description of the code","type":"string"}},"required":["description"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '646'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BeSFask5FewAFoqxjm67HwGvO4Vyl","created":1748981414,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_07871e2ad8","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"description\":\"The
+        function repeatedly prompts for input, storing it in an array of strings until
+        an empty string is entered.\"}","name":"_DescriptionResponse"},"id":"call_jycA50yK5skGsYIyJGkS2tQz","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":35,"prompt_tokens":127,"total_tokens":162,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '847'
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Jun 2025 20:10:14 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 94a1d52ec84a2894-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 03 Jun 2025 20:10:14 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '458'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '465'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999927'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_8ca2d3f58a55dd88c9188dac1982bd12
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 1a58949fdfdb4e89ae17ae3623a81027
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 43381355-175c-43a5-b933-aebf11aafb21
+      x-litellm-key-spend:
+      - '5633.285611470033'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '6.058'
+      x-litellm-response-cost:
+      - '0.0006675000000000001'
+      x-litellm-response-duration-ms:
+      - '589.4110000000001'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999927'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"# Compare the following two code descriptions
+      (A and B) into 0.0 to 1.0 score.\n\n##A\n[\"The function reads user input strings
+      into a 2D array ''items'' until an empty string is entered, removing newline
+      characters and counting the total inputs.\"]\n\n#B\n[''The function repeatedly
+      prompts for input, storing it in an array of strings until an empty string is
+      entered.'']","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"_ScoreResponse","description":"","parameters":{"properties":{"reasoning":{"description":"The
+      reasoning behind the score","type":"string"},"score":{"description":"The score
+      indicating if the snippets are functionally equivalent between 0.0 and 1.0","type":"number"}},"required":["reasoning","score"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '839'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: "{\"id\":\"chatcmpl-BeSFbzxifGhFKsmaGkayNgLYOsua8\",\"created\":1748981415,\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion\",\"system_fingerprint\":\"fp_a288987b44\",\"choices\":[{\"finish_reason\":\"tool_calls\",\"index\":0,\"message\":{\"content\":null,\"role\":\"assistant\",\"tool_calls\":[{\"function\":{\"arguments\":\"{\\\"reasoning\\\":\\\"Both
+        descriptions describe a similar functionality where user input is collected
+        until an empty string is entered. However, Description A specifies that the
+        inputs are stored in a 2D array 'items' and mentions removing newline characters,
+        which is not mentioned in Description B. Despite this, the core functionality
+        described in both \u2014 reading user input until an empty string \u2014 is
+        the same.\\\",\\\"score\\\":0.8}\",\"name\":\"_ScoreResponse\"},\"id\":\"call_UwvawuKWmtIKalvjpqOkoBuP\",\"type\":\"function\"}],\"function_call\":null,\"annotations\":[]}}],\"usage\":{\"completion_tokens\":93,\"prompt_tokens\":157,\"total_tokens\":250,\"completion_tokens_details\":{\"accepted_prediction_tokens\":0,\"audio_tokens\":0,\"reasoning_tokens\":0,\"rejected_prediction_tokens\":0},\"prompt_tokens_details\":{\"audio_tokens\":0,\"cached_tokens\":0}},\"service_tier\":\"default\"}"
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1139'
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Jun 2025 20:10:17 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 94a1d533d9c22099-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 03 Jun 2025 20:10:17 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '2067'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '2072'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999906'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_c0cda7133bdea945e888437fe1b9d669
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 05513dff50acad57ae17ae3623a81c7b
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 3930d060-376e-472e-8d08-7e57d2bed243
+      x-litellm-key-spend:
+      - '5633.284841470033'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '2.669'
+      x-litellm-response-cost:
+      - '0.0013225'
+      x-litellm-response-duration-ms:
+      - '2212.4100000000003'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999906'
+    status:
+      code: 200
+      message: OK
+version: 1

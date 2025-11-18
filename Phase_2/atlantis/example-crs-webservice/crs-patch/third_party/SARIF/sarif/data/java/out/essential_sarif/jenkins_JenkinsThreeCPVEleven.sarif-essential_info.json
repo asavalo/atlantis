@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueLow",
+    "message": "Regular Expression Injection",
+    "loc_file_full_name": "AccessFilter.java",
+    "loc_file_short_name": "AccessFilter.java",
+    "loc_line": 87,
+    "loc_function_full_name": "io.jenkins.plugins.toyplugin.AccessFilter.doGet",
+    "loc_function_short_name": "doGet"
+}

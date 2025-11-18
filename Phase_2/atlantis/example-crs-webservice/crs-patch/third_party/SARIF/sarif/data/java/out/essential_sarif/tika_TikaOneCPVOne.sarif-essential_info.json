@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "File read/write hook path: ./../../../../../jazzer-traversal",
+    "loc_file_full_name": "TikaCLI.java",
+    "loc_file_short_name": "TikaCLI.java",
+    "loc_line": 1103,
+    "loc_function_full_name": "org.apache.tika.cli.TikaCLI$FileEmbeddedDocumentExtractor.parseEmbedded",
+    "loc_function_short_name": "parseEmbedded"
+}

@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "Integer Overflow(multiplication) detected! REASON: 6619136 * 13063935 == (int)1385889792 != (long)86471962460160",
+    "loc_file_full_name": "PngChunkIhdr.java",
+    "loc_file_short_name": "PngChunkIhdr.java",
+    "loc_line": 45,
+    "loc_function_full_name": "org.apache.commons.imaging.formats.png.chunks.PngChunkIhdr.<init>",
+    "loc_function_short_name": "PngChunkIhdr"
+}

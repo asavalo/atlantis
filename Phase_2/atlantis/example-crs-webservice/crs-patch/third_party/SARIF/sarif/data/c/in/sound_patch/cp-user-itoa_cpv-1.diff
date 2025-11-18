@@ -1,0 +1,11 @@
+--- a/mock_vp.c
++++ b/mock_vp.c
+@@ -51,7 +51,7 @@
+ }
+ 
+ void bad0(int i) {
+-    char buf[10];
++    char buf[12];
+     itoa(i, buf);
+     printf("%s\n", buf);
+ }

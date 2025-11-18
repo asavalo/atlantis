@@ -1,0 +1,31 @@
+#################################################################################
+## Build SARIF-BUILDER deps
+#################################################################################
+
+FROM ghcr.io/aixcc-finals/base-builder:v1.3.0 AS sarif-builder-c-codeql-builder
+
+## CodeQL
+ENV CODEQL_VERSION=v2.21.4
+
+RUN cd /tmp && \
+    wget https://github.com/github/codeql-cli-binaries/releases/download/$CODEQL_VERSION/codeql-linux64.zip --no-check-certificate && \
+    unzip codeql-linux64.zip && \
+    mv codeql /opt/codeql
+
+#################################################################################
+## SARIF-BUILDER setup
+#################################################################################
+FROM ghcr.io/aixcc-finals/base-builder:v1.3.0
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+## Git config
+RUN git config --global user.email "atlanta@team.com"
+RUN git config --global user.name "Team Atlanta"
+
+## Copy pre-built CodeQL
+ENV CODEQL_INSTALL_DIR=/opt/codeql
+
+COPY --from=sarif-builder-c-codeql-builder /opt/codeql $CODEQL_INSTALL_DIR
+
+RUN ln -s $CODEQL_INSTALL_DIR/codeql /usr/local/bin/codeql

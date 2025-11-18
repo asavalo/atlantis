@@ -1,0 +1,21 @@
+{
+    "conventionalCommits.scopes": [
+        "SARIF"
+    ],
+    "codeQL.githubDatabase.download": "never",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+        },
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "python.formatting.provider": "black",
+        "python.formatting.blackArgs": ["--line-length", "120"]
+    },
+    "isort.args": [
+        "--profile",
+        "black",
+    ],
+    "git.ignoreLimitWarning": true,
+    "java.configuration.updateBuildConfiguration": "automatic"
+}

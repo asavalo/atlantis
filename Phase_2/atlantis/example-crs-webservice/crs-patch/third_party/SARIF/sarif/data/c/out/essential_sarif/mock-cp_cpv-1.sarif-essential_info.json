@@ -1,0 +1,9 @@
+{
+    "ruleId": "global-buffer-overflow",
+    "message": "AddressSanitizer: global-buffer-overflow /src/fuzz/../mock-cp-src/mock_vp.c:14:9 in func_a",
+    "loc_file_full_name": "/src/fuzz/../mock-cp-src/mock_vp.c",
+    "loc_file_short_name": "mock_vp.c",
+    "loc_line": 14,
+    "loc_function_full_name": "func_a",
+    "loc_function_short_name": "func_a"
+}

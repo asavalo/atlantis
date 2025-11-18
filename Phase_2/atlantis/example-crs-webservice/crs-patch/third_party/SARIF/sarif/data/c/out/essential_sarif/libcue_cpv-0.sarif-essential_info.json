@@ -1,0 +1,9 @@
+{
+    "ruleId": "SEGV",
+    "message": "AddressSanitizer: SEGV /src/libcue/cd.c:347:18 in track_set_index",
+    "loc_file_full_name": "/src/libcue/cd.c",
+    "loc_file_short_name": "cd.c",
+    "loc_line": 347,
+    "loc_function_full_name": "track_set_index",
+    "loc_function_short_name": "track_set_index"
+}

@@ -1,0 +1,19 @@
+--- a/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java
++++ b/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java
+@@ -158,11 +158,11 @@
+     }
+ 
+     public void incCounter() {
+-        if (counter < Integer.MAX_VALUE - 4) {
+-            counter = 0;
+-            return;
+-        }
+-        counter++;
++        try {
++            counter = Math.addExact(counter, 1);
++        } catch (ArithmeticException e) {
++            counter = 0; // Reset counter on overflow
++        }
+     }
+ 
+     @RequirePOST

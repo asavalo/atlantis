@@ -1,0 +1,31 @@
+interactions:
+- request:
+    body: '{"detection": {"blob_data": "ab\nb\n\n501\n", "harness_name": "filein_harness",
+      "language": "c", "project_name": "aixcc/c/mock-cp", "sanitizer_name": "address", "sarif_report": null,
+      "vulnerability_identifier": "official-c-mock-cp-filein-harness-cpv-1-full"}}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=filein_harness\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+ TESTCASE=/testcase\r\n+
+    '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+ RUN_FUZZER_MODE=interactive\r\n+
+    export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+ export SKIP_SEED_CORPUS=1\r\n+
+    SKIP_SEED_CORPUS=1\r\n+ run_fuzzer filein_harness -runs=100 /testcase\r\nvm.mmap_rnd_bits
+    = 28\r\n/out/filein_harness -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase
+    < /dev/null\r\nINFO: Running with entropic power schedule (0xFF, 100).\r\nINFO:
+    Seed: 3625118989\r\nINFO: Loaded 1 modules   (12 inline 8-bit counters): 12 [0x555555760008,
+    0x555555760014), \r\nINFO: Loaded 1 PC tables (12 PCs): 12 [0x555555760018,0x5555557600d8),
+    \r\n/out/filein_harness: Running 1 inputs 100 time(s) each.\r\nRunning: /testcase\r\ninput
+    item:input item:input item:done adding items\r\nAddressSanitizer:DEADLYSIGNAL\r\n=================================================================\r\n==13==ERROR:
+    AddressSanitizer: SEGV on unknown address 0x55555616aed2 (pc 0x5555556d1bb0 bp
+    0x7fffffffe070 sp 0x7fffffffd7f8 T0)\r\n==13==The signal is caused by a READ memory
+    access.\r\nSCARINESS: 20 (wild-addr-read)\r\n^C==13== libFuzzer: run interrupted;
+    exiting\r\nsubprocess command returned a non-zero exit status: 72\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -i -e HELPER=True -e ARCHITECTURE=x86_64 -v /home/haein/aixcc/crete/packages/python_oss_fuzz/.repository/build/out/aixcc/c/mock-cp:/out
+    -v /tmp/tmpma7oyr9b:/testcase -t ghcr.io/aixcc-finals/base-runner:v1.0.0 reproduce
+    filein_harness -runs=100.
+
+    '
+  - false
+version: 1

@@ -1,0 +1,16 @@
+{
+  "concolic": {
+    "harness": "",
+    "workdir": ""
+  },
+  "cov_dir": "",
+  "harness_name": "test-harness",
+  "core_ids": [
+    0,
+    1,
+    2
+  ],
+  "workdir": "",
+  "language": "c",
+  "id_sync": "1"
+}

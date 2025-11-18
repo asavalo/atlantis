@@ -1,0 +1,17 @@
+--- a/mock_vp.c
++++ b/mock_vp.c
+@@ -9,9 +9,13 @@
+     int i = 0;
+     do{
+         printf("input item:");
++        if(i >= 3){
++            printf("Maximum number of items reached.\n");
++            break;
++        }
+         buff = &items[i][0];
++        fgets(buff, sizeof(items[i]), stdin);
+         i++;
+-        fgets(buff, 40, stdin);
+         buff[strcspn(buff, "\n")] = 0;
+     }while(strlen(buff)!=0);
+     i--;

@@ -1,0 +1,9 @@
+{
+    "ruleId": "global-buffer-overflow",
+    "message": "AddressSanitizer: global-buffer-overflow /src/nginx/src/http/modules/ngx_http_rewrite_module.c:178:12 in ngx_http_rewrite_handler",
+    "loc_file_full_name": "/src/nginx/src/http/modules/ngx_http_rewrite_module.c",
+    "loc_file_short_name": "ngx_http_rewrite_module.c",
+    "loc_line": 178,
+    "loc_function_full_name": "ngx_http_rewrite_handler",
+    "loc_function_short_name": "ngx_http_rewrite_handler"
+}

@@ -1,0 +1,13 @@
+diff --git a/src/http/ngx_http_request.c b/src/http/ngx_http_request.c
+index 65745e634..6dd32cc07 100644
+--- a/src/http/ngx_http_request.c
++++ b/src/http/ngx_http_request.c
+@@ -1995,7 +1995,7 @@ ngx_http_process_custom_features(ngx_http_request_t *r, ngx_table_elt_t *h,
+ 
+     features = r->headers_in.features;
+ 
+-    if (custom_flag_value >= sizeof(features->bitmap) * BITS_PER_LONG) {
++    if (custom_flag_value >= NGX_CUSTOM_FEATURE__NR) {
+         ngx_log_error(NGX_LOG_INFO, r->connection->log, 0,
+                       "Unknown custom feature value");
+         ngx_http_finalize_request(r, NGX_HTTP_BAD_REQUEST);

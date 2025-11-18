@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "File read/write hook path: /tmp/rdf4j/extract/../jazzer",
+    "loc_file_full_name": "IOUtil.java",
+    "loc_file_short_name": "IOUtil.java",
+    "loc_line": 387,
+    "loc_function_full_name": "org.eclipse.rdf4j.common.io.IOUtil.writeStream",
+    "loc_function_short_name": "writeStream"
+}

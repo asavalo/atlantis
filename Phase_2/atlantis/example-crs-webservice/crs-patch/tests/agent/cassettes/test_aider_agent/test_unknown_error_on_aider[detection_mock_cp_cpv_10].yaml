@@ -1,0 +1,212 @@
+interactions:
+- request:
+    body: '{"detection": {"blob_data": "abcdefabcdefabcdefabcdefabcdefabcdef\nb\n\n1\n",
+      "harness_name": "filein_harness", "language": "c", "project_name": "aixcc/c/mock-cp",
+      "sanitizer_name": null, "sarif_report": null, "vulnerability_identifier": "official-mock-cp-cpv-1"}}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=filein_harness\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+ TESTCASE=/testcase\r\n+
+    '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+ RUN_FUZZER_MODE=interactive\r\n+
+    export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+ export SKIP_SEED_CORPUS=1\r\n+
+    SKIP_SEED_CORPUS=1\r\n+ run_fuzzer filein_harness -runs=100 /testcase\r\nvm.mmap_rnd_bits
+    = 28\r\n/out/filein_harness -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase
+    < /dev/null\r\nINFO: Running with entropic power schedule (0xFF, 100).\r\nINFO:
+    Seed: 1406812684\r\nINFO: Loaded 1 modules   (12 inline 8-bit counters): 12 [0x55b4204ac008,
+    0x55b4204ac014), \r\nINFO: Loaded 1 PC tables (12 PCs): 12 [0x55b4204ac018,0x55b4204ac0d8),
+    \r\n/out/filein_harness: Running 1 inputs 100 time(s) each.\r\nRunning: /testcase\r\n=================================================================\r\n\e[1m\e[31m==14==ERROR:
+    AddressSanitizer: global-buffer-overflow on address 0x55b420eb5b5e at pc 0x55b42038c2b5
+    bp 0x7fffa8edcd10 sp 0x7fffa8edc4d8\r\n\e[1m\e[0m\e[1m\e[34mWRITE of size 38 at
+    0x55b420eb5b5e thread T0\e[1m\e[0m\r\nSCARINESS: 45 (multi-byte-write-global-buffer-overflow)\r\n
+    \   #0 0x55b42038c2b4 in fgets /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1207:5\r\n
+    \   #1 0x55b420445847 in func_a /src/fuzz/../mock-cp-src/mock_vp.c:14:9\r\n    #2
+    0x55b420445d49 in LLVMFuzzerTestOneInput /src/fuzz/filein_harness.c:59:3\r\n    #3
+    0x55b4202fa300 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+    long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #4
+    0x55b4202e5575 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long)
+    /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #5 0x55b4202eb00f
+    in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned
+    long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #6
+    0x55b4203162b2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n
+    \   #7 0x7eff64e69082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    (BuildId: 0323ab4806bee6f846d9ad4bccfc29afdca49a58)\r\n    #8 0x55b4202dd75d in
+    _start (/out/filein_harness+0x3d75d)\r\n\r\nDEDUP_TOKEN: ___interceptor_fgets--func_a--LLVMFuzzerTestOneInput\r\n\e[1m\e[32m0x55b420eb5b5e
+    is located 34 bytes before global variable 'pipefd' defined in '/src/fuzz/filein_harness.c:9'
+    (0x55b420eb5b80) of size 8\r\n\e[1m\e[0m\e[1m\e[32m0x55b420eb5b5e is located 0
+    bytes after global variable 'items' defined in '/src/fuzz/../mock-cp-src/mock_vp.c:5'
+    (0x55b420eb5b40) of size 30\r\n\e[1m\e[0mSUMMARY: AddressSanitizer: global-buffer-overflow
+    /src/fuzz/../mock-cp-src/mock_vp.c:14:9 in func_a\r\nShadow bytes around the buggy
+    address:\r\n  0x55b420eb5880: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m\r\n  0x55b420eb5900: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x55b420eb5980: \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x55b420eb5a00:
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n
+    \ 0x55b420eb5a80: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m\r\n=>0x55b420eb5b00: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m[\e[1m\e[0m06\e[1m\e[0m]\e[1m\e[31mf9\e[1m\e[0m \e[1m\e[31mf9\e[1m\e[0m
+    \e[1m\e[31mf9\e[1m\e[0m \e[1m\e[31mf9\e[1m\e[0m\r\n  0x55b420eb5b80: \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[31mf9\e[1m\e[0m \e[1m\e[31mf9\e[1m\e[0m \e[1m\e[31mf9\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x55b420eb5c00:
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n
+    \ 0x55b420eb5c80: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m\r\n  0x55b420eb5d00: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x55b420eb5d80: \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\nShadow
+    byte legend (one shadow byte represents 8 application bytes):\r\n  Addressable:
+    \          \e[1m\e[0m00\e[1m\e[0m\r\n  Partially addressable: \e[1m\e[0m01\e[1m\e[0m
+    \e[1m\e[0m02\e[1m\e[0m \e[1m\e[0m03\e[1m\e[0m \e[1m\e[0m04\e[1m\e[0m \e[1m\e[0m05\e[1m\e[0m
+    \e[1m\e[0m06\e[1m\e[0m \e[1m\e[0m07\e[1m\e[0m \r\n  Heap left redzone:       \e[1m\e[31mfa\e[1m\e[0m\r\n
+    \ Freed heap region:       \e[1m\e[35mfd\e[1m\e[0m\r\n  Stack left redzone:      \e[1m\e[31mf1\e[1m\e[0m\r\n
+    \ Stack mid redzone:       \e[1m\e[31mf2\e[1m\e[0m\r\n  Stack right redzone:     \e[1m\e[31mf3\e[1m\e[0m\r\n
+    \ Stack after return:      \e[1m\e[35mf5\e[1m\e[0m\r\n  Stack use after scope:
+    \  \e[1m\e[35mf8\e[1m\e[0m\r\n  Global redzone:          \e[1m\e[31mf9\e[1m\e[0m\r\n
+    \ Global init order:       \e[1m\e[36mf6\e[1m\e[0m\r\n  Poisoned by user:        \e[1m\e[34mf7\e[1m\e[0m\r\n
+    \ Container overflow:      \e[1m\e[34mfc\e[1m\e[0m\r\n  Array cookie:            \e[1m\e[31mac\e[1m\e[0m\r\n
+    \ Intra object redzone:    \e[1m\e[33mbb\e[1m\e[0m\r\n  ASan internal:           \e[1m\e[33mfe\e[1m\e[0m\r\n
+    \ Left alloca redzone:     \e[1m\e[34mca\e[1m\e[0m\r\n  Right alloca redzone:
+    \   \e[1m\e[34mcb\e[1m\e[0m\r\n==14==ABORTING\r\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -e HELPER=True -e ARCHITECTURE=x86_64 -v /home/haein/aixcc/pr/crete/packages/python_oss_fuzz/.repository/build/out/aixcc/c/mock-cp:/out
+    -v /tmp/tmprhse6hc9:/testcase -t ghcr.io/aixcc-finals/base-runner reproduce filein_harness
+    -runs=100.
+
+    '
+  - false
+- request:
+    body: '{"detection": {"blob_data": "abcdefabcdefabcdefabcdefabcdefabcdef\nb\n\n1\n",
+      "harness_name": "filein_harness", "language": "c", "project_name": "aixcc/c/mock-cp",
+      "sanitizer_name": null, "sarif_report": null, "vulnerability_identifier": "official-mock-cp-cpv-1"}}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=filein_harness\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+ TESTCASE=/testcase\r\n+
+    '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+ RUN_FUZZER_MODE=interactive\r\n+
+    export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+ export SKIP_SEED_CORPUS=1\r\n+
+    SKIP_SEED_CORPUS=1\r\n+ run_fuzzer filein_harness -runs=100 /testcase\r\nvm.mmap_rnd_bits
+    = 28\r\n/out/filein_harness -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase
+    < /dev/null\r\nINFO: Running with entropic power schedule (0xFF, 100).\r\nINFO:
+    Seed: 1409800905\r\nINFO: Loaded 1 modules   (12 inline 8-bit counters): 12 [0x5648a5c57008,
+    0x5648a5c57014), \r\nINFO: Loaded 1 PC tables (12 PCs): 12 [0x5648a5c57018,0x5648a5c570d8),
+    \r\n/out/filein_harness: Running 1 inputs 100 time(s) each.\r\nRunning: /testcase\r\n=================================================================\r\n\e[1m\e[31m==14==ERROR:
+    AddressSanitizer: global-buffer-overflow on address 0x5648a6660b5e at pc 0x5648a5b372b5
+    bp 0x7ffd002e5b30 sp 0x7ffd002e52f8\r\n\e[1m\e[0m\e[1m\e[34mWRITE of size 38 at
+    0x5648a6660b5e thread T0\e[1m\e[0m\r\nSCARINESS: 45 (multi-byte-write-global-buffer-overflow)\r\n
+    \   #0 0x5648a5b372b4 in fgets /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1207:5\r\n
+    \   #1 0x5648a5bf0847 in func_a /src/fuzz/../mock-cp-src/mock_vp.c:14:9\r\n    #2
+    0x5648a5bf0d49 in LLVMFuzzerTestOneInput /src/fuzz/filein_harness.c:59:3\r\n    #3
+    0x5648a5aa5300 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+    long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #4
+    0x5648a5a90575 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long)
+    /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #5 0x5648a5a9600f
+    in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned
+    long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #6
+    0x5648a5ac12b2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n
+    \   #7 0x7fca06e0f082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    (BuildId: 0323ab4806bee6f846d9ad4bccfc29afdca49a58)\r\n    #8 0x5648a5a8875d in
+    _start (/out/filein_harness+0x3d75d)\r\n\r\nDEDUP_TOKEN: ___interceptor_fgets--func_a--LLVMFuzzerTestOneInput\r\n\e[1m\e[32m0x5648a6660b5e
+    is located 34 bytes before global variable 'pipefd' defined in '/src/fuzz/filein_harness.c:9'
+    (0x5648a6660b80) of size 8\r\n\e[1m\e[0m\e[1m\e[32m0x5648a6660b5e is located 0
+    bytes after global variable 'items' defined in '/src/fuzz/../mock-cp-src/mock_vp.c:5'
+    (0x5648a6660b40) of size 30\r\n\e[1m\e[0mSUMMARY: AddressSanitizer: global-buffer-overflow
+    /src/fuzz/../mock-cp-src/mock_vp.c:14:9 in func_a\r\nShadow bytes around the buggy
+    address:\r\n  0x5648a6660880: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m\r\n  0x5648a6660900: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x5648a6660980: \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x5648a6660a00:
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n
+    \ 0x5648a6660a80: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m\r\n=>0x5648a6660b00: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m[\e[1m\e[0m06\e[1m\e[0m]\e[1m\e[31mf9\e[1m\e[0m \e[1m\e[31mf9\e[1m\e[0m
+    \e[1m\e[31mf9\e[1m\e[0m \e[1m\e[31mf9\e[1m\e[0m\r\n  0x5648a6660b80: \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[31mf9\e[1m\e[0m \e[1m\e[31mf9\e[1m\e[0m \e[1m\e[31mf9\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x5648a6660c00:
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n
+    \ 0x5648a6660c80: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m\r\n  0x5648a6660d00: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x5648a6660d80: \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\nShadow
+    byte legend (one shadow byte represents 8 application bytes):\r\n  Addressable:
+    \          \e[1m\e[0m00\e[1m\e[0m\r\n  Partially addressable: \e[1m\e[0m01\e[1m\e[0m
+    \e[1m\e[0m02\e[1m\e[0m \e[1m\e[0m03\e[1m\e[0m \e[1m\e[0m04\e[1m\e[0m \e[1m\e[0m05\e[1m\e[0m
+    \e[1m\e[0m06\e[1m\e[0m \e[1m\e[0m07\e[1m\e[0m \r\n  Heap left redzone:       \e[1m\e[31mfa\e[1m\e[0m\r\n
+    \ Freed heap region:       \e[1m\e[35mfd\e[1m\e[0m\r\n  Stack left redzone:      \e[1m\e[31mf1\e[1m\e[0m\r\n
+    \ Stack mid redzone:       \e[1m\e[31mf2\e[1m\e[0m\r\n  Stack right redzone:     \e[1m\e[31mf3\e[1m\e[0m\r\n
+    \ Stack after return:      \e[1m\e[35mf5\e[1m\e[0m\r\n  Stack use after scope:
+    \  \e[1m\e[35mf8\e[1m\e[0m\r\n  Global redzone:          \e[1m\e[31mf9\e[1m\e[0m\r\n
+    \ Global init order:       \e[1m\e[36mf6\e[1m\e[0m\r\n  Poisoned by user:        \e[1m\e[34mf7\e[1m\e[0m\r\n
+    \ Container overflow:      \e[1m\e[34mfc\e[1m\e[0m\r\n  Array cookie:            \e[1m\e[31mac\e[1m\e[0m\r\n
+    \ Intra object redzone:    \e[1m\e[33mbb\e[1m\e[0m\r\n  ASan internal:           \e[1m\e[33mfe\e[1m\e[0m\r\n
+    \ Left alloca redzone:     \e[1m\e[34mca\e[1m\e[0m\r\n  Right alloca redzone:
+    \   \e[1m\e[34mcb\e[1m\e[0m\r\n==14==ABORTING\r\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -e HELPER=True -e ARCHITECTURE=x86_64 -v /home/haein/aixcc/pr/crete/packages/python_oss_fuzz/.repository/build/out/aixcc/c/mock-cp:/out
+    -v /tmp/tmphtw27auo:/testcase -t ghcr.io/aixcc-finals/base-runner reproduce filein_harness
+    -runs=100.
+
+    '
+  - false
+version: 1

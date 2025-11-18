@@ -1,0 +1,221 @@
+interactions:
+- request:
+    body: '{"blob": "ab\nb\n\n501\n", "harness_name": "filein_harness"}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=filein_harness\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+ TESTCASE=/testcase\r\n+
+    '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+ RUN_FUZZER_MODE=interactive\r\n+
+    export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+ export SKIP_SEED_CORPUS=1\r\n+
+    SKIP_SEED_CORPUS=1\r\n+ run_fuzzer filein_harness -runs=100 /testcase\r\nvm.mmap_rnd_bits
+    = 28\r\n/out/filein_harness -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase
+    < /dev/null\r\nINFO: Running with entropic power schedule (0xFF, 100).\r\nINFO:
+    Seed: 1443379428\r\nINFO: Loaded 1 modules   (12 inline 8-bit counters): 12 [0x55d2baa9d018,
+    0x55d2baa9d024), \r\nINFO: Loaded 1 PC tables (12 PCs): 12 [0x55d2baa9d028,0x55d2baa9d0e8),
+    \r\n/out/filein_harness: Running 1 inputs 100 time(s) each.\r\nRunning: /testcase\r\ninput
+    item:input item:input item:done adding items\r\nAddressSanitizer:DEADLYSIGNAL\r\n=================================================================\r\n==14==ERROR:
+    AddressSanitizer: SEGV on unknown address 0x55d2bb4a7ed2 (pc 0x55d2baa0ebd0 bp
+    0x7ffc8ccdbf10 sp 0x7ffc8ccdb698 T0)\r\n==14==The signal is caused by a READ memory
+    access.\r\nSCARINESS: 20 (wild-addr-read)\r\n    #0 0x55d2baa0ebd0 in __sanitizer::internal_strlen(char
+    const*) /src/llvm-project/compiler-rt/lib/sanitizer_common/sanitizer_libc.cpp:176:10\r\n
+    \   #1 0x55d2ba982c91 in printf_common(void*, char const*, __va_list_tag*) /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:561:17\r\n
+    \   #2 0x55d2ba984839 in vprintf /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1644:1\r\n
+    \   #3 0x55d2ba984839 in printf /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1702:1\r\n
+    \   #4 0x55d2baa36a63 in func_b /src/fuzz/../mock-cp-src/mock_vp.c:27:5\r\n    #5
+    0x55d2baa36dde in LLVMFuzzerTestOneInput /src/fuzz/filein_harness.c:58:3\r\n    #6
+    0x55d2ba8eb320 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+    long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #7
+    0x55d2ba8d6595 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long)
+    /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #8 0x55d2ba8dc02f
+    in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned
+    long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #9
+    0x55d2ba9072d2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n
+    \   #10 0x7f70da74f082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    (BuildId: 5792732f783158c66fb4f3756458ca24e46e827d)\r\n    #11 0x55d2ba8ce77d
+    in _start (/out/filein_harness+0x3e77d)\r\n\r\nDEDUP_TOKEN: __sanitizer::internal_strlen(char
+    const*)--printf_common(void*, char const*, __va_list_tag*)--___interceptor_vprintf\r\nAddressSanitizer
+    can not provide additional info.\r\nSUMMARY: AddressSanitizer: SEGV /src/fuzz/../mock-cp-src/mock_vp.c:27:5
+    in func_b\r\n==14==ABORTING\r\nsubprocess command returned a non-zero exit status:
+    1\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -e HELPER=True -e ARCHITECTURE=x86_64 -v /home/dowoo/desktop/dowoo/atlanta/crete/packages/python_oss_fuzz/.oss_fuzz/build/out/aixcc/c/mock-cp:/out
+    -v /tmp/tmp9u9xj155:/testcase -t ghcr.io/aixcc-finals/base-runner:v1.2.0 reproduce
+    filein_harness -runs=100.
+
+    '
+  - false
+- request:
+    body: '{"messages":[{"role":"user","content":"Extract the key information from
+      this crash log. Focus on:\n1. Error type/exception\n2. Root cause\n3. Stack
+      trace with relevant frames\n\nCrash log:\n```\n==ERROR: AddressSanitizer: SEGV
+      on unknown address 0x55d2bb4a7ed2 (pc 0x55d2baa0ebd0 bp 0x7ffc8ccdbf10 sp 0x7ffc8ccdb698
+      T0)\r\n==14==The signal is caused by a READ memory access.\r\nSCARINESS: 20
+      (wild-addr-read)\r\n    #0 0x55d2baa0ebd0 in __sanitizer::internal_strlen(char
+      const*) /src/llvm-project/compiler-rt/lib/sanitizer_common/sanitizer_libc.cpp:176:10\r\n    #1
+      0x55d2ba982c91 in printf_common(void*, char const*, __va_list_tag*) /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors_format.inc:561:17\r\n    #2
+      0x55d2ba984839 in vprintf /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1644:1\r\n    #3
+      0x55d2ba984839 in printf /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1702:1\r\n    #4
+      0x55d2baa36a63 in func_b /src/fuzz/../mock-cp-src/mock_vp.c:27:5\r\n    #5 0x55d2baa36dde
+      in LLVMFuzzerTestOneInput /src/fuzz/filein_harness.c:58:3\r\n    #6 0x55d2ba8eb320
+      in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #7
+      0x55d2ba8d6595 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #8
+      0x55d2ba8dc02f in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char
+      const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #9
+      0x55d2ba9072d2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n    #10
+      0x7f70da74f082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+      (BuildId: 5792732f783158c66fb4f3756458ca24e46e827d)\r\n    #11 0x55d2ba8ce77d
+      in _start (/out/filein_harness+0x3e77d)\r\n\r\nDEDUP_TOKEN: __sanitizer::internal_strlen(char
+      const*)--printf_common(void*, char const*, __va_list_tag*)--___interceptor_vprintf\r\nAddressSanitizer
+      can not provide additional info.\r\nSUMMARY: AddressSanitizer: SEGV /src/fuzz/../mock-cp-src/mock_vp.c:27:5
+      in func_b\r\n==14==ABORTING\r\nsubprocess command returned a non-zero exit status:
+      1\nINFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+      --rm -e HELPER=True -e ARCHITECTURE=x86_64 -v $CURDIR/packages/python_oss_fuzz/.oss_fuzz/build/out/aixcc/c/mock-cp:/out
+      -v $TMPFILE -t ghcr.io/aixcc-finals/base-runner:v1.2.0 reproduce filein_harness
+      -runs=100.\n\n```\nExtracted information:"}],"model":"gpt-4o"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '2709'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BeS6Q0ix8RMbLIG8nsLN8aUJknvQi","created":1748980846,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_a288987b44","choices":[{"finish_reason":"stop","index":0,"message":{"content":"1.
+        **Error Type/Exception**: AddressSanitizer: SEGV (Segmentation Fault)\n\n2.
+        **Root Cause**: The segmentation fault was caused by a READ memory access
+        to an invalid or \"wild\" address during the execution of the `func_b` function
+        in the `mock_vp.c` source file at line 27, column 5. The specific issue seems
+        to be related to a call to `__sanitizer::internal_strlen(char const*)`, indicating
+        a possible issue with string length calculation on a non-null-terminated string
+        or a corrupted pointer.\n\n3. **Stack Trace with Relevant Frames**:\n   -
+        `__sanitizer::internal_strlen(char const*)` in `sanitizer_libc.cpp:176:10`\n   -
+        `printf_common(void*, char const*, __va_list_tag*)` in `sanitizer_common_interceptors_format.inc:561:17`\n   -
+        `vprintf` in `sanitizer_common_interceptors.inc:1644:1`\n   - `printf` in
+        `sanitizer_common_interceptors.inc:1702:1`\n   - `func_b` in `mock_vp.c:27:5`\n   -
+        `LLVMFuzzerTestOneInput` in `filein_harness.c:58:3`\n   - `fuzzer::Fuzzer::ExecuteCallback`
+        in `FuzzerLoop.cpp:614:13`\n   - `fuzzer::RunOneTest` in `FuzzerDriver.cpp:327:6`\n   -
+        `fuzzer::FuzzerDriver` in `FuzzerDriver.cpp:862:9`\n   - `main` in `FuzzerMain.cpp:20:10`","role":"assistant","tool_calls":null,"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":347,"prompt_tokens":907,"total_tokens":1254,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1764'
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Jun 2025 20:00:52 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 94a1c752991b07f1-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 03 Jun 2025 20:00:52 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '5783'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '5785'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999348'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 1ms
+      llm_provider-x-request-id:
+      - req_86dc912acf25faff940f8bc2e6c98368
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - e994d3283d89e750e648a5d2434d6886
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 9bb15c75-ee79-4488-b296-327799c00dbe
+      x-litellm-key-spend:
+      - '5632.509484020033'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '2.367'
+      x-litellm-response-cost:
+      - '0.0057375'
+      x-litellm-response-duration-ms:
+      - '5973.544000000001'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999348'
+    status:
+      code: 200
+      message: OK
+version: 1

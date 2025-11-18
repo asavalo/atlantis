@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueLow",
+    "message": "Regular Expression Injection",
+    "loc_file_full_name": "ApplicationExtension.java",
+    "loc_file_short_name": "ApplicationExtension.java",
+    "loc_line": 34,
+    "loc_function_full_name": "org.apache.commons.imaging.formats.gif.ApplicationExtension.<init>",
+    "loc_function_short_name": "ApplicationExtension"
+}

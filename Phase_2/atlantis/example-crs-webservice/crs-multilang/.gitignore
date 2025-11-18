@@ -1,0 +1,14 @@
+*.swp
+*.swo
+**/venv
+__pycache__
+cp_root
+crs.list
+experiments
+/workdir/
+target/
+!**/symqemu-multilang/**/target/
+/*.config
+/*.list
+.cursorignore
+.vscode

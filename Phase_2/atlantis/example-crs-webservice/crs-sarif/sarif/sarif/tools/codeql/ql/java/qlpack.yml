@@ -1,0 +1,7 @@
+---
+library: false
+warnOnImplicitThis: false
+name: aixcc/java-query
+version: 0.0.1
+dependencies:
+  codeql/java-all: ^7.2.0

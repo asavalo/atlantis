@@ -1,0 +1,20 @@
+--- a/src/http/modules/ngx_http_rewrite_module.c
++++ b/src/http/modules/ngx_http_rewrite_module.c
+@@ -175,9 +175,14 @@
+     e->log = rlcf->log;
+     e->status = NGX_DECLINED;
+ 
+-    while (*(uintptr_t *) e->ip) {
+-        code = *(ngx_http_script_code_pt *) e->ip;
+-        code(e);
++    {
++        ngx_uint_t n = rlcf->codes->nelts;
++        uintptr_t *code_end = (uintptr_t *)rlcf->codes->elts + n;
++
++        while ((uintptr_t *) e->ip < code_end && *(uintptr_t *) e->ip) {
++            code = *(ngx_http_script_code_pt *) e->ip;
++            code(e);
++        }
+     }
+ 
+     return e->status;

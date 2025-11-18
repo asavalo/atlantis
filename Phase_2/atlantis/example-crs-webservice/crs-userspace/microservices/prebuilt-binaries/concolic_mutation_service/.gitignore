@@ -1,0 +1,4 @@
+/target
+/libfuzzer.so
+/concolic_client
+/concolicd

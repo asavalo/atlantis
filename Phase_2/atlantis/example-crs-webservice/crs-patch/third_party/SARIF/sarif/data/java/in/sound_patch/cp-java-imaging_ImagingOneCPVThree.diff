@@ -1,0 +1,17 @@
+--- a/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkIhdr.java
++++ b/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkIhdr.java
+@@ -42,8 +42,12 @@
+         final ByteArrayInputStream is = new ByteArrayInputStream(bytes);
+         width = read4Bytes("Width", is, "Not a Valid PNG File: IHDR Corrupt", getByteOrder());
+         height = read4Bytes("Height", is, "Not a Valid PNG File: IHDR Corrupt", getByteOrder());
+-        if (width * height < 0) {
+-            throw new ImagingException("PNG: invalid dimensions");
++        if (width <= 0 || height <= 0) {
++            throw new ImagingException("PNG: dimensions must be positive");
++        }
++        long area = (long) width * (long) height;
++        if (area > Integer.MAX_VALUE) {
++            throw new ImagingException("PNG: image dimensions too large");
+         }
+         bitDepth = readByte("BitDepth", is, "Not a Valid PNG File: IHDR Corrupt");
+         final int type = readByte("ColorType", is, "Not a Valid PNG File: IHDR Corrupt");

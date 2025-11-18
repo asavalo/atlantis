@@ -1,0 +1,9 @@
+cp_name: sample
+
+sanitizers:
+    id_1: "FuzzerSecurityIssueCritical: OS Command Injection"
+
+harnesses:
+    id_1:
+        name: SampleOne
+        source: src/sample-harnesses/sample-harness-one/src/main/java/sample/one/SampleOne.java

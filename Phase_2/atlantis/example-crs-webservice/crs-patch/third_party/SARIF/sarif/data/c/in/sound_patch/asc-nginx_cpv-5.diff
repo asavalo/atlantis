@@ -1,0 +1,14 @@
+--- a/src/http/ngx_http_variables.c
++++ b/src/http/ngx_http_variables.c
+@@ -2848,6 +2848,11 @@
+     ngx_http_variable_value_t *v, uintptr_t data)
+ {
+     ngx_con_his_t *last_ip = ngx_get_con_his(r->connection_history, r->request_counter);
++    if (last_ip == NULL) {
++        v->not_found = 1;
++        return NGX_OK;
++    }
++
+     v->data = last_ip->addr_text.data;
+     v->len = last_ip->addr_text.len;
+ 

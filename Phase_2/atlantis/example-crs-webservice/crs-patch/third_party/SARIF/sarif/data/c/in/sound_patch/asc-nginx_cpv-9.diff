@@ -1,0 +1,10 @@
+--- a/src/core/ngx_cycle.c
++++ b/src/core/ngx_cycle.c
+@@ -1661,6 +1661,7 @@
+     reader = *black_list;
+ 
+     if (reader && !ngx_strcmp(remove_ip, reader->IP->data)) {
++        *black_list = reader->next;
+         ngx_destroy_black_list_link(reader);
+         return NGX_OK;
+     }

@@ -1,0 +1,433 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                    "message": {
+                        "text": "Server Side Request Forgery (SSRF)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/core/src/main/java/org/eclipse/angus/mail/util/SocketFetcher.java"
+                                },
+                                "region": {
+                                    "startLine": 889,
+                                    "startColumn": 28
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/mail-api-harness-one/src/main/java/com/aixcc/mailapi/harnesses/one/MailApiHarnessOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 19,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.mailapi.harnesses.one.MailApiHarnessOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/jakarta.mail/target/generated-sources/dependencies/jakarta/mail/internet/MimeMessage.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 146,
+                                                        "startColumn": 23
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "jakarta.mail.internet.MimeMessage.<init>:void(jakarta.mail.internet.MimeMessage)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/jakarta.mail/target/generated-sources/dependencies/org/eclipse/angus/mail/pop3/POP3Message.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 104,
+                                                        "startColumn": 27
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.pop3.POP3Message.getSize:int()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/mbox/src/main/java/org/eclipse/angus/mail/mbox/MboxFolder.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 440,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.mbox.MboxFolder.close:void(boolean)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/mbox/src/main/java/org/eclipse/angus/mail/mbox/MboxFolder.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 477,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.mbox.MboxFolder.writeFolder:int(boolean,boolean)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/mbox/src/main/java/org/eclipse/angus/mail/mbox/MboxFolder.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 709,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.mbox.MboxFolder.getMessage:jakarta.mail.Message(int)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/mbox/src/main/java/org/eclipse/angus/mail/mbox/MboxFolder.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 355,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.mbox.MboxFolder.checkRange:void(int)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/mbox/src/main/java/org/eclipse/angus/mail/remote/RemoteInbox.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 65,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.remote.RemoteInbox.getMessageCount:int()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/mbox/src/main/java/org/eclipse/angus/mail/remote/RemoteStore.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 73,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.remote.RemoteStore.updateInbox:void()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/jakarta.mail/target/generated-sources/dependencies/jakarta/mail/Service.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 267,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "jakarta.mail.Service.connect:void(java.lang.String,int,java.lang.String,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/smtp/src/main/java/org/eclipse/angus/mail/smtp/SMTPTransport.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 677,
+                                                        "startColumn": 20
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect:boolean(java.lang.String,int,java.lang.String,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/angus-mail/target/generated-sources/dependencies/org/eclipse/angus/mail/smtp/SMTPTransport.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 2186,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.smtp.SMTPTransport.openServer:void(java.lang.String,int)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/core/src/main/java/org/eclipse/angus/mail/util/SocketFetcher.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 154,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.util.SocketFetcher.getSocket:java.net.Socket(java.lang.String,int,java.util.Properties,java.lang.String,boolean)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/providers/jakarta.mail/target/generated-sources/dependencies/org/eclipse/angus/mail/util/SocketFetcher.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 274,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.util.SocketFetcher.createSocket:java.net.Socket(java.net.InetAddress,int,java.lang.String,int,int,int,java.util.Properties,java.lang.String,javax.net.SocketFactory,boolean)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/core/src/main/java/org/eclipse/angus/mail/util/SocketFetcher.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 884,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.util.SocketFetcher.proxyConnect:void(java.net.Socket,java.lang.String,int,java.lang.String,java.lang.String,java.lang.String,int,int)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/core/src/main/java/org/eclipse/angus/mail/util/SocketFetcher.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 889,
+                                                        "startColumn": 28
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.angus.mail.util.SocketFetcher.proxyConnect:void(java.net.Socket,java.lang.String,int,java.lang.String,java.lang.String,java.lang.String,int,int)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

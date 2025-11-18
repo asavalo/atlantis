@@ -1,0 +1,39 @@
+--- a/core/src/main/java/hudson/ProxyConfiguration.java
++++ b/core/src/main/java/hudson/ProxyConfiguration.java
+@@ -59,6 +59,9 @@
+ import java.util.List;
+ import java.util.Objects;
+ import java.util.concurrent.TimeUnit;
++import java.net.InetAddress;
++import java.net.UnknownHostException;
++import java.util.regex.Pattern;
+ import java.util.regex.Pattern;
+ import jenkins.UserAgentURLConnectionDecorator;
+ import jenkins.model.Jenkins;
+@@ -524,6 +527,15 @@
+             return "Proxy Configuration2";
+         }
+ 
++        private boolean isValidUrl(URI uri) {
++            try {
++                InetAddress address = InetAddress.getByName(uri.getHost());
++                return !address.isAnyLocalAddress() && !address.isLoopbackAddress() && !address.isSiteLocalAddress();
++            } catch (UnknownHostException e) {
++                return false;
++            }
++        }
++
+         @RequirePOST
+         @Restricted(NoExternalUse.class)
+         public FormValidation doValidateProxy(
+@@ -541,6 +553,10 @@
+             } catch (URISyntaxException e) {
+                 return FormValidation.error(e, Messages.ProxyConfiguration_MalformedTestUrl(testUrl));
+             }
++            if (!isValidUrl(uri)) {
++                return FormValidation.error("The URL is not valid or points to a restricted address.");
++            }
++
+             HttpClient.Builder builder = HttpClient.newBuilder();
+             builder.connectTimeout(DEFAULT_CONNECT_TIMEOUT_MILLIS > 0
+                     ? Duration.ofMillis(DEFAULT_CONNECT_TIMEOUT_MILLIS)

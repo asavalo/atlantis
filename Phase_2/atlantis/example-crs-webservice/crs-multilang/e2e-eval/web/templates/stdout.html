@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stdout - {{ experiment_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="stdout-container">
+            <div class="stdout-header">
+                <h1>Experiment Stdout</h1>
+
+                <!-- Disclaimer about shared stdout -->
+                <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 4px; padding: 10px; margin: 10px 0; color: #856404;">
+                    <strong>⚠️ Note:</strong> This stdout file is shared across all harnesses for the same target and configuration.
+                </div>
+
+                <div class="stdout-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Experiment</span>
+                        <span class="meta-value">{{ experiment_name }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Target</span>
+                        <span class="meta-value">{{ target }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Harness</span>
+                        <span class="meta-value">{{ harness }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Config Hash</span>
+                        <span class="meta-value">{{ config_hash }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">File Path</span>
+                        <span class="meta-value">{{ stdout_file }}</span>
+                    </div>
+                    {% if file_size is defined %}
+                    <div class="meta-item">
+                        <span class="meta-label">File Size</span>
+                        <span class="meta-value">
+                            {% if is_truncated %}
+                            Displaying: 10MB of {{ file_size_display }}
+                            <span style="color: #dc3545; font-weight: 600;">⚠️ Truncated</span>
+                            {% else %}
+                            {{ file_size_display }}
+                            {% if file_size > 10 * 1024 * 1024 %}
+                            <span style="color: #fd7e14; font-weight: 600;">⚠️ Large</span>
+                            {% endif %}
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="/" class="action-button secondary">← Back to Experiments</a>
+                <a href="/reports/{{ experiment_name|urlencode }}/linux/" class="action-button secondary">View Report</a>
+                <button id="copy-button" class="action-button copy-button" onclick="copyToClipboard()">📋 Copy Content</button>
+                <button class="action-button" onclick="downloadRaw()">💾 Download Raw</button>
+            </div>
+
+            {% if is_truncated %}
+            <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; padding: 10px; margin: 10px 0; color: #721c24;">
+                <strong>⚠️ Content Truncated:</strong> This file is {{ file_size_display }} but only the first 10MB is displayed for performance.
+                Use the "Download Raw" button to get the complete file.
+            </div>
+            {% endif %}
+
+            <div class="stdout-content" id="stdout-content">{{ content }}</div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const content = document.getElementById('stdout-content').textContent;
+            const button = document.getElementById('copy-button');
+
+            // Try modern clipboard API first
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(content).then(function() {
+                    showCopySuccess(button);
+                }).catch(function(err) {
+                    console.error('Clipboard API failed: ', err);
+                    fallbackCopyTextToClipboard(content, button);
+                });
+            } else {
+                // Fallback for older browsers or non-secure contexts
+                fallbackCopyTextToClipboard(content, button);
+            }
+        }
+
+        function fallbackCopyTextToClipboard(text, button) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            textArea.style.opacity = "0";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showCopySuccess(button);
+                } else {
+                    showCopyError(button);
+                }
+            } catch (err) {
+                console.error('Fallback copy failed: ', err);
+                showCopyError(button);
+            }
+
+            document.body.removeChild(textArea);
+        }
+
+        function showCopySuccess(button) {
+            const originalText = button.textContent;
+            button.textContent = '✅ Copied!';
+            button.classList.add('copy-success');
+
+            setTimeout(function() {
+                button.textContent = originalText;
+                button.classList.remove('copy-success');
+            }, 2000);
+        }
+
+        function showCopyError(button) {
+            const originalText = button.textContent;
+            button.textContent = '❌ Copy Failed';
+            button.style.background = '#dc3545';
+
+            setTimeout(function() {
+                button.textContent = originalText;
+                button.style.background = '';
+            }, 2000);
+        }
+
+        function downloadRaw() {
+            const content = document.getElementById('stdout-content').textContent;
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '{{ config_hash }}_{{ target.replace("/", "-") }}_{{ harness }}_stdout.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+    "ruleId": "stack-buffer-overflow",
+    "message": "AddressSanitizer: stack-buffer-overflow /src/nginx/src/http/ngx_http_parse.c:765:17 in ngx_http_parse_request_line",
+    "loc_file_full_name": "/src/nginx/src/http/ngx_http_parse.c",
+    "loc_file_short_name": "ngx_http_parse.c",
+    "loc_line": 765,
+    "loc_function_full_name": "ngx_http_parse_request_line",
+    "loc_function_short_name": "ngx_http_parse_request_line"
+}

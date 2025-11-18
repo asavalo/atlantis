@@ -1,0 +1,15 @@
+import cpp
+import safe_function
+
+from SafeFunction f
+where 
+  f.getFile().getAbsolutePath().matches("%{{ file_path }}%") and
+  {{ start_line }} <= f.getBlock().getLocation().getEndLine() and
+  f.getBlock().getLocation().getStartLine() <= {{end_line}}
+select 
+  f as func,
+  f.getSafeBaseName() as file,
+  f.getSafeAbsolutePath() as file_abs,
+  f.getSafeSignature() as sig,
+  f.getSafeStartLineString() as start_line,
+  f.getSafeEndLineString() as end_line

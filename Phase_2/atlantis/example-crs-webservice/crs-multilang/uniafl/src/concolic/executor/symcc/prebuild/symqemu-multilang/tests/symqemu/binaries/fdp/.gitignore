@@ -1,0 +1,6 @@
+fuzz_calc.a
+fuzz_calc.h
+*.mod
+*.sum
+out/*
+results/*

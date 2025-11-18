@@ -1,0 +1,43 @@
+[tool.black]
+line-length = 80
+target-version = ['py312']
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages]
+find = {}
+
+[project]
+name = "my_crs"
+version = "0.1.0"
+dependencies = [
+    "uvicorn",
+    "fastapi",
+    "coloredlogs",
+    "urllib3 >= 1.25.3, < 3.0.0",
+    "python_dateutil >= 2.8.2",
+    "pydantic >= 2",
+    "typing-extensions >= 4.7.1",
+    "azure-mgmt-compute >= 34.0.0",
+    "azure-mgmt-resource >= 23.2.0",
+    "azure-mgmt-containerservice >= 34.0.0",
+    "azure-identity >= 1.20.0",
+    "kubernetes >= 32.0.0",
+    "jinja2 >= 3.1.0",
+    "python-redis-lock >= 4.0.0",
+    "redis >= 5.2.0"
+]
+
+[project.optional-dependencies]
+tests = [
+    "pytest", 
+    "pytest-xdist", 
+    "pytest-asyncio",
+    "pytest-cov",
+    "types-python-dateutil",
+    "mypy",
+    "tox",
+    "flake8"
+]

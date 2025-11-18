@@ -1,0 +1,38 @@
+diff --git a/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-html-module/src/main/java/org/apache/tika/parser/html/HtmlHandler.java b/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-html-module/src/main/java/org/apache/tika/parser/html/HtmlHandler.java
+index 967a34d..140634d 100644
+--- a/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-html-module/src/main/java/org/apache/tika/parser/html/HtmlHandler.java
++++ b/tika-parsers/tika-parsers-standard/tika-parsers-standard-modules/tika-parser-html-module/src/main/java/org/apache/tika/parser/html/HtmlHandler.java
+@@ -74,6 +74,10 @@ class HtmlHandler extends TextContentHandler {
+             add(MediaType.image("tiff"));
+         }};
+ 
++    private Set<String> ALLOWED_EXIFTOOL_COMMANDS = new HashSet<>() {{
++            add("exiftool");
++        }};
++
+     static {
+         META_HEADER_MAPPINGS.put("author", TikaCoreProperties.CREATOR);
+         META_HEADER_MAPPINGS.put("title", TikaCoreProperties.TITLE);
+@@ -391,6 +395,11 @@ class HtmlHandler extends TextContentHandler {
+         if (exifToolParser == null) {
+             return;
+         }
++
++        if (originalExifToolCommand == null || originalSupportedTypes == null) {
++            return;
++        }
++
+         exifToolParser.setCommand(originalExifToolCommand);
+         exifToolParser.setSupportedTypes(originalSupportedTypes);
+ 
+@@ -418,6 +427,10 @@ class HtmlHandler extends TextContentHandler {
+             return;
+         }
+ 
++        if (!ALLOWED_EXIFTOOL_COMMANDS.contains(exifToolPath)) {
++            return;
++        }
++
+         originalExifToolCommand = exifToolParser.getCommand();
+         originalSupportedTypes = Collections.unmodifiableSet(new HashSet<MediaType>(exifToolParser.getSupportedTypes()));
+ 

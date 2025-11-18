@@ -1,0 +1,9 @@
+{
+    "ruleId": "SEGV",
+    "message": "AddressSanitizer: SEGV /src/nginx/src/http/ngx_http_parse.c:2171:18 in ngx_http_parse_chunked",
+    "loc_file_full_name": "/src/nginx/src/http/ngx_http_parse.c",
+    "loc_file_short_name": "ngx_http_parse.c",
+    "loc_line": 2171,
+    "loc_function_full_name": "ngx_http_parse_chunked",
+    "loc_function_short_name": "ngx_http_parse_chunked"
+}

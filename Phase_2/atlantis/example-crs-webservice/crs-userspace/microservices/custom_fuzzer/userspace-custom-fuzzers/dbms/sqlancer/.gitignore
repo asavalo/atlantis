@@ -1,0 +1,16 @@
+target/
+.classpath
+.settings/
+.vscode
+.project
+.checkstyle
+*.DS_Store
+.idea
+SQLancer.iml
+dependency-reduced-pom.xml
+database0.db
+databaseconnectiontest.db
+database*.log
+database*.properties
+database*.script
+databases/

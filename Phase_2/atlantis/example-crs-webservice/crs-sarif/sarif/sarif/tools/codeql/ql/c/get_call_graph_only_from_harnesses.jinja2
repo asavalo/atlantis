@@ -1,0 +1,34 @@
+import cpp
+import safe_function
+import semmle.code.cpp.pointsto.CallGraph
+
+string getClassIfLLVMFuzzer(SafeFunction f) {
+    if f.getName() = "LLVMFuzzerTestOneInput" 
+    then result = f.getALinkTarget().getBinary().getBaseName()
+    else result = "UNKNOWN"
+}
+
+from SafeFunction caller, SafeFunction callee
+where
+    not isSystemFunction(caller) and
+    not isSystemFunction(callee) and
+    exists(Function harness | 
+        harness.getFile().getAbsolutePath() in ["{{harness_paths | join('", "')}}"] and
+        allCalls*(harness, caller)
+    ) and
+    allCalls(caller, callee)
+    
+select
+    caller as from_func,
+    caller.getSafeAbsolutePath() as from_file_abs,
+    caller.getSafeSignature() as from_sig,
+    caller.getSafeStartLineString() as from_start_line,
+    caller.getSafeEndLineString() as from_end_line,
+    getClassIfLLVMFuzzer(caller) as from_class,
+    callee as to_func,
+    callee.getSafeAbsolutePath() as to_file_abs,
+    callee.getSafeSignature() as to_sig,
+    callee.getSafeStartLineString() as to_start_line,
+    callee.getSafeEndLineString() as to_end_line,
+    getClassIfLLVMFuzzer(callee) as to_class,
+    caller.hasDirectCall(callee) as is_direct

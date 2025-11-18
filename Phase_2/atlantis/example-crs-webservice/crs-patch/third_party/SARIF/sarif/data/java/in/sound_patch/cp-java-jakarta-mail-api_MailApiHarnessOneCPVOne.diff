@@ -1,0 +1,78 @@
+--- a/core/src/main/java/org/eclipse/angus/mail/handlers/text_xml.java
++++ b/core/src/main/java/org/eclipse/angus/mail/handlers/text_xml.java
+@@ -70,42 +70,41 @@
+     /**
+      *
+      */
+-    @Override
+-    public void writeTo(Object obj, String mimeType, OutputStream os)
+-            throws IOException {
+-        if (!isXmlType(mimeType))
+-            throw new IOException(
+-                    "Invalid content type \"" + mimeType + "\" for text/xml DCH");
+-        if (obj instanceof String) {
+-            super.writeTo(obj, mimeType, os);
+-            return;
++@Override
++public void writeTo(Object obj, String mimeType, OutputStream os)
++        throws IOException {
++    if (!isXmlType(mimeType))
++        throw new IOException(
++                "Invalid content type \"" + mimeType + "\" for text/xml DCH");
++    if (obj instanceof String) {
++        super.writeTo(obj, mimeType, os);
++        return;
++    }
++    if (!(obj instanceof DataSource || obj instanceof Source)) {
++        throw new IOException("Invalid Object type = " + obj.getClass() +
++                ". XmlDCH can only convert DataSource or Source to XML.");
++    }
++
++    try {
++        TransformerFactory factory = TransformerFactory.newInstance();
++        factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
++        Transformer transformer = factory.newTransformer();
++        StreamResult result = new StreamResult(os);
++        if (obj instanceof DataSource) {
++            transformer.transform(
++                    new StreamSource(((DataSource) obj).getInputStream()),
++                    result);
++        } else {
++            transformer.transform((Source) obj, result);
+         }
+-        if (!(obj instanceof DataSource || obj instanceof Source)) {
+-            throw new IOException("Invalid Object type = " + obj.getClass() +
+-                    ". XmlDCH can only convert DataSource or Source to XML.");
+-        }
+-
+-        try {
+-            Transformer transformer =
+-                    TransformerFactory.newInstance().newTransformer();
+-            StreamResult result = new StreamResult(os);
+-            if (obj instanceof DataSource) {
+-                // Streaming transform applies only to
+-                // javax.xml.transform.StreamSource
+-                transformer.transform(
+-                        new StreamSource(((DataSource) obj).getInputStream()),
+-                        result);
+-            } else {
+-                transformer.transform((Source) obj, result);
+-            }
+-        } catch (TransformerException | RuntimeException ex) {
+-            IOException ioex = new IOException(
+-                    "Unable to run the JAXP transformer on a stream "
+-                            + ex.getMessage());
+-            ioex.initCause(ex);
+-            throw ioex;
+-        }
++    } catch (TransformerException | RuntimeException ex) {
++        IOException ioex = new IOException(
++                "Unable to run the JAXP transformer on a stream "
++                        + ex.getMessage());
++        ioex.initCause(ex);
++        throw ioex;
+     }
++}
+ 
+     private boolean isXmlType(String type) {
+         try {

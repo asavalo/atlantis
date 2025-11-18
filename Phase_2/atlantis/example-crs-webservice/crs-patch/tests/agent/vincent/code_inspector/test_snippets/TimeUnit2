@@ -1,0 +1,424 @@
+37:/**
+38: * A {@code TimeUnit} represents time durations at a given unit of
+39: * granularity and provides utility methods to convert across units,
+40: * and to perform timing and delay operations in these units.  A
+41: * {@code TimeUnit} does not maintain time information, but only
+42: * helps organize and use time representations that may be maintained
+43: * separately across various contexts.  A nanosecond is defined as one
+44: * thousandth of a microsecond, a microsecond as one thousandth of a
+45: * millisecond, a millisecond as one thousandth of a second, a minute
+46: * as sixty seconds, an hour as sixty minutes, and a day as twenty four
+47: * hours.
+48: *
+49: * <p>A {@code TimeUnit} is mainly used to inform time-based methods
+50: * how a given timing parameter should be interpreted. For example,
+51: * the following code will timeout in 50 milliseconds if the {@link
+52: * java.util.concurrent.locks.Lock lock} is not available:
+53: *
+54: * <pre>  Lock lock = ...;
+55: *  if ( lock.tryLock(50L, TimeUnit.MILLISECONDS) ) ...
+56: * </pre>
+57: * while this code will timeout in 50 seconds:
+58: * <pre>
+59: *  Lock lock = ...;
+60: *  if ( lock.tryLock(50L, TimeUnit.SECONDS) ) ...
+61: * </pre>
+62: *
+63: * Note however, that there is no guarantee that a particular timeout
+64: * implementation will be able to notice the passage of time at the
+65: * same granularity as the given {@code TimeUnit}.
+66: *
+67: * @author Doug Lea
+68: * @deprecated use {@link TimeUnit}. (Java 5 did not have all the units required, so {@link TimeUnit2} was introduced
+69: * because it had better conversion until Java 6 went out.)
+70: */
+71:@Deprecated
+72:@RestrictedSince("2.80")
+73:@Restricted(NoExternalUse.class)
+74:public enum TimeUnit2 {
+75:    NANOSECONDS {
+76:        @Override public long toNanos(long d)   { return d; }
+77:
+78:        @Override public long toMicros(long d)  { return d / (C1 / C0); }
+79:
+80:        @Override public long toMillis(long d)  { return d / (C2 / C0); }
+81:
+82:        @Override public long toSeconds(long d) { return d / (C3 / C0); }
+83:
+84:        @Override public long toMinutes(long d) { return d / (C4 / C0); }
+85:
+86:        @Override public long toHours(long d)   { return d / (C5 / C0); }
+87:
+88:        @Override public long toDays(long d)    { return d / (C6 / C0); }
+89:
+90:        @Override public long convert(long d, TimeUnit2 u) { return u.toNanos(d); }
+91:
+92:        @Override public long convert(long d, TimeUnit u) { return u.toNanos(d); }
+93:
+94:        @Override
+95:        int excessNanos(long d, long m) { return (int) (d - (m * C2)); }
+96:    },
+97:    MICROSECONDS {
+98:        @Override public long toNanos(long d)   { return x(d, C1 / C0, MAX / (C1 / C0)); }
+99:
+100:        @Override public long toMicros(long d)  { return d; }
+101:
+102:        @Override public long toMillis(long d)  { return d / (C2 / C1); }
+103:
+104:        @Override public long toSeconds(long d) { return d / (C3 / C1); }
+105:
+106:        @Override public long toMinutes(long d) { return d / (C4 / C1); }
+107:
+108:        @Override public long toHours(long d)   { return d / (C5 / C1); }
+109:
+110:        @Override public long toDays(long d)    { return d / (C6 / C1); }
+111:
+112:        @Override public long convert(long d, TimeUnit2 u) { return u.toMicros(d); }
+113:
+114:        @Override public long convert(long d, TimeUnit u) { return u.toMicros(d); }
+115:
+116:        @Override
+117:        int excessNanos(long d, long m) { return (int) ((d * C1) - (m * C2)); }
+118:    },
+119:    MILLISECONDS {
+120:        @Override public long toNanos(long d)   { return x(d, C2 / C0, MAX / (C2 / C0)); }
+121:
+122:        @Override public long toMicros(long d)  { return x(d, C2 / C1, MAX / (C2 / C1)); }
+123:
+124:        @Override public long toMillis(long d)  { return d; }
+125:
+126:        @Override public long toSeconds(long d) { return d / (C3 / C2); }
+127:
+128:        @Override public long toMinutes(long d) { return d / (C4 / C2); }
+129:
+130:        @Override public long toHours(long d)   { return d / (C5 / C2); }
+131:
+132:        @Override public long toDays(long d)    { return d / (C6 / C2); }
+133:
+134:        @Override public long convert(long d, TimeUnit2 u) { return u.toMillis(d); }
+135:
+136:        @Override public long convert(long d, TimeUnit u) { return u.toMillis(d); }
+137:
+138:        @Override
+139:        int excessNanos(long d, long m) { return 0; }
+140:    },
+141:    SECONDS {
+142:        @Override public long toNanos(long d)   { return x(d, C3 / C0, MAX / (C3 / C0)); }
+143:
+144:        @Override public long toMicros(long d)  { return x(d, C3 / C1, MAX / (C3 / C1)); }
+145:
+146:        @Override public long toMillis(long d)  { return x(d, C3 / C2, MAX / (C3 / C2)); }
+147:
+148:        @Override public long toSeconds(long d) { return d; }
+149:
+150:        @Override public long toMinutes(long d) { return d / (C4 / C3); }
+151:
+152:        @Override public long toHours(long d)   { return d / (C5 / C3); }
+153:
+154:        @Override public long toDays(long d)    { return d / (C6 / C3); }
+155:
+156:        @Override public long convert(long d, TimeUnit2 u) { return u.toSeconds(d); }
+157:
+158:        @Override public long convert(long d, TimeUnit u) { return u.toSeconds(d); }
+159:
+160:        @Override
+161:        int excessNanos(long d, long m) { return 0; }
+162:    },
+163:    MINUTES {
+164:        @Override public long toNanos(long d)   { return x(d, C4 / C0, MAX / (C4 / C0)); }
+165:
+166:        @Override public long toMicros(long d)  { return x(d, C4 / C1, MAX / (C4 / C1)); }
+167:
+168:        @Override public long toMillis(long d)  { return x(d, C4 / C2, MAX / (C4 / C2)); }
+169:
+170:        @Override public long toSeconds(long d) { return x(d, C4 / C3, MAX / (C4 / C3)); }
+171:
+172:        @Override public long toMinutes(long d) { return d; }
+173:
+174:        @Override public long toHours(long d)   { return d / (C5 / C4); }
+175:
+176:        @Override public long toDays(long d)    { return d / (C6 / C4); }
+177:
+178:        @Override public long convert(long d, TimeUnit2 u) { return u.toMinutes(d); }
+179:
+180:        @Override public long convert(long d, TimeUnit u) { return SECONDS.toMinutes(u.toSeconds(d)); }
+181:
+182:        @Override
+183:        int excessNanos(long d, long m) { return 0; }
+184:    },
+185:    HOURS {
+186:        @Override public long toNanos(long d)   { return x(d, C5 / C0, MAX / (C5 / C0)); }
+187:
+188:        @Override public long toMicros(long d)  { return x(d, C5 / C1, MAX / (C5 / C1)); }
+189:
+190:        @Override public long toMillis(long d)  { return x(d, C5 / C2, MAX / (C5 / C2)); }
+191:
+192:        @Override public long toSeconds(long d) { return x(d, C5 / C3, MAX / (C5 / C3)); }
+193:
+194:        @Override public long toMinutes(long d) { return x(d, C5 / C4, MAX / (C5 / C4)); }
+195:
+196:        @Override public long toHours(long d)   { return d; }
+197:
+198:        @Override public long toDays(long d)    { return d / (C6 / C5); }
+199:
+200:        @Override public long convert(long d, TimeUnit2 u) { return u.toHours(d); }
+201:
+202:        @Override public long convert(long d, TimeUnit u) { return SECONDS.toHours(u.toSeconds(d)); }
+203:
+204:        @Override
+205:        int excessNanos(long d, long m) { return 0; }
+206:    },
+207:    DAYS {
+208:        @Override public long toNanos(long d)   { return x(d, C6 / C0, MAX / (C6 / C0)); }
+209:
+210:        @Override public long toMicros(long d)  { return x(d, C6 / C1, MAX / (C6 / C1)); }
+211:
+212:        @Override public long toMillis(long d)  { return x(d, C6 / C2, MAX / (C6 / C2)); }
+213:
+214:        @Override public long toSeconds(long d) { return x(d, C6 / C3, MAX / (C6 / C3)); }
+215:
+216:        @Override public long toMinutes(long d) { return x(d, C6 / C4, MAX / (C6 / C4)); }
+217:
+218:        @Override public long toHours(long d)   { return x(d, C6 / C5, MAX / (C6 / C5)); }
+219:
+220:        @Override public long toDays(long d)    { return d; }
+221:
+222:        @Override public long convert(long d, TimeUnit2 u) { return u.toDays(d); }
+223:
+224:        @Override public long convert(long d, TimeUnit u) { return SECONDS.toDays(u.toSeconds(d)); }
+225:
+226:        @Override
+227:        int excessNanos(long d, long m) { return 0; }
+228:    };
+229:
+230:    // Handy constants for conversion methods
+231:    static final long C0 = 1L;
+232:    static final long C1 = C0 * 1000L;
+233:    static final long C2 = C1 * 1000L;
+234:    static final long C3 = C2 * 1000L;
+235:    static final long C4 = C3 * 60L;
+236:    static final long C5 = C4 * 60L;
+237:    static final long C6 = C5 * 24L;
+238:
+239:    static final long MAX = Long.MAX_VALUE;
+240:
+241:    /**
+242:     * Scale d by m, checking for overflow.
+243:     * This has a short name to make above code more readable.
+244:     */
+245:    static long x(long d, long m, long over) {
+246:        if (d >  over) return Long.MAX_VALUE;
+247:        if (d < -over) return Long.MIN_VALUE;
+248:        return d * m;
+249:    }
+250:
+251:    // To maintain full signature compatibility with 1.5, and to improve the
+252:    // clarity of the generated javadoc (see 6287639: Abstract methods in
+253:    // enum classes should not be listed as abstract), method convert
+254:    // etc. are not declared abstract but otherwise act as abstract methods.
+255:
+256:    /**
+257:     * Convert the given time duration in the given unit to this
+258:     * unit.  Conversions from finer to coarser granularities
+259:     * truncate, so lose precision. For example converting
+260:     * {@code 999} milliseconds to seconds results in
+261:     * {@code 0}. Conversions from coarser to finer granularities
+262:     * with arguments that would numerically overflow saturate to
+263:     * {@code Long.MIN_VALUE} if negative or {@code Long.MAX_VALUE}
+264:     * if positive.
+265:     *
+266:     * <p>For example, to convert 10 minutes to milliseconds, use:
+267:     * {@code TimeUnit.MILLISECONDS.convert(10L, TimeUnit.MINUTES)}
+268:     *
+269:     * @param sourceDuration the time duration in the given {@code sourceUnit}
+270:     * @param sourceUnit the unit of the {@code sourceDuration} argument
+271:     * @return the converted duration in this unit,
+272:     * or {@code Long.MIN_VALUE} if conversion would negatively
+273:     * overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+274:     */
+275:    public long convert(long sourceDuration, TimeUnit2 sourceUnit) {
+276:        throw new AbstractMethodError();
+277:    }
+278:
+279:    /**
+280:     * Convert the given time duration in the given unit to this
+281:     * unit.  Conversions from finer to coarser granularities
+282:     * truncate, so lose precision. For example converting
+283:     * {@code 999} milliseconds to seconds results in
+284:     * {@code 0}. Conversions from coarser to finer granularities
+285:     * with arguments that would numerically overflow saturate to
+286:     * {@code Long.MIN_VALUE} if negative or {@code Long.MAX_VALUE}
+287:     * if positive.
+288:     *
+289:     * <p>For example, to convert 10 minutes to milliseconds, use:
+290:     * {@code TimeUnit.MILLISECONDS.convert(10L, TimeUnit.MINUTES)}
+291:     *
+292:     * @param sourceDuration the time duration in the given {@code sourceUnit}
+293:     * @param sourceUnit the unit of the {@code sourceDuration} argument
+294:     * @return the converted duration in this unit,
+295:     * or {@code Long.MIN_VALUE} if conversion would negatively
+296:     * overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+297:     */
+298:    public long convert(long sourceDuration, TimeUnit sourceUnit) {
+299:        throw new AbstractMethodError();
+300:    }
+301:
+302:    /**
+303:     * Equivalent to {@code NANOSECONDS.convert(duration, this)}.
+304:     * @param duration the duration
+305:     * @return the converted duration,
+306:     * or {@code Long.MIN_VALUE} if conversion would negatively
+307:     * overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+308:     * @see #convert
+309:     */
+310:    public long toNanos(long duration) {
+311:        throw new AbstractMethodError();
+312:    }
+313:
+314:    /**
+315:     * Equivalent to {@code MICROSECONDS.convert(duration, this)}.
+316:     * @param duration the duration
+317:     * @return the converted duration,
+318:     * or {@code Long.MIN_VALUE} if conversion would negatively
+319:     * overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+320:     * @see #convert
+321:     */
+322:    public long toMicros(long duration) {
+323:        throw new AbstractMethodError();
+324:    }
+325:
+326:    /**
+327:     * Equivalent to {@code MILLISECONDS.convert(duration, this)}.
+328:     * @param duration the duration
+329:     * @return the converted duration,
+330:     * or {@code Long.MIN_VALUE} if conversion would negatively
+331:     * overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+332:     * @see #convert
+333:     */
+334:    public long toMillis(long duration) {
+335:        throw new AbstractMethodError();
+336:    }
+337:
+338:    /**
+339:     * Equivalent to {@code SECONDS.convert(duration, this)}.
+340:     * @param duration the duration
+341:     * @return the converted duration,
+342:     * or {@code Long.MIN_VALUE} if conversion would negatively
+343:     * overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+344:     * @see #convert
+345:     */
+346:    public long toSeconds(long duration) {
+347:        throw new AbstractMethodError();
+348:    }
+349:
+350:    /**
+351:     * Equivalent to {@code MINUTES.convert(duration, this)}.
+352:     * @param duration the duration
+353:     * @return the converted duration,
+354:     * or {@code Long.MIN_VALUE} if conversion would negatively
+355:     * overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+356:     * @see #convert
+357:     */
+358:    public long toMinutes(long duration) {
+359:        throw new AbstractMethodError();
+360:    }
+361:
+362:    /**
+363:     * Equivalent to {@code HOURS.convert(duration, this)}.
+364:     * @param duration the duration
+365:     * @return the converted duration,
+366:     * or {@code Long.MIN_VALUE} if conversion would negatively
+367:     * overflow, or {@code Long.MAX_VALUE} if it would positively overflow.
+368:     * @see #convert
+369:     */
+370:    public long toHours(long duration) {
+371:        throw new AbstractMethodError();
+372:    }
+373:
+374:    /**
+375:     * Equivalent to {@code DAYS.convert(duration, this)}.
+376:     * @param duration the duration
+377:     * @return the converted duration
+378:     * @see #convert
+379:     */
+380:    public long toDays(long duration) {
+381:        throw new AbstractMethodError();
+382:    }
+383:
+384:    /**
+385:     * Utility to compute the excess-nanosecond argument to wait,
+386:     * sleep, join.
+387:     * @param d the duration
+388:     * @param m the number of milliseconds
+389:     * @return the number of nanoseconds
+390:     */
+391:    abstract int excessNanos(long d, long m);
+392:
+393:    /**
+394:     * Performs a timed {@code Object.wait} using this time unit.
+395:     * This is a convenience method that converts timeout arguments
+396:     * into the form required by the {@code Object.wait} method.
+397:     *
+398:     * <p>For example, you could implement a blocking {@code poll}
+399:     * method (see {@link java.util.concurrent.BlockingQueue#poll BlockingQueue.poll})
+400:     * using:
+401:     *
+402:     * <pre>  public synchronized Object poll(long timeout, TimeUnit unit) throws InterruptedException {
+403:     *    while (empty) {
+404:     *      unit.timedWait(this, timeout);
+405:     *      ...
+406:     *    }
+407:     *  }</pre>
+408:     *
+409:     * @param obj the object to wait on
+410:     * @param timeout the maximum time to wait. If less than
+411:     * or equal to zero, do not wait at all.
+412:     * @throws InterruptedException if interrupted while waiting.
+413:     * @see Object#wait(long, int)
+414:     */
+415:    public void timedWait(Object obj, long timeout)
+416:    throws InterruptedException {
+417:        if (timeout > 0) {
+418:            long ms = toMillis(timeout);
+419:            int ns = excessNanos(timeout, ms);
+420:            obj.wait(ms, ns);
+421:        }
+422:    }
+423:
+424:    /**
+425:     * Performs a timed {@code Thread.join} using this time unit.
+426:     * This is a convenience method that converts time arguments into the
+427:     * form required by the {@code Thread.join} method.
+428:     * @param thread the thread to wait for
+429:     * @param timeout the maximum time to wait. If less than
+430:     * or equal to zero, do not wait at all.
+431:     * @throws InterruptedException if interrupted while waiting.
+432:     * @see Thread#join(long, int)
+433:     */
+434:    public void timedJoin(Thread thread, long timeout)
+435:    throws InterruptedException {
+436:        if (timeout > 0) {
+437:            long ms = toMillis(timeout);
+438:            int ns = excessNanos(timeout, ms);
+439:            thread.join(ms, ns);
+440:        }
+441:    }
+442:
+443:    /**
+444:     * Performs a {@code Thread.sleep} using this unit.
+445:     * This is a convenience method that converts time arguments into the
+446:     * form required by the {@code Thread.sleep} method.
+447:     * @param timeout the minimum time to sleep. If less than
+448:     * or equal to zero, do not sleep at all.
+449:     * @throws InterruptedException if interrupted while sleeping.
+450:     * @see Thread#sleep
+451:     */
+452:    public void sleep(long timeout) throws InterruptedException {
+453:        if (timeout > 0) {
+454:            long ms = toMillis(timeout);
+455:            int ns = excessNanos(timeout, ms);
+456:            Thread.sleep(ms, ns);
+457:        }
+458:    }
+459:
+460:}

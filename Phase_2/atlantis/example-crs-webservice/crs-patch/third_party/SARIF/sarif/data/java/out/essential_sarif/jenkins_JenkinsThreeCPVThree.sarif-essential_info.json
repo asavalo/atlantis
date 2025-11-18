@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueMedium",
+    "message": "Server Side Request Forgery (SSRF)",
+    "loc_file_full_name": "ProxyConfiguration.java",
+    "loc_file_short_name": "ProxyConfiguration.java",
+    "loc_line": 593,
+    "loc_function_full_name": "hudson.ProxyConfiguration$DescriptorImpl2.doValidateProxy",
+    "loc_function_short_name": "doValidateProxy"
+}

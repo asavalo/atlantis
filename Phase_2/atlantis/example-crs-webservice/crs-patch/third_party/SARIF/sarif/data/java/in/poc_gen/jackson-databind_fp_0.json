@@ -1,0 +1,509 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueHigh: load arbitrary library",
+                    "message": {
+                        "text": "load arbitrary library"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java"
+                                },
+                                "region": {
+                                    "startLine": 1096,
+                                    "startColumn": 49
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jackson-databind-harness-one/src/main/java/com/aixcc/jackson/databind/harnesses/one/JacksonDatabindOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 17,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jackson.databind.harnesses.one.JacksonDatabindOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jackson-databind-harness-one/src/main/java/com/aixcc/jackson/databind/harnesses/one/JacksonDatabindOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 21,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jackson.databind.harnesses.one.JacksonDatabindOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 3079,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.ObjectMapper.readValue:java.lang.Object(byte[],java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 3986,
+                                                        "startColumn": 25
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose:java.lang.Object(com.fasterxml.jackson.core.JsonParser,com.fasterxml.jackson.databind.JavaType)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/ObjectMapper.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 4173,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.ObjectMapper._findRootDeserializer:com.fasterxml.jackson.databind.JsonDeserializer(com.fasterxml.jackson.databind.DeserializationContext,com.fasterxml.jackson.databind.JavaType)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/DeserializationContext.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 477,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.DeserializationContext.findRootValueDeserializer:com.fasterxml.jackson.databind.JsonDeserializer(com.fasterxml.jackson.databind.JavaType)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 139,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.deser.DeserializerCache.findValueDeserializer:com.fasterxml.jackson.databind.JsonDeserializer(com.fasterxml.jackson.databind.DeserializationContext,com.fasterxml.jackson.databind.deser.DeserializerFactory,com.fasterxml.jackson.databind.JavaType)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 228,
+                                                        "startColumn": 23
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCacheValueDeserializer:com.fasterxml.jackson.databind.JsonDeserializer(com.fasterxml.jackson.databind.DeserializationContext,com.fasterxml.jackson.databind.deser.DeserializerFactory,com.fasterxml.jackson.databind.JavaType)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 264,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.deser.DeserializerCache._createAndCache2:com.fasterxml.jackson.databind.JsonDeserializer(com.fasterxml.jackson.databind.DeserializationContext,com.fasterxml.jackson.databind.deser.DeserializerFactory,com.fasterxml.jackson.databind.JavaType)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 318,
+                                                        "startColumn": 37
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.deser.DeserializerCache._createDeserializer:com.fasterxml.jackson.databind.JsonDeserializer(com.fasterxml.jackson.databind.DeserializationContext,com.fasterxml.jackson.databind.deser.DeserializerFactory,com.fasterxml.jackson.databind.JavaType)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/deser/DeserializerCache.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 365,
+                                                        "startColumn": 37
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.deser.DeserializerCache._createDeserializer2:com.fasterxml.jackson.databind.JsonDeserializer(com.fasterxml.jackson.databind.DeserializationContext,com.fasterxml.jackson.databind.deser.DeserializerFactory,com.fasterxml.jackson.databind.JavaType,com.fasterxml.jackson.databind.BeanDescription)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/deser/BasicDeserializerFactory.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1400,
+                                                        "startColumn": 37
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.deser.BasicDeserializerFactory.createEnumDeserializer:com.fasterxml.jackson.databind.JsonDeserializer(com.fasterxml.jackson.databind.DeserializationContext,com.fasterxml.jackson.databind.JavaType,com.fasterxml.jackson.databind.BeanDescription)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/introspect/BasicBeanDescription.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 532,
+                                                        "startColumn": 31
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.introspect.BasicBeanDescription.getFactoryMethods:java.util.List()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 293,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.introspect.AnnotatedClass.getFactoryMethods:java.util.List()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedClass.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 376,
+                                                        "startColumn": 18
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.introspect.AnnotatedClass._creators:com.fasterxml.jackson.databind.introspect.AnnotatedClass$Creators()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedCreatorCollector.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 46,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.introspect.AnnotatedCreatorCollector.collectCreators:com.fasterxml.jackson.databind.introspect.AnnotatedClass$Creators(com.fasterxml.jackson.databind.AnnotationIntrospector,com.fasterxml.jackson.databind.introspect.TypeResolutionContext,com.fasterxml.jackson.databind.JavaType,java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedCreatorCollector.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 56,
+                                                        "startColumn": 36
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.introspect.AnnotatedCreatorCollector.collect:com.fasterxml.jackson.databind.introspect.AnnotatedClass$Creators(com.fasterxml.jackson.databind.JavaType,java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedCreatorCollector.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 179,
+                                                        "startColumn": 22
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.introspect.AnnotatedCreatorCollector._findPotentialFactories:java.util.List(com.fasterxml.jackson.databind.JavaType,java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1085,
+                                                        "startColumn": 20
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.util.ClassUtil.getClassMethods:java.lang.reflect.Method[](java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/com/fasterxml/jackson/databind/util/ClassUtil.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1096,
+                                                        "startColumn": 49
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.fasterxml.jackson.databind.util.ClassUtil.getClassMethods:java.lang.reflect.Method[](java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

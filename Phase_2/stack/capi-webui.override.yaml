@@ -1,0 +1,11 @@
+services:
+  capi-webui:
+    build:
+      context: ../webui
+      dockerfile: Dockerfile
+      # If your browser will call cAPI on the host, bake the URL now:
+      args:
+        VITE_CAPI_URL: http://localhost:8001
+    ports:
+      - "8082:80"
+    restart: unless-stopped

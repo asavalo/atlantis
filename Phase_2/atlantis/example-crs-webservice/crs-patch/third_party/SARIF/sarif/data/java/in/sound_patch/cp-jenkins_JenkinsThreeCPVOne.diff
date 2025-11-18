@@ -1,0 +1,14 @@
+--- a/src/main/java/io/jenkins/plugins/toyplugin/Script.java
++++ b/src/main/java/io/jenkins/plugins/toyplugin/Script.java
+@@ -80,6 +80,11 @@
+         final GroovySecurityManager groovySecurityManager = GroovySecurityManager.instance();
+         groovySecurityManager.overrideGroovyClassLoader(groovyEngine, useReflection);
+         groovySecurityManager.forbid(forbiddenInstruction);
++
++        // Check for potential integer overflow in the script
++        if (script.contains("Integer.MAX_VALUE") || script.contains("Integer.MIN_VALUE")) {
++            throw new IllegalArgumentException("Potential integer overflow detected in the script.");
++        }
+ 
+         groovyEngine.eval(script);
+     }

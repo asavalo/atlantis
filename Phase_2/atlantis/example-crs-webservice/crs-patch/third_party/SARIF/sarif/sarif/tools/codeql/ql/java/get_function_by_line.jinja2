@@ -1,0 +1,18 @@
+import java
+import semmle.code.java.Member
+import safe_callable
+
+from SafeCallable c
+where 
+  c.getFile().getAbsolutePath().matches("%{{ file_path }}%") and
+  {{ start_line }} <= c.getBody().getLocation().getEndLine() and
+  c.getBody().getLocation().getStartLine() <= {{end_line}}
+select
+  c as func,
+  c.getSafeBaseName() as file,
+  c.getSafeAbsolutePath() as file_abs,
+  c.getSafeStartLineString() as start_line,
+  c.getSafeEndLineString() as end_line,
+  c.getSafeDeclaringTypeName() as class_name,
+  c.getSafeSignature() as sig,
+  c.getSafeMethodDesc() as method_desc

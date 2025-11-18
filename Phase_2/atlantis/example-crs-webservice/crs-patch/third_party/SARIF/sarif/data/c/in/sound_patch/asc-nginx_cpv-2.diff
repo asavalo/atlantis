@@ -1,0 +1,27 @@
+--- a/src/http/ngx_http_core_module.c
++++ b/src/http/ngx_http_core_module.c
+@@ -1985,10 +1985,20 @@
+         return NGX_DECLINED;
+     }
+ 
+-    auth.len = NGX_HTTP_AUTH_MAX;
+-    auth.data = ngx_pnalloc(r->pool, auth.len + 1);
+-    if (auth.data == NULL) {
+-        return NGX_ERROR;
++    {
++        size_t max_decoded_len = (encoded.len + 3) / 4 * 3;
++
++        if (max_decoded_len > NGX_HTTP_AUTH_MAX) {
++            r->headers_in.user.data = (u_char *) "";
++            return NGX_DECLINED;
++        }
++
++        auth.data = ngx_pnalloc(r->pool, max_decoded_len + 1);
++        if (auth.data == NULL) {
++            return NGX_ERROR;
++        }
++
++        auth.len = max_decoded_len;
+     }
+ 
+     if (ngx_decode_base64(&auth, &encoded) != NGX_OK) {

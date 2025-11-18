@@ -1,0 +1,25 @@
+import cpp
+import semmle.code.cpp.pointsto.CallGraph
+import semmle.code.cpp.Print
+
+predicate isSystemFunction(Function f) {
+    f.getFile().getAbsolutePath().regexpMatch("^/(usr|lib|lib32|lib64|opt).*")
+}
+
+from Function caller, Function root
+where
+   root.getFile().getBaseName() in ["{{source_filenames | join('", "')}}"] and
+   allCalls*(root, caller) and 
+   not isSystemFunction(caller) and
+   {% if sink_function %}
+   caller.getName() = "{{sink_function}}" and
+   {% else %}
+   exists(int line | 
+        line = {{start_line}} and
+        caller.getBlock().getLocation().getStartLine() <= line and 
+        line <= caller.getBlock().getLocation().getEndLine()
+    ) and
+   {% endif %}
+   caller.getFile().getBaseName() = "{{sink_filename}}"
+
+select caller.getName() as func_name, caller.getFile().getBaseName() as func_file_name

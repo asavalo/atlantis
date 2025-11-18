@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueMedium",
+    "message": "Server Side Request Forgery (SSRF)",
+    "loc_file_full_name": "CXFOne.java",
+    "loc_file_short_name": "CXFOne.java",
+    "loc_line": 35,
+    "loc_function_full_name": "com.aixcc.cxf.harnesses.one.CXFOne.fuzzerTestOneInput",
+    "loc_function_short_name": "fuzzerTestOneInput"
+}

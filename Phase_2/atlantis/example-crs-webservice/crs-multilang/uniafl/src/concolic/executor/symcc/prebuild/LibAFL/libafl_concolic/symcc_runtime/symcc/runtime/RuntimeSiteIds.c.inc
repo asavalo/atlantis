@@ -1,0 +1,8 @@
+#define STRCHR_SITE_ID(x) ((1 << 63) | (0x13371337133700 + (x)))
+#define STRCMP_SITE_ID(x) ((1 << 63) | (0x13371337133800 + (x)))
+#define STRNCMP_SITE_ID(x) ((1 << 63) | (0x13371337133900 + (x)))
+#define MEMCMP_SITE_ID(x) ((1 << 63) | (0x13371337133A00 + (x)))
+#define BCMP_SITE_ID(x) ((1 << 63) | (0x13371337133B00 + (x)))
+#define READ_SITE_ID(x) ((1 << 63) | (0x13371337133C00 + (x)))
+#define SCANF_SITE_ID(x) ((1 << 63) | (0x13371337133D00 + (x)))
+#define TRY_ALTERNATIVE_SITE_ID(x) ((1 << 63) | (0x13371337133E00 + (x)))

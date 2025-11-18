@@ -1,0 +1,53 @@
+] Stats
+Failed SARIF files: 7
+Success SARIF files: 39
+
+[+] Failed SARIF files:
+asc-nginx_cpv-11.sarif          17.038238525390625 seconds
+asc-nginx_cpv-5.sarif          19.388973712921143 seconds
+babynginx_cpv-0.sarif          22.727065324783325 seconds
+cp-user-opencv_cpv-2.sarif          28.625288486480713 seconds
+cp-user-opencv_cpv-3.sarif          28.77075505256653 seconds
+mock-cpp_cpv-0.sarif          16.18349528312683 seconds
+mock-cpp_cpv-1.sarif          16.264917373657227 seconds
+
+[+] Success SARIF files:
+asc-nginx_cpv-10.sarif          17.160193920135498 seconds
+asc-nginx_cpv-12.sarif          17.394712924957275 seconds
+asc-nginx_cpv-13.sarif          17.458825826644897 seconds
+asc-nginx_cpv-14.sarif          18.455825090408325 seconds
+asc-nginx_cpv-17.sarif          19.53844165802002 seconds
+asc-nginx_cpv-1.sarif          17.313742637634277 seconds
+asc-nginx_cpv-2.sarif          17.49379253387451 seconds
+asc-nginx_cpv-3.sarif          17.368707418441772 seconds
+asc-nginx_cpv-4.sarif          19.213352918624878 seconds
+asc-nginx_cpv-8.sarif          19.574454307556152 seconds
+asc-nginx_cpv-9.sarif          19.386702299118042 seconds
+babynote_cpv-0.sarif          18.626160621643066 seconds
+concolic-test_cpv-0.sarif          18.645183086395264 seconds
+concolic-test_cpv-1.sarif          18.608516931533813 seconds
+cp-user-opencv_cpv-0.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+cp-user-opencv_cpv-1.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+cp-user-openssl_cpv-0.sarif          18.055634021759033 seconds
+cp-user-openssl_cpv-1.sarif          17.696377277374268 seconds
+cp-user-openssl_cpv-2.sarif          17.774162530899048 seconds
+cp-user-openssl_cpv-3.sarif          17.75933599472046 seconds
+cp-user-sqlite_cpv-0.sarif          16.97829031944275 seconds
+example-libpng_cpv-0.sarif          16.30097723007202 seconds
+itoa_cpv-0.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+itoa_cpv-1.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+libcue_cpv-0.sarif          19.087069749832153 seconds
+mock-c_cpv-0.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+mock-c_cpv-1.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+mock-cp_cpv-1.sarif          18.95674419403076 seconds
+mock-cp_cpv-2.sarif          18.6694278717041 seconds
+rpn-calculator_cpv-0.sarif          18.77625012397766 seconds
+user-nginx_cpv-0.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+user-nginx_cpv-2.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+user-nginx_cpv-3.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+user-nginx_cpv-4.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+user-nginx_cpv-5.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+user-nginx_cpv-6.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+user-nginx_cpv-7.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+user-nginx_cpv-8.sarif          RUN FAILED (POSSIBLY DB CREATION FAILED)
+zstd-16541_cpv-0.sarif          16.369721174240112 seconds

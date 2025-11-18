@@ -1,0 +1,152 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Say \"Hello, world!\"","role":"user"}],"model":"gemini/gemini-2.0-flash","max_tokens":10,"n":1,"temperature":1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '138'
+      content-type:
+      - application/json
+      host:
+      - llm-base
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.6
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-2523b16f-d8ae-4600-9b03-9bea35f430e5","created":1743550735,"model":"gemini-2.0-flash","object":"chat.completion","system_fingerprint":null,"choices":[{"finish_reason":"stop","index":0,"message":{"content":"Hello,
+        world!\n","role":"assistant","tool_calls":null,"function_call":null}}],"usage":{"completion_tokens":5,"prompt_tokens":6,"total_tokens":11,"completion_tokens_details":null,"prompt_tokens_details":null},"vertex_ai_grounding_metadata":[],"vertex_ai_safety_results":[],"vertex_ai_citation_metadata":[]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '527'
+      content-type:
+      - application/json
+      date:
+      - Tue, 01 Apr 2025 23:38:56 GMT
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - c23d1eb7baccbebe0d34619948047ddf
+      x-litellm-call-id:
+      - 53e94a0e-1318-4d9d-b48a-17d38a6dd175
+      x-litellm-key-rpm-limit:
+      - None
+      x-litellm-key-tpm-limit:
+      - None
+      x-litellm-model-api-base:
+      - https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+      x-litellm-model-group:
+      - gemini/gemini-2.0-flash
+      x-litellm-model-id:
+      - de29e17a3c1a591e8772af0708a3a512ebc27c1f758181a46af82b171ea9b4be
+      x-litellm-response-cost:
+      - '2.5999999999999997e-06'
+      x-litellm-version:
+      - 1.56.8
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Say \"Hello, world!\"","role":"user"}],"model":"gemini/gemini-2.0-flash","max_tokens":10,"n":1,"temperature":1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '138'
+      content-type:
+      - application/json
+      host:
+      - llm-base
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-12bd5508-9486-489e-9468-382b03b74ea8","created":1744157064,"model":"gemini-2.0-flash","object":"chat.completion","system_fingerprint":null,"choices":[{"finish_reason":"stop","index":0,"message":{"content":"Hello,
+        world!\n","role":"assistant","tool_calls":null,"function_call":null}}],"usage":{"completion_tokens":5,"prompt_tokens":6,"total_tokens":11,"completion_tokens_details":null,"prompt_tokens_details":null},"vertex_ai_grounding_metadata":[],"vertex_ai_safety_results":[],"vertex_ai_citation_metadata":[]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '527'
+      content-type:
+      - application/json
+      date:
+      - Wed, 09 Apr 2025 00:04:25 GMT
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 069dc0cbc4d3a9f205b53afb99d21a93
+      x-litellm-call-id:
+      - a99aabf9-f853-406a-b004-16cb12be14fa
+      x-litellm-key-rpm-limit:
+      - None
+      x-litellm-key-tpm-limit:
+      - None
+      x-litellm-model-api-base:
+      - https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+      x-litellm-model-group:
+      - gemini/gemini-2.0-flash
+      x-litellm-model-id:
+      - de29e17a3c1a591e8772af0708a3a512ebc27c1f758181a46af82b171ea9b4be
+      x-litellm-response-cost:
+      - '2.5999999999999997e-06'
+      x-litellm-version:
+      - 1.56.8
+    status:
+      code: 200
+      message: OK
+version: 1

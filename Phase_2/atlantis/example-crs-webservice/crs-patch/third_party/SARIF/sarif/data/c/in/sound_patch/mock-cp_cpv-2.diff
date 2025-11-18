@@ -1,0 +1,13 @@
+--- a/mock_vp.c
++++ b/mock_vp.c
+@@ -23,6 +23,10 @@
+     int j;
+     printf("display item #:");
+     scanf("%d", &j);
++    if (j < 0 || j >= 3) {
++        printf("Invalid index.\n");
++        return;
++    }
+     buff = &items[j][0];
+     printf("item %d: %s\n", j, buff);
+ }

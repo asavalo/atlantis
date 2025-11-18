@@ -1,0 +1,341 @@
+interactions:
+- request:
+    body: '{"messages": [{"content": "You are a helpful assistant that analyzes project
+      information to find relevant files.\nYour task is to identify files that are
+      explicitly mentioned in the provided project information.\n\nImportant rules:\n1.
+      Only list files that are explicitly mentioned in the text\n2. Do not make assumptions
+      or create file names that aren''t mentioned\n3. Look for file references in:\n   -
+      File paths shown in \"=== File: ... ===\" headers\n   - Links to files (e.g.,
+      [file](path/to/file))\n   - Direct file name mentions in the text\n4. If a file
+      is mentioned multiple times, list it only once\n5. Return only the file names
+      (without paths), one per line, without any additional text or explanations\n\nExample
+      output format:\nREADME.md\ncontributing.md\nsetup.py\n", "role": "system"},
+      {"content": "Based on the following project information, please identify and
+      list all files that contain test-related information.\nFocus on files that contain:\n-
+      Test framework and requirements\n- Test dependencies and their versions\n- Test
+      execution steps and commands\n- Test environment setup requirements\n- Test/CI
+      configuration\n- Test script generation guidelines\n- Test dependencies\n- Test
+      environment setup\n- Test execution flow\n- Test output requirements\n\nProject
+      Information:\n\n=== File: BUILD.all.txt ===\n\n\n=== File: HACKING.all.txt ===\n\n\n===
+      File: DirectoryStructure.txt ===\nDirectory: /out\n\n\nDirectory: /out/src\n\n\nDirectory:
+      /out/test\n\n\nDirectory: /src\n/src/build.sh\n/src/fuzz_util.py\n/src/fuzz_xmlutil.py\n/src/llvmsymbol.diff\n\nDirectory:
+      /src/adsl\n\n\n\n\n=== File: README.all.txt ===\n\n\n=== File: MAKEFILE.all.txt
+      ===\n\n=== File: /out/src/docs/Makefile ===\n# Minimal makefile for Sphinx documentation\n#\n\n#
+      You can set these variables from the command line.\nSPHINXOPTS    =\nSPHINXBUILD   =
+      sphinx-build\nSPHINXPROJ    = ADALPython\nSOURCEDIR     = source\nBUILDDIR      =
+      build\n\n# Put it first so that \"make\" without argument is like \"make help\".\nhelp:\n\t@$(SPHINXBUILD)
+      -M help \"$(SOURCEDIR)\" \"$(BUILDDIR)\" $(SPHINXOPTS) $(O)\n\n.PHONY: help
+      Makefile\n\n# Catch-all target: route all unknown targets to Sphinx using the
+      new\n# \"make mode\" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).\n%:
+      Makefile\n\t@$(SPHINXBUILD) -M $@ \"$(SOURCEDIR)\" \"$(BUILDDIR)\" $(SPHINXOPTS)
+      $(O)\n\n\n\nPlease respond with a list of file paths only, one per line, in
+      the format:\ncontribution.md\nrun_test.log\ntest/README.md\netc...\n\nOnly include
+      the file paths, no additional text or explanations.", "role": "user"}], "model":
+      "gpt-4o", "n": 1, "temperature": 1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '2631'
+      content-type:
+      - application/json
+      host:
+      - llm-base
+      user-agent:
+      - OpenAI/Python 1.60.1
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.60.1
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BCOdgQuZEXZCo710NDkXGOwh9IIw0","created":1742294348,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_90d33c15d4","choices":[{"finish_reason":"stop","index":0,"message":{"content":"BUILD.all.txt\nHACKING.all.txt\nMAKEFILE.all.txt","role":"assistant","tool_calls":null,"function_call":null}}],"usage":{"completion_tokens":15,"prompt_tokens":622,"total_tokens":637,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '626'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Mar 2025 10:39:08 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 92241abb9e0cd6e9-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 18 Mar 2025 10:39:08 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '539'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-ratelimit-limit-requests:
+      - '50000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '49999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149999384'
+      llm_provider-x-ratelimit-reset-requests:
+      - 1ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_b09767041ad3961f4d48649637f7f33d
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - bd81329e1cdfaf015a415650eb6ac0bd;o=1
+      x-litellm-call-id:
+      - be136046-5288-4cff-b247-f49a6a94af74
+      x-litellm-key-rpm-limit:
+      - None
+      x-litellm-key-tpm-limit:
+      - None
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-response-cost:
+      - '0.0017050000000000001'
+      x-litellm-version:
+      - 1.56.8
+      x-ratelimit-limit-requests:
+      - '50000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '49999'
+      x-ratelimit-remaining-tokens:
+      - '149999384'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages": [{"content": "You are a helpful assistant that analyzes project
+      test information.", "role": "system"}, {"content": "Based on the following project
+      information, please extract and summarize all test-related information.\nFor
+      each piece of information you extract, please indicate its source by looking
+      at the \"=== File: filename.txt ===\" headers in the project information.\nAdd
+      the source in parentheses like this: (by filename.txt).\n\nPlease focus on:\n1.
+      Test framework and requirements\n2. Test dependencies and their versions\n3.
+      Test execution steps and commands\n4. Test environment setup requirements\n5.
+      Test/CI configuration\n6. Test script generation guidelines\n7. Test dependencies\n8.
+      Test environment setup\n9. Test execution flow\n10. Test output requirements\n\nProject
+      Information:\n\n=== File: BUILD.all.txt ===\n\n\n=== File: HACKING.all.txt ===\n\n\n===
+      File: DirectoryStructure.txt ===\nDirectory: /out\n\n\nDirectory: /out/src\n\n\nDirectory:
+      /out/test\n\n\nDirectory: /src\n/src/build.sh\n/src/fuzz_util.py\n/src/fuzz_xmlutil.py\n/src/llvmsymbol.diff\n\nDirectory:
+      /src/adsl\n\n\n\n\n=== File: README.all.txt ===\n\n\n=== File: MAKEFILE.all.txt
+      ===\n\n=== File: /out/src/docs/Makefile ===\n# Minimal makefile for Sphinx documentation\n#\n\n#
+      You can set these variables from the command line.\nSPHINXOPTS    =\nSPHINXBUILD   =
+      sphinx-build\nSPHINXPROJ    = ADALPython\nSOURCEDIR     = source\nBUILDDIR      =
+      build\n\n# Put it first so that \"make\" without argument is like \"make help\".\nhelp:\n\t@$(SPHINXBUILD)
+      -M help \"$(SOURCEDIR)\" \"$(BUILDDIR)\" $(SPHINXOPTS) $(O)\n\n.PHONY: help
+      Makefile\n\n# Catch-all target: route all unknown targets to Sphinx using the
+      new\n# \"make mode\" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).\n%:
+      Makefile\n\t@$(SPHINXBUILD) -M $@ \"$(SOURCEDIR)\" \"$(BUILDDIR)\" $(SPHINXOPTS)
+      $(O)\n\n\n=== File: extrinfo.txt ===\n\n=== File: /out/src/docs/Makefile ===\n#
+      Minimal makefile for Sphinx documentation\n#\n\n# You can set these variables
+      from the command line.\nSPHINXOPTS    =\nSPHINXBUILD   = sphinx-build\nSPHINXPROJ    =
+      ADALPython\nSOURCEDIR     = source\nBUILDDIR      = build\n\n# Put it first
+      so that \"make\" without argument is like \"make help\".\nhelp:\n\t@$(SPHINXBUILD)
+      -M help \"$(SOURCEDIR)\" \"$(BUILDDIR)\" $(SPHINXOPTS) $(O)\n\n.PHONY: help
+      Makefile\n\n# Catch-all target: route all unknown targets to Sphinx using the
+      new\n# \"make mode\" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).\n%:
+      Makefile\n\t@$(SPHINXBUILD) -M $@ \"$(SOURCEDIR)\" \"$(BUILDDIR)\" $(SPHINXOPTS)
+      $(O)\n\n", "role": "user"}], "model": "gpt-4o", "n": 1, "temperature": 1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '2666'
+      content-type:
+      - application/json
+      host:
+      - llm-base
+      user-agent:
+      - OpenAI/Python 1.60.1
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.60.1
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BCOdjbBTZiBgUXKdx7FGEMfiwEpwO","created":1742294351,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_f9f4fb6dbf","choices":[{"finish_reason":"stop","index":0,"message":{"content":"The
+        provided project information contains very limited details regarding tests.
+        Here''s a summary based on the available content:\n\n1. **Test Framework and
+        Requirements**: \n   - There is no explicit mention of the test framework
+        or requirements in the provided information.\n\n2. **Test Dependencies and
+        their Versions**: \n   - No specific test dependencies or versions are mentioned
+        in the provided content.\n\n3. **Test Execution Steps and Commands**: \n   -
+        There are no specific test execution steps or commands outlined in the available
+        data.\n\n4. **Test Environment Setup Requirements**: \n   - No particular
+        test environment setup requirements are detailed in the given sections.\n\n5.
+        **Test/CI Configuration**: \n   - There is no information provided about test
+        or CI configurations.\n\n6. **Test Script Generation Guidelines**: \n   -
+        No guidelines for test script generation are present in the provided text.\n\n7.
+        **Test Dependencies**: \n   - There is a mention of Python and Sphinx in the
+        `/out/src/docs/Makefile`, which might imply a dependency on these for documentation
+        purposes, but there is no direct connection with tests. Specifically, Sphinx
+        is used here for building documentation (`sphinx-build` command).\n\n8. **Test
+        Environment Setup**: \n   - Detailed test environment setup information is
+        not available in the provided content.\n\n9. **Test Execution Flow**: \n   -
+        The only provided flow is related to Sphinx commands for building documentation,
+        which involves targets like `help` and implicit routing of other unknown targets
+        through Sphinx''s make mode (`/out/src/docs/Makefile`). This isn''t directly
+        related to testing.\n\n10. **Test Output Requirements**: \n   - No information
+        is given regarding the requirements for test outputs.\n\nSources analyzed:\n-
+        `/out/src/docs/Makefile`: Provided details related to Sphinx commands for
+        documentation building (used `sphinx-build`), but nothing directly connected
+        to testing.\n- Directory structures and other files: Contained no relevant
+        testing-related information. \n\nIn conclusion, the project information currently
+        lacks specifics on testing processes, dependencies, configurations, and execution,
+        focusing instead on a directory structure and a documentation-related makefile.","role":"assistant","tool_calls":null,"function_call":null}}],"usage":{"completion_tokens":435,"prompt_tokens":708,"total_tokens":1143,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '2842'
+      content-type:
+      - application/json
+      date:
+      - Tue, 18 Mar 2025 10:39:18 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 92241ad12820e5c1-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 18 Mar 2025 10:39:18 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '6578'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-ratelimit-limit-requests:
+      - '50000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '49999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149999379'
+      llm_provider-x-ratelimit-reset-requests:
+      - 1ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_2e11cdb305c2206ddec802a7ac77589d
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - c493c5a381c0946a5a415650eb6acf20;o=1
+      x-litellm-call-id:
+      - a3c6b001-9a7c-4da2-8681-e9bbed270eb9
+      x-litellm-key-rpm-limit:
+      - None
+      x-litellm-key-tpm-limit:
+      - None
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-response-cost:
+      - '0.0061200000000000004'
+      x-litellm-version:
+      - 1.56.8
+      x-ratelimit-limit-requests:
+      - '50000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '49999'
+      x-ratelimit-remaining-tokens:
+      - '149999379'
+    status:
+      code: 200
+      message: OK
+version: 1

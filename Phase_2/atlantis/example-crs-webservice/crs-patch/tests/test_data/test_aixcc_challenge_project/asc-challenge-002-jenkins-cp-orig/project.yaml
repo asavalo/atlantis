@@ -1,0 +1,51 @@
+---
+# The cp_name property is a label to identify the Challenge Project (CP).
+cp_name: jenkins
+
+# The language property denotes the *primary* language of the CP.
+# CP Vulnerabilities (CPVs) that are eligible for points are found in the given
+# language. Valid values for the AIxCC ASC are: 'c' and 'java'.
+language: java
+
+# The cp_sources property denotes the source repository addresses, as well as the
+# local path that the repository resides. During competition, the local path directory
+# will store a readonly copy of the source code, which will be copied for use.
+
+cp_sources: 
+    jenkins: 
+        address: "git@github.com:Team-Atlanta/challenge-002-jenkins-source-orig.git"
+        artifacts:
+            - src/jenkins/war/target/jenkins.war
+    plugins/pipeline-util-plugin: 
+        address: "git@github.com:Team-Atlanta/asc-challenge-002-jenkins-plugins.git"
+        artifacts:
+            - src/plugins/pipeline-util-plugin/target/UtilPlug.jar
+            - src/plugins/pipeline-util-plugin/target/UtilPlug.hpi
+
+# The docker_img_address property denotes the address to pull the pre-built docker
+# image that the CP's Dockerfile bases from.
+
+docker_image: "challenge-002-jenkins-cp:latest"
+
+# The sanitizers property denotes which sanitizers are available for scoring for
+# the CP. When specifying a sanitizer ID to the scoring server, use the *key*
+# value, e.g. use "id_1", not "sanitizer string 1".
+#
+# Note, these key-value mappings are unique for each CP.
+sanitizers:
+    id_1: "FuzzerSecurityIssueCritical: OS Command Injection"
+
+# The harnesses property denotes which AIxCC harnesses are available to use for
+# triggering sanitizers for the CP. When specifying a harness ID  to the
+# scoring server, use the *key* value, e.g. "id_1", not the values under
+# 'name', 'source', or 'binary'.
+#
+# The 'source' and 'binary' properties point the to the appropriate file for
+# the harness source code and executable binary (if they exists). The 'name'
+# string must be provided in the argument list when invoking
+# `run.sh run_pov <args>`.
+harnesses:
+    id_1:
+        name: JenkinsTwo
+        source: src/jenkins-harnesses/jenkins-harness-two/src/main/java/com/aixcc/jenkins/harnesses/two/JenkinsTwo.java
+        binary: out/harnesses/two/aixcc-harness.jar

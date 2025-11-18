@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "crs-sarif"
+version = "0.1.0"
+description = "CRS-SARIF"
+authors = ["Team Atlanta <atlanta@team.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+libCRS = {path = "libCRS"}
+openapi-client = {path = "api/vapi-client"}
+sarif = {path = "sarif", develop = true}
+loguru = "^0.7.3"
+pydantic-settings = "^2.9.1"
+langchain = "^0.3.25"
+langchain-openai = "^0.3.16"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

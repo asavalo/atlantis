@@ -1,0 +1,267 @@
+36:/**
+37: * @author huybrechts
+38: */
+39:public class ParametersTest {
+40:
+41:    @Rule
+42:    public JenkinsRule j = new JenkinsRule();
+43:
+44:    @Rule
+45:    public ErrorCollector collector = new ErrorCollector();
+46:
+47:    @Test
+48:    public void parameterTypes() throws Exception {
+49:        FreeStyleProject otherProject = j.createFreeStyleProject();
+50:        j.buildAndAssertSuccess(otherProject);
+51:
+52:        FreeStyleProject project = j.createFreeStyleProject();
+53:        ParametersDefinitionProperty pdp = new ParametersDefinitionProperty(
+54:                new StringParameterDefinition("string", "defaultValue", "string description"),
+55:                new BooleanParameterDefinition("boolean", true, "boolean description"),
+56:                new ChoiceParameterDefinition("choice", "Choice 1\nChoice 2", "choice description"),
+57:                new RunParameterDefinition("run", otherProject.getName(), "run description", null));
+58:        project.addProperty(pdp);
+59:        CaptureEnvironmentBuilder builder = new CaptureEnvironmentBuilder();
+60:        project.getBuildersList().add(builder);
+61:
+62:        WebClient wc = j.createWebClient()
+63:                .withThrowExceptionOnFailingStatusCode(false);
+64:        HtmlPage page = wc.goTo("job/" + project.getName() + "/build?delay=0sec");
+65:
+66:        HtmlForm form = page.getFormByName("parameters");
+67:
+68:        HtmlElement element = (HtmlElement) ((HtmlElement) DomNodeUtil.selectSingleNode(form, "//div[input/@value='string']")).getParentNode();
+69:        assertNotNull(element);
+70:        assertEquals("string description", element.getParentNode().querySelector(".jenkins-form-description").getTextContent());
+71:
+72:        HtmlTextInput stringParameterInput = DomNodeUtil.selectSingleNode(element, ".//input[@name='value']");
+73:        assertEquals("defaultValue", stringParameterInput.getAttribute("value"));
+74:        assertEquals("string", ((HtmlElement) DomNodeUtil.selectSingleNode(element.getParentNode(), "div[contains(@class, 'jenkins-form-label')]")).getTextContent());
+75:        stringParameterInput.setValue("newValue");
+76:
+77:        element = DomNodeUtil.selectSingleNode(form, "//div[input/@value='boolean']");
+78:        assertNotNull(element);
+79:        assertEquals("boolean description", element.getParentNode().getParentNode().querySelector(".jenkins-form-description").getTextContent());
+80:        Object o = DomNodeUtil.selectSingleNode(element, ".//input[@name='value']");
+81:        HtmlCheckBoxInput booleanParameterInput = (HtmlCheckBoxInput) o;
+82:        assertTrue(booleanParameterInput.isChecked());
+83:        assertEquals("boolean", element.getTextContent());
+84:
+85:        element = (HtmlElement) ((HtmlElement) DomNodeUtil.selectSingleNode(form, ".//div[input/@value='choice']")).getParentNode();
+86:        assertNotNull(element);
+87:        assertEquals("choice description", element.getParentNode().querySelector(".jenkins-form-description").getTextContent());
+88:        assertEquals("choice", ((HtmlElement) DomNodeUtil.selectSingleNode(element.getParentNode(), "div[contains(@class, 'jenkins-form-label')]")).getTextContent());
+89:
+90:        element = (HtmlElement) ((HtmlElement) DomNodeUtil.selectSingleNode(form, ".//div[input/@value='run']")).getParentNode();
+91:        assertNotNull(element);
+92:        assertEquals("run description", element.getParentNode().querySelector(".jenkins-form-description").getTextContent());
+93:        assertEquals("run", ((HtmlElement) DomNodeUtil.selectSingleNode(element.getParentNode(), "div[contains(@class, 'jenkins-form-label')]")).getTextContent());
+94:
+95:        j.submit(form);
+96:        j.waitUntilNoActivity();
+97:
+98:        assertEquals("newValue", builder.getEnvVars().get("STRING"));
+99:        assertEquals("true", builder.getEnvVars().get("BOOLEAN"));
+100:        assertEquals("Choice 1", builder.getEnvVars().get("CHOICE"));
+101:        assertEquals(j.jenkins.getRootUrl() + otherProject.getLastBuild().getUrl(), builder.getEnvVars().get("RUN"));
+102:    }
+103:
+104:    @Test
+105:    public void choiceWithLTGT() throws Exception {
+106:        FreeStyleProject project = j.createFreeStyleProject();
+107:        ParametersDefinitionProperty pdp = new ParametersDefinitionProperty(
+108:                new ChoiceParameterDefinition("choice", "Choice 1\nChoice <2>", "choice description"));
+109:        project.addProperty(pdp);
+110:        CaptureEnvironmentBuilder builder = new CaptureEnvironmentBuilder();
+111:        project.getBuildersList().add(builder);
+112:
+113:        WebClient wc = j.createWebClient()
+114:                .withThrowExceptionOnFailingStatusCode(false);
+115:        HtmlPage page = wc.goTo("job/" + project.getName() + "/build?delay=0sec");
+116:        HtmlForm form = page.getFormByName("parameters");
+117:
+118:        HtmlElement element = (HtmlElement) (form.getElementsByAttribute("input", "name", "name")).get(0).getParentNode();
+119:        assertNotNull(element);
+120:        assertEquals("choice description", ((HtmlElement) DomNodeUtil.selectSingleNode(form, "//div[contains(@class, 'jenkins-form-description')]")).getTextContent());
+121:        assertEquals("choice", ((HtmlElement) DomNodeUtil.selectSingleNode(form, "//div[contains(@class, 'jenkins-form-label')]")).getTextContent());
+122:
+123:        HtmlSelect choiceSelect = (HtmlSelect) form.getElementsByAttribute("select", "name", "value").get(0);
+124:
+125:        HtmlOption opt = DomNodeUtil.selectSingleNode(choiceSelect, "option[@value='Choice <2>']");
+126:        assertNotNull(opt);
+127:        assertEquals("Choice <2>", opt.asNormalizedText());
+128:        opt.setSelected(true);
+129:
+130:        j.submit(form);
+131:        j.waitUntilNoActivity();
+132:
+133:        assertNotNull(builder.getEnvVars());
+134:        assertEquals("Choice <2>", builder.getEnvVars().get("CHOICE"));
+135:    }
+136:
+137:    @Test
+138:    public void sensitiveParameters() throws Exception {
+139:        FreeStyleProject project = j.createFreeStyleProject();
+140:        ParametersDefinitionProperty pdb = new ParametersDefinitionProperty(
+141:                new PasswordParameterDefinition("password", "12345", "password description"));
+142:        project.addProperty(pdb);
+143:
+144:        CaptureEnvironmentBuilder builder = new CaptureEnvironmentBuilder();
+145:        project.getBuildersList().add(builder);
+146:
+147:        FreeStyleBuild build = j.buildAndAssertSuccess(project);
+148:        Set<String> sensitiveVars = build.getSensitiveBuildVariables();
+149:
+150:        assertNotNull(sensitiveVars);
+151:        assertTrue(sensitiveVars.contains("password"));
+152:    }
+153:
+154:    @Test
+155:    public void nonSensitiveParameters() throws Exception {
+156:        FreeStyleProject project = j.createFreeStyleProject();
+157:        ParametersDefinitionProperty pdb = new ParametersDefinitionProperty(
+158:                new StringParameterDefinition("string", "defaultValue", "string description"));
+159:        project.addProperty(pdb);
+160:
+161:        CaptureEnvironmentBuilder builder = new CaptureEnvironmentBuilder();
+162:        project.getBuildersList().add(builder);
+163:
+164:        FreeStyleBuild build = j.buildAndAssertSuccess(project);
+165:        Set<String> sensitiveVars = build.getSensitiveBuildVariables();
+166:
+167:        assertNotNull(sensitiveVars);
+168:        assertFalse(sensitiveVars.contains("string"));
+169:    }
+170:
+171:    @Test
+172:    public void mixedSensitivity() throws Exception {
+173:        FreeStyleProject project = j.createFreeStyleProject();
+174:        ParametersDefinitionProperty pdb = new ParametersDefinitionProperty(
+175:                new StringParameterDefinition("string", "defaultValue", "string description"),
+176:                new PasswordParameterDefinition("password", "12345", "password description"),
+177:                new StringParameterDefinition("string2", "Value2", "string description")
+178:        );
+179:        project.addProperty(pdb);
+180:
+181:        CaptureEnvironmentBuilder builder = new CaptureEnvironmentBuilder();
+182:        project.getBuildersList().add(builder);
+183:
+184:        FreeStyleBuild build = j.buildAndAssertSuccess(project);
+185:        Set<String> sensitiveVars = build.getSensitiveBuildVariables();
+186:
+187:        assertNotNull(sensitiveVars);
+188:        assertFalse(sensitiveVars.contains("string"));
+189:        assertTrue(sensitiveVars.contains("password"));
+190:        assertFalse(sensitiveVars.contains("string2"));
+191:    }
+192:
+193:    @Test
+194:    @Issue("JENKINS-3539")
+195:    public void fileParameterNotSet() throws Exception {
+196:        FreeStyleProject project = j.createFreeStyleProject();
+197:        ParametersDefinitionProperty pdp = new ParametersDefinitionProperty(
+198:                new FileParameterDefinition("filename", "description"));
+199:        project.addProperty(pdp);
+200:
+201:        WebClient wc = j.createWebClient()
+202:                .withThrowExceptionOnFailingStatusCode(false);
+203:        HtmlPage page = wc.goTo("job/" + project.getName() + "/build?delay=0sec");
+204:        HtmlForm form = page.getFormByName("parameters");
+205:
+206:        j.submit(form);
+207:        j.waitUntilNoActivity();
+208:
+209:        assertFalse("file must not exist", project.getSomeWorkspace().child("filename").exists());
+210:    }
+211:
+212:    @Test
+213:    @Issue("JENKINS-11543")
+214:    public void unicodeParametersArePresetCorrectly() throws Exception {
+215:        final FreeStyleProject p = j.createFreeStyleProject();
+216:        ParametersDefinitionProperty pdb = new ParametersDefinitionProperty(
+217:                new StringParameterDefinition("sname:a¶‱ﻷ", "svalue:a¶‱ﻷ", "sdesc:a¶‱ﻷ"),
+218:                new FileParameterDefinition("fname:a¶‱ﻷ", "fdesc:a¶‱ﻷ")
+219:        );
+220:        p.addProperty(pdb);
+221:
+222:        WebClient wc = j.createWebClient()
+223:                // Ignore 405
+224:                .withThrowExceptionOnFailingStatusCode(false);
+225:        HtmlPage page = wc.getPage(p, "build");
+226:
+227:        // java.lang.IllegalArgumentException: No such parameter definition: <gibberish>.
+228:        wc.setThrowExceptionOnFailingStatusCode(true);
+229:        final HtmlForm form = page.getFormByName("parameters");
+230:        HtmlFormUtil.submit(form, HtmlFormUtil.getButtonByCaption(form, "Build"));
+231:        j.waitUntilNoActivity();
+232:    }
+233:
+234:    @Issue("SECURITY-353")
+235:    @Test
+236:    public void xss() throws Exception {
+237:        j.jenkins.setMarkupFormatter(new MyMarkupFormatter());
+238:        FreeStyleProject p = j.createFreeStyleProject("p");
+239:        StringParameterDefinition param = new StringParameterDefinition("<param name>", "<param default>", "<param description>");
+240:        assertEquals("<b>[</b>param description<b>]</b>", param.getFormattedDescription());
+241:        p.addProperty(new ParametersDefinitionProperty(param));
+242:        WebClient wc = j.createWebClient()
+243:                .withThrowExceptionOnFailingStatusCode(false);
+244:        HtmlPage page = wc.getPage(p, "build?delay=0sec");
+245:        collector.checkThat(page.getWebResponse().getStatusCode(), is(HttpURLConnection.HTTP_BAD_METHOD)); // 405 to dissuade scripts from thinking this triggered the build
+246:        String text = page.getWebResponse().getContentAsString();
+247:        collector.checkThat("build page should escape param name", text, containsString("&lt;param name&gt;"));
+248:        collector.checkThat("build page should not leave param name unescaped", text, not(containsString("<param name>")));
+249:        collector.checkThat("build page should escape param default", text, containsString("&lt;param default&gt;"));
+250:        collector.checkThat("build page should not leave param default unescaped", text, not(containsString("<param default>")));
+251:        collector.checkThat("build page should mark up param description", text, containsString("<b>[</b>param description<b>]</b>"));
+252:        collector.checkThat("build page should not leave param description unescaped", text, not(containsString("<param description>")));
+253:        HtmlForm form = page.getFormByName("parameters");
+254:        HtmlTextInput value = form.getInputByValue("<param default>");
+255:        value.setText("<param value>");
+256:        j.submit(form);
+257:        j.waitUntilNoActivity();
+258:        FreeStyleBuild b = p.getBuildByNumber(1);
+259:        page = j.createWebClient().getPage(b, "parameters/");
+260:        text = page.getWebResponse().getContentAsString();
+261:        collector.checkThat("parameters page should escape param name", text, containsString("&lt;param name&gt;"));
+262:        collector.checkThat("parameters page should not leave param name unescaped", text, not(containsString("<param name>")));
+263:        collector.checkThat("parameters page should escape param value", text, containsString("&lt;param value&gt;"));
+264:        collector.checkThat("parameters page should not leave param value unescaped", text, not(containsString("<param value>")));
+265:        collector.checkThat("parameters page should mark up param description", text, containsString("<b>[</b>param description<b>]</b>"));
+266:        collector.checkThat("parameters page should not leave param description unescaped", text, not(containsString("<param description>")));
+267:    }
+268:
+269:    @Test
+270:    @Issue("JENKINS-69637")
+271:    public void emptyParameterDefinitionProperty() throws Exception {
+272:        FreeStyleProject p = j.createFreeStyleProject();
+273:        p.addProperty(new ParametersDefinitionProperty());
+274:
+275:        JenkinsRule.WebClient wc = j.createWebClient()
+276:                .withThrowExceptionOnFailingStatusCode(false);
+277:        HtmlPage page;
+278:
+279:        page = wc.getPage(p, "build?delay=0sec");
+280:        collector.checkThat(page.getWebResponse().getStatusCode(), is(HttpURLConnection.HTTP_BAD_METHOD));
+281:        HtmlForm form = page.getFormByName("parameters");
+282:        page = j.submit(form);
+283:        collector.checkThat(page.getWebResponse().getStatusCode(), is(HttpURLConnection.HTTP_OK));
+284:        j.waitUntilNoActivity();
+285:        FreeStyleBuild b = p.getBuildByNumber(1);
+286:        collector.checkThat(b.getResult(), is(Result.SUCCESS));
+287:    }
+288:
+289:    static class MyMarkupFormatter extends MarkupFormatter {
+290:        @Override
+291:        public void translate(String markup, @NonNull Writer output) throws IOException {
+292:            Matcher m = Pattern.compile("[<>]").matcher(markup);
+293:            StringBuilder buf = new StringBuilder();
+294:            while (m.find()) {
+295:                m.appendReplacement(buf, m.group().equals("<") ? "<b>[</b>" : "<b>]</b>");
+296:            }
+297:            m.appendTail(buf);
+298:            output.write(buf.toString());
+299:        }
+300:    }
+301:
+302:}

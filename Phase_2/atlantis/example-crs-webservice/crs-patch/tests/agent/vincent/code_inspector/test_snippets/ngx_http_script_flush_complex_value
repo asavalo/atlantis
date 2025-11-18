@@ -1,0 +1,20 @@
+35:void
+36:ngx_http_script_flush_complex_value(ngx_http_request_t *r,
+37:    ngx_http_complex_value_t *val)
+38:{
+39:    ngx_uint_t *index;
+40:
+41:    index = val->flushes;
+42:
+43:    if (index) {
+44:        while (*index != (ngx_uint_t) -1) {
+45:
+46:            if (r->variables[*index].no_cacheable) {
+47:                r->variables[*index].valid = 0;
+48:                r->variables[*index].not_found = 0;
+49:            }
+50:
+51:            index++;
+52:        }
+53:    }
+54:}

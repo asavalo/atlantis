@@ -1,0 +1,40 @@
+[package]
+name = "libfuzzer_concolic"
+version = "0.13.2"
+edition = "2021"
+build = "build.rs"
+
+[lib]
+name = "fuzzer_concolic"
+path = "src/lib.rs"
+crate-type = ["staticlib"]
+
+[features]
+default = []
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+debug = true
+panic = "abort"
+
+[dependencies]
+libafl = { path = "../LibAFL/libafl/", features = ["concolic_mutation"] }
+libafl_bolts = { path = "../LibAFL/libafl_bolts/" }
+libafl_targets = { path = "../LibAFL/libafl_targets/", features = [
+  "sancov_pcguard_edges",
+  "sancov_cmplog",
+  "libfuzzer",
+] }
+clap = { version = "4.0", features = ["derive"] }
+mimalloc = { version = "*", default-features = false }
+libc = "0.2.158"
+symcc_runtime = { path = "../LibAFL/libafl_concolic/symcc_runtime"}
+anyhow = "1.0.86"
+
+[build-dependencies]
+cc = { version = "1.0", features = ["parallel"] }
+cmake = "0.1"
+which = "4.4"
+symcc_libafl = { path = "../LibAFL/libafl_concolic/symcc_libafl" }

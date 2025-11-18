@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "File read/write hook path: /tmp/WidocoOne10421053934244309757/../jazzer-traversal",
+    "loc_file_full_name": "WidocoUtils.java",
+    "loc_file_short_name": "WidocoUtils.java",
+    "loc_line": 269,
+    "loc_function_full_name": "widoco.WidocoUtils.unZipIt",
+    "loc_function_short_name": "unZipIt"
+}

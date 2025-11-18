@@ -1,0 +1,11 @@
+Your patch segments in your patch report contain invalid information.
+Carefully check that your report follows the rules in the "Patch Segments" section.
+
+The possible fixes of invalidity are as follows:
+* `filename` must be a path relative to the project repository, but current segments are not following this rule. Do NOT use the absolute path specified in sanitizer report. Check the content mentioned in the "Analysis Environment" section.
+* Check again that `filename` does not contain the target project repository's directory.
+* Check your patch segments with their line number information.
+* Each patch segment must starts with [PATCH:`filename`:line_range] and ends with [/PATCH:`filename`:line_range]. Do NOT use [/PATCH] to close the patch segment.
+* The line_range in each patch segment (i.e., [PATCH:`filename`:line_range]) must not exceed the maximum line number in the specified source file.
+
+Fix your patch segments accordingly and generate a valid full patch report.

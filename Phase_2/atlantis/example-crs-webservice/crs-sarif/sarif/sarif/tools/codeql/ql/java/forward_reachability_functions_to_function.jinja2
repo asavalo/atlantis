@@ -1,0 +1,25 @@
+import java
+
+external predicate function_coverage(string file_name, string function_name);
+
+predicate isSystemCallable(Callable c) {
+  exists(string qname | 
+    qname = c.getDeclaringType().getQualifiedName() and
+    (qname.matches("java.%") or qname.matches("javax.%"))
+  )
+}
+
+predicate directCalls(Callable caller, Callable callee) {
+  caller.polyCalls(callee)
+}
+
+from Callable source, Callable sink
+where
+  function_coverage(source.getDeclaringType().getFile().getBaseName(), source.getName())
+  and sink.getName() = "{{sink_function}}"
+  and sink.getDeclaringType().getFile().getBaseName() = "{{sink_filename}}"
+  and directCalls*(source, sink)
+  and not isSystemCallable(sink)
+
+select sink.getName() as func_name, sink.getDeclaringType().getFile().getBaseName() as func_file_name
+// select sink.getName() as func_name, sink.getDeclaringType().getFile().getBaseName() as func_file_name, sink.getDeclaringType().getName() + "." + sink.getSignature() as func_sig, sink.getBody().getLocation() as func_loc

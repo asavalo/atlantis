@@ -1,0 +1,9 @@
+I tried to fix the bug but it harms the functionality.
+
+This is the previous patch diff that I tried:
+
+<previous_patch_diff>
+DIFF
+</previous_patch_diff>
+
+Try again and give me another bug analysis report.

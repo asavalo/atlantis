@@ -1,0 +1,153 @@
+interactions:
+- request:
+    body: '{"detection": {"blob_data": "GET / HTTP/1.1\nHost: localhost\nPrefer: FirstPrefer\nPrefer:
+      SecPrefer\nPrefer: ThirdPrefer\nAccept: */*\n\n", "harness_name": "pov_harness",
+      "language": "c", "project_name": "aixcc/c/asc-nginx", "sanitizer_name": null, "vulnerability_identifier":
+      "official-nginx-cpv-10", "sarif_report": null}}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=pov_harness\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+ TESTCASE=/testcase\r\n+
+    '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+ RUN_FUZZER_MODE=interactive\r\n+
+    export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+ export SKIP_SEED_CORPUS=1\r\n+
+    SKIP_SEED_CORPUS=1\r\n+ run_fuzzer pov_harness -runs=100 /testcase\r\nvm.mmap_rnd_bits
+    = 28\r\n/out/pov_harness -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase -max_len=8192
+    < /dev/null\r\nINFO: Running with entropic power schedule (0xFF, 100).\r\nINFO:
+    Seed: 1481954318\r\nINFO: Loaded 1 modules   (26939 inline 8-bit counters): 26939
+    [0x559aacbf0f20, 0x559aacbf785b), \r\nINFO: Loaded 1 PC tables (26939 PCs): 26939
+    [0x559aacbf7860,0x559aacc60c10), \r\n/out/pov_harness: Running 1 inputs 100 time(s)
+    each.\r\nRunning: /testcase\r\n[INFO] config part2 pid /out/logs/nginx.pid;\r\n
+    \r\n=================================================================\r\n\e[1m\e[31m==18==ERROR:
+    AddressSanitizer: heap-buffer-overflow on address 0x513000001a0f at pc 0x559aac98be3e
+    bp 0x7fffa71c1250 sp 0x7fffa71c1248\r\n\e[1m\e[0m\e[1m\e[34mWRITE of size 1 at
+    0x513000001a0f thread T0\e[1m\e[0m\r\nSCARINESS: 31 (1-byte-write-heap-buffer-overflow)\r\n
+    \   #0 0x559aac98be3d in ngx_http_header_filter /src/nginx/src/http/ngx_http_header_filter_module.c:619:20\r\n
+    \   #1 0x559aac9a6c5a in ngx_http_charset_header_filter /src/nginx/src/http/modules/ngx_http_charset_filter_module.c\r\n
+    \   #2 0x559aac9b8e82 in ngx_http_userid_filter /src/nginx/src/http/modules/ngx_http_userid_filter_module.c\r\n
+    \   #3 0x559aac9ba672 in ngx_http_headers_filter /src/nginx/src/http/modules/ngx_http_headers_filter_module.c\r\n
+    \   #4 0x559aac9bff29 in ngx_http_static_handler /src/nginx/src/http/modules/ngx_http_static_module.c:259:10\r\n
+    \   #5 0x559aac8f80d1 in ngx_http_core_content_phase /src/nginx/src/http/ngx_http_core_module.c:1268:10\r\n
+    \   #6 0x559aac8f4c89 in ngx_http_core_run_phases /src/nginx/src/http/ngx_http_core_module.c:875:14\r\n
+    \   #7 0x559aac8f4c89 in ngx_http_handler /src/nginx/src/http/ngx_http_core_module.c:858:5\r\n
+    \   #8 0x559aac8fd910 in ngx_http_internal_redirect /src/nginx/src/http/ngx_http_core_module.c:2547:5\r\n
+    \   #9 0x559aac9cd8d6 in ngx_http_index_handler /src/nginx/src/http/modules/ngx_http_index_module.c:277:16\r\n
+    \   #10 0x559aac8f80d1 in ngx_http_core_content_phase /src/nginx/src/http/ngx_http_core_module.c:1268:10\r\n
+    \   #11 0x559aac8f4c89 in ngx_http_core_run_phases /src/nginx/src/http/ngx_http_core_module.c:875:14\r\n
+    \   #12 0x559aac8f4c89 in ngx_http_handler /src/nginx/src/http/ngx_http_core_module.c:858:5\r\n
+    \   #13 0x559aac91bebd in ngx_http_process_request /src/nginx/src/http/ngx_http_request.c:2133:5\r\n
+    \   #14 0x559aac921297 in ngx_http_process_request_headers /src/nginx/src/http/ngx_http_request.c:1529:13\r\n
+    \   #15 0x559aac8a2ad9 in ngx_event_process_posted /src/nginx/src/event/ngx_event_posted.c:34:9\r\n
+    \   #16 0x559aac8281b4 in LLVMFuzzerTestOneInput /src/nginx/src/fuzz/pov_harness.cc:356:5\r\n
+    \   #17 0x559aac6db1f0 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*,
+    unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n
+    \   #18 0x559aac6c6465 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+    long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #19
+    0x559aac6cbeff in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*,
+    unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n
+    \   #20 0x559aac6f71a2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n
+    \   #21 0x7f82689f8082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    (BuildId: 0323ab4806bee6f846d9ad4bccfc29afdca49a58)\r\n    #22 0x559aac6be64d
+    in _start (/out/pov_harness+0x18064d)\r\n\r\nDEDUP_TOKEN: ngx_http_header_filter--ngx_http_charset_header_filter--ngx_http_userid_filter\r\n\e[1m\e[32m0x513000001a0f
+    is located 0 bytes after 335-byte region [0x5130000018c0,0x513000001a0f)\r\n\e[1m\e[0m\e[1m\e[35mallocated
+    by thread T0 here:\e[1m\e[0m\r\n    #0 0x559aac7e6fbf in malloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:68:3\r\n
+    \   #1 0x559aac8b0e2f in ngx_alloc /src/nginx/src/os/unix/ngx_alloc.c:22:9\r\n
+    \   #2 0x559aac832211 in ngx_palloc_large /src/nginx/src/core/ngx_palloc.c:220:9\r\n
+    \   #3 0x559aac838ea7 in ngx_create_temp_buf /src/nginx/src/core/ngx_buf.c:22:16\r\n
+    \   #4 0x559aac98a4b0 in ngx_http_header_filter /src/nginx/src/http/ngx_http_header_filter_module.c:438:9\r\n
+    \   #5 0x559aac9a6c5a in ngx_http_charset_header_filter /src/nginx/src/http/modules/ngx_http_charset_filter_module.c\r\n
+    \   #6 0x559aac9b8e82 in ngx_http_userid_filter /src/nginx/src/http/modules/ngx_http_userid_filter_module.c\r\n
+    \   #7 0x559aac9ba672 in ngx_http_headers_filter /src/nginx/src/http/modules/ngx_http_headers_filter_module.c\r\n
+    \   #8 0x559aac9bff29 in ngx_http_static_handler /src/nginx/src/http/modules/ngx_http_static_module.c:259:10\r\n
+    \   #9 0x559aac8f80d1 in ngx_http_core_content_phase /src/nginx/src/http/ngx_http_core_module.c:1268:10\r\n
+    \   #10 0x559aac8f4c89 in ngx_http_core_run_phases /src/nginx/src/http/ngx_http_core_module.c:875:14\r\n
+    \   #11 0x559aac8f4c89 in ngx_http_handler /src/nginx/src/http/ngx_http_core_module.c:858:5\r\n
+    \   #12 0x559aac8fd910 in ngx_http_internal_redirect /src/nginx/src/http/ngx_http_core_module.c:2547:5\r\n
+    \   #13 0x559aac9cd8d6 in ngx_http_index_handler /src/nginx/src/http/modules/ngx_http_index_module.c:277:16\r\n
+    \   #14 0x559aac8f80d1 in ngx_http_core_content_phase /src/nginx/src/http/ngx_http_core_module.c:1268:10\r\n
+    \   #15 0x559aac8f4c89 in ngx_http_core_run_phases /src/nginx/src/http/ngx_http_core_module.c:875:14\r\n
+    \   #16 0x559aac8f4c89 in ngx_http_handler /src/nginx/src/http/ngx_http_core_module.c:858:5\r\n
+    \   #17 0x559aac91bebd in ngx_http_process_request /src/nginx/src/http/ngx_http_request.c:2133:5\r\n
+    \   #18 0x559aac921297 in ngx_http_process_request_headers /src/nginx/src/http/ngx_http_request.c:1529:13\r\n
+    \   #19 0x559aac8a2ad9 in ngx_event_process_posted /src/nginx/src/event/ngx_event_posted.c:34:9\r\n
+    \   #20 0x559aac8281b4 in LLVMFuzzerTestOneInput /src/nginx/src/fuzz/pov_harness.cc:356:5\r\n
+    \   #21 0x559aac6db1f0 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*,
+    unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n
+    \   #22 0x559aac6c6465 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+    long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #23
+    0x559aac6cbeff in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*,
+    unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n
+    \   #24 0x559aac6f71a2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n
+    \   #25 0x7f82689f8082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    (BuildId: 0323ab4806bee6f846d9ad4bccfc29afdca49a58)\r\n\r\nDEDUP_TOKEN: __interceptor_malloc--ngx_alloc--ngx_palloc_large\r\nSUMMARY:
+    AddressSanitizer: heap-buffer-overflow /src/nginx/src/http/ngx_http_header_filter_module.c:619:20
+    in ngx_http_header_filter\r\nShadow bytes around the buggy address:\r\n  0x513000001780:
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n
+    \ 0x513000001800: \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m\r\n  0x513000001880: \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x513000001900: \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n  0x513000001980:
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m
+    \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m \e[1m\e[0m00\e[1m\e[0m\r\n=>0x513000001a00:
+    \e[1m\e[0m00\e[1m\e[0m[\e[1m\e[0m07\e[1m\e[0m]\e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m\r\n
+    \ 0x513000001a80: \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m\r\n  0x513000001b00: \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m\r\n  0x513000001b80: \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m\r\n  0x513000001c00:
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m\r\n
+    \ 0x513000001c80: \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m \e[1m\e[31mfa\e[1m\e[0m
+    \e[1m\e[31mfa\e[1m\e[0m\r\nShadow byte legend (one shadow byte represents 8 application
+    bytes):\r\n  Addressable:           \e[1m\e[0m00\e[1m\e[0m\r\n  Partially addressable:
+    \e[1m\e[0m01\e[1m\e[0m \e[1m\e[0m02\e[1m\e[0m \e[1m\e[0m03\e[1m\e[0m \e[1m\e[0m04\e[1m\e[0m
+    \e[1m\e[0m05\e[1m\e[0m \e[1m\e[0m06\e[1m\e[0m \e[1m\e[0m07\e[1m\e[0m \r\n  Heap
+    left redzone:       \e[1m\e[31mfa\e[1m\e[0m\r\n  Freed heap region:       \e[1m\e[35mfd\e[1m\e[0m\r\n
+    \ Stack left redzone:      \e[1m\e[31mf1\e[1m\e[0m\r\n  Stack mid redzone:       \e[1m\e[31mf2\e[1m\e[0m\r\n
+    \ Stack right redzone:     \e[1m\e[31mf3\e[1m\e[0m\r\n  Stack after return:      \e[1m\e[35mf5\e[1m\e[0m\r\n
+    \ Stack use after scope:   \e[1m\e[35mf8\e[1m\e[0m\r\n  Global redzone:          \e[1m\e[31mf9\e[1m\e[0m\r\n
+    \ Global init order:       \e[1m\e[36mf6\e[1m\e[0m\r\n  Poisoned by user:        \e[1m\e[34mf7\e[1m\e[0m\r\n
+    \ Container overflow:      \e[1m\e[34mfc\e[1m\e[0m\r\n  Array cookie:            \e[1m\e[31mac\e[1m\e[0m\r\n
+    \ Intra object redzone:    \e[1m\e[33mbb\e[1m\e[0m\r\n  ASan internal:           \e[1m\e[33mfe\e[1m\e[0m\r\n
+    \ Left alloca redzone:     \e[1m\e[34mca\e[1m\e[0m\r\n  Right alloca redzone:
+    \   \e[1m\e[34mcb\e[1m\e[0m\r\n==18==ABORTING\r\nMS: 0 ; base unit: 0000000000000000000000000000000000000000\r\n0x47,0x45,0x54,0x20,0x2f,0x20,0x48,0x54,0x54,0x50,0x2f,0x31,0x2e,0x31,0xa,0x48,0x6f,0x73,0x74,0x3a,0x20,0x6c,0x6f,0x63,0x61,0x6c,0x68,0x6f,0x73,0x74,0xa,0x50,0x72,0x65,0x66,0x65,0x72,0x3a,0x20,0x46,0x69,0x72,0x73,0x74,0x50,0x72,0x65,0x66,0x65,0x72,0xa,0x50,0x72,0x65,0x66,0x65,0x72,0x3a,0x20,0x53,0x65,0x63,0x50,0x72,0x65,0x66,0x65,0x72,0xa,0x50,0x72,0x65,0x66,0x65,0x72,0x3a,0x20,0x54,0x68,0x69,0x72,0x64,0x50,0x72,0x65,0x66,0x65,0x72,0xa,0x41,0x63,0x63,0x65,0x70,0x74,0x3a,0x20,0x2a,0x2f,0x2a,0xa,0xa,\r\nGET
+    / HTTP/1.1\\012Host: localhost\\012Prefer: FirstPrefer\\012Prefer: SecPrefer\\012Prefer:
+    ThirdPrefer\\012Accept: */*\\012\\012\r\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -e HELPER=True -e ARCHITECTURE=x86_64 -v /home/haein/aixcc/pr/crete/packages/python_oss_fuzz/.repository/build/out/aixcc/c/asc-nginx:/out
+    -v /tmp/tmpja_kt8lh:/testcase -t ghcr.io/aixcc-finals/base-runner reproduce pov_harness
+    -runs=100.
+
+    '
+  - false
+version: 1

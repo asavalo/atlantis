@@ -1,0 +1,450 @@
+[jenkins.JenkinsFiveCPVOne]
+path = "repo/plugins/email-ext-plugin/src/main/java/hudson/plugins/emailext/EmailConfig.java"
+line = 37
+harness = ["JenkinsFive", "JenkinsFiveFDP"]
+
+[jenkins.JenkinsFiveCPVTwo]
+path = "repo/plugins/email-ext-plugin/src/main/java/hudson/plugins/emailext/EmailConfig.java"
+line = 37
+harness = ["JenkinsFive", "JenkinsFiveFDP"]
+
+[jenkins.JenkinsFourCPVOne]
+path = "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+line = 245
+harness = "JenkinsFour"
+
+[jenkins.JenkinsFourCPVTwo]
+path = "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/LocalFileKnowledgeBase.java"
+line = 131
+harness = "JenkinsFour"
+
+[jenkins.JenkinsOneCPVOne]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java"
+line = 165
+harness = "JenkinsOne"
+
+[jenkins.JenkinsOneCPVTwo]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java"
+line = 165
+harness = "JenkinsOne"
+
+[jenkins.JenkinsThreeCPVEight]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/AuthAction.java"
+line = 229
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVEleven]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/AccessFilter.java"
+line = 87
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVFive]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/UserNameAction.java"
+line = 74
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVFour]
+path = "repo/plugins/code-coverage-api-plugin/src/main/java/io/jenkins/plugins/coverage/CoverageProcessor.java"
+line = 733
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVNine]
+path = "repo/jenkins/core/src/main/java/jenkins/util/xml/XMLUtils.java"
+line = 236
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVOne]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/Script.java"
+line = 84
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVSeven]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/UserRemoteConfig.java"
+line = 91
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVSix]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/StateMonitor.java"
+line = 58
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVTen]
+path = "repo/plugins/toy-plugin/src/main/java/io/jenkins/plugins/toyplugin/SecretMessage.java"
+line = 98
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVThree]
+path = "repo/jenkins/core/src/main/java/hudson/ProxyConfiguration.java"
+line = 593
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsThreeCPVTwo]
+path = "repo/jenkins/core/src/main/java/hudson/PluginManager.java"
+line = 1640
+harness = ["JenkinsThree", "JenkinsThreeFDP"]
+
+[jenkins.JenkinsTwoCPVOne]
+path = "repo/plugins/pipeline-util-plugin/src/main/java/io/jenkins/plugins/UtilPlug/UtilMain.java"
+line = 194
+harness = ["JenkinsTwo", "JenkinsTwoFDP"]
+
+[activemq.cpv_1]
+path = "repo/activemq-client/src/main/java/org/apache/activemq/openwire/v10/BaseDataStreamMarshaller.java"
+line = 233
+harness = ["ActivemqOne", "ActivemqOneFDP"]
+
+[aerospike.cpv_1]
+path = "repo/client/src/com/aerospike/client/command/Buffer.java"
+line = 311
+harness = "AerospikeOne"
+
+[batik.cpv_1]
+path = "repo/batik-util/src/main/java/org/apache/batik/util/ParsedURLData.java"
+line = 554
+harness = ["BatikOne", "BatikOneFDP"]
+
+[bcel.cpv_1]
+path = "repo/src/main/java/org/apache/bcel/verifier/statics/Pass2Verifier.java"
+line = 973
+harness = ["BCELOne", "BCELOneFDP"]
+
+[beanutils.cpv_1]
+path = "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+line = 80
+harness = "BeanUtilsOne"
+
+[fuzzy.cpv_1]
+path = "repo/src/me/xdrop/fuzzywuzzy/Config.java"
+line = 84
+harness = ["FuzzyOne", "FuzzyOneFDP"]
+
+[geonetwork.cpv_1]
+# NOTE: In stacktrace, pov line number is 242, but line number is 239 is joern, so we follow joern's approach.
+path = "repo/harvesters/src/main/java/org/fao/geonet/kernel/harvest/harvester/localfilesystem/LocalFilesystemHarvester.java"
+line = 239
+harness = ["GeonetworkOne", "GeonetworkOneFDP"]
+
+[htmlunit.cpv_1]
+path = "repo/src/main/java/org/htmlunit/javascript/host/xml/XSLTProcessor.java"
+line = 262
+harness = ["HtmlunitOne", "HtmlunitOneFDP"]
+
+[imaging.ImagingOneCPVOne]
+path = "repo/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkZtxt.java"
+line = 60
+harness = ["ImagingOne", "ImagingOneFDP"]
+
+[imaging.ImagingOneCPVThree]
+path = "repo/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkIhdr.java"
+line = 45
+harness = ["ImagingOne", "ImagingOneFDP"]
+
+[imaging.ImagingOneCPVTwo]
+path = "repo/src/main/java/org/apache/commons/imaging/formats/gif/ApplicationExtension.java"
+line = 34
+harness = ["ImagingOne", "ImagingOneFDP"]
+
+[imaging.ImagingTwo]
+path = "repo/src/main/java/org/apache/commons/imaging/formats/jpeg/segments/PatSegment.java"
+line = 93
+harness = ["ImagingTwo", "ImagingTwoFDP"]
+
+[jackson-databind.cpv_1]
+path = "repo/src/main/java/com/fasterxml/jackson/databind/introspect/AnnotatedConstructor.java"
+line = 129
+harness = ["JacksonDatabindOne", "JacksonDatabindOneFDP"]
+
+[jakarta-mail-api.cpv_1]
+path = "repo/core/src/main/java/org/eclipse/angus/mail/handlers/text_xml.java"
+line = 96
+harness = ["MailApiHarnessOne", "MailApiHarnessOneFDP"]
+
+[kylin.cpv_1]
+path = "repo/core-common/src/main/java/org/apache/kylin/common/util/CliCommandExecutor.java"
+line = 124
+harness = "KylinOne"
+
+[olingo.cpv_1]
+path = "repo/lib/client-core/src/main/java/org/apache/olingo/client/core/communication/request/v4/AsyncRequestWrapperImpl.java"
+line = 303
+harness = ["OlingoOne", "OlingoOneFDP"]
+
+[oripa.cpv_1]
+path = "repo/src/main/java/oripa/persistence/doc/loader/LoaderXML.java"
+line = 44
+harness = ["OripaOne", "OripaOneFDP"]
+
+[pac4j.cpv_1]
+path = "repo/pac4j-core/src/main/java/org/pac4j/core/util/JavaSerializationHelper.java"
+line = 82
+harness = "Pac4jOne"
+
+[pac4j.cpv_2]
+path = "repo/pac4j-core/src/main/java/org/pac4j/core/util/JavaSerializationHelper.java"
+line = 82
+harness = "Pac4jOne"
+
+[rdf4j.cpv_1]
+path = "repo/util/src/main/java/org/eclipse/rdf4j/common/io/IOUtil.java"
+line = 387
+harness = "Rdf4jOne"
+
+[rdf4j.cpv_2]
+path = "repo/rio/rdfxml/src/main/java/org/eclipse/rdf4j/rio/rdfxml/RDFXMLParser.java"
+line = 328
+harness = "Rdf4jOne"
+
+[rdf4j.cpv_3]
+path = "repo/util/src/main/java/org/eclipse/rdf4j/common/xml/SimpleSAXParser.java"
+line = 221
+harness = "Rdf4jOne"
+
+[shiro.cpv_1]
+path = "repo/core/src/main/java/org/apache/shiro/io/DefaultSerializer.java"
+line = 82
+harness = "ShiroOne"
+
+[tika.TikaOneCPVOne]
+path = "repo/tika-app/src/main/java/org/apache/tika/cli/TikaCLI.java"
+line = 1103
+harness = "TikaOne"
+
+[tika.TikaTwoCPVTwo]
+path = "repo/tika-core/src/main/java/org/apache/tika/parser/external/ExternalParser.java"
+line = 161
+harness = "TikaTwo"
+
+[widoco.cpv_1]
+path = "repo/src/main/java/widoco/WidocoUtils.java"
+line = 269
+harness = "WidocoOne"
+
+[xstream.cpv_1]
+path = "repo/xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java"
+line = 121
+harness = "XstreamOne"
+
+[ztzip.cpv_1]
+path = "repo/src/main/java/org/zeroturnaround/zip/commons/FileUtils.java"
+line = 54
+harness = "ZTZIPOne"
+
+[zookeeper.cpv_1]
+path = "repo/zookeeper-server/src/main/java/org/apache/zookeeper/server/util/MessageTracker.java"
+line = 145
+harness = "MessageTrackerPeekReceivedFuzzer"
+
+[asc-nginx.cpv_0]
+path = "src/core/ngx_cycle.c"
+line = 1663
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_1]
+path = "src/http/ngx_http_request.c"
+line = 4093
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_2]
+path = "src/core/ngx_string.c"
+line = 1330
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_3]
+path = "src/http/ngx_http_request.c"
+line = 4217
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_4]
+path = "src/core/ngx_string.c"
+line = 581
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_5]
+path = "src/http/ngx_http_variables.c"
+line = 2851
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_6]
+path = "src/http/ngx_http_request.c"
+line = 4018
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_7]
+path = "src/http/ngx_http_variables.c"
+line = 2870
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_8]
+path = "src/os/unix/ngx_linux_sendfile_chain.c"
+line = 80
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_9]
+path = "src/http/modules/ngx_http_rewrite_module.c"
+line = 178
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_10]
+path = "src/http/modules/ngx_http_userid_filter_module.c"
+line = 446
+harness = ["pov_harness"]
+
+[asc-nginx.cpv_11]
+path = "src/mail/ngx_mail_pop3_handler.c"
+line = 337
+harness = ["mail_request_harness"]
+
+[asc-nginx.cpv_12]
+path = "src/mail/ngx_mail_pop3_handler.c"
+line = 377
+harness = ["mail_request_harness"]
+
+[asc-nginx.cpv_13]
+path = "src/mail/ngx_mail_smtp_handler.c"
+line = 556
+harness = ["smtp_harness"]
+
+[user-nginx.cpv_0]
+path = "src/core/ngx_string.c"
+line = 1330
+harness = ["pov_harness"]
+
+[user-nginx.cpv_1]
+path = "src/http/ngx_http_parse.c"
+line = 1298
+harness = ["pov_harness"]
+
+[user-nginx.cpv_2]
+path = "src/http/modules/ngx_http_sub_filter_module.c"
+line = 735
+harness = ["pov_harness"]
+
+[user-nginx.cpv_3]
+path = "src/http/modules/ngx_http_flv_module.c"
+line = 192
+harness = ["pov_harness"]
+
+[user-nginx.cpv_4]
+path = "src/http/modules/ngx_http_dav_module.c"
+line = 980
+harness = ["pov_harness"]
+
+[user-nginx.cpv_5]
+path = "src/core/ngx_string.c"
+line = 26
+harness = ["pov_harness"]
+
+[user-nginx.cpv_6]
+path = "src/http/ngx_http_parse.c"
+line = 2171
+harness = ["pov_harness"]
+
+[user-nginx.cpv_7]
+path = "src/http/ngx_http_parse.c"
+line = 1277
+harness = ["pov_harness"]
+
+[user-nginx.cpv_8]
+path = "src/http/ngx_http_parse.c"
+line = 765
+harness = ["pov_harness"]
+
+[user-nginx.cpv_9]
+path = "src/http/ngx_http_request.c"
+line = 1563
+harness = ["pov_harness"]
+
+[babynginx.cpv_0]
+path = "src/http/ngx_http_request.c"
+line = 2006
+harness = ["http_request_fuzzer"]
+
+[babynginx.cpv_1]
+path = "src/http/ngx_http_request.c"
+line = 2006
+harness = ["http_request_patched_fuzzer"]
+
+[itoa.cpv_0]
+path = "mock_vp.c"
+line = 27
+harness = ["filein_harness"]
+
+[itoa.cpv_1]
+path = "mock_vp.c"
+line = 24
+harness = ["filein_harness"]
+
+[babynote.cpv_0]
+path = "mock_vp.c"
+line = 127
+harness = ["filein_harness"]
+
+[rpn-calculator.cpv_0]
+path = "stackmachine.c"
+line = 123
+harness = ["filein_harness"]
+
+[rpn-calculator.cpv_1]
+path = "stackmachine.c"
+line = 188
+harness = ["filein_harness"]
+
+[libcue.cpv_0]
+path = "cd.c"
+line = 347
+harness = ["fuzz"]
+
+[mock-c.cpv_0]
+path = "mock-c/mock.c"
+line = 11
+harness = ["ossfuzz-1"]
+
+[mock-c.cpv_1]
+path = "mock-c/mock.c"
+line = 22
+harness = ["ossfuzz-2"]
+
+[mock-cp.cpv_0]
+path = "mock_vp.c"
+line = 14
+harness = ["filein_harness"]
+
+[mock-cp.cpv_1]
+path = "mock_vp.c"
+line = 27
+harness = ["filein_harness"]
+
+[concolic-test.cpv_0]
+path = "mock_vp.c"
+line = 64
+harness = ["basic_harness"]
+
+[concolic-test.cpv_1]
+path = "mock_vp.c"
+line = 24
+harness = ["read_harness"]
+
+[concolic-test.cpv_2]
+path = "mock_vp.c"
+line = 46
+harness = ["scanf_harness"]
+
+[simple-switch.cpv_0]
+path = "simple.c"
+line = 19
+harness = ["ossfuzz-1"]
+
+[timeouts-and-crashes.cpv_0]
+path = "mock_vp.c"
+line = 26
+harness = ["signal_harness"]
+
+[timeouts-and-crashes.cpv_1]
+path = "mock_vp.c"
+line = 46
+harness = ["timeout_harness"]
+
+[libxml2.cpv_0]
+path = "libxml2/HTMLparser.c"
+line = 3597
+harness = ["html"]

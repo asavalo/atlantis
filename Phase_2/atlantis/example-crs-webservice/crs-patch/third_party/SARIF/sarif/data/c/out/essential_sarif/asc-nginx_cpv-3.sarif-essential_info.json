@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-buffer-overflow",
+    "message": "AddressSanitizer: heap-buffer-overflow /src/nginx/src/http/ngx_http_request.c:4217:19 in ngx_http_trace_handler",
+    "loc_file_full_name": "/src/nginx/src/http/ngx_http_request.c",
+    "loc_file_short_name": "ngx_http_request.c",
+    "loc_line": 4217,
+    "loc_function_full_name": "ngx_http_trace_handler",
+    "loc_function_short_name": "ngx_http_trace_handler"
+}

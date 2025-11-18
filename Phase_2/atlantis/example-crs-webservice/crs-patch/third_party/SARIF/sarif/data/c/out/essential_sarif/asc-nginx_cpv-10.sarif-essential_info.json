@@ -1,0 +1,9 @@
+{
+    "ruleId": "attempting",
+    "message": "AddressSanitizer: double-free /src/nginx/src/http/ngx_http_request.c:4018:9 in ngx_http_process_prefer",
+    "loc_file_full_name": "/src/nginx/src/http/ngx_http_request.c",
+    "loc_file_short_name": "ngx_http_request.c",
+    "loc_line": 4018,
+    "loc_function_full_name": "ngx_http_process_prefer",
+    "loc_function_short_name": "ngx_http_process_prefer"
+}

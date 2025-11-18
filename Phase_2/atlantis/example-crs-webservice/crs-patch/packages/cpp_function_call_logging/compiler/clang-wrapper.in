@@ -1,0 +1,16 @@
+#!/bin/bash
+
+FUNCTION_CALL_LOGGER_DIR="${FUNCTION_CALL_LOGGER_DIR:-/work/function_call_logger}"
+PASS_PLUGIN_PATH="${FUNCTION_CALL_LOGGER_DIR}/libFunctionCallLoggerPass.so"
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <source file> [clang options]"
+    exit 1
+fi
+
+clang -fpass-plugin=$PASS_PLUGIN_PATH "$@" \
+    -g -lc++ -lc++abi \
+    -L"${FUNCTION_CALL_LOGGER_DIR}" \
+    -Wl,-Bstatic -lLogger -Wl,-Bdynamic \
+    -Wl,-rpath,"${FUNCTION_CALL_LOGGER_DIR}" \
+    -Qunused-arguments

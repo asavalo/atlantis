@@ -1,0 +1,48 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "127.0.0.1:11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "ps"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    restart: unless-stopped
+
+  atlantis-webservice:
+    build:
+      context: ./example-crs-webservice
+      dockerfile: Dockerfile
+    container_name: atlantis-webservice
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+
+      AUTH_MODE: "disabled"
+      PROVIDER: "ollama"
+      OLLAMA_BASE_URL: "http://ollama:11434"
+      OLLAMA_MODEL: "llama3.1:8b-instruct-q4_K_M"
+      OLLAMA_URL: "http://ollama:11434"
+      MODEL_NAME: "llama3.1:8b-instruct-q4_K_M"
+
+      LLM_TIMEOUT_MS: "600000"
+      LLM_MAX_TOKENS: "256"
+      LLM_CONTEXT_TOKENS: "8192"
+    ports:
+      - "127.0.0.1:8000:8000"
+    restart: unless-stopped
+
+volumes:
+      #- ./example-crs-webservice:/app:ro
+      #- ./example-crs-webservice/crs-multilang:/app/crs-multilang:ro   
+      ollama_models:
+
+
+
+

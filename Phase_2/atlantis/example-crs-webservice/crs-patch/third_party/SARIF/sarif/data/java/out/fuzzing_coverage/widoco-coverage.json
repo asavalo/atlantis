@@ -1,0 +1,3988 @@
+{
+    "func_coverages": [
+        {
+            "class_name": "diagram/DiagramGeneration",
+            "file_name": "DiagramGeneration.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "diagram/DiagramGeneration",
+            "file_name": "DiagramGeneration.java",
+            "func_name": "generateOntologyDiagram",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;)V"
+        },
+        {
+            "class_name": "diagram/DiagramGeneration",
+            "file_name": "DiagramGeneration.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "licensius/GetLicense",
+            "file_name": "GetLicense.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "licensius/GetLicense",
+            "file_name": "GetLicense.java",
+            "func_name": "getTitle",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "licensius/GetLicense",
+            "file_name": "GetLicense.java",
+            "func_name": "getFirstLicenseFound",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "licensius/GetLicense",
+            "file_name": "GetLicense.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "<init>",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "getConfig",
+            "desc": "()Lwidoco/Configuration;"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "generateSkeleton",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "startGeneratingDoc",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "startEvaluation",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "startLoadingOntology",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "docGenerated",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "exit",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "switchState",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "openBrowser",
+            "desc": "(Ljava/net/URI;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "main",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController",
+            "file_name": "GuiController.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea$PropertyType",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiController;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "initializeGUI",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "backButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "cancelButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "nextButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "saveState",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "formWindowClosing",
+            "desc": "(Ljava/awt/event/WindowEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "labelLodeMouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "labelLodeMouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "labelLodeMouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "referencesSectionButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "descriptionSectionButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "overviewSectionButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "introductionSectionButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "abstractSectionButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "checkBoxDisplaySerializationActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "buttonRewriteBaseActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3",
+            "file_name": "GuiStep3.java",
+            "func_name": "loadSection",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiController;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "initializeGUI",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "textFieldURLActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "nextButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "cancelButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "browseButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "textDocPathActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "textDocNameKeyTyped",
+            "desc": "(Ljava/awt/event/KeyEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "formWindowClosing",
+            "desc": "(Ljava/awt/event/WindowEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "option2ItemStateChanged",
+            "desc": "(Ljava/awt/event/ItemEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1",
+            "file_name": "GuiStep1.java",
+            "func_name": "option1ItemStateChanged",
+            "desc": "(Ljava/awt/event/ItemEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiController$State",
+            "file_name": "GuiController.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiController;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "initializeGUI",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "refreshPropertyTable",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "stopLoadingAnimation",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "refreshTable",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "saveMetadata",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "backButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "cancelButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "nextButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "loadMetadataFromOntoActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "showReloadWarning",
+            "desc": "(Ljava/lang/String;)I"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "loadMetadataButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "formWindowClosing",
+            "desc": "(Ljava/awt/event/WindowEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "loadMetadataFromDefaultConfigFileActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "saveMetadataButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "refreshLanguages",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "languageButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "useLicensiusWSCheckBoxActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "checkListLabelMouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "checkListLabelMouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2",
+            "file_name": "GuiStep2.java",
+            "func_name": "checkListLabelMouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$11",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$11",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$10",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$10",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiController;Z)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "initializeGUI",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "stopLoadingSign",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "updateMessage",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "backButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "nextButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelOopsMouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelViewDocMouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelOopsMouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelOopsMouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelViewDocMouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelViewDocMouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "formWindowClosing",
+            "desc": "(Ljava/awt/event/WindowEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "OOPSLogoMouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "OOPSLogoMouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "OOPSLogoMouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelProblemsMouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelProblemsMouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5",
+            "file_name": "GuiStep5.java",
+            "func_name": "labelProblemsMouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$10",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$10",
+            "file_name": "GuiStep1.java",
+            "func_name": "accept",
+            "desc": "(Ljava/io/File;)Z"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$10",
+            "file_name": "GuiStep1.java",
+            "func_name": "getDescription",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;Lwidoco/Configuration;Lwidoco/gui/BiggerTextArea$PropertyType;)V"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "buttonOkActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "buttonCancelActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "jPanel2MouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "jPanel2MouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "jPanel5MouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "jPanel5MouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "jPanel6MouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "jPanel6MouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "jPanel7MouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "jPanel7MouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface",
+            "file_name": "TestInterface.java",
+            "func_name": "main",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0",
+            "file_name": "TestStep0.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0",
+            "file_name": "TestStep0.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0",
+            "file_name": "TestStep0.java",
+            "func_name": "leftPanelMouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0",
+            "file_name": "TestStep0.java",
+            "func_name": "leftPanelMouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0",
+            "file_name": "TestStep0.java",
+            "func_name": "rightPanelMouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0",
+            "file_name": "TestStep0.java",
+            "func_name": "rightPanelMouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0",
+            "file_name": "TestStep0.java",
+            "func_name": "main",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$5",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$5",
+            "file_name": "GuiStep1.java",
+            "func_name": "itemStateChanged",
+            "desc": "(Ljava/awt/event/ItemEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$1",
+            "file_name": "GuiStep5.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep5;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$1",
+            "file_name": "GuiStep5.java",
+            "func_name": "windowClosing",
+            "desc": "(Ljava/awt/event/WindowEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$4",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$4",
+            "file_name": "GuiStep1.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/AddProperty",
+            "file_name": "AddProperty.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/AddProperty",
+            "file_name": "AddProperty.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/AddProperty",
+            "file_name": "AddProperty.java",
+            "func_name": "cancelButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/AddProperty",
+            "file_name": "AddProperty.java",
+            "func_name": "okButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/AddProperty",
+            "file_name": "AddProperty.java",
+            "func_name": "lambda$initComponents$1",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/AddProperty",
+            "file_name": "AddProperty.java",
+            "func_name": "lambda$initComponents$0",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$3",
+            "file_name": "GuiStep5.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep5;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$3",
+            "file_name": "GuiStep5.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$7",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$7",
+            "file_name": "GuiStep1.java",
+            "func_name": "keyTyped",
+            "desc": "(Ljava/awt/event/KeyEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$6",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$6",
+            "file_name": "GuiStep1.java",
+            "func_name": "itemStateChanged",
+            "desc": "(Ljava/awt/event/ItemEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$2",
+            "file_name": "GuiStep5.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep5;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$2",
+            "file_name": "GuiStep5.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$1",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$1",
+            "file_name": "GuiStep1.java",
+            "func_name": "windowClosing",
+            "desc": "(Ljava/awt/event/WindowEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$3",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$3",
+            "file_name": "GuiStep1.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$2",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$2",
+            "file_name": "GuiStep1.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$1",
+            "file_name": "TestInterface.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/TestInterface;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$1",
+            "file_name": "TestInterface.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$1",
+            "file_name": "TestInterface.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$2",
+            "file_name": "TestInterface.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/TestInterface;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$2",
+            "file_name": "TestInterface.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$2",
+            "file_name": "TestInterface.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$5",
+            "file_name": "GuiStep5.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep5;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$5",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$5",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$5",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$5",
+            "file_name": "TestInterface.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$5",
+            "file_name": "TestInterface.java",
+            "func_name": "run",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$9",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$9",
+            "file_name": "GuiStep1.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$4",
+            "file_name": "GuiStep5.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep5;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$4",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$4",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$4",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$8",
+            "file_name": "GuiStep1.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep1;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep1$8",
+            "file_name": "GuiStep1.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$3",
+            "file_name": "TestInterface.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/TestInterface;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$3",
+            "file_name": "TestInterface.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$3",
+            "file_name": "TestInterface.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$7",
+            "file_name": "GuiStep5.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep5;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$7",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$7",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$7",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$4",
+            "file_name": "TestInterface.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/TestInterface;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$4",
+            "file_name": "TestInterface.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestInterface$4",
+            "file_name": "TestInterface.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$6",
+            "file_name": "GuiStep5.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep5;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$6",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$6",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep5$6",
+            "file_name": "GuiStep5.java",
+            "func_name": "mouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0$1",
+            "file_name": "TestStep0.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/TestStep0;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0$1",
+            "file_name": "TestStep0.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0$1",
+            "file_name": "TestStep0.java",
+            "func_name": "mouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0$2",
+            "file_name": "TestStep0.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/TestStep0;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0$2",
+            "file_name": "TestStep0.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0$2",
+            "file_name": "TestStep0.java",
+            "func_name": "mouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0$3",
+            "file_name": "TestStep0.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/TestStep0$3",
+            "file_name": "TestStep0.java",
+            "func_name": "run",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$12",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$12",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$11",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$11",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$10",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$10",
+            "file_name": "GuiStep3.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$10",
+            "file_name": "GuiStep3.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$10",
+            "file_name": "GuiStep3.java",
+            "func_name": "mouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$1",
+            "file_name": "EditProperty.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/EditProperty;[[Ljava/lang/Object;[Ljava/lang/Object;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$2",
+            "file_name": "EditProperty.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/EditProperty;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$2",
+            "file_name": "EditProperty.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$5",
+            "file_name": "EditProperty.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/EditProperty;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$5",
+            "file_name": "EditProperty.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$3",
+            "file_name": "EditProperty.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/EditProperty;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$3",
+            "file_name": "EditProperty.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$4",
+            "file_name": "EditProperty.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/EditProperty;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$4",
+            "file_name": "EditProperty.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;Lwidoco/Configuration;Lwidoco/gui/EditProperty$PropertyType;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "createTable",
+            "desc": "([Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "loadAgents",
+            "desc": "(Ljava/util/ArrayList;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "loadOntologies",
+            "desc": "(Ljava/util/ArrayList;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "loadLicense",
+            "desc": "(Lwidoco/entities/License;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "loadImages",
+            "desc": "(Ljava/util/ArrayList;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "addRowButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "cancelButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "okButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "getAgentsFromTable",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "getOntologiesFromTable",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "getLicenseFromTable",
+            "desc": "()Lwidoco/entities/License;"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "getImagesFromTable",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "deleteRowButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty",
+            "file_name": "EditProperty.java",
+            "func_name": "deleteSelectedRow",
+            "desc": "(I)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$4",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$4",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$3",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$3",
+            "file_name": "GuiStep2.java",
+            "func_name": "windowClosing",
+            "desc": "(Ljava/awt/event/WindowEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$6",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$6",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$5",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$5",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$2",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;[[Ljava/lang/Object;[Ljava/lang/Object;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$2",
+            "file_name": "GuiStep2.java",
+            "func_name": "getColumnClass",
+            "desc": "(I)Ljava/lang/Class;"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$2",
+            "file_name": "GuiStep2.java",
+            "func_name": "isCellEditable",
+            "desc": "(II)Z"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$1",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$1",
+            "file_name": "GuiStep2.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$8",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$8",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$7",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;[[Ljava/lang/Object;[Ljava/lang/Object;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$7",
+            "file_name": "GuiStep2.java",
+            "func_name": "getColumnClass",
+            "desc": "(I)Ljava/lang/Class;"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$7",
+            "file_name": "GuiStep2.java",
+            "func_name": "isCellEditable",
+            "desc": "(II)Z"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$9",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$9",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/EditProperty$PropertyType",
+            "file_name": "EditProperty.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$14",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$14",
+            "file_name": "GuiStep2.java",
+            "func_name": "mouseClicked",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$14",
+            "file_name": "GuiStep2.java",
+            "func_name": "mouseEntered",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$14",
+            "file_name": "GuiStep2.java",
+            "func_name": "mouseExited",
+            "desc": "(Ljava/awt/event/MouseEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$13",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$13",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$12",
+            "file_name": "GuiStep2.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep2$12",
+            "file_name": "GuiStep2.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$3",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$3",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$2",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$2",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$5",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$5",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$4",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$4",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea$2",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/BiggerTextArea;)V"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea$2",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/SelectLanguage$1",
+            "file_name": "SelectLanguage.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/SelectLanguage;)V"
+        },
+        {
+            "class_name": "widoco/gui/SelectLanguage$1",
+            "file_name": "SelectLanguage.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$1",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$1",
+            "file_name": "GuiStep3.java",
+            "func_name": "windowClosing",
+            "desc": "(Ljava/awt/event/WindowEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea$1",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/BiggerTextArea;)V"
+        },
+        {
+            "class_name": "widoco/gui/BiggerTextArea$1",
+            "file_name": "BiggerTextArea.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$7",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$7",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$6",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$6",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$9",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$9",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$8",
+            "file_name": "GuiStep3.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep3;)V"
+        },
+        {
+            "class_name": "widoco/gui/GuiStep3$8",
+            "file_name": "GuiStep3.java",
+            "func_name": "actionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "widoco/gui/SelectLanguage",
+            "file_name": "SelectLanguage.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/gui/GuiStep2;Lwidoco/Configuration;)V"
+        },
+        {
+            "class_name": "widoco/gui/SelectLanguage",
+            "file_name": "SelectLanguage.java",
+            "func_name": "initComponents",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/gui/SelectLanguage",
+            "file_name": "SelectLanguage.java",
+            "func_name": "doneButtonActionPerformed",
+            "desc": "(Ljava/awt/event/ActionEvent;)V"
+        },
+        {
+            "class_name": "lode/LODEGeneration",
+            "file_name": "LODEGeneration.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "lode/LODEGeneration",
+            "file_name": "LODEGeneration.java",
+            "func_name": "getLODEhtml",
+            "desc": "(Lwidoco/Configuration;Ljava/io/File;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "lode/LODEGeneration",
+            "file_name": "LODEGeneration.java",
+            "func_name": "parseImports",
+            "desc": "(ZLorg/semanticweb/owlapi/model/OWLOntologyManager;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "lode/LODEGeneration",
+            "file_name": "LODEGeneration.java",
+            "func_name": "applyXSLTTransformation",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "lode/LODEGeneration",
+            "file_name": "LODEGeneration.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "oops/OOPSevaluationTest",
+            "file_name": "OOPSevaluationTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "oops/OOPSevaluationTest",
+            "file_name": "OOPSevaluationTest.java",
+            "func_name": "testPrintEvaluation",
+            "desc": "()V"
+        },
+        {
+            "class_name": "oops/OOPSevaluationTest",
+            "file_name": "OOPSevaluationTest.java",
+            "func_name": "testPrintEvaluation2",
+            "desc": "()V"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "printEvaluation",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "getPitfallNumber",
+            "desc": "()I"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$11",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$10",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$9",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$8",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$7",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$6",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$5",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$4",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$3",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$2",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$1",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLObjectProperty;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "oops/OOPSevaluation",
+            "file_name": "OOPSevaluation.java",
+            "func_name": "lambda$printEvaluation$0",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLDataProperty;Ljava/util/HashMap;Lorg/semanticweb/owlapi/model/OWLNamedIndividual;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)V"
+        },
+        {
+            "class_name": "diff/OWLAxiomInfo",
+            "file_name": "OWLAxiomInfo.java",
+            "func_name": "<init>",
+            "desc": "(Lorg/semanticweb/owlapi/model/IRI;Ljava/util/Set;Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "diff/OWLAxiomInfo",
+            "file_name": "OWLAxiomInfo.java",
+            "func_name": "getIRI",
+            "desc": "()Lorg/semanticweb/owlapi/model/IRI;"
+        },
+        {
+            "class_name": "diff/OWLAxiomInfo",
+            "file_name": "OWLAxiomInfo.java",
+            "func_name": "getNewAxioms",
+            "desc": "()Ljava/util/Set;"
+        },
+        {
+            "class_name": "diff/OWLAxiomInfo",
+            "file_name": "OWLAxiomInfo.java",
+            "func_name": "addNewChangeAxioms",
+            "desc": "(Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "diff/OWLAxiomInfo",
+            "file_name": "OWLAxiomInfo.java",
+            "func_name": "addDeleteChangeAxioms",
+            "desc": "(Ljava/util/Set;)V"
+        },
+        {
+            "class_name": "diff/OWLAxiomInfo",
+            "file_name": "OWLAxiomInfo.java",
+            "func_name": "getDeletedAxioms",
+            "desc": "()Ljava/util/Set;"
+        },
+        {
+            "class_name": "diff/OWLAxiomInfo",
+            "file_name": "OWLAxiomInfo.java",
+            "func_name": "getIRIAsString",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "diff/OWLAxiomInfo",
+            "file_name": "OWLAxiomInfo.java",
+            "func_name": "isEmpty",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;)V"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "doFindAllChanges",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "compareAllClassAxioms",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "compareAllObjectPropertyAxioms",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "compareAllDataPropertyAxioms",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getDifferences",
+            "desc": "(Lorg/semanticweb/owlapi/model/IRI;Ljava/util/Set;Ljava/util/Set;)Ldiff/OWLAxiomInfo;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "findDeletedClasses",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "findDeletedProperties",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "findDeletedDataProperties",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "findNewClasses",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "findNewProperties",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "findNewDataProperties",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLOntology;)Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getClassesWithDifferences",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getNewClasses",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getDeletedClasses",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getDeletedDataProperties",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getDeletedProperties",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getModifiedClasses",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getModifiedDataProperties",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getModifiedProperties",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getNewDataProperties",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getNewProperties",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getNewVersion",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "diff/CompareOntologies",
+            "file_name": "CompareOntologies.java",
+            "func_name": "getOldVersion",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "diff/OntologyDifferencesRenderer",
+            "file_name": "OntologyDifferencesRenderer.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "diff/OntologyDifferencesRenderer",
+            "file_name": "OntologyDifferencesRenderer.java",
+            "func_name": "differenceSummaryToString",
+            "desc": "(Ldiff/CompareOntologies;)V"
+        },
+        {
+            "class_name": "diff/OntologyDifferencesRenderer",
+            "file_name": "OntologyDifferencesRenderer.java",
+            "func_name": "setToString",
+            "desc": "(Ljava/util/ArrayList;Ljava/lang/String;Z)Ljava/lang/String;"
+        },
+        {
+            "class_name": "diff/OntologyDifferencesRenderer",
+            "file_name": "OntologyDifferencesRenderer.java",
+            "func_name": "axiomInfoSetToHTML",
+            "desc": "(Ljava/util/ArrayList;Ljava/lang/String;ZZLjava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "diff/OntologyDifferencesRenderer",
+            "file_name": "OntologyDifferencesRenderer.java",
+            "func_name": "axiomSetToHTML",
+            "desc": "(Ljava/util/Set;ZLjava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "diff/OntologyDifferencesRenderer",
+            "file_name": "OntologyDifferencesRenderer.java",
+            "func_name": "expressionToHTML",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLClassExpression;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "diff/OntologyDifferencesRenderer",
+            "file_name": "OntologyDifferencesRenderer.java",
+            "func_name": "differencesToHTML",
+            "desc": "(Ldiff/CompareOntologies;Ljava/lang/String;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "diff/OntologyDifferencesRenderer",
+            "file_name": "OntologyDifferencesRenderer.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/widoco/harnesses/one/WidocoOne",
+            "file_name": "WidocoOne.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/widoco/harnesses/one/WidocoOne",
+            "file_name": "WidocoOne.java",
+            "func_name": "fuzzerTestOneInput",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "com/aixcc/widoco/harnesses/one/WidocoOne",
+            "file_name": "WidocoOne.java",
+            "func_name": "fuzz",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "widoco/TestJenaCatalogIRIMapper",
+            "file_name": "TestJenaCatalogIRIMapper.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/TestJenaCatalogIRIMapper",
+            "file_name": "TestJenaCatalogIRIMapper.java",
+            "func_name": "testIsOntPolicyFileLoaded",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/TestJenaCatalogIRIMapper",
+            "file_name": "TestJenaCatalogIRIMapper.java",
+            "func_name": "testItHasPrintableMap",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/TestJenaCatalogIRIMapper",
+            "file_name": "TestJenaCatalogIRIMapper.java",
+            "func_name": "testDoesOwlUrlMapCorrectly",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/TestJenaCatalogIRIMapper",
+            "file_name": "TestJenaCatalogIRIMapper.java",
+            "func_name": "testDoesRdfSchemaUrlMapCorrectly",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/TestJenaCatalogIRIMapper",
+            "file_name": "TestJenaCatalogIRIMapper.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/LoadOntologyInThread",
+            "file_name": "LoadOntologyInThread.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/Configuration;Lwidoco/gui/GuiController;Z)V"
+        },
+        {
+            "class_name": "widoco/LoadOntologyInThread",
+            "file_name": "LoadOntologyInThread.java",
+            "func_name": "run",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/LoadOntologyInThread",
+            "file_name": "LoadOntologyInThread.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "loadModelToDocument",
+            "desc": "(Lwidoco/Configuration;)V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "downloadOntology",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "writeModel",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntologyManager;Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLDocumentFormat;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "copyResourceFolder",
+            "desc": "([Ljava/lang/String;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "copyLocalResource",
+            "desc": "(Ljava/lang/String;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "copyExternalResource",
+            "desc": "(Ljava/lang/String;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "readExternalResource",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "unZipIt",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "copy",
+            "desc": "(Ljava/io/InputStream;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "getValueAsLiteralOrURI",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAnnotationValue;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/WidocoUtils",
+            "file_name": "WidocoUtils.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThread",
+            "file_name": "CreateDocInThread.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/Configuration;Lwidoco/gui/GuiController;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThread",
+            "file_name": "CreateDocInThread.java",
+            "func_name": "run",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThread",
+            "file_name": "CreateDocInThread.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getAbstractSection",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getStatus",
+            "desc": "(Lwidoco/Configuration;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getIntroductionSectionTitleAndPlaceHolder",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getReferencesSection",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getAcknowledgementsSection",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getChangeLogSection",
+            "desc": "(Lwidoco/Configuration;Ldiff/CompareOntologies;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getAgents",
+            "desc": "(Ljava/util/ArrayList;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getAuthors",
+            "desc": "(Ljava/util/ArrayList;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getContributors",
+            "desc": "(Ljava/util/ArrayList;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getPublisher",
+            "desc": "(Lwidoco/entities/Agent;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getOntologies",
+            "desc": "(Ljava/util/ArrayList;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getImports",
+            "desc": "(Ljava/util/ArrayList;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getExtends",
+            "desc": "(Ljava/util/ArrayList;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "stripTrailingNamespaceChars",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getNameSpaceDeclaration",
+            "desc": "(Ljava/util/HashMap;Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getJSONLDSnippet",
+            "desc": "(Lwidoco/Configuration;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getIndexDocument",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Lwidoco/LODEParser;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getUnifiedIndexDocument",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Lwidoco/LODEParser;Ljava/util/Properties;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getHeadSection",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getOverviewSectionTitleAndPlaceHolder",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getDescriptionSectionTitleAndPlaceHolder",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getCrossReferenceSectionTitleAndPlaceHolder",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getProvenanceHtml",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "appendAgentCollectionAsHtml",
+            "desc": "(Ljava/lang/String;Ljava/util/Iterator;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getProvenanceRDF",
+            "desc": "(Lwidoco/Configuration;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getEvaluationText",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getHTACCESS",
+            "desc": "(Lwidoco/Configuration;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "get406",
+            "desc": "(Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getLegend",
+            "desc": "(Ljava/util/Properties;ZZZZZ)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "getAnalyticsCode",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Constants",
+            "file_name": "Constants.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getClassList",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getClasses",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getDataProp",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getDataPropList",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getProperties",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getPropertyList",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getAnnotationProp",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getAnnotationPropList",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getNamedIndividuals",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getNamedIndividualList",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "parse",
+            "desc": "(Ljava/lang/String;Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "getTermList",
+            "desc": "(Lorg/w3c/dom/Node;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "nodeToString",
+            "desc": "(Lorg/w3c/dom/Node;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "fixAnchor",
+            "desc": "(Lorg/w3c/dom/Node;)Lorg/w3c/dom/Node;"
+        },
+        {
+            "class_name": "widoco/LODEParser",
+            "file_name": "LODEParser.java",
+            "func_name": "fixIds",
+            "desc": "(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/CreateOOPSEvalInThread",
+            "file_name": "CreateOOPSEvalInThread.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/Configuration;Lwidoco/gui/GuiController;Z)V"
+        },
+        {
+            "class_name": "widoco/CreateOOPSEvalInThread",
+            "file_name": "CreateOOPSEvalInThread.java",
+            "func_name": "run",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "generateDocumentation",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/io/File;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "generateSkeleton",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createProvenancePage",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createHTACCESSFile",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "create406Page",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createChangeLog",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createAbstractSection",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createIntroductionSection",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createOverviewSection",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createDescriptionSection",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createCrossReferenceSection",
+            "desc": "(Ljava/lang/String;Lwidoco/LODEParser;Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createReferencesSection",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createIndexDocument",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Lwidoco/LODEParser;Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createUnifiedIndexDocument",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lwidoco/Configuration;Lwidoco/LODEParser;Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "saveDocument",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Lwidoco/Configuration;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "createFolderStructure",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "saveConfigFile",
+            "desc": "(Ljava/lang/String;Lwidoco/Configuration;)V"
+        },
+        {
+            "class_name": "widoco/CreateResources",
+            "file_name": "CreateResources.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getTmpFile",
+            "desc": "()Ljava/io/File;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "initializeConfig",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "initializeOntology",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "loadPropertyFile",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "loadPropertiesFromOntology",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "appendDetails",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "completeOntologyMetadata",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAnnotation;Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "completeAgentMetadata",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;Lwidoco/entities/Agent;Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isURL",
+            "desc": "(Ljava/lang/String;)Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getGoogleAnalyticsCode",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setGoogleAnalyticsCode",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setOverwriteAll",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getOverWriteAll",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isFromFile",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "reloadPropertyFile",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getDocumentationURI",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getMainOntology",
+            "desc": "()Lwidoco/entities/Ontology;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getInputOntology",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getOntologyPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getOntologyURI",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isPublishProvenance",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isChangeLogSuccessfullyCreated",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setChangeLogSuccessfullyCreated",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setDocumentationURI",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setMainOntology",
+            "desc": "(Lwidoco/entities/Ontology;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setOntologyPath",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setOntologyURI",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setPublishProvenance",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getAbstractPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getDescriptionPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getIntroductionPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getOverviewPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getReferencesPath",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeAbstract",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeDescription",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeDiagram",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeIntroduction",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeOverview",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeReferences",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeCrossReferenceSection",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeIndex",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeChangeLog",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setAbstractPath",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setDescriptionPath",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeAbstract",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeDescription",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeDiagram",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeIntroduction",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeOverview",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeReferences",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeCrossReferenceSection",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeIndex",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeChangeLog",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIntroductionPath",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setOverviewPath",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setPropertyFile",
+            "desc": "(Ljava/util/Properties;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setReferencesPath",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setFromFile",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getCurrentLanguage",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isUseImported",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isUseOwlAPI",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isUseReasoner",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setCurrentLanguage",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setUseOwlAPI",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setUseImported",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setUseReasoner",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getWidocoLogo",
+            "desc": "()Ljava/awt/Image;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getWidocoLogoMini",
+            "desc": "()Ljava/awt/Image;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "loadWidocoLogos",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getAbstractSection",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setAbstractSection",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeAnnotationProperties",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeAnnotationProperties",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeNamedIndividuals",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeNamedIndividuals",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "addLanguageToGenerate",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "removeLanguageToGenerate",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getLanguagesToGenerateDoc",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getRemainingToGenerateDoc",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getNextLanguageToGenerateDoc",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "vocabularySuccessfullyGenerated",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isUseW3CStyle",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setUseW3CStyle",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setError",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getError",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isAddImportedOntologies",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setAddImportedOntologies",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isCreateHTACCESS",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setCreateHTACCESS",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isCreateWebVowlVisualization",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setCreateWebVowlVisualization",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isUseLicensius",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setUseLicensius",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isDisplaySerializations",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setDisplaySerializations",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isDisplayDirectImportsOnly",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setDisplayDirectImportsOnly",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getRewriteBase",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setRewriteBase",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getContextURI",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "getNamespaceDeclarations",
+            "desc": "()Ljava/util/HashMap;"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "initializeImportedOntology",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "isIncludeAllSectionsInOneDocument",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "setIncludeAllSectionsInOneDocument",
+            "desc": "(Z)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "lambda$completeAgentMetadata$6",
+            "desc": "(Lwidoco/entities/Agent;Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "lambda$completeAgentMetadata$5",
+            "desc": "(Lwidoco/entities/Agent;Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "lambda$completeOntologyMetadata$4",
+            "desc": "(Lwidoco/entities/Agent;Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "lambda$completeOntologyMetadata$3",
+            "desc": "(Lwidoco/entities/Agent;Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "lambda$loadPropertiesFromOntology$2",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;Lorg/semanticweb/owlapi/model/OWLAnnotation;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "lambda$loadPropertiesFromOntology$1",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "widoco/Configuration",
+            "file_name": "Configuration.java",
+            "func_name": "lambda$loadPropertiesFromOntology$0",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "printMap",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "getDocumentIRI",
+            "desc": "(Lorg/semanticweb/owlapi/model/IRI;)Lorg/semanticweb/owlapi/model/IRI;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "getIdOfAxiom",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAxiom;)Ljava/util/Optional;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "getPredicateIRIOfAnnotationAxiom",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Lorg/semanticweb/owlapi/model/IRI;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "isMappingIRI",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "process",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "loadOntologyFromOntologyDocument",
+            "desc": "(Lorg/semanticweb/owlapi/io/OWLOntologyDocumentSource;)Lorg/semanticweb/owlapi/model/OWLOntology;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "ontologyDocumentSource",
+            "desc": "()Ljava/util/Optional;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "ontologyDocumentSourceInJar",
+            "desc": "()Ljava/util/Optional;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "ontPolicyLocations",
+            "desc": "()Ljava/util/stream/Stream;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "fileExists",
+            "desc": "(Ljava/lang/String;)Z"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "isLoaded",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$ontologyDocumentSourceInJar$11",
+            "desc": "(Ljava/io/InputStream;)Lorg/semanticweb/owlapi/io/OWLOntologyDocumentSource;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$ontologyDocumentSourceInJar$10",
+            "desc": "(Ljava/lang/ClassLoader;)Ljava/io/InputStream;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$ontologyDocumentSource$9",
+            "desc": "(Ljava/io/File;)Lorg/semanticweb/owlapi/io/OWLOntologyDocumentSource;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$ontologyDocumentSource$8",
+            "desc": "(Ljava/lang/String;)Ljava/io/File;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$ontologyDocumentSource$7",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$process$6",
+            "desc": "(Ljava/util/Map;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$process$5",
+            "desc": "(Ljava/util/Map;Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$process$4",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;Lwidoco/CatalogIRIMapper$1Mapping;)V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$process$3",
+            "desc": "(Ljava/lang/String;)Lwidoco/CatalogIRIMapper$1Mapping;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$process$2",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;)Z"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$process$1",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLAxiom;)Lorg/semanticweb/owlapi/model/OWLAnnotationAssertionAxiom;"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "lambda$printMap$0",
+            "desc": "(Lorg/semanticweb/owlapi/model/IRI;Lorg/semanticweb/owlapi/model/IRI;)V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "setUpClass",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "tearDownClass",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "setUp",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "tearDown",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "deleteFiles",
+            "desc": "(Ljava/io/File;)V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "testOntoInTTL",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "testOntoOWLXML",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "testOntologySmall",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "testOntologyMedium",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "testOntologyFromURL",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "testAnnotationsInOntology",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CreateDocInThreadTest",
+            "file_name": "CreateDocInThreadTest.java",
+            "func_name": "<clinit>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper$1Mapping",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "<init>",
+            "desc": "(Lwidoco/CatalogIRIMapper;)V"
+        },
+        {
+            "class_name": "widoco/CatalogIRIMapper$1Mapping",
+            "file_name": "CatalogIRIMapper.java",
+            "func_name": "setIRI",
+            "desc": "(Lorg/semanticweb/owlapi/model/IRI;Lorg/semanticweb/owlapi/model/IRI;)V"
+        },
+        {
+            "class_name": "widoco/entities/License",
+            "file_name": "License.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/License",
+            "file_name": "License.java",
+            "func_name": "getIcon",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/License",
+            "file_name": "License.java",
+            "func_name": "getName",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/License",
+            "file_name": "License.java",
+            "func_name": "getUrl",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/License",
+            "file_name": "License.java",
+            "func_name": "setIcon",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/License",
+            "file_name": "License.java",
+            "func_name": "setName",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/License",
+            "file_name": "License.java",
+            "func_name": "setUrl",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getName",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getNamespacePrefix",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getNamespaceURI",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getSerializations",
+            "desc": "()Ljava/util/HashMap;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setName",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setNamespaceURI",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setNamespacePrefix",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "isHashOntology",
+            "desc": "()Z"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getLicense",
+            "desc": "()Lwidoco/entities/License;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setLicense",
+            "desc": "(Lwidoco/entities/License;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getContributors",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setContributors",
+            "desc": "(Ljava/util/ArrayList;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getCreators",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setCreators",
+            "desc": "(Ljava/util/ArrayList;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "addSerialization",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setSerializations",
+            "desc": "(Ljava/util/HashMap;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getCiteAs",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setCiteAs",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getDoi",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setDoi",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getExtendedOntologies",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setExtendedOntologies",
+            "desc": "(Ljava/util/ArrayList;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getRevision",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setRevision",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getLatestVersion",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setLatestVersion",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getPreviousVersion",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setPreviousVersion",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getThisVersion",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setThisVersion",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getTitle",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setTitle",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getReleaseDate",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setReleaseDate",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getIssuedDate",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setIssuedDate",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getImportedOntologies",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setImportedOntologies",
+            "desc": "(Ljava/util/ArrayList;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getStatus",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setStatus",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getOWLAPIModel",
+            "desc": "()Lorg/semanticweb/owlapi/model/OWLOntology;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getOWLAPIOntologyManager",
+            "desc": "()Lorg/semanticweb/owlapi/model/OWLOntologyManager;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setMainOntology",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntology;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setMainOntologyManager",
+            "desc": "(Lorg/semanticweb/owlapi/model/OWLOntologyManager;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getPublisher",
+            "desc": "()Lwidoco/entities/Agent;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setPublisher",
+            "desc": "(Lwidoco/entities/Agent;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getBackwardsCompatibleWith",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setBackwardsCompatibleWith",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getIncompatibleWith",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setIncompatibleWith",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "getImages",
+            "desc": "()Ljava/util/ArrayList;"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "addImage",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Ontology",
+            "file_name": "Ontology.java",
+            "func_name": "setImages",
+            "desc": "(Ljava/util/ArrayList;)V"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "<init>",
+            "desc": "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "getInstitutionName",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "getInstitutionURL",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "getName",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "getURL",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "getEmail",
+            "desc": "()Ljava/lang/String;"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "setInstitutionName",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "setInstitutionURL",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "setName",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "setURL",
+            "desc": "(Ljava/lang/String;)V"
+        },
+        {
+            "class_name": "widoco/entities/Agent",
+            "file_name": "Agent.java",
+            "func_name": "setEmail",
+            "desc": "(Ljava/lang/String;)V"
+        }
+    ]
+}

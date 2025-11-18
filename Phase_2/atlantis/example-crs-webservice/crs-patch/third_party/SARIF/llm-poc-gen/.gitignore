@@ -1,0 +1,13 @@
+__pycache__
+output
+jazzer_mutator/build
+.metals
+.scala-build
+.vscode
+*.swp
+tool
+venv
+workspace
+calltree.db
+!poetry.lock
+libjazzer_fuzzed_data_provider.so

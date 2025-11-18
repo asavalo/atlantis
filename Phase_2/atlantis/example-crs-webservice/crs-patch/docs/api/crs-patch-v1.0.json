@@ -1,0 +1,210 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "CRS Patch Generation API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/v1/patch/": {
+      "post": {
+        "summary": "Request Patch Generation",
+        "description": "request a patch generation with PoV",
+        "tags": [
+          "patch"
+        ],
+        "requestBody": {
+          "description": "Patch Request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/patch/{pov_id}/": {
+      "get": {
+        "summary": "Patch Status",
+        "description": "yield the status of patch generation",
+        "tags": [
+          "patch"
+        ],
+        "parameters": [
+          {
+            "name": "pov_id",
+            "description": "POV ID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatchStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PatchRequest": {
+        "type": "object",
+        "required": [
+          "project_name",
+          "harness_name",
+          "sanitizer_name",
+          "blob_data",
+          "pov_id",
+          "type"
+        ],
+        "properties": {
+          "project_name": {
+            "description": "OSS Fuzz project name",
+            "type": "string"
+          },
+          "harness_name": {
+            "description": "Harness name to pass the data file",
+            "type": "string"
+          },
+          "sanitizer_name": {
+            "description": "Sanitizer name to reproduce the vulnerability",
+            "type": "string"
+          },
+          "blob_data": {
+            "description": "Base64 encoded vuln trigger",
+            "type": "string"
+          },
+          "pov_id": {
+            "description": "POV ID",
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "$ref": "#/components/schemas/TaskType"
+          }
+        }
+      },
+      "TaskType": {
+        "type": "string",
+        "enum": [
+          "full",
+          "delta"
+        ]
+      },
+      "PatchStatus": {
+        "type": "object",
+        "required": [
+          "pov_id",
+          "status"
+        ],
+        "properties": {
+          "pov_id": {
+            "description": "POV ID",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "waiting",
+              "processing",
+              "succeeded",
+              "failed",
+              "errored"
+            ]
+          },
+          "patch_diff": {
+            "description": "Base64 encoded patch in unified diff format\n\nnull indicates the status is not succeeded",
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

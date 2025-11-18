@@ -1,0 +1,7 @@
+confluent-kafka==2.6.1
+kazoo==2.10.0
+mypy-protobuf==3.6.0
+protobuf==5.29.1
+psutil>=6.1.0
+types-confluent-kafka==1.2.2
+types-protobuf==5.28.3.20241203

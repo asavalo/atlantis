@@ -1,0 +1,32 @@
+name: strict
+
+reachability:
+  c:
+    enabled: true
+    policy: All
+    tool_list:
+      - name: codeql
+        options:
+          mode: forward
+      - name: svf
+        options:
+          mode: ander
+      - name: introspector
+      - name: joern
+        options:
+          mode: callgraph
+    
+  java:
+    enabled: true
+    policy: All
+    tool_list:
+      - name: sootup
+        options:
+          mode: cha
+      - name: codeql
+        options:
+          mode: forward
+      - name: joern
+        options:
+          mode: callgraph
+

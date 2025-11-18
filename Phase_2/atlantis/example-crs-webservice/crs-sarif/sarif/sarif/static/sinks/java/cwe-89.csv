@@ -1,0 +1,11 @@
+sink_function
+java.sql.Statement.execute
+java.sql.Statement.executeBatch
+java.sql.Statement.executeLargeBatch
+java.sql.Statement.executeLargeUpdate
+java.sql.Statement.executeQuery
+java.sql.Statement.executeUpdate
+java.sql.Statement.addBatch
+javax.persistence.EntityManager.createNativeQuery
+javax.persistence.EntityManager.createQuery
+javax.persistence.EntityManager.createStoredProcedureQuery

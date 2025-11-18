@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "OS Command Injection",
+    "loc_file_full_name": "MethodUtil.java",
+    "loc_file_short_name": "MethodUtil.java",
+    "loc_line": 72,
+    "loc_function_full_name": "sun.reflect.misc.Trampoline.invoke",
+    "loc_function_short_name": "invoke"
+}

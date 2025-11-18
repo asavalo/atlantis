@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "Integer Overflow(addition) detected! REASON: 2147483647 + 1 == (int)-2147483648 != (long)2147483648",
+    "loc_file_full_name": "UserRemoteConfig.java",
+    "loc_file_short_name": "UserRemoteConfig.java",
+    "loc_line": 165,
+    "loc_function_full_name": "io.jenkins.plugins.toyplugin.UserRemoteConfig.incCounter",
+    "loc_function_short_name": "incCounter"
+}

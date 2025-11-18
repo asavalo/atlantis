@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "OS Command Injection",
+    "loc_file_full_name": "PngChunkZtxt.java",
+    "loc_file_short_name": "PngChunkZtxt.java",
+    "loc_line": 54,
+    "loc_function_full_name": "org.apache.commons.imaging.formats.png.chunks.PngChunkZtxt.<init>",
+    "loc_function_short_name": "PngChunkZtxt"
+}

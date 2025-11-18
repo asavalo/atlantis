@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package userspace;
+
+message MessageTwo {
+    string name = 1;
+    int32 value = 2;
+}

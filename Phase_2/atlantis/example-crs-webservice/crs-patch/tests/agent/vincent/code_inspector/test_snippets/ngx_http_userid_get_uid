@@ -1,0 +1,56 @@
+319:static ngx_http_userid_ctx_t *
+320:ngx_http_userid_get_uid(ngx_http_request_t *r, ngx_http_userid_conf_t *conf)
+321:{
+322:    ngx_str_t               src, dst;
+323:    ngx_table_elt_t        *cookie;
+324:    ngx_http_userid_ctx_t  *ctx;
+325:
+326:    ctx = ngx_http_get_module_ctx(r, ngx_http_userid_filter_module);
+327:
+328:    if (ctx) {
+329:        return ctx;
+330:    }
+331:
+332:    if (ctx == NULL) {
+333:        ctx = ngx_pcalloc(r->pool, sizeof(ngx_http_userid_ctx_t));
+334:        if (ctx == NULL) {
+335:            return NULL;
+336:        }
+337:
+338:        ngx_http_set_ctx(r, ctx, ngx_http_userid_filter_module);
+339:    }
+340:
+341:    cookie = ngx_http_parse_multi_header_lines(r, r->headers_in.cookie,
+342:                                               &conf->name, &ctx->cookie);
+343:    if (cookie == NULL) {
+344:        return ctx;
+345:    }
+346:
+347:    ngx_log_debug1(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
+348:                   "uid cookie: \"%V\"", &ctx->cookie);
+349:
+350:    if (ctx->cookie.len < 22) {
+351:        ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
+352:                      "client sent too short userid cookie \"%V\"",
+353:                      &cookie->value);
+354:        return ctx;
+355:    }
+356:
+357:    src = ctx->cookie;
+358:
+359:    dst.data = (u_char *) ctx->uid_got;
+360:
+361:    if (ngx_decode_base64(&dst, &src) == NGX_ERROR) {
+362:        ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
+363:                      "client sent invalid userid cookie \"%V\"",
+364:                      &cookie->value);
+365:        return ctx;
+366:    }
+367:
+368:    ngx_log_debug4(NGX_LOG_DEBUG_HTTP, r->connection->log, 0,
+369:                   "uid: %08XD%08XD%08XD%08XD",
+370:                   ctx->uid_got[0], ctx->uid_got[1],
+371:                   ctx->uid_got[2], ctx->uid_got[3]);
+372:
+373:    return ctx;
+374:}

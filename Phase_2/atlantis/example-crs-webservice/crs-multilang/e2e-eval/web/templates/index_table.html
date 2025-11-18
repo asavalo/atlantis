@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRS-multilang Experiment Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-table.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CRS-multilang Experiment Reports</h1>
+
+        <!-- Cache Status -->
+        <div class="cache-status-section">
+            <small id="cache-status" style="transition: color 0.3s ease;">Loading cache status...</small>
+        </div>
+
+        <!-- Unified Controls Section -->
+        <div class="unified-controls">
+            <!-- Row 1: Controls -->
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="date-select">Date:</label>
+                    <select id="date-select" onchange="switchDate(this.value)">
+                        {% for date in available_dates %}
+                        <option value="{{ date }}" {{ 'selected' if date == current_date else '' }}>
+                            {{ date }}{{ ' (Latest)' if loop.first else '' }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                {% if git_info %}
+                <div class="control-group">
+                    <button id="git-info-button" class="action-button" onclick="showGitInfoModal()">
+                        🔗 Git Info ({{ git_info.main_commit[:7] }})
+                    </button>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <!-- Row 2: Downloads -->
+            <div class="downloads-row">
+                <div class="downloads-label">Downloads:</div>
+                <div class="downloads-buttons">
+                    {% if aggregate_zips.povs.available or aggregate_zips.workdirs.available or aggregate_zips.evals.available or aggregate_zips.stdout.available %}
+                        {% if aggregate_zips.povs and aggregate_zips.povs.available %}
+                        <a href="/date/{{ current_date }}/download/zipfiles/all-povs.zip" class="download-button">📦 All PoVs ({{ aggregate_zips.povs.size_display }})</a>
+                        {% else %}
+                        <span class="download-button disabled">📦 All PoVs (Not available)</span>
+                        {% endif %}
+                        {% if aggregate_zips.workdirs and aggregate_zips.workdirs.available %}
+                        <a href="/date/{{ current_date }}/download/zipfiles/all-workdirs.zip" class="download-button">📁 All Workdirs ({{ aggregate_zips.workdirs.size_display }})</a>
+                        {% else %}
+                        <span class="download-button disabled">📁 All Workdir (Not available)</span>
+                        {% endif %}
+                        {% if aggregate_zips.evals and aggregate_zips.evals.available %}
+                        <a href="/date/{{ current_date }}/download/zipfiles/all-evals.zip" class="download-button">📊 All Evaldirs ({{ aggregate_zips.evals.size_display }})</a>
+                        {% else %}
+                        <span class="download-button disabled">📊 All Evaldir (Not available)</span>
+                        {% endif %}
+                        {% if aggregate_zips.stdout and aggregate_zips.stdout.available %}
+                        <a href="/date/{{ current_date }}/download/zipfiles/all-stdout.zip" class="download-button">📋 All Stdout ({{ aggregate_zips.stdout.size_display }})</a>
+                        {% else %}
+                        <span class="download-button disabled">📋 All Stdout (Not available)</span>
+                        {% endif %}
+                    {% else %}
+                    <span class="download-button disabled">📦 All PoVs (Not available)</span>
+                    <span class="download-button disabled">📁 All Workdir (Not available)</span>
+                    <span class="download-button disabled">📊 All Evaldir (Not available)</span>
+                    <span class="download-button disabled">📋 All Stdout (Not available)</span>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Statistics Table -->
+        <div class="stats-table-container">
+            <table class="stats-table">
+                <thead>
+                    <tr class="stats-table-category-header">
+                        <th colspan="2" class="category-basic">Basic Info</th>
+                        <th colspan="2" class="category-povs">PoVs</th>
+                        <th colspan="4" class="category-finders">Finders</th>
+                        <th colspan="4" class="category-llm">LLM Usage</th>
+                    </tr>
+                    <tr class="stats-table-header">
+                        <th class="sortable" onclick="sortStatsTable('combo')">Input Generators ↕</th>
+                        <th class="sortable" onclick="sortStatsTable('finished')">Finished ↕</th>
+                        <th class="sortable" onclick="sortStatsTable('matched')">Matched ↕</th>
+                        <th class="sortable" onclick="sortStatsTable('total')">Total ↕</th>
+                        <th>Name</th>
+                        <th>PoVs</th>
+                        <th>Unintend</th>
+                        <th>Seed</th>
+                        <th class="sortable" onclick="sortStatsTable('cost')">Cost ↕</th>
+                        <th class="sortable" onclick="sortStatsTable('tokens')">Tokens ↕</th>
+                        <th class="sortable" onclick="sortStatsTable('cache')">Cache ↕</th>
+                        <th class="sortable" onclick="sortStatsTable('reqs')">Reqs ↕</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for combo_stats in input_gen_stats %}
+                <tr class="stats-table-row" data-input-gens="{{ combo_stats.input_gens }}">
+                    <td class="stats-cell combo-name">{{ combo_stats.input_gens }}</td>
+                    <td class="stats-cell experiment-count">{{ combo_stats.finished_count }} / {{ combo_stats.experiment_count }}</td>
+                    <td class="stats-cell matched-expected">
+                        <span class="pov-main">{{ combo_stats.capped_matched }}/{{ combo_stats.expected }}</span> <span class="pov-rate {% if combo_stats.success_rate >= 80 %}high{% elif combo_stats.success_rate >= 60 %}medium{% else %}low{% endif %}" data-rate="{{ combo_stats.success_rate }}">({{ combo_stats.success_rate }}%)</span>{% if combo_stats.extra_povs > 0 or combo_stats.unintended > 0 %}<br>{% if combo_stats.extra_povs > 0 %}<span style="color: #3b82f6; font-weight: 600;">+{{ combo_stats.extra_povs }}</span>{% endif %}{% if combo_stats.extra_povs > 0 and combo_stats.unintended > 0 %} {% endif %}{% if combo_stats.unintended > 0 %}<span style="color: #f59e0b; font-weight: 600;">+{{ combo_stats.unintended }}</span>{% endif %}{% endif %}
+                    </td>
+                    <td class="stats-cell total-found">{{ combo_stats.total_found }}</td>
+                    <td class="stats-cell finder-names">
+                        {% if combo_stats.matched_pov_finders or combo_stats.unintended_pov_finders or combo_stats.uniafl_finders %}
+                            {% set all_finders = {} %}
+                            {% for finder_name, count in combo_stats.matched_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% set _ = all_finders.update({clean_name: {'matched': count, 'unintended': 0, 'seed': 0}}) %}
+                            {% endfor %}
+                            {% for finder_name, count in combo_stats.unintended_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'unintended': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': count, 'seed': 0}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name, count in combo_stats.uniafl_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'seed': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': 0, 'seed': count}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name in all_finders.keys()|sort %}
+                                {{ finder_name }}{% if not loop.last %}<br>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td class="stats-cell finder-matched-povs">
+                        {% if combo_stats.matched_pov_finders or combo_stats.unintended_pov_finders or combo_stats.uniafl_finders %}
+                            {% set all_finders = {} %}
+                            {% for finder_name, count in combo_stats.matched_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% set _ = all_finders.update({clean_name: {'matched': count, 'unintended': 0, 'seed': 0}}) %}
+                            {% endfor %}
+                            {% for finder_name, count in combo_stats.unintended_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'unintended': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': count, 'seed': 0}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name, count in combo_stats.uniafl_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'seed': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': 0, 'seed': count}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name in all_finders.keys()|sort %}
+                                {{ all_finders[finder_name].matched }}{% if not loop.last %}<br>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td class="stats-cell finder-unintended-povs">
+                        {% if combo_stats.matched_pov_finders or combo_stats.unintended_pov_finders or combo_stats.uniafl_finders %}
+                            {% set all_finders = {} %}
+                            {% for finder_name, count in combo_stats.matched_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% set _ = all_finders.update({clean_name: {'matched': count, 'unintended': 0, 'seed': 0}}) %}
+                            {% endfor %}
+                            {% for finder_name, count in combo_stats.unintended_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'unintended': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': count, 'seed': 0}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name, count in combo_stats.uniafl_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'seed': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': 0, 'seed': count}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name in all_finders.keys()|sort %}
+                                {{ all_finders[finder_name].unintended }}{% if not loop.last %}<br>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td class="stats-cell finder-seeds">
+                        {% if combo_stats.matched_pov_finders or combo_stats.unintended_pov_finders or combo_stats.uniafl_finders %}
+                            {% set all_finders = {} %}
+                            {% for finder_name, count in combo_stats.matched_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% set _ = all_finders.update({clean_name: {'matched': count, 'unintended': 0, 'seed': 0}}) %}
+                            {% endfor %}
+                            {% for finder_name, count in combo_stats.unintended_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'unintended': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': count, 'seed': 0}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name, count in combo_stats.uniafl_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'seed': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': 0, 'seed': count}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name in all_finders.keys()|sort %}
+                                {{ all_finders[finder_name].seed }}{% if not loop.last %}<br>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td class="stats-cell litellm-cost">
+                        {{ combo_stats.total_spend|format_cost }}
+                    </td>
+                    <td class="stats-cell litellm-tokens">
+                        {{ combo_stats.total_tokens|format_tokens }}
+                    </td>
+                    <td class="stats-cell litellm-cache">
+                        {{ combo_stats.total_cache_read_tokens|format_tokens }}
+                    </td>
+                    <td class="stats-cell litellm-requests">
+                        {% if combo_stats.total_requests > 0 %}
+                        {{ combo_stats.total_successful_requests }} / {{ combo_stats.total_requests }}
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if input_gen_stats|length > 1 %}
+                <tr class="stats-table-row total-row">
+                    <td class="stats-cell combo-name"><strong>TOTAL</strong></td>
+                    <td class="stats-cell experiment-count"><strong>{{ aggregate_stats.total_finished }} / {{ reports|length }}</strong></td>
+                    <td class="stats-cell matched-expected">
+                        <span class="pov-main"><strong>{{ aggregate_stats.total_capped_matched }}/{{ aggregate_stats.total_expected }}</strong></span> <span class="pov-rate {% if aggregate_stats.overall_success_rate >= 80 %}high{% elif aggregate_stats.overall_success_rate >= 60 %}medium{% else %}low{% endif %}" data-rate="{{ aggregate_stats.overall_success_rate }}"><strong>({{ aggregate_stats.overall_success_rate }}%)</strong></span>{% if aggregate_stats.total_extra_povs > 0 or aggregate_stats.total_unintended > 0 %}<br>{% if aggregate_stats.total_extra_povs > 0 %}<span style="color: #3b82f6; font-weight: 600;"><strong>+{{ aggregate_stats.total_extra_povs }}</strong></span>{% endif %}{% if aggregate_stats.total_extra_povs > 0 and aggregate_stats.total_unintended > 0 %} {% endif %}{% if aggregate_stats.total_unintended > 0 %}<span style="color: #f59e0b; font-weight: 600;"><strong>+{{ aggregate_stats.total_unintended }}</strong></span>{% endif %}{% endif %}
+                    </td>
+                    <td class="stats-cell total-found"><strong>{{ input_gen_stats | sum(attribute='total_found') }}</strong></td>
+                    <td class="stats-cell finder-names">
+                        {% if aggregate_stats.all_matched_pov_finders or aggregate_stats.all_unintended_pov_finders or aggregate_stats.all_uniafl_finders %}
+                            {% set all_finders = {} %}
+                            {% for finder_name, count in aggregate_stats.all_matched_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% set _ = all_finders.update({clean_name: {'matched': count, 'unintended': 0, 'seed': 0}}) %}
+                            {% endfor %}
+                            {% for finder_name, count in aggregate_stats.all_unintended_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'unintended': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': count, 'seed': 0}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name, count in aggregate_stats.all_uniafl_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'seed': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': 0, 'seed': count}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name in all_finders.keys()|sort %}
+                                <strong>{{ finder_name }}</strong>{% if not loop.last %}<br>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <strong>-</strong>
+                        {% endif %}
+                    </td>
+                    <td class="stats-cell finder-matched-povs">
+                        {% if aggregate_stats.all_matched_pov_finders or aggregate_stats.all_unintended_pov_finders or aggregate_stats.all_uniafl_finders %}
+                            {% set all_finders = {} %}
+                            {% for finder_name, count in aggregate_stats.all_matched_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% set _ = all_finders.update({clean_name: {'matched': count, 'unintended': 0, 'seed': 0}}) %}
+                            {% endfor %}
+                            {% for finder_name, count in aggregate_stats.all_unintended_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'unintended': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': count, 'seed': 0}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name, count in aggregate_stats.all_uniafl_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'seed': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': 0, 'seed': count}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name in all_finders.keys()|sort %}
+                                <strong>{{ all_finders[finder_name].matched }}</strong>{% if not loop.last %}<br>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <strong>-</strong>
+                        {% endif %}
+                    </td>
+                    <td class="stats-cell finder-unintended-povs">
+                        {% if aggregate_stats.all_matched_pov_finders or aggregate_stats.all_unintended_pov_finders or aggregate_stats.all_uniafl_finders %}
+                            {% set all_finders = {} %}
+                            {% for finder_name, count in aggregate_stats.all_matched_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% set _ = all_finders.update({clean_name: {'matched': count, 'unintended': 0, 'seed': 0}}) %}
+                            {% endfor %}
+                            {% for finder_name, count in aggregate_stats.all_unintended_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'unintended': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': count, 'seed': 0}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name, count in aggregate_stats.all_uniafl_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'seed': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': 0, 'seed': count}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name in all_finders.keys()|sort %}
+                                <strong>{{ all_finders[finder_name].unintended }}</strong>{% if not loop.last %}<br>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <strong>-</strong>
+                        {% endif %}
+                    </td>
+                    <td class="stats-cell finder-seeds">
+                        {% if aggregate_stats.all_matched_pov_finders or aggregate_stats.all_unintended_pov_finders or aggregate_stats.all_uniafl_finders %}
+                            {% set all_finders = {} %}
+                            {% for finder_name, count in aggregate_stats.all_matched_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% set _ = all_finders.update({clean_name: {'matched': count, 'unintended': 0, 'seed': 0}}) %}
+                            {% endfor %}
+                            {% for finder_name, count in aggregate_stats.all_unintended_pov_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'unintended': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': count, 'seed': 0}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name, count in aggregate_stats.all_uniafl_finders %}
+                                {% set clean_name = finder_name.replace('_input_gen', '') %}
+                                {% if clean_name in all_finders %}
+                                    {% set _ = all_finders[clean_name].update({'seed': count}) %}
+                                {% else %}
+                                    {% set _ = all_finders.update({clean_name: {'matched': 0, 'unintended': 0, 'seed': count}}) %}
+                                {% endif %}
+                            {% endfor %}
+                            {% for finder_name in all_finders.keys()|sort %}
+                                <strong>{{ all_finders[finder_name].seed }}</strong>{% if not loop.last %}<br>{% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <strong>-</strong>
+                        {% endif %}
+                    </td>
+                    <td class="stats-cell litellm-cost">
+                        <strong>{{ aggregate_stats.total_spend|format_cost }}</strong>
+                    </td>
+                    <td class="stats-cell litellm-tokens">
+                        <strong>{{ aggregate_stats.total_tokens|format_tokens }}</strong>
+                    </td>
+                    <td class="stats-cell litellm-cache">
+                        <strong>{{ aggregate_stats.total_cache_read_tokens|format_tokens }}</strong>
+                    </td>
+                    <td class="stats-cell litellm-requests">
+                        {% if aggregate_stats.total_requests > 0 %}
+                        <strong>{{ aggregate_stats.total_successful_requests }} / {{ aggregate_stats.total_requests }}</strong>
+                        {% else %}
+                        <strong>-</strong>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="experiments-table-container">
+            <table class="experiments-table">
+                <thead>
+                    <tr class="experiments-table-header">
+                        <th class="sortable" onclick="sortExperimentsTable('status')"> ↕</th>
+                        <th class="sortable" onclick="sortExperimentsTable('target')">Target ↕</th>
+                        <th class="sortable" onclick="sortExperimentsTable('harness')">Harness ↕</th>
+                        <th class="sortable" onclick="sortExperimentsTable('input-gens')">Input Gens ↕</th>
+                        <th class="sortable" onclick="sortExperimentsTable('matched')">Matched ↕</th>
+                        <th>Finder</th>
+                        <th>PoV</th>
+                        <th>UI</th>
+                        <th class="sortable" onclick="sortExperimentsTable('llm')">LLM ↕</th>
+                        <th>Actions</th>
+                        <th>Down</th>
+                    </tr>
+                </thead>
+                <tbody id="experiments-table-body">
+                    {% for report in reports %}
+                    <tr class="experiment-row{% if report.is_complete %}{% elif report.has_stdout %} incomplete{% else %} not-started{% endif %}"
+                        data-target="{{ report.target }}"
+                        data-input-gens="{{ report.input_gens|join(', ') }}"
+                        data-harness="{{ report.harness_name }}">
+                        <td class="status-cell">
+                            {% if report.is_complete %}
+                                <span class="status-complete">✓</span>
+                            {% elif report.has_stdout %}
+                                <span class="status-running">⏳</span>
+                            {% else %}
+                                <span class="status-not-started">-</span>
+                            {% endif %}
+                        </td>
+                        <td class="target-cell">{{ report.target }}</td>
+                        <td class="harness-cell">{{ report.harness_name }}</td>
+                        <!-- <td class="input-gens-cell">
+                            {% if report.input_gens %}
+                                {% set first_letters = [] %}
+                                {% for gen in report.input_gens %}
+                                    {% set _ = first_letters.append(gen[0]|upper) %}
+                                {% endfor %}
+                                {{ first_letters|join(', ') }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td> -->
+                        <td class="input-gens-cell">
+                            {% if report.input_gens %}
+                                {{ report.input_gens|join(', ') }}
+                            {% else %}
+                                Not specified
+                            {% endif %}
+                        </td>
+                        <td class="matched-expected-cell">
+                            {% if report.is_complete and report.experiment_stats %}
+                                {% set matched = report.experiment_stats.matched_povs %}
+                                {% set expected = report.experiment_stats.expected_cpvs %}
+                                {% set capped_matched = [matched, expected] | min %}
+                                {% set success_rate = ((capped_matched / expected * 100) | round | int) if expected > 0 else 0 %}
+                                {% set extra_povs = [0, matched - expected] | max %}
+
+                                <span class="pov-main">{{ capped_matched }}/{{ expected }}</span> <span class="pov-rate {% if success_rate >= 80 %}high{% elif success_rate >= 60 %}medium{% else %}low{% endif %}">({{ success_rate }}%)</span>{% if extra_povs > 0 or report.experiment_stats.unintended_povs > 0 %}<br>{% if extra_povs > 0 %}<span style="color: #3b82f6; font-weight: 600;">+{{ extra_povs }}</span>{% endif %}{% if extra_povs > 0 and report.experiment_stats.unintended_povs > 0 %} {% endif %}{% if report.experiment_stats.unintended_povs > 0 %}<span style="color: #f59e0b; font-weight: 600;">+{{ report.experiment_stats.unintended_povs }}</span>{% endif %}{% endif %}
+                            {% else %}
+                                <span class="status-incomplete">-</span>
+                            {% endif %}
+                        </td>
+                        <td class="finders-names-cell">
+                            {% if report.corpus_analysis and report.corpus_analysis.finder_stats %}
+                                {% set relevant_finders = [] %}
+                                {% for finder_stat in report.corpus_analysis.finder_stats %}
+                                    {% if finder_stat.matched_pov_count > 0 or finder_stat.unintended_pov_count > 0 %}
+                                        {% set clean_name = finder_stat.finder_name.replace('_input_gen', '') %}
+                                        {% set _ = relevant_finders.append(clean_name) %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if relevant_finders %}
+                                    {{ relevant_finders|join('<br>')|safe }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td class="finders-matched-cell">
+                            {% if report.corpus_analysis and report.corpus_analysis.finder_stats %}
+                                {% set matched_counts = [] %}
+                                {% for finder_stat in report.corpus_analysis.finder_stats %}
+                                    {% if finder_stat.matched_pov_count > 0 or finder_stat.unintended_pov_count > 0 %}
+                                        {% set _ = matched_counts.append(finder_stat.matched_pov_count|string) %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if matched_counts %}
+                                    {{ matched_counts|join('<br>')|safe }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td class="finders-unintended-cell">
+                            {% if report.corpus_analysis and report.corpus_analysis.finder_stats %}
+                                {% set unintended_counts = [] %}
+                                {% for finder_stat in report.corpus_analysis.finder_stats %}
+                                    {% if finder_stat.matched_pov_count > 0 or finder_stat.unintended_pov_count > 0 %}
+                                        {% set _ = unintended_counts.append(finder_stat.unintended_pov_count|string) %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if unintended_counts %}
+                                    {{ unintended_counts|join('<br>')|safe }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <td class="llm-cost-cell">
+                            {% if report.litellm_stats and report.litellm_stats.total_spend > 0 %}
+                                ${{ "%.2f"|format(report.litellm_stats.total_spend) }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+
+                        <td class="start-time-cell" style="display: none;">{{ report.experiment_start_time or 'N/A' }}</td>
+                        <td class="duration-cell" style="display: none;">{{ report.experiment_duration or 'N/A' }}</td>
+                        <td class="actions-cell">
+                            <div class="action-buttons">
+                                <button class="download-btn links-btn"
+                                        data-target="{{ report.target }}"
+                                        data-harness-name="{{ report.harness_name }}"
+                                        data-harness-url="{% if report.target_info and report.target_info.harness_info %}{% for harness in report.target_info.harness_info %}{% if harness.name == report.harness_name %}{{ harness.resolved_url }}{% endif %}{% endfor %}{% endif %}"
+                                        data-repo-url="{{ report.target_info.repo_url_web if report.target_info and report.target_info.repo_url_web else '' }}"
+                                        data-base-commit="{{ report.target_info.base_commit if report.target_info and report.target_info.base_commit else 'main' }}"
+                                        title="View Links">🔗 Links</button>
+                                {% if report.corpus_analysis and report.corpus_analysis.finder_stats %}
+                                <button class="finder-stats-btn"
+                                        data-experiment-name="{{ report.experiment_name }}"
+                                        title="View Finder Statistics">🔍 Finders</button>
+                                {% else %}
+                                <button class="finder-stats-btn disabled" title="No finder data available">🔍 Finders</button>
+                                {% endif %}
+                                {% if report.litellm_stats %}
+                                <a href="/date/{{ current_date }}/experiment/{{ report.config_hash }}/{{ report.target }}/{{ report.harness_name }}/logs/metadata" class="llm-stats-btn" title="View LLM Stats">📊 LLM</a>
+                                {% else %}
+                                <button class="llm-stats-btn disabled">
+                                    📊 LLM
+                                </button>
+                                {% endif %}
+                                <a href="/date/{{ current_date }}/experiment/{{ report.config_hash }}/{{ report.target }}/{{ report.harness_name }}/logs" class="action-btn" title="View Logs">📝 Logs</a>
+                                <a href="/date/{{ current_date }}/reports/{{ report.experiment_name|urlencode }}/linux/" class="action-btn" title="View Report">📋 Report</a>
+                            </div>
+                        </td>
+                        <td class="downloads-cell">
+                            <div class="download-buttons">
+                                {% if report.is_complete and report.zip_files %}
+                                    {% if report.zip_files.povs and report.zip_files.povs.available %}
+                                    <a href="/date/{{ current_date }}/download/zipfiles/{{ report.config_hash }}_{{ report.target.replace('/', '-') }}_{{ report.harness_name }}_povs.zip" class="download-btn" title="Download PoVs{% if report.zip_files.povs.size_display %} ({{ report.zip_files.povs.size_display }}){% endif %}">📦 PoVs</a>
+                                    {% else %}
+                                    <span class="download-btn disabled" title="PoVs not available">📦 PoVs</span>
+                                    {% endif %}
+                                    {% if report.zip_files.workdir and report.zip_files.workdir.available %}
+                                    <a href="/date/{{ current_date }}/download/zipfiles/{{ report.config_hash }}_{{ report.target.replace('/', '-') }}_{{ report.harness_name }}_workdir.zip" class="download-btn" title="Download Workdir{% if report.zip_files.workdir.size_display %} ({{ report.zip_files.workdir.size_display }}){% endif %}">📁 Work</a>
+                                    {% else %}
+                                    <span class="download-btn disabled" title="Workdir not available">📁 Work</span>
+                                    {% endif %}
+                                    {% if report.zip_files.eval and report.zip_files.eval.available %}
+                                    <a href="/date/{{ current_date }}/download/zipfiles/{{ report.config_hash }}_{{ report.target.replace('/', '-') }}_{{ report.harness_name }}_eval.zip" class="download-btn" title="Download Evaldir{% if report.zip_files.eval.size_display %} ({{ report.zip_files.eval.size_display }}){% endif %}">📊 Eval</a>
+                                    {% else %}
+                                    <span class="download-btn disabled" title="Evaldir not available">📊 Eval</span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="download-btn disabled" title="PoVs not available">📦 PoVs</span>
+                                    <span class="download-btn disabled" title="Workdir not available">📁 Work</span>
+                                    <span class="download-btn disabled" title="Evaldir not available">📊 Eval</span>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Git Info Modal -->
+    {% if git_info %}
+    <div id="git-info-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Git Repository Information</h3>
+                <button class="modal-close" onclick="hideGitInfoModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="git-info-table">
+                    <thead>
+                        <tr>
+                            <th>Repository</th>
+                            <th>Commit Hash</th>
+                            <th>Commit Date</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="repo-name">CRS-multilang (main)</td>
+                            <td class="commit-hash">{{ git_info.main_commit[:8] }}</td>
+                            <td class="commit-date">{{ git_info.main_commit_date }}</td>
+                            <td class="repo-link">
+                                <a href="https://github.com/Team-Atlanta/CRS-multilang/tree/{{ git_info.main_commit }}" target="_blank" class="git-link">View 🔗</a>
+                            </td>
+                        </tr>
+                        {% for submodule in git_info.submodules %}
+                        <tr>
+                            <td class="repo-name">{{ submodule.path }}</td>
+                            <td class="commit-hash">{{ submodule.commit }}</td>
+                            <td class="commit-date">{{ submodule.date_utc }}</td>
+                            <td class="repo-link">
+                                {% set repo_name = submodule.path.split('/')[-1] %}
+                                {% set repo_name = "oss-fuzz" if repo_name == "benchmarks" else repo_name %}
+                                <a href="https://github.com/Team-Atlanta/{{ repo_name }}/tree/{{ submodule.commit }}" target="_blank" class="git-link">View 🔗</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- {% if git_info.dirty %}
+                <div class="git-warning">
+                    ⚠️ Repository has uncommitted changes
+                </div>
+                {% endif %} -->
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Links Modal -->
+    <div id="links-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Project Links</h3>
+                <button class="modal-close" onclick="hideLinksModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="git-info-table">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>URL</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody id="links-modal-body">
+                        <!-- Content will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Finder Statistics Modal -->
+    <div id="finder-stats-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Finder Statistics</h3>
+                <button class="modal-close" onclick="hideFinderStatsModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="finder-stats-content">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/main-common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main-table.js') }}"></script>
+    <script type="application/json" id="cache-data">{{ cache_data|tojson|safe }}</script>
+    <script type="application/json" id="combinations-data">{{ unique_combinations|tojson|safe }}</script>
+    <script type="application/json" id="input-gen-stats-data">{{ input_gen_stats|tojson|safe }}</script>
+    <script type="application/json" id="aggregate-stats-data">{{ aggregate_stats|tojson|safe }}</script>
+    <script type="application/json" id="reports-data">{{ reports_for_js|tojson|safe }}</script>
+    {% if git_info %}
+    <script type="application/json" id="git-info-data">{{ git_info|tojson|safe }}</script>
+    {% endif %}
+    <script>
+        // Cache data from Flask
+        window.cacheData = JSON.parse(document.getElementById('cache-data').textContent);
+        // Pass combinations data to JavaScript
+        window.uniqueCombinations = JSON.parse(document.getElementById('combinations-data').textContent);
+        // Pass reports data to JavaScript
+        window.reportsData = JSON.parse(document.getElementById('reports-data').textContent);
+        // Pass git info data to JavaScript if available
+        var gitInfoElement = document.getElementById('git-info-data');
+        window.gitInfo = gitInfoElement ? JSON.parse(gitInfoElement.textContent) : null;
+        // console.log('Cache data:', window.cacheData);
+        // console.log('Unique combinations:', window.uniqueCombinations);
+    </script>
+</body>
+</html>

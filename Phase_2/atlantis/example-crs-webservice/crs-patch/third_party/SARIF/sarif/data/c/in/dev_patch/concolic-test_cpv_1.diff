@@ -1,0 +1,28 @@
+diff --git a/mock_vp.c b/mock_vp.c
+index 8a5a67f..68c880a 100644
+--- a/mock_vp.c
++++ b/mock_vp.c
+@@ -11,6 +11,7 @@ void func_a() {
+   if (a * b == 0x1337 * 0x1338 && a + b == 0x1337 + 0x1338) {
+     if (c > 9) {
+       puts("c is too big\n");
++      return;
+     }
+     items[0][c] = 'a';
+   }
+@@ -24,6 +25,7 @@ void func_b() {
+   if (a * b == 0x1337 * 0x1338 && a + b == 0x1337 + 0x1338) {
+     if (c > 9) {
+       puts("c is too big\n");
++      return;
+     }
+     items[0][c] = 'a';
+   }
+@@ -33,6 +35,7 @@ void func_c(int a, int b, int c) {
+   if (a * b == 0x1337 * 0x1338 && a + b == 0x1337 + 0x1338) {
+     if (c > 9) {
+       puts("c is too big\n");
++      return;
+     }
+     items[0][c] = 'a';
+   }

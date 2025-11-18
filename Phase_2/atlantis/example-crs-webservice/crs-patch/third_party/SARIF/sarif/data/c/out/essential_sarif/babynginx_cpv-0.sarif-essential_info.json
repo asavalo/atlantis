@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-buffer-overflow",
+    "message": "AddressSanitizer: heap-buffer-overflow /src/nginx/src/http/ngx_http_request.c:2006:5 in ngx_http_process_custom_features",
+    "loc_file_full_name": "/src/nginx/src/http/ngx_http_request.c",
+    "loc_file_short_name": "ngx_http_request.c",
+    "loc_line": 2006,
+    "loc_function_full_name": "ngx_http_process_custom_features",
+    "loc_function_short_name": "ngx_http_process_custom_features"
+}

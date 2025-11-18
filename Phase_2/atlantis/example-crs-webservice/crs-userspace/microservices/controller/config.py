@@ -1,0 +1,87 @@
+from libatlantis.constants import CRS_SCRATCH_DIR, NODE_NUM, NODE_CPU_CORES 
+from libatlantis.protobuf import (
+    LIBFUZZER,
+    LIBAFL,
+    SINGLE_INPUT,
+    SINGLE_INPUT_SBCC,
+    DIRECTED,
+    LIBFUZZER_SBCC,
+    AFL,
+    HONGGFUZZ,
+    CONFIG_GEN,
+    UBSAN,
+    MSAN,
+    SANS,
+    OPTIMIZED,
+)
+
+import os
+
+# controller, osv_analyzer, telemetry_logger, codebrowser, harness_builder, c_llm, coverage_service, harness_reachability
+if NODE_CPU_CORES <= 4:
+    CORE_NUM_FOR_PER_CP_SERVICES = 0 # share cores with the per node services 
+elif NODE_CPU_CORES <= 8:
+    CORE_NUM_FOR_PER_CP_SERVICES = 1 
+elif NODE_CPU_CORES <= 16:
+    CORE_NUM_FOR_PER_CP_SERVICES = 2
+elif NODE_CPU_CORES <= 32:
+    CORE_NUM_FOR_PER_CP_SERVICES = 3
+else:
+    CORE_NUM_FOR_PER_CP_SERVICES = 4
+
+# deepgen_service, crash_collector, seeds_collector, seed_ensembler
+CORES_FOR_DEEPGEN = []
+CORES_FOR_DIRECTED = []
+
+# hardcoded core allocation
+if NODE_CPU_CORES <= 8:
+    CORE_NUM_FOR_PER_NODE_SERVICES = 1
+elif NODE_CPU_CORES <= 16:
+    CORE_NUM_FOR_PER_NODE_SERVICES = 3 # 2 for deepgen
+    CORES_FOR_DEEPGEN = [1, 2]
+elif NODE_CPU_CORES <= 32:
+    CORE_NUM_FOR_PER_NODE_SERVICES = 6 # 3 for deepgen, 1 for seed_ensembler
+    CORES_FOR_DEEPGEN = [1, 2, 3]
+    CORES_FOR_DIRECTED = [5]
+elif NODE_CPU_CORES <= 32:
+    CORE_NUM_FOR_PER_NODE_SERVICES = 8 # 4 for deepgen, 1 for seed_ensembler
+    CORES_FOR_DEEPGEN = [1, 2, 3, 4]
+    CORES_FOR_DIRECTED = [5, 6]
+elif NODE_CPU_CORES <= 64:
+    CORE_NUM_FOR_PER_NODE_SERVICES = 8 # 4 for deepgen, 1 for seed_ensembler
+    CORES_FOR_DEEPGEN = [1, 2, 3, 4]
+    CORES_FOR_DIRECTED = [5, 6, 7]
+else:
+    CORE_NUM_FOR_PER_NODE_SERVICES = 8 # 4 for deepgen, 1 for seed_ensembler
+    CORES_FOR_DEEPGEN = [1, 2, 3, 4]
+    CORES_FOR_DIRECTED = [5, 6, 7]
+
+GROUP_ID = "controller"
+
+EPOCH_DURATION = int(os.environ.get("EPOCH_DURATION", 1200))
+DIRECTED_EPOCH_DURATION = int(os.environ.get("DIRECTED_EPOCH_DURATION", 120))
+DIRECTED_TASK_RUN_THRESHOLD = 3600
+DIRECTED_TASK_COMPILE_THRESHOLD = 1200
+FUZZER_STARTUP_ALLOWANCE_RATIO = 0.8
+
+LIBFUZZER_FUZZING_MODES = [LIBFUZZER] # UBSAN, MSAN
+GENERAL_FUZZING_MODES = [LIBAFL, AFL] + LIBFUZZER_FUZZING_MODES
+DELAY_BUILD_MODES = [DIRECTED]
+MODES_TO_REQUEST_BUILDS_FOR = (
+    # NOTE OPTIMIZED gets added to the BuildRequests here if delta mode
+    CONFIG_GEN, # make sure this gets done ASAP
+    *GENERAL_FUZZING_MODES,
+    LIBFUZZER_SBCC,
+    *DELAY_BUILD_MODES,
+)
+
+NUM_CP_CONFIG_THREADS = 1
+NUM_HARNESS_BUILDER_RESULT_THREADS = 2
+NUM_OSV_ANALYZER_RESULT_THREADS = 1
+NUM_FUZZER_RUN_RESPONSE_THREADS = 1
+NUM_FUZZER_STOP_RESPONSE_THREADS = 1
+NUM_SARIF_HARNESS_REACHABILITY_THREADS = 1
+NUM_SARIF_DIRECTED_THREADS = 1
+NUM_DELTA_DIRECTED_THREADS = 1
+NUM_DIRECTED_FUZZER_RESPONSE_THREADS = 1
+NUM_FILE_OPS_RESPONSE_THREADS = 1

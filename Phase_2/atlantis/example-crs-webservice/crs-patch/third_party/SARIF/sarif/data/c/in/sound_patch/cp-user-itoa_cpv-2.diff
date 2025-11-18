@@ -1,0 +1,20 @@
+--- a/mock_vp.c
++++ b/mock_vp.c
+@@ -60,6 +60,17 @@
+   char *pageNumString;
+   int docWidth = chal_atoi(s);
+   printf("docWidth: %d\n", docWidth);
++
++  /* Ensure docWidth is large enough to hold the number of digits for totalPageNum. */
++  {
++    char tempBuffer[32];
++    snprintf(tempBuffer, sizeof(tempBuffer), "%d", totalPageNum);
++    int needed = strlen(tempBuffer) + 1; // +1 for null terminator
++    if (docWidth < needed) {
++      docWidth = needed;
++    }
++  }
++
+   if(!(pageNumString = malloc(docWidth)))
+     return;
+   memset(pageNumString, 0, docWidth);

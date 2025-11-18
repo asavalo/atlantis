@@ -1,0 +1,83 @@
+#!/bin/bash
+
+set -e
+
+export CC=clang
+export CXX=clang++
+export DEST=/symcc
+unset CFLAGS CXXFLAGS LDFLAGS
+
+cd /symcc-prebuild 
+pushd symcc-binaries > /dev/null
+
+# Obtain hash BEFORE building to prevent intermeidate artifacts from perturbating hash
+python3 hash_symcc.py . > $DEST/symcc_hash.txt
+
+PYTHON_DEPS="\
+    zlib1g-dev \
+    libncurses5-dev \
+    libgdbm-dev \
+    libgdbm-compat-dev \
+    libnss3-dev \
+    libssl-dev \
+    libsqlite3-dev \
+    libreadline-dev \
+    libffi-dev \
+    libbz2-dev \
+    liblzma-dev \
+    lzma \
+    lzma-dev \
+    tk-dev \
+    uuid-dev \
+    libmpdec-dev \
+    libzstd-dev \
+    pkg-config" 
+
+SYMCC_DEPS="libc6-dbg"
+apt-get update -y && apt-get install -y $PYTHON_DEPS $SYMCC_DEPS
+
+pushd cpython-3.14 > /dev/null
+INSTALL_PREFIX=$DEST/python3.14 ./build.sh
+popd > /dev/null
+
+pushd concolic_executor > /dev/null
+PYTHON_INSTALL_PATH=$DEST/python3.14 ./build.sh
+cp libsymcc-rt.so $DEST 
+popd > /dev/null
+
+pushd atlantis_cc > /dev/null
+./build.sh
+cp cc_wrapper $DEST 
+cp cxx_wrapper $DEST
+popd > /dev/null
+
+pushd symcc-pass > /dev/null
+./build.sh
+cp build/libsymcc.so $DEST/libsymcc.so 
+popd > /dev/null
+
+export CC=gcc
+export CXX=g++
+
+pushd glib-2.66 > /dev/null
+./install-glib.sh
+cp $(realpath _build/glib/libglib-2.0.so) $DEST 
+cp $(realpath _build/gmodule/libgmodule-2.0.so.0) $DEST 
+popd > /dev/null
+
+export CC=clang
+export CXX=clang++
+
+pushd symqemu-multilang > /dev/null
+./build.sh
+patchelf --replace-needed libSymCCRtShared.so libsymcc-rt.so build/qemu-x86_64
+patchelf --set-rpath $DEST build/qemu-x86_64
+cp build/qemu-x86_64 $DEST
+popd > /dev/null
+
+pushd symcc-fuzzing-engine > /dev/null
+./build.sh
+cp libSymCCFuzzingEngine.a $DEST
+popd > /dev/null
+
+popd > /dev/null

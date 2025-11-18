@@ -1,0 +1,67 @@
+39:/**
+40: * Placed on methods to indicate that this method is to be run during the Jenkins start up to perform
+41: * some sort of initialization tasks, for example:
+42: *
+43: * <pre>
+44:   &#64;Initializer(after=JOB_LOADED)
+45:   public static void init() throws IOException {
+46:       ....
+47:   }
+48: * </pre>
+49: *
+50: * <p>
+51: * The method in question can be either {@code static} or an instance method. When used with instance
+52: * methods, those methods have to be on a class annotated with {@link Extension} and marked as
+53: * {@link #after()} {@link InitMilestone#PLUGINS_PREPARED}.
+54: *
+55: * @author Kohsuke Kawaguchi
+56: */
+57:@Indexed
+58:@Documented
+59:@Retention(RUNTIME)
+60:@Target(METHOD)
+61:public @interface Initializer {
+62:    /**
+63:     * Indicates that the specified milestone is necessary before executing this initializer.
+64:     *
+65:     * <p>
+66:     * This has the identical purpose as {@link #requires()}, but it's separated to allow better type-safety
+67:     * when using {@link InitMilestone} as a requirement (since enum member definitions need to be constant).
+68:     */
+69:    InitMilestone after() default STARTED;
+70:
+71:    /**
+72:     * Indicates that this initializer is a necessary step before achieving the specified milestone.
+73:     *
+74:     * <p>
+75:     * This has the identical purpose as {@link #attains()}. See {@link #after()} for why there are two things
+76:     * to achieve the same goal.
+77:     */
+78:    InitMilestone before() default COMPLETED;
+79:
+80:    /**
+81:     * Indicates the milestones necessary before executing this initializer.
+82:     */
+83:    String[] requires() default {};
+84:
+85:    /**
+86:     * Indicates the milestones that this initializer contributes to.
+87:     *
+88:     * A milestone is considered attained if all the initializers that attains the given milestone
+89:     * completes. So it works as a kind of join.
+90:     */
+91:    String[] attains() default {};
+92:
+93:    /**
+94:     * Key in {@code Messages.properties} that represents what this task is about. Used for rendering the progress.
+95:     * Defaults to "${short class name}.${method Name}".
+96:     */
+97:    String displayName() default "";
+98:
+99:    /**
+100:     * Should the failure in this task prevent Hudson from starting up?
+101:     *
+102:     * @see Task#failureIsFatal()
+103:     */
+104:    boolean fatal() default true;
+105:}

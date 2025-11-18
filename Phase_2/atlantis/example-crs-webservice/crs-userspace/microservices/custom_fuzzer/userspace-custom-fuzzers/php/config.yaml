@@ -1,0 +1,16 @@
+flowfusion:
+  targets:
+    - php
+  src_path: "/src"
+  oss_fuzz_path: "/oss-fuzz"
+  build_path: "/out"
+  corpus_path: "/home/phpfuzz/WorkSpace/flowfusion/php-src/tests/fused" 
+  corpus_files:
+    - "*.phpt"
+    - "*.php"
+  crashes_path: "/home/phpfuzz/WorkSpace/flowfusion/bugs"
+  env_vars:
+    - "CORES" # comma separated cores
+  build_cmd: "bash -c './build.sh'"
+  fuzz_cmd: "bash -c 'python3 main.py'"
+  type: "custom"

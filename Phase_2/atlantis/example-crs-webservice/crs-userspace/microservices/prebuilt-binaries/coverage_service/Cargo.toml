@@ -1,0 +1,24 @@
+[package]
+name = "coverage_service"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+addr2line = "0.24.2"
+anyhow = "1.0.95"
+boxcar = "0.2.8"
+bytes = "1.9.0"
+clap = { version = "4.5.23", features = ["derive"] }
+crc32fast = "1.4.2"
+dashmap = "6.1.0"
+elf = "0.7.4"
+libc = "0.2.169"
+libmsa = { path = "/libs/libMSA/rust/libmsa" }
+memchr = "2.7.4"
+prost = "0.13"
+serde = "1.0.217"
+serde_json = "1.0.134"
+tokio = { version = "1", features = ["full"] }
+
+[build-dependencies]
+prost-build = "0.13"

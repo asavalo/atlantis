@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "sarif"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+include = ["sarif/static/**/*"]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.14"
+clusterfuzz = "^2.6.0"
+black = "^25.1.0"
+isort = "^6.0.0"
+pydantic = "^2.10.6"
+click = "^8.1.8"
+dicttoxml = "^1.7.16"
+coloredlogs = "^15.0.1"
+python-dotenv = "^1.0.1"
+tree-sitter-c = "0.23.4"
+tiktoken = "^0.9.0"
+langchain = "^0.3.18"
+langchain-openai = "^0.3.5"
+langchain-experimental = "^0.3.4"
+docker = "^7.1.0"
+jinja2 = "^3.1.5"
+langgraph = "^0.2.73"
+rich = "^13.9.4"
+protobuf = "^3.20.0"
+ipython = "^8.32.0"
+arize-phoenix = "^8.3.0"
+arize-phoenix-otel = "^0.8.0"
+openinference-instrumentation-langchain = "^0.1.33"
+jsonschema = "^4.23.0"
+tree-sitter = "0.23.2"
+fuzz-introspector = "^0.1.10"
+aim = "^3.28.0"
+jpype1 = "^1.5.2"
+networkx = "^3.4.2"
+pydot = "^3.0.4"
+pygraphviz = "^1.14"
+rapidfuzz = "^3.13.0"
+polars = "^1.31.0"
+cxxfilt = "^0.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

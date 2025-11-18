@@ -1,0 +1,57 @@
+import time
+from pathlib import Path
+from typing import Literal
+
+import click
+from dotenv import load_dotenv
+
+from sarif.context import init_context
+from sarif.models import CP
+from sarif.tools.joern.docker import JoernDocker
+, init_logger
+
+pass_cp = click.make_pass_decorator(CP)
+
+
+@click.group()
+@click.argument("cp_name", type=str)
+@click.argument("language", type=click.Choice(["c", "cpp", "java"]))
+@click.argument("config_path", type=click.Path(path_type=Path))
+@click.pass_context
+def sarif_cli(
+    ctx: click.Context,
+    cp_name: str,
+    language: Literal["c", "cpp", "java"],
+    config_path: Path,
+):
+    cp = CP(name=cp_name, language=language, config_path=config_path)
+
+    init_context(cp=cp, env_mode="docker", debug_mode="release")
+
+    ctx.obj = cp
+
+
+@sarif_cli.command()
+@click.option("--build_dir", type=click.Path(path_type=Path), default=None)
+@pass_cp
+def run_joern_parse_in_docker(
+    cp: CP,
+    build_dir: Path,
+):
+    from loguru import logger
+
+    logger.debug("Run in docker mode")
+    logger.debug(f"Benchmark name: {cp.name}")
+
+    docker_obj = JoernDocker(
+        cp,
+        build_dir=build_dir,
+    )
+
+    start_time = time.time()
+    docker_obj.create_cpg()
+    logger.debug(f"Total time taken: {time.time() - start_time} seconds")
+
+
+if __name__ == "__main__":
+    sarif_cli()

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package userspace;
+
+message SampleInputMessage {
+  int32 num = 1;
+}
+
+message SampleOutputMessage {
+  int32 ret_val = 1;
+}

@@ -1,0 +1,5 @@
+from pathlib import Path
+
+CRS_ARCHITECTURE_DIRECTORY = Path(__file__).parent
+CRS_EVALUATOR_DIRECTORY = CRS_ARCHITECTURE_DIRECTORY / "challenge-evaluation"
+CRS_IDENTIFIER_BINARY = CRS_ARCHITECTURE_DIRECTORY / "identifier"

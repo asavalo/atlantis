@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = ["customgen/rust_client", "fuzzdb", "testlang", "uniafl"]
+exclude = [
+    "uniafl/src/concolic/executor/symcc/prebuild/LibAFL",
+    "uniafl/src/concolic/executor/symcc/prebuild/LibAFL/libafl_concolic/symcc_runtime",
+    "uniafl/src/concolic/executor/symcc/prebuild/LibAFL/libafl_concolic/symcc_runtime_macros",
+    "uniAFL/src/concolic/executor/symcc/prebuild/concolic_executor",
+    "uniAFL/src/concolic/executor/symcc/prebuild/atlantis_cc",
+    "uniafl/src/concolic/executor/symcc/prebuild/symqemu-multilang/multilang_test/trigger",
+]

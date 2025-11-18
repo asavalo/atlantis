@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-buffer-overflow",
+    "message": "AddressSanitizer: heap-buffer-overflow /src/mock-c/mock.c:22:3 in target_2",
+    "loc_file_full_name": "/src/mock-c/mock.c",
+    "loc_file_short_name": "mock.c",
+    "loc_line": 22,
+    "loc_function_full_name": "target_2",
+    "loc_function_short_name": "target_2"
+}

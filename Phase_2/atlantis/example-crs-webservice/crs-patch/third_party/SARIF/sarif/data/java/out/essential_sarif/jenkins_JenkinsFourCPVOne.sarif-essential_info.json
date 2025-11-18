@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueMedium",
+    "message": "Server Side Request Forgery (SSRF)",
+    "loc_file_full_name": "CauseManagement.java",
+    "loc_file_short_name": "CauseManagement.java",
+    "loc_line": 245,
+    "loc_function_full_name": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm",
+    "loc_function_short_name": "doRemoveConfirm"
+}

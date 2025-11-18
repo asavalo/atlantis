@@ -1,0 +1,5 @@
+#!/bin/bash
+sysctl -w fs.file-max=2097152
+ulimit -c 0
+get_cp
+main.py

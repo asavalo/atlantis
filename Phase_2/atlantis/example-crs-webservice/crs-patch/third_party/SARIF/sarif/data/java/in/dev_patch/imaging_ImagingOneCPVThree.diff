@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkIhdr.java b/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkIhdr.java
+index 710d4f0..aec9702 100644
+--- a/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkIhdr.java
++++ b/src/main/java/org/apache/commons/imaging/formats/png/chunks/PngChunkIhdr.java
+@@ -42,7 +42,7 @@ public class PngChunkIhdr extends PngChunk {
+         final ByteArrayInputStream is = new ByteArrayInputStream(bytes);
+         width = read4Bytes("Width", is, "Not a Valid PNG File: IHDR Corrupt", getByteOrder());
+         height = read4Bytes("Height", is, "Not a Valid PNG File: IHDR Corrupt", getByteOrder());
+-        if (width * height < 0) {
++        if ((long)width * (long)height > Integer.MAX_VALUE) {
+             throw new ImagingException("PNG: invalid dimensions");
+         }
+         bitDepth = readByte("BitDepth", is, "Not a Valid PNG File: IHDR Corrupt");

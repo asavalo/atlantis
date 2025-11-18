@@ -1,0 +1,150 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ name }}
+  namespace: crs-webservice
+  labels:
+    app: "cp-manager"
+    task_id: {{ task_id }}
+    node_type: {{ node_type }}
+    {% if extra_labels %}
+    {% for key, value in extra_labels.items() %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+    {% endif %}
+spec:
+  imagePullSecrets:
+  - name: registry-secret
+  serviceAccountName: k8s-full-control
+  volumes:
+    - name: shared-crs-fs-volume
+      persistentVolumeClaim:
+        claimName: shared-crs-fs
+    - name: tarball-fs-volume
+      persistentVolumeClaim:
+        claimName: tarball-fs
+    - name: registry-config
+      secret:
+        secretName: registry-secret
+    - name: crs-db
+      persistentVolumeClaim:
+        claimName: crs-multilang-db-backup
+    - name: crs-java-cpmeta-db
+      persistentVolumeClaim:
+        claimName: crs-java-cpmeta-db-backup
+  initContainers:
+    - name: init-permissions
+      image: redis:6.2-alpine
+      command: ['sh', '-c', 'rm -rf /crs-db/{{name}}/db; mkdir -p /crs-db/{{name}}/db']
+      volumeMounts:
+        - name: crs-db
+          mountPath: /crs-db
+    - name: init-permissions-dict-db
+      image: redis:6.2-alpine
+      command: ['sh', '-c', 'rm -rf /crs-db/{{name}}/dict-db; mkdir -p /crs-db/{{name}}/dict-db']
+      volumeMounts:
+        - name: crs-db
+          mountPath: /crs-db
+    - name: init-permissions-java
+      image: redis:6.2-alpine
+      command: ['sh', '-c', 'rm -rf /crs-java-cpmeta-db/{{name}}/db; mkdir -p /crs-java-cpmeta-db/{{name}}/db']
+      volumeMounts:
+        - name: crs-java-cpmeta-db
+          mountPath: /crs-java-cpmeta-db
+  restartPolicy: Always
+  containers:
+    - name: {{ crs }}-codeindexer
+      image: redis:6.2-alpine
+      command: ['redis-server', '--dir', '/crs-db/{{name}}/db']
+      ports:
+      - containerPort: 6379
+      volumeMounts:
+        - name: crs-db
+          mountPath: /crs-db
+    - name: {{ crs }}-dictgen-db
+      image: redis:6.2-alpine
+      command: ['redis-server', '--dir', '/crs-db/{{name}}/dict-db', '--port', '9500']
+      ports:
+      - containerPort: 9500
+      volumeMounts:
+        - name: crs-db
+          mountPath: /crs-db
+    - name: crs-java-cpmeta
+      image: redis:7.4-alpine
+      command: ['redis-server', '--dir', '/crs-java-cpmeta-db/{{name}}/db', '--port', '9505']
+      ports:
+      - containerPort: 9505
+      volumeMounts:
+        - name: crs-java-cpmeta-db
+          mountPath: /crs-java-cpmeta-db
+    - name: {{ crs }}-container
+      image: {{ registry }}/cp_manager:{{image_version}}
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: shared-crs-fs-volume
+          mountPath: /shared-crs-fs
+        - name: tarball-fs-volume
+          mountPath: /tarball-fs
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+      securityContext:
+        privileged: true
+      {% if env_vars %}
+      env:
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+      {% endif %}
+      {% if resources %}
+      resources:
+        {{ resources | to_nice_yaml(indent=8) }}
+      {% endif %}
+  {% if node_selector %}
+  nodeSelector:
+    {{ node_selector | to_nice_yaml(indent=4) }}
+  {% endif %}
+  {% if tolerations %}
+  tolerations:
+    {{ tolerations | to_nice_yaml(indent=4) }}
+  {% endif %}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ name }}
+  namespace: crs-webservice
+  labels:
+    app: "cp-manager"
+    task_id: {{ task_id }}
+    node_type: {{ node_type }}
+spec:
+  selector:
+    app: "cp-manager"
+    task_id: {{ task_id }}
+    node_type: {{ node_type }}
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: codeindexer
+      protocol: TCP
+      port: 6379
+      targetPort: 6379
+    - name: crs-java-cpmeta
+      protocol: TCP
+      port: 9505
+      targetPort: 9505
+    - name: crs-dict-db
+      protocol: TCP
+      port: 9500
+      targetPort: 9500
+    - name: multilang-lsp
+      protocol: TCP
+      port: 3303
+      targetPort: 3303
+  type: {{ service_type | default("ClusterIP") }}
+

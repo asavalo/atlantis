@@ -1,0 +1,65 @@
+interactions:
+- request:
+    body: '{"detection": {"blob_data": "abcdefabcdefabcdefabcdefabcdefabcdef\nb\n\n1\n",
+      "harness_name": "filein_harness", "language": "c", "project_name": "aixcc/c/mock-cp",
+      "sanitizer_name": null, "sarif_report": null, "vulnerability_identifier": "official-c-mock-cp-filein-harness-cpv-1-full"}}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=filein_harness\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+ TESTCASE=/testcase\r\n+
+    '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+ RUN_FUZZER_MODE=interactive\r\n+
+    export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+ export SKIP_SEED_CORPUS=1\r\n+
+    SKIP_SEED_CORPUS=1\r\n+ run_fuzzer filein_harness -runs=100 /testcase\r\nvm.mmap_rnd_bits
+    = 28\r\n/out/filein_harness -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase
+    < /dev/null\r\nINFO: Running with entropic power schedule (0xFF, 100).\r\nINFO:
+    Seed: 43232295\r\nINFO: Loaded 1 modules   (12 inline 8-bit counters): 12 [0x555555760008,
+    0x555555760014), \r\nINFO: Loaded 1 PC tables (12 PCs): 12 [0x555555760018,0x5555557600d8),
+    \r\n/out/filein_harness: Running 1 inputs 100 time(s) each.\r\nRunning: /testcase\r\n=================================================================\r\n==14==ERROR:
+    AddressSanitizer: global-buffer-overflow on address 0x555556169b5e at pc 0x5555556402b5
+    bp 0x7fffffffe1d0 sp 0x7fffffffd998\r\nWRITE of size 38 at 0x555556169b5e thread
+    T0\r\nSCARINESS: 45 (multi-byte-write-global-buffer-overflow)\r\n    #0 0x5555556402b4
+    in fgets /src/llvm-project/compiler-rt/lib/asan/../sanitizer_common/sanitizer_common_interceptors.inc:1207:5\r\n
+    \   #1 0x5555556f9847 in func_a /src/fuzz/../mock-cp-src/mock_vp.c:14:9\r\n    #2
+    0x5555556f9d49 in LLVMFuzzerTestOneInput /src/fuzz/filein_harness.c:59:3\r\n    #3
+    0x5555555ae300 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+    long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\r\n    #4
+    0x555555599575 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long)
+    /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\r\n    #5 0x55555559f00f
+    in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned
+    long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\r\n    #6
+    0x5555555ca2b2 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\r\n
+    \   #7 0x7ffff7c3a082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+    (BuildId: 0323ab4806bee6f846d9ad4bccfc29afdca49a58)\r\n    #8 0x55555559175d in
+    _start (/out/filein_harness+0x3d75d)\r\n\r\nDEDUP_TOKEN: ___interceptor_fgets--func_a--LLVMFuzzerTestOneInput\r\n0x555556169b5e
+    is located 34 bytes before global variable 'pipefd' defined in '/src/fuzz/filein_harness.c:9'
+    (0x555556169b80) of size 8\r\n0x555556169b5e is located 0 bytes after global variable
+    'items' defined in '/src/fuzz/../mock-cp-src/mock_vp.c:5' (0x555556169b40) of
+    size 30\r\nSUMMARY: AddressSanitizer: global-buffer-overflow /src/fuzz/../mock-cp-src/mock_vp.c:14:9
+    in func_a\r\nShadow bytes around the buggy address:\r\n  0x555556169880: 00 00
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n  0x555556169900: 00 00 00 00 00
+    00 00 00 00 00 00 00 00 00 00 00\r\n  0x555556169980: 00 00 00 00 00 00 00 00
+    00 00 00 00 00 00 00 00\r\n  0x555556169a00: 00 00 00 00 00 00 00 00 00 00 00
+    00 00 00 00 00\r\n  0x555556169a80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+    00 00\r\n=>0x555556169b00: 00 00 00 00 00 00 00 00 00 00 00[06]f9 f9 f9 f9\r\n
+    \ 0x555556169b80: 00 f9 f9 f9 00 00 00 00 00 00 00 00 00 00 00 00\r\n  0x555556169c00:
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00\r\n  0x555556169c80: 00 00 00
+    00 00 00 00 00 00 00 00 00 00 00 00 00\r\n  0x555556169d00: 00 00 00 00 00 00
+    00 00 00 00 00 00 00 00 00 00\r\n  0x555556169d80: 00 00 00 00 00 00 00 00 00
+    00 00 00 00 00 00 00\r\nShadow byte legend (one shadow byte represents 8 application
+    bytes):\r\n  Addressable:           00\r\n  Partially addressable: 01 02 03 04
+    05 06 07 \r\n  Heap left redzone:       fa\r\n  Freed heap region:       fd\r\n
+    \ Stack left redzone:      f1\r\n  Stack mid redzone:       f2\r\n  Stack right
+    redzone:     f3\r\n  Stack after return:      f5\r\n  Stack use after scope:   f8\r\n
+    \ Global redzone:          f9\r\n  Global init order:       f6\r\n  Poisoned by
+    user:        f7\r\n  Container overflow:      fc\r\n  Array cookie:            ac\r\n
+    \ Intra object redzone:    bb\r\n  ASan internal:           fe\r\n  Left alloca
+    redzone:     ca\r\n  Right alloca redzone:    cb\r\n==14==ABORTING\r\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -i -e HELPER=True -e ARCHITECTURE=x86_64 -v /home/insu/projects/crete/packages/python_oss_fuzz/.repository/build/out/aixcc/c/mock-cp:/out
+    -v /tmp/tmp7o3tj0d5:/testcase -t ghcr.io/aixcc-finals/base-runner reproduce filein_harness
+    -runs=100.
+
+    '
+  - false
+version: 1

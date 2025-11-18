@@ -1,0 +1,517 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                    "message": {
+                        "text": "Regular Expression Injection"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/ApplicationExtension.java"
+                                },
+                                "region": {
+                                    "startLine": 34,
+                                    "startColumn": 49
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/imaging-harness-one/src/main/java/com/aixcc/imaging/harnesses/one/ImagingOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 14,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.imaging.harnesses.one.ImagingOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/Imaging.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 205,
+                                                        "startColumn": 33
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.Imaging.getBufferedImage:java.awt.image.BufferedImage(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/Imaging.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 209,
+                                                        "startColumn": 38
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.Imaging.getBufferedImage:java.awt.image.BufferedImage(org.apache.commons.imaging.bytesource.ByteSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 240,
+                                                        "startColumn": 32
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.getBufferedImage:java.awt.image.BufferedImage(org.apache.commons.imaging.bytesource.ByteSource,org.apache.commons.imaging.formats.gif.GifImagingParameters)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 636,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.readFile:org.apache.commons.imaging.formats.gif.GifImageContents(org.apache.commons.imaging.bytesource.ByteSource,boolean)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 641,
+                                                        "startColumn": 26
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.readFile:org.apache.commons.imaging.formats.gif.GifImageContents(org.apache.commons.imaging.bytesource.ByteSource,boolean,org.apache.commons.imaging.FormatCompliance)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 553,
+                                                        "startColumn": 30
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.readBlocks:java.util.List(org.apache.commons.imaging.formats.gif.GifHeaderInfo,java.io.InputStream,boolean,org.apache.commons.imaging.FormatCompliance)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 678,
+                                                        "startColumn": 28
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.readApplicationExtension:org.apache.commons.imaging.formats.gif.ApplicationExtension(java.io.InputStream,int,byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/ApplicationExtension.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 28,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.ApplicationExtension.<init>:void(int,byte[],java.util.List)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/ApplicationExtension.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 34,
+                                                        "startColumn": 49
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.ApplicationExtension.<init>:void(int,byte[],java.util.List)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/imaging-harness-two/src/main/java/com/aixcc/imaging/harnesses/two/ImagingTwo.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 13,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.imaging.harnesses.two.ImagingTwo.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/Imaging.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 416,
+                                                        "startColumn": 29
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.Imaging.getImageInfo:org.apache.commons.imaging.ImageInfo(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/Imaging.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 420,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.Imaging.getImageInfo:org.apache.commons.imaging.ImageInfo(org.apache.commons.imaging.bytesource.ByteSource)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 399,
+                                                        "startColumn": 32
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.getImageInfo:org.apache.commons.imaging.ImageInfo(org.apache.commons.imaging.bytesource.ByteSource,org.apache.commons.imaging.formats.gif.GifImagingParameters)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 636,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.readFile:org.apache.commons.imaging.formats.gif.GifImageContents(org.apache.commons.imaging.bytesource.ByteSource,boolean)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 641,
+                                                        "startColumn": 26
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.readFile:org.apache.commons.imaging.formats.gif.GifImageContents(org.apache.commons.imaging.bytesource.ByteSource,boolean,org.apache.commons.imaging.FormatCompliance)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 553,
+                                                        "startColumn": 30
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.readBlocks:java.util.List(org.apache.commons.imaging.formats.gif.GifHeaderInfo,java.io.InputStream,boolean,org.apache.commons.imaging.FormatCompliance)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/GifImageParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 678,
+                                                        "startColumn": 28
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.GifImageParser.readApplicationExtension:org.apache.commons.imaging.formats.gif.ApplicationExtension(java.io.InputStream,int,byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/ApplicationExtension.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 28,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.ApplicationExtension.<init>:void(int,byte[],java.util.List)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/imaging/formats/gif/ApplicationExtension.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 34,
+                                                        "startColumn": 49
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.imaging.formats.gif.ApplicationExtension.<init>:void(int,byte[],java.util.List)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

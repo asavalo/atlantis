@@ -1,0 +1,9 @@
+{
+    "ruleId": "SEGV",
+    "message": "AddressSanitizer: SEGV /src/fuzz/../cp-user-babynote-src/mock_vp.c:120:21 in view_note",
+    "loc_file_full_name": "/src/fuzz/../cp-user-babynote-src/mock_vp.c",
+    "loc_file_short_name": "mock_vp.c",
+    "loc_line": 120,
+    "loc_function_full_name": "view_note",
+    "loc_function_short_name": "view_note"
+}

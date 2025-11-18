@@ -1,0 +1,300 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                    "message": {
+                        "text": "Regular Expression Injection"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/queryresultio/text/src/main/java/org/eclipse/rdf4j/query/resultio/text/tsv/SPARQLResultsTSVWriter.java"
+                                },
+                                "region": {
+                                    "startLine": 209,
+                                    "startColumn": 49
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/rdf4j-harness-one/src/main/java/com/aixcc/rdf4j/harnesses/one/Rdf4jOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 24,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.rdf4j.harnesses.one.Rdf4jOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/rdf4j-harness-one/src/main/java/com/aixcc/rdf4j/harnesses/one/Rdf4jOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 28,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.rdf4j.harnesses.one.Rdf4jOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/rio/binary/src/main/java/org/eclipse/rdf4j/rio/binary/BinaryRDFParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 67,
+                                                        "startColumn": 3
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.rio.binary.BinaryRDFParser.parse:void(java.io.InputStream,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/query/src/main/java/org/eclipse/rdf4j/query/dawg/DAWGTestResultSetParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 89,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.query.dawg.DAWGTestResultSetParser.endRDF:void()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/query/src/main/java/org/eclipse/rdf4j/query/dawg/DAWGTestResultSetParser.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 142,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.query.dawg.DAWGTestResultSetParser.reportSolution:void(org.eclipse.rdf4j.model.Resource,java.util.List)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/queryresultio/text/src/main/java/org/eclipse/rdf4j/query/resultio/text/tsv/SPARQLResultsTSVWriter.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 101,
+                                                        "startColumn": 7
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.query.resultio.text.tsv.SPARQLResultsTSVWriter.handleSolution:void(org.eclipse.rdf4j.query.BindingSet)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/queryresultio/text/src/main/java/org/eclipse/rdf4j/query/resultio/text/tsv/SPARQLResultsTSVWriter.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 137,
+                                                        "startColumn": 7
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.query.resultio.text.tsv.SPARQLResultsTSVWriter.writeValue:void(org.eclipse.rdf4j.model.Value)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/queryresultio/text/src/main/java/org/eclipse/rdf4j/query/resultio/text/tsv/SPARQLResultsTSVWriter.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 173,
+                                                        "startColumn": 10
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.query.resultio.text.tsv.SPARQLResultsTSVWriter.writeLiteral:void(org.eclipse.rdf4j.model.Literal)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/queryresultio/text/src/main/java/org/eclipse/rdf4j/query/resultio/text/tsv/SPARQLResultsTSVWriter.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 209,
+                                                        "startColumn": 49
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.eclipse.rdf4j.query.resultio.text.tsv.SPARQLResultsTSVWriter.writeLiteral:void(org.eclipse.rdf4j.model.Literal)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

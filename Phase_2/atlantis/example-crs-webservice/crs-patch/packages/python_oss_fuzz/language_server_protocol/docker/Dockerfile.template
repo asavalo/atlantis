@@ -1,0 +1,11 @@
+FROM aixcc-afc/{PROJECT_NAME}
+
+COPY --from={LSP_IMAGE_NAME} /work/deb-pkgs /tmp/debs/
+RUN dpkg -i /tmp/debs/*.deb || apt-get install -y -f && dpkg -i /tmp/debs/*.deb
+
+ENV ECLIPSE_JDT_LS_HOME=/opt/eclipse-jdt-ls
+ENV ECLIPSE_JDT_LS_EXECUTABLE_PATH=$ECLIPSE_JDT_LS_HOME/bin/jdtls
+COPY --from={LSP_IMAGE_NAME} /work/eclipse-jdt-ls /opt/eclipse-jdt-ls
+
+COPY --from={LSP_IMAGE_NAME} /work/prepare.sh /prepare.sh
+COPY --from={LSP_IMAGE_NAME} /work/run.sh /run.sh

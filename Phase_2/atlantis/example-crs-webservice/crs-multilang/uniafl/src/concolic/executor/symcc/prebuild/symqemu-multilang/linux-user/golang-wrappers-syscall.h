@@ -1,0 +1,67 @@
+#ifndef GO_WRAPPERS_H
+#define GO_WRAPPERS_H
+
+#define TARGET_NR_GOLANG_WRAPPERS 0x1337
+#define TARGET_NR_SYM_LOCK_INC 0x1338
+#define TARGET_NR_SYM_LOCK_DEC 0x1339
+
+#define GOLANG_BYTES_COMPARE 0
+#define GOLANG_BYTES_CLONE 1
+#define GOLANG_BYTES_CONTAINS 2
+#define GOLANG_BYTES_CONTAINS_ANY 3
+#define GOLANG_BYTES_CONTAINS_FUNC 4
+#define GOLANG_BYTES_CONTAINS_RUNE 5
+#define GOLANG_BYTES_COUNT 6
+#define GOLANG_BYTES_CUT 7
+#define GOLANG_BYTES_CUT_PREFIX 8
+#define GOLANG_BYTES_CUT_SUFFIX 9
+#define GOLANG_BYTES_EQUAL 10
+#define GOLANG_BYTES_EQUAL_FOLD 11
+#define GOLANG_BYTES_FIELDS 12
+#define GOLANG_BYTES_FIELDS_FUNC 13
+#define GOLANG_BYTES_HAS_PREFIX 14
+#define GOLANG_BYTES_HAS_SUFFIX 15
+#define GOLANG_BYTES_INDEX 16
+#define GOLANG_BYTES_INDEX_ANY 17
+#define GOLANG_BYTES_INDEX_BYTE 18
+#define GOLANG_BYTES_INDEX_FUNC 19
+#define GOLANG_BYTES_INDEX_RUNE 20
+#define GOLANG_BYTES_JOIN 21
+#define GOLANG_BYTES_LAST_INDEX 22
+#define GOLANG_BYTES_LAST_INDEX_ANY 23
+#define GOLANG_BYTES_LAST_INDEX_BYTE 24
+#define GOLANG_BYTES_LAST_INDEX_FUNC 25
+#define GOLANG_BYTES_MAP 26
+#define GOLANG_BYTES_REPEAT 27
+#define GOLANG_BYTES_REPLACE 28
+#define GOLANG_BYTES_REPLACE_ALL 29
+#define GOLANG_BYTES_RUNES 30
+#define GOLANG_BYTES_SPLIT 31
+#define GOLANG_BYTES_SPLIT_AFTER 32
+#define GOLANG_BYTES_SPLIT_AFTER_N 33
+#define GOLANG_BYTES_SPLIT_N 34
+#define GOLANG_BYTES_TITLE 35
+#define GOLANG_BYTES_TO_LOWER 36
+#define GOLANG_BYTES_TO_LOWER_SPECIAL 37
+#define GOLANG_BYTES_TO_TITLE 38
+#define GOLANG_BYTES_TO_TITLE_SPECIAL 39
+#define GOLANG_BYTES_TO_UPPER 40
+#define GOLANG_BYTES_TO_UPPER_SPECIAL 41
+#define GOLANG_BYTES_TO_VALID_UTF8 42
+#define GOLANG_BYTES_TRIM 43
+#define GOLANG_BYTES_TRIM_FUNC 44
+#define GOLANG_BYTES_TRIM_LEFT 45
+#define GOLANG_BYTES_TRIM_LEFT_FUNC 46
+#define GOLANG_BYTES_TRIM_PREFIX 47
+#define GOLANG_BYTES_TRIM_RIGHT 48
+#define GOLANG_BYTES_TRIM_RIGHT_FUNC 49
+#define GOLANG_BYTES_TRIM_SPACE 50
+#define GOLANG_BYTES_TRIM_SUFFIX 51
+
+void golang_bytes_Compare_symbolized(const void *a_buf, const size_t *a_len, const void *b_buf, const size_t *b_len, const size_t *ret);
+void golang_bytes_Equal_symbolized(const void *a_buf, const size_t *a_len, const void *b_buf, const size_t *b_len, const size_t *ret);
+void golang_bytes_Clone_symbolized(const void *b_buf, const size_t *b_len, const size_t *b_cap, const void *ret_buf, const size_t *ret_len, const size_t *ret_cap);
+
+int inputFD = -1;
+
+#endif // GO_WRAPPERS_H

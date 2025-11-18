@@ -1,0 +1,7 @@
+---
+library: false
+warnOnImplicitThis: false
+name: aixcc/c-query
+version: 0.0.1
+dependencies:
+  codeql/cpp-all: ^1.1.1

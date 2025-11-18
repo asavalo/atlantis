@@ -1,0 +1,121 @@
+513:static ngx_int_t
+514:ngx_http_userid_create_uid(ngx_http_request_t *r, ngx_http_userid_ctx_t *ctx,
+515:    ngx_http_userid_conf_t *conf)
+516:{
+517:    ngx_connection_t           *c;
+518:    struct sockaddr_in         *sin;
+519:    ngx_http_variable_value_t  *vv;
+520:#if (NGX_HAVE_INET6)
+521:    u_char                     *p;
+522:    struct sockaddr_in6        *sin6;
+523:#endif
+524:
+525:    if (ctx->uid_set[3] != 0) {
+526:        return NGX_OK;
+527:    }
+528:
+529:    if (ctx->uid_got[3] != 0) {
+530:
+531:        vv = ngx_http_get_indexed_variable(r, ngx_http_userid_reset_index);
+532:
+533:        if (vv == NULL || vv->not_found) {
+534:            return NGX_ERROR;
+535:        }
+536:
+537:        if (vv->len == 0 || (vv->len == 1 && vv->data[0] == '0')) {
+538:
+539:            if (conf->mark == '\0'
+540:                || (ctx->cookie.len > 23
+541:                    && ctx->cookie.data[22] == conf->mark
+542:                    && ctx->cookie.data[23] == '='))
+543:            {
+544:                return NGX_OK;
+545:            }
+546:
+547:            ctx->uid_set[0] = ctx->uid_got[0];
+548:            ctx->uid_set[1] = ctx->uid_got[1];
+549:            ctx->uid_set[2] = ctx->uid_got[2];
+550:            ctx->uid_set[3] = ctx->uid_got[3];
+551:
+552:            return NGX_OK;
+553:
+554:        } else {
+555:            ctx->reset = 1;
+556:
+557:            if (vv->len == 3 && ngx_strncmp(vv->data, "log", 3) == 0) {
+558:                ngx_log_error(NGX_LOG_NOTICE, r->connection->log, 0,
+559:                        "userid cookie \"%V=%08XD%08XD%08XD%08XD\" was reset",
+560:                        &conf->name, ctx->uid_got[0], ctx->uid_got[1],
+561:                        ctx->uid_got[2], ctx->uid_got[3]);
+562:            }
+563:        }
+564:    }
+565:
+566:    /*
+567:     * TODO: in the threaded mode the sequencers should be in TLS and their
+568:     * ranges should be divided between threads
+569:     */
+570:
+571:    if (conf->enable == NGX_HTTP_USERID_V1) {
+572:        if (conf->service == NGX_CONF_UNSET) {
+573:            ctx->uid_set[0] = 0;
+574:        } else {
+575:            ctx->uid_set[0] = conf->service;
+576:        }
+577:        ctx->uid_set[1] = (uint32_t) ngx_time();
+578:        ctx->uid_set[2] = start_value;
+579:        ctx->uid_set[3] = sequencer_v1;
+580:        sequencer_v1 += 0x100;
+581:
+582:    } else {
+583:        if (conf->service == NGX_CONF_UNSET) {
+584:
+585:            c = r->connection;
+586:
+587:            if (ngx_connection_local_sockaddr(c, NULL, 0) != NGX_OK) {
+588:                return NGX_ERROR;
+589:            }
+590:
+591:            switch (c->local_sockaddr->sa_family) {
+592:
+593:#if (NGX_HAVE_INET6)
+594:            case AF_INET6:
+595:                sin6 = (struct sockaddr_in6 *) c->local_sockaddr;
+596:
+597:                p = (u_char *) &ctx->uid_set[0];
+598:
+599:                *p++ = sin6->sin6_addr.s6_addr[12];
+600:                *p++ = sin6->sin6_addr.s6_addr[13];
+601:                *p++ = sin6->sin6_addr.s6_addr[14];
+602:                *p = sin6->sin6_addr.s6_addr[15];
+603:
+604:                break;
+605:#endif
+606:
+607:#if (NGX_HAVE_UNIX_DOMAIN)
+608:            case AF_UNIX:
+609:                ctx->uid_set[0] = 0;
+610:                break;
+611:#endif
+612:
+613:            default: /* AF_INET */
+614:                sin = (struct sockaddr_in *) c->local_sockaddr;
+615:                ctx->uid_set[0] = sin->sin_addr.s_addr;
+616:                break;
+617:            }
+618:
+619:        } else {
+620:            ctx->uid_set[0] = htonl(conf->service);
+621:        }
+622:
+623:        ctx->uid_set[1] = htonl((uint32_t) ngx_time());
+624:        ctx->uid_set[2] = htonl(start_value);
+625:        ctx->uid_set[3] = htonl(sequencer_v2);
+626:        sequencer_v2 += 0x100;
+627:        if (sequencer_v2 < 0x03030302) {
+628:            sequencer_v2 = 0x03030302;
+629:        }
+630:    }
+631:
+632:    return NGX_OK;
+633:}

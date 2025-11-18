@@ -1,0 +1,10 @@
+Here I recall the importance of following the rules described in the "Patch Generation" section.
+
+When you submit a patch report, carefully check that your report follows the rules.
+
+To be specific, you MUST ensure that:
+* `filename` is valid and existing source file and is a relative path given the project repository. Do NOT use the absolute path specified in sanitizer report. Check the content mentioned in the "Analysis Environment" section.
+* Each line num is not overlapping each other.
+* Each patch segment starts with [PATCH:`filename`:line_range] and ends with [/PATCH:`filename`:line_range]. Do NOT use [/PATCH] to close the patch segment.
+* The line_range in each patch segment (i.e., [PATCH:`filename`:line_range]) does not exceed the maximum line number in the specified source file.
+* The brief summary whether your patch segments do not violate the mentioned guidelines in the patch report must be included.

@@ -1,0 +1,155 @@
+interactions:
+- request:
+    body: '{"messages":[{"role":"system","content":"You are an expert programmer.
+      Your task is to analyze two given code snippets and compare their functionality.
+      Determine if they are functionally equivalent and explain your reasoning. Return
+      the output as a JSON string only (without backticks) with the following format:
+      {\"reasoning\": \"<string explaining the comparison>\", \"score\": <score indicating
+      if the snippets are functionally equivalent between 0.0 and 1.0>}."},{"role":"user","content":"{\"diff\":
+      \"@@ -1,2 +1,2 @@\\n-def add_numbers(a, b):\\n-    return a + b\\n+def add_numbers(x,
+      y):\\n+    return x + y\"}"},{"role":"assistant","content":"{\"reasoning\":
+      \"Both snippets define a function that takes two parameters and returns their
+      sum. The parameter names are different (`a`, `b` vs. `x`, `y`), but this does
+      not affect functionality.\", \"score\": 1.0}"},{"role":"user","content":"{\"diff\":
+      \"diff --git target.c target.c\\nindex 5b3bc13..fa47910 100644\\n--- target.c\\n+++
+      target.c\\n@@ -1,4 +1,4 @@\\n int main() {\\n-  char buf[100];\\n+  char buf[200];\\n   strcpy(buf,
+      argv[1]);\\n }\\n\"}"}],"model":"gpt-4o"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '1131'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BeSFd5BsEv55LY8rnIGmbKALqGnLe","created":1748981417,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_07871e2ad8","choices":[{"finish_reason":"stop","index":0,"message":{"content":"{\"reasoning\":
+        \"The main difference between the two snippets is the size of the ''buf''
+        character array, which was increased from 100 to 200. Both snippets copy a
+        string from ''argv[1]'' into ''buf'' using ''strcpy''. The primary functional
+        change is the increased buffer size, which reduces the risk of buffer overflow
+        when ''argv[1]'' is longer than 100 characters. However, functionally, both
+        snippets perform the same operation of copying a string into a buffer, though
+        the first is more prone to buffer overflow errors due to the smaller buffer
+        size.\", \"score\": 0.9}","role":"assistant","tool_calls":null,"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":127,"prompt_tokens":290,"total_tokens":417,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1162'
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Jun 2025 20:10:20 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 94a1d5435a6b2894-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 03 Jun 2025 20:10:20 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '2781'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '2788'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999759'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_782f8db2176cbbf15fb6bd6295c9ae5d
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - af84d61e847fd304830120894ae9778d
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 7019f42e-d662-4f16-a59c-35d4ab88c274
+      x-litellm-key-spend:
+      - '5633.286278970033'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '3.977'
+      x-litellm-response-cost:
+      - '0.0019950000000000002'
+      x-litellm-response-duration-ms:
+      - '3001.407'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999759'
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,0 +1,64 @@
+{
+    "func_coverages": [
+        {
+            "class_name": "com/aixcc/cxf/harnesses/two/CXFTwo",
+            "file_name": "CXFTwo.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/two/CXFTwo",
+            "file_name": "CXFTwo.java",
+            "func_name": "fuzzerTestOneInput",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/one/CXFOne",
+            "file_name": "CXFOne.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/one/CXFOne",
+            "file_name": "CXFOne.java",
+            "func_name": "setUp",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/one/CXFOne",
+            "file_name": "CXFOne.java",
+            "func_name": "fuzzerTestOneInput",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/three/WadlGenerator2",
+            "file_name": "CXFThree.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/three/WadlGenerator2",
+            "file_name": "CXFThree.java",
+            "func_name": "filter",
+            "desc": "(Ljavax/ws/rs/container/ContainerRequestContext;Lorg/apache/cxf/message/Message;)V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/three/CXFThree",
+            "file_name": "CXFThree.java",
+            "func_name": "<init>",
+            "desc": "()V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/three/CXFThree",
+            "file_name": "CXFThree.java",
+            "func_name": "fuzzerTestOneInput",
+            "desc": "([B)V"
+        },
+        {
+            "class_name": "com/aixcc/cxf/harnesses/three/CXFThree",
+            "file_name": "CXFThree.java",
+            "func_name": "lambda$fuzzerTestOneInput$0",
+            "desc": "(Lorg/mockito/invocation/InvocationOnMock;)Ljava/lang/Object;"
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+--- a/src/http/ngx_http_request.c
++++ b/src/http/ngx_http_request.c
+@@ -4179,22 +4179,42 @@
+ static ngx_int_t
+ ngx_http_trace_handler(ngx_http_request_t *r)
+ {
+-    ngx_list_part_t *part;
+-    ngx_table_elt_t *header;
+-    ngx_buf_t *b;
+-    ngx_chain_t out;
+-    ngx_int_t rc, content_len;
+-
+-    b = ngx_create_temp_buf(r->pool, 200);
++    ngx_list_part_t   *part;
++    ngx_table_elt_t   *header;
++    ngx_buf_t         *b;
++    ngx_chain_t        out;
++    ngx_int_t          rc, content_len;
++
++    /* First pass: calculate the total buffer size needed. */
++    size_t needed_size = r->request_line.len + 1;  /* request line + newline */
++    part = &r->headers_in.headers.part;
++    header = part->elts;
++    for (ngx_uint_t i = 0; ; i++) {
++        if (i >= part->nelts) {
++            if (part->next == NULL) {
++                break;
++            }
++            part = part->next;
++            header = part->elts;
++            i = 0;
++        }
++        needed_size += header[i].key.len + header[i].value.len + 3; /* key + ": " + value + "\n" */
++    }
++
++    /* Allocate a buffer based on the total computed size instead of a fixed size. */
++    b = ngx_create_temp_buf(r->pool, needed_size);
+     if (b == NULL) {
+         return NGX_HTTP_INTERNAL_SERVER_ERROR;
+     }
+ 
++    /* Copy the request line. */
+     b->last = ngx_copy(b->last, r->request_line.data, r->request_line.len);
+     *b->last++ = '\n';
+ 
++    /* Set up content length tracking. */
+     content_len = r->request_line.len + 1;
+ 
++    /* Copy all headers. */
+     part = &r->headers_in.headers.part;
+     header = part->elts;
+     for (ngx_uint_t i = 0; ; i++) {

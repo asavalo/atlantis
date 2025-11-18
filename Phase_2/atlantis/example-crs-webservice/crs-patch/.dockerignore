@@ -1,0 +1,13 @@
+
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+third_party/SARIF/benchmarks/
+
+.cache
+build/out/aixcc/
+build/work/aixcc/
+packages/python_oss_fuzz/.oss_fuzz/build

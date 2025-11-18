@@ -1,0 +1,1007 @@
+/* Table-specific styles for index_table.html */
+
+/* Statistics Table Container */
+.stats-table-container {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.stats-table-container .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stats-table-container .stats-table-category-header {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-table-container .stats-table-header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.stats-table-container .stats-table-header th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.stats-table-container .stats-table-header th.sortable:hover {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.stats-table-container .stats-table-row {
+    border-bottom: 1px solid #f3f4f6;
+    transition: background-color 0.2s;
+}
+
+.stats-table-container .stats-table-row:hover {
+    background: #f9fafb;
+    cursor: pointer;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stats-table-container .stats-table-row.selected {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-left: 4px solid #3b82f6;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.stats-table-container .stats-table-row.selected .combo-name::after {
+    content: " ← filtering";
+    color: #3b82f6;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-left: 8px;
+}
+
+.stats-table-container .stats-table-row:not(.total-row) {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.stats-table-container .stats-table-row.total-row {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    border-top: 2px solid #4f46e5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.stats-table-container .stats-table-row.total-row:hover {
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stats-table-container .stats-table-row.total-row.selected {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    border-left: 4px solid #3b82f6;
+    font-weight: 700;
+}
+
+.stats-table-container .stats-table-row.total-row.selected .combo-name::after {
+    content: " ← show all";
+    color: #3b82f6;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-left: 8px;
+}
+
+.stats-table-container th,
+.stats-table-container td {
+    padding: 8px 12px;
+    vertical-align: middle;
+    border-right: 1px solid #f3f4f6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+}
+
+.stats-table-container th:last-child,
+.stats-table-container td:last-child {
+    border-right: none;
+}
+
+.stats-table-container .stats-cell {
+    padding: 16px;
+    vertical-align: middle;
+    border-right: 1px solid #f3f4f6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+}
+
+.stats-table-container .stats-cell:last-child {
+    border-right: none;
+}
+
+.stats-table-container .stats-cell.combo-name {
+    color: #10b981;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+    max-width: 150px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.stats-table-container .stats-cell.experiment-count {
+    text-align: center;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.stats-table-container .stats-cell.matched-expected {
+    text-align: center;
+    color: #374151;
+    font-weight: 500;
+}
+
+.stats-table-container .stats-cell.extra-povs {
+    text-align: center;
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.pov-compact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+    line-height: 1.2;
+}
+
+.pov-main {
+    color: #374151;
+    font-weight: 600;
+}
+
+.pov-extra {
+    color: #3b82f6;
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+
+.pov-rate {
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+
+.pov-rate.high {
+    color: #10b981;
+}
+
+.pov-rate.medium {
+    color: #f59e0b;
+}
+
+.pov-rate.low {
+    color: #ef4444;
+}
+
+.stats-table-container .stats-cell.unintended {
+    text-align: center;
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.stats-table-container .stats-cell.total-found {
+    text-align: center;
+    color: #6366f1;
+    font-weight: 600;
+}
+
+.stats-table-container .stats-cell.litellm-cost {
+    text-align: center;
+    color: #dc3545;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+.stats-table-container .stats-cell.litellm-tokens {
+    text-align: center;
+    color: #6366f1;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+.stats-table-container .stats-cell.litellm-cache {
+    text-align: center;
+    color: #f59e0b;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+.stats-table-container .stats-cell.litellm-requests {
+    text-align: center;
+    color: #198754;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+/* Individual finder columns styling */
+.stats-table-container .stats-cell.finder-names {
+    font-size: 0.8rem;
+    font-family: 'SF Mono', Monaco, monospace;
+    max-width: 120px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.4;
+    padding: 12px;
+    color: #374151;
+    font-weight: 500;
+}
+
+.stats-table-container .stats-cell.finder-matched-povs {
+    font-size: 0.8rem;
+    font-family: 'SF Mono', Monaco, monospace;
+    text-align: center;
+    line-height: 1.4;
+    padding: 12px;
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.stats-table-container .stats-cell.finder-unintended-povs {
+    font-size: 0.8rem;
+    font-family: 'SF Mono', Monaco, monospace;
+    text-align: center;
+    line-height: 1.4;
+    padding: 12px;
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.stats-table-container .stats-cell.finder-seeds {
+    font-size: 0.8rem;
+    font-family: 'SF Mono', Monaco, monospace;
+    text-align: center;
+    line-height: 1.4;
+    padding: 12px;
+    color: #059669;
+    font-weight: 600;
+}
+
+/* Experiments Table Styles */
+.experiments-table-container {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.experiments-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1200px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.experiments-table-header {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.experiments-table-header th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.experiments-table-header th.sortable:hover {
+    background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
+}
+
+.experiments-table-header th {
+    padding: 16px 12px;
+    text-align: left;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    white-space: nowrap;
+}
+
+.experiments-table-header th:last-child {
+    border-right: none;
+}
+
+.experiment-row {
+    border-bottom: 1px solid #f3f4f6;
+    transition: all 0.2s ease;
+}
+
+.experiment-row:hover {
+    background: #f9fafb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.experiment-row.incomplete {
+    background: #fef3f2;
+    opacity: 0.8;
+}
+
+.experiment-row.incomplete:hover {
+    background: #fecaca;
+}
+
+.experiment-row.not-started {
+    background: #efefef;
+    opacity: 0.7;
+}
+
+.experiment-row.not-started:hover {
+    background: #dfdfdf;
+}
+
+.experiment-row td {
+    padding: 12px;
+    vertical-align: middle;
+    border-right: 1px solid #f3f4f6;
+    font-size: 0.8rem;
+}
+
+.experiment-row td:last-child {
+    border-right: none;
+}
+
+.target-cell {
+    font-weight: 600;
+    color: #374151;
+    min-width: 80px;
+    max-width: 110px;
+}
+
+.harness-cell {
+    color: #6b7280;
+    font-weight: 500;
+    min-width: 80px;
+    max-width: 110px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.input-gens-cell {
+    color: #10b981;
+    font-weight: 500;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+    max-width: 150px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.matched-expected-cell {
+    min-width: 100px;
+    text-align: center;
+}
+
+.matched-expected-cell .pov-compact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+.matched-expected-cell .pov-main {
+    color: #374151;
+    font-weight: 600;
+}
+
+.matched-expected-cell .pov-rate {
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+
+.matched-expected-cell .pov-rate.high {
+    color: #10b981;
+}
+
+.matched-expected-cell .pov-rate.medium {
+    color: #f59e0b;
+}
+
+.matched-expected-cell .pov-rate.low {
+    color: #ef4444;
+}
+
+.matched-expected-cell .status-incomplete {
+    color: #6b7280;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.extra-povs-cell {
+    min-width: 60px;
+    text-align: center;
+    color: #3b82f6;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+.extra-povs-cell .status-incomplete {
+    color: #6b7280;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.unintended-cell {
+    min-width: 60px;
+    text-align: center;
+    color: #f59e0b;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+.unintended-cell .status-incomplete {
+    color: #6b7280;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.total-found-cell {
+    min-width: 60px;
+    text-align: center;
+    color: #6366f1;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+.total-found-cell .status-incomplete {
+    color: #6b7280;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.config-hash-cell {
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+    color: #6366f1;
+    font-weight: 600;
+    min-width: 100px;
+}
+
+.start-time-cell,
+.duration-cell {
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 0.8rem;
+    min-width: 120px;
+}
+
+.llm-cost-cell {
+    color: #dc3545;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+    text-align: right;
+    min-width: 50px;
+}
+
+.llm-tokens-cell {
+    color: #6366f1;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+    text-align: right;
+    min-width: 80px;
+}
+
+.llm-requests-cell {
+    color: #10b981;
+    font-weight: 600;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+    text-align: center;
+    min-width: 80px;
+}
+
+.status-cell {
+    min-width: 5px;
+}
+
+.status-complete {
+    color: #10b981;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.status-running {
+    color: #f59e0b;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.status-not-started {
+    color: #9ca3af;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.status-incomplete {
+    color: #f59e0b;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.actions-cell {
+    min-width: 200px;
+    padding: 8px 12px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.downloads-cell {
+    min-width: 100px;
+    padding: 8px 12px;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+.action-btn[title="View Report"] {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    border-color: #3b82f6;
+}
+
+.action-btn[title="View Report"]:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.action-btn[title="View Logs"] {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+    border-color: #8b5cf6;
+}
+
+.action-btn[title="View Logs"]:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+}
+
+.action-btn[title="Target"] {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: white;
+    border-color: #6b7280;
+}
+
+.action-btn[title="Target"]:hover {
+    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(107, 114, 128, 0.3);
+}
+
+.action-btn[title="Download PoVs"] {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-color: #10b981;
+}
+
+.action-btn[title="Download PoVs"]:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.action-btn[title="Download Workdir"] {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border-color: #f59e0b;
+}
+
+.action-btn[title="Download Workdir"]:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+.action-btn[title="Download Evaldir"] {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border-color: #ef4444;
+}
+
+.action-btn[title="Download Evaldir"]:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    border: 1px solid transparent;
+}
+
+.download-btn[title*="View Links"] {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: white;
+    border-color: #6b7280;
+}
+
+.download-btn[title*="View Links"]:hover {
+    background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(107, 114, 128, 0.3);
+}
+
+.download-btn[title*="PoVs"] {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border-color: #10b981;
+}
+
+.download-btn[title*="PoVs"]:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.download-btn[title*="Workdir"] {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border-color: #f59e0b;
+}
+
+.download-btn[title*="Workdir"]:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.3);
+}
+
+.download-btn[title*="Evaldir"] {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border-color: #ef4444;
+}
+
+.download-btn[title*="Evaldir"]:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+}
+
+.download-btn.disabled {
+    background: #f3f4f6 !important;
+    color: #9ca3af !important;
+    border-color: #e5e7eb !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.download-btn.disabled:hover {
+    background: #f3f4f6 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Responsive adjustments for experiments table */
+@media (max-width: 1400px) {
+    .experiments-table {
+        min-width: 1200px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .action-btn {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+
+    .download-buttons {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .download-btn {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .experiments-table {
+        min-width: 1000px;
+    }
+
+    .input-gens-cell {
+        max-width: 150px;
+    }
+
+    .start-time-cell,
+    .duration-cell {
+        min-width: 100px;
+    }
+
+    .downloads-cell {
+        min-width: 150px;
+    }
+}
+
+/* LLM Stats Button and Modal */
+.llm-stats-button-cell {
+    text-align: center;
+    min-width: 80px;
+}
+
+.llm-stats-btn {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.llm-stats-btn:hover {
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+}
+
+
+.llm-stats-btn.disabled {
+    background: #f3f4f6 !important;
+    color: #9ca3af !important;
+    border-color: #e5e7eb !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.llm-stats-btn.disabled:hover {
+    background: #f3f4f6 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+
+.no-llm-data {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.llm-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.llm-stats-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f3f4f6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+}
+
+.llm-stats-table td:first-child {
+    font-weight: 600;
+    color: #374151;
+    width: 40%;
+}
+
+.llm-stats-table td:last-child {
+    font-family: 'SF Mono', Monaco, monospace;
+    color: #6366f1;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Finder Stats Button */
+.finder-stats-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.finder-stats-btn:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.finder-stats-btn.disabled {
+    background: #f3f4f6 !important;
+    color: #9ca3af !important;
+    border-color: #e5e7eb !important;
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.finder-stats-btn.disabled:hover {
+    background: #f3f4f6 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Finder Stats Modal */
+.finder-stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.finder-stats-table th {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.finder-stats-table td {
+    padding: 12px;
+    border-bottom: 1px solid #f3f4f6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+}
+
+.finder-stats-table td:first-child {
+    font-weight: 600;
+    color: #374151;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.8rem;
+}
+
+.finder-stats-table td:nth-child(2),
+.finder-stats-table td:nth-child(3),
+.finder-stats-table td:nth-child(4),
+.finder-stats-table td:nth-child(5),
+.finder-stats-table td:nth-child(6),
+.finder-stats-table td:nth-child(7) {
+    text-align: center;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.finder-stats-table .pov-count {
+    color: #6366f1;
+}
+
+.finder-stats-table .matched-pov-count {
+    color: #10b981;
+}
+
+.finder-stats-table .unintended-pov-count {
+    color: #f59e0b;
+}
+
+.finder-stats-table .others-corpus-count {
+    color: #8b5cf6;
+}
+
+.finder-stats-table .uniafl-corpus-count {
+    color: #059669;
+}
+
+.finder-stats-table .total-seeds {
+    color: #374151;
+}
+
+.finder-stats-summary {
+    background: #f9fafb;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 4px solid #10b981;
+}
+
+.finder-stats-summary h4 {
+    margin: 0 0 8px 0;
+    color: #374151;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.finder-stats-summary p {
+    margin: 4px 0;
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+/* New finder columns in detailed table */
+.finders-names-cell
+.finders-matched-cell,
+.finders-unintended-cell {
+    min-width: 20px;
+    text-align: center;
+    font-family: 'SF Mono', Monaco, monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 8px;
+}
+
+.finders-matched-cell {
+    color: #10b981;
+}
+
+.finders-unintended-cell {
+    color: #f59e0b;
+}

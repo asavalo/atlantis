@@ -1,0 +1,29 @@
+dbms:
+  targets:
+    - sqlite
+    - sqlite3
+# - postgresql
+# - pgsql
+# - postgres
+# - mysql
+# - mariadb
+  fuzzers:
+# - sqlsmith
+    - squirrel
+#wasm:
+#  targets:
+#    - wasm3
+#    - wabt
+#  fuzzers:
+#    - wasm
+php:
+  targets:
+    - php
+  fuzzers:
+    - flowfusion
+javascript:
+  targets:
+    - quickjs
+    - njs
+  fuzzers:
+    - fuzzilli

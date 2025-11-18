@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueHigh",
+    "message": "load arbitrary library",
+    "loc_file_full_name": "SecretMessage.java",
+    "loc_file_short_name": "SecretMessage.java",
+    "loc_line": 98,
+    "loc_function_full_name": "io.jenkins.plugins.toyplugin.SecretMessage.doPerform",
+    "loc_function_short_name": "doPerform"
+}

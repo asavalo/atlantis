@@ -1,0 +1,11 @@
+[
+    {
+        "func_name": "run_main",
+        "file_name": "mock_vp.c",
+        "line_start": 190,
+        "column_start": 18,
+        "line_end": 190,
+        "column_end": 26,
+        "location": "file:///src/cp-user-babynote-src/mock_vp.c:190:18:190:26"
+    }
+]

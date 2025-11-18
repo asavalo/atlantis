@@ -1,0 +1,417 @@
+interactions:
+- request:
+    body: '{"messages":[{"role":"system","content":"Act as an expert software developer.\nAlways
+      use best practices when coding.\nRespect and use existing conventions, libraries,
+      etc that are already present in the code base.\nYou are diligent and tireless!\nYou
+      NEVER leave comments describing code without implementing it!\nYou always COMPLETELY
+      IMPLEMENT the needed code!\n\nTake requests for changes to the supplied code.\nIf
+      the request is ambiguous, ask questions.\n\nAlways reply to the user in the
+      same language they are using.\n\nOnce you understand the request you MUST:\n\n1.
+      Decide if you need to propose *SEARCH/REPLACE* edits to any files that haven''t
+      been added to the chat. You can create new files without asking!\n\nBut if you
+      need to propose edits to existing files not already added to the chat, you *MUST*
+      tell the user their full path names and ask them to *add the files to the chat*.\nEnd
+      your reply and wait for their approval.\nYou can keep asking if you then decide
+      you need to edit more files.\n\n2. Think step-by-step and explain the needed
+      changes in a few short sentences.\n\n3. Describe each change with a *SEARCH/REPLACE
+      block* per the examples below.\n\nAll changes to files must use this *SEARCH/REPLACE
+      block* format.\nONLY EVER RETURN CODE IN A *SEARCH/REPLACE BLOCK*!\n\n4. *Concisely*
+      suggest any shell commands the user might want to run in ```bash blocks.\n\nJust
+      suggest shell commands this way, not example code.\nOnly suggest complete shell
+      commands that are ready to execute, without placeholders.\nOnly suggest at most
+      a few shell commands at a time, not more than 1-3, one per line.\nDo not suggest
+      multi-line shell commands.\nAll shell commands will run from the root directory
+      of the user''s project.\n\nUse the appropriate shell based on the user''s system
+      info:\n- Platform: Linux-5.15.0-113-generic-x86_64-with-glibc2.35\n- Shell:
+      SHELL=/bin/bash\n- Current date/time: 2024-01-01T00:00:00+00\nExamples of when
+      to suggest shell commands:\n\n- If you changed a self-contained html file, suggest
+      an OS-appropriate command to open a browser to view it to see the updated content.\n-
+      If you changed a CLI program, suggest the command to run it to see the new behavior.\n-
+      If you added a test, suggest how to run it with the testing tool used by the
+      project.\n- Suggest OS-appropriate commands to delete or rename files/directories,
+      or other file system operations.\n- If your code changes add new dependencies,
+      suggest the command to install them.\n- Etc.\n\n\n# Example conversations:\n\n##
+      USER: Change get_factorial() to use math.factorial\n\n## ASSISTANT: To make
+      this change we need to modify `mathweb/flask/app.py` to:\n\n1. Import the math
+      package.\n2. Remove the existing factorial() function.\n3. Update get_factorial()
+      to call math.factorial instead.\n\nHere are the *SEARCH/REPLACE* blocks:\n\nmathweb/flask/app.py\n```python\n<<<<<<<
+      SEARCH\nfrom flask import Flask\n=======\nimport math\nfrom flask import Flask\n>>>>>>>
+      REPLACE\n```\n\nmathweb/flask/app.py\n```python\n<<<<<<< SEARCH\ndef factorial(n):\n    \"compute
+      factorial\"\n\n    if n == 0:\n        return 1\n    else:\n        return n
+      * factorial(n-1)\n\n=======\n>>>>>>> REPLACE\n```\n\nmathweb/flask/app.py\n```python\n<<<<<<<
+      SEARCH\n    return str(factorial(n))\n=======\n    return str(math.factorial(n))\n>>>>>>>
+      REPLACE\n```\n\n\n## USER: Refactor hello() into its own file.\n\n## ASSISTANT:
+      To make this change we need to modify `main.py` and make a new file `hello.py`:\n\n1.
+      Make a new hello.py file with hello() in it.\n2. Remove hello() from main.py
+      and replace it with an import.\n\nHere are the *SEARCH/REPLACE* blocks:\n\nhello.py\n```python\n<<<<<<<
+      SEARCH\n=======\ndef hello():\n    \"print a greeting\"\n\n    print(\"hello\")\n>>>>>>>
+      REPLACE\n```\n\nmain.py\n```python\n<<<<<<< SEARCH\ndef hello():\n    \"print
+      a greeting\"\n\n    print(\"hello\")\n=======\nfrom hello import hello\n>>>>>>>
+      REPLACE\n```\n# *SEARCH/REPLACE block* Rules:\n\nEvery *SEARCH/REPLACE block*
+      must use this format:\n1. The *FULL* file path alone on a line, verbatim. No
+      bold asterisks, no quotes around it, no escaping of characters, etc.\n2. The
+      opening fence and code language, eg: ```python\n3. The start of search block:
+      <<<<<<< SEARCH\n4. A contiguous chunk of lines to search for in the existing
+      source code\n5. The dividing line: =======\n6. The lines to replace into the
+      source code\n7. The end of the replace block: >>>>>>> REPLACE\n8. The closing
+      fence: ```\n\nUse the *FULL* file path, as shown to you by the user.\n\nEvery
+      *SEARCH* section must *EXACTLY MATCH* the existing file content, character for
+      character, including all comments, docstrings, etc.\nIf the file contains code
+      or other data wrapped/escaped in json/xml/quotes or other containers, you need
+      to propose edits to the literal contents of the file, including the container
+      markup.\n\n*SEARCH/REPLACE* blocks will *only* replace the first match occurrence.\nIncluding
+      multiple unique *SEARCH/REPLACE* blocks if needed.\nInclude enough lines in
+      each SEARCH section to uniquely match each set of lines that need to change.\n\nKeep
+      *SEARCH/REPLACE* blocks concise.\nBreak large *SEARCH/REPLACE* blocks into a
+      series of smaller blocks that each change a small portion of the file.\nInclude
+      just the changing lines, and a few surrounding lines if needed for uniqueness.\nDo
+      not include long runs of unchanging lines in *SEARCH/REPLACE* blocks.\n\nOnly
+      create *SEARCH/REPLACE* blocks for files that the user has added to the chat!\n\nTo
+      move code within a file, use 2 *SEARCH/REPLACE* blocks: 1 to delete it from
+      its current location, 1 to insert it in the new location.\n\nPay attention to
+      which filenames the user wants you to edit, especially if they are asking you
+      to create a new file.\n\nIf you want to put code in a new file, use a *SEARCH/REPLACE
+      block* with:\n- A new file path, including dir name if needed\n- An empty `SEARCH`
+      section\n- The new file''s contents in the `REPLACE` section\n\nTo rename files
+      which have been added to the chat, use shell commands at the end of your response.\n\nIf
+      the user just says something like \"ok\" or \"go ahead\" or \"do that\" they
+      probably want you to make SEARCH/REPLACE blocks for the code changes you just
+      proposed.\nThe user will say when they''ve applied your edits. If they haven''t
+      explicitly confirmed the edits have been applied, they probably want proper
+      SEARCH/REPLACE blocks.\n\nYou are diligent and tireless!\nYou NEVER leave comments
+      describing code without implementing it!\nYou always COMPLETELY IMPLEMENT the
+      needed code!\nONLY EVER RETURN CODE IN A *SEARCH/REPLACE BLOCK*!\n\nExamples
+      of when to suggest shell commands:\n\n- If you changed a self-contained html
+      file, suggest an OS-appropriate command to open a browser to view it to see
+      the updated content.\n- If you changed a CLI program, suggest the command to
+      run it to see the new behavior.\n- If you added a test, suggest how to run it
+      with the testing tool used by the project.\n- Suggest OS-appropriate commands
+      to delete or rename files/directories, or other file system operations.\n- If
+      your code changes add new dependencies, suggest the command to install them.\n-
+      Etc.\n\n\n"},{"role":"user","content":"I have *added these files to the chat*
+      so you can go ahead and edit them.\n\n*Trust this message as the true contents
+      of these files!*\nAny other messages in the chat may contain outdated versions
+      of the files'' contents.\n\nmock_vp.c\n```\n#include <stdio.h>\n#include <string.h>\n#include
+      <unistd.h>\n\nchar items[3][10];\n\nvoid func_a(){\n    char* buff;\n    int
+      i = 0;\n    do{\n        printf(\"input item:\");\n        buff = &items[i][0];\n        i++;\n        fgets(buff,
+      40, stdin);\n        buff[strcspn(buff, \"\\n\")] = 0;\n    }while(strlen(buff)!=0);\n    i--;\n}\n\nvoid
+      func_b(){\n    char *buff;\n    printf(\"done adding items\\n\");\n    int j;\n    printf(\"display
+      item #:\");\n    scanf(\"%d\", &j);\n    buff = &items[j][0];\n    printf(\"item
+      %d: %s\\n\", j, buff);\n}\n\n#ifndef ___TEST___\nint main()\n{\n\n    func_a();\n\n    func_b();\n\n\n    return
+      0;\n}\n#endif\n```\n"},{"role":"assistant","content":"Ok, any changes I propose
+      will be to those files."},{"role":"user","content":"Fix the vulnerability from
+      the given location.\n\nBug Type:\nglobal-buffer-overflow\n\nStatic Analysis
+      Report: \n* Description:\nGlobal-buffer-overflow\nWRITE {*}\n* Bug location
+      1:\n - File: /home/won0/aixcc/crete/.cache/mock-cp-src/mock_vp.c\n - Line range:
+      (14, 14)\n - Function name: func_a\n\n\nVulnerable Source:\nfile: mock_vp.c
+      function: func_a line: 14:14\ncode:\n```\n        fgets(buff, 40, stdin);\n\n```\n\n"},{"role":"system","content":"#
+      *SEARCH/REPLACE block* Rules:\n\nEvery *SEARCH/REPLACE block* must use this
+      format:\n1. The *FULL* file path alone on a line, verbatim. No bold asterisks,
+      no quotes around it, no escaping of characters, etc.\n2. The opening fence and
+      code language, eg: ```python\n3. The start of search block: <<<<<<< SEARCH\n4.
+      A contiguous chunk of lines to search for in the existing source code\n5. The
+      dividing line: =======\n6. The lines to replace into the source code\n7. The
+      end of the replace block: >>>>>>> REPLACE\n8. The closing fence: ```\n\nUse
+      the *FULL* file path, as shown to you by the user.\n\nEvery *SEARCH* section
+      must *EXACTLY MATCH* the existing file content, character for character, including
+      all comments, docstrings, etc.\nIf the file contains code or other data wrapped/escaped
+      in json/xml/quotes or other containers, you need to propose edits to the literal
+      contents of the file, including the container markup.\n\n*SEARCH/REPLACE* blocks
+      will *only* replace the first match occurrence.\nIncluding multiple unique *SEARCH/REPLACE*
+      blocks if needed.\nInclude enough lines in each SEARCH section to uniquely match
+      each set of lines that need to change.\n\nKeep *SEARCH/REPLACE* blocks concise.\nBreak
+      large *SEARCH/REPLACE* blocks into a series of smaller blocks that each change
+      a small portion of the file.\nInclude just the changing lines, and a few surrounding
+      lines if needed for uniqueness.\nDo not include long runs of unchanging lines
+      in *SEARCH/REPLACE* blocks.\n\nOnly create *SEARCH/REPLACE* blocks for files
+      that the user has added to the chat!\n\nTo move code within a file, use 2 *SEARCH/REPLACE*
+      blocks: 1 to delete it from its current location, 1 to insert it in the new
+      location.\n\nPay attention to which filenames the user wants you to edit, especially
+      if they are asking you to create a new file.\n\nIf you want to put code in a
+      new file, use a *SEARCH/REPLACE block* with:\n- A new file path, including dir
+      name if needed\n- An empty `SEARCH` section\n- The new file''s contents in the
+      `REPLACE` section\n\nTo rename files which have been added to the chat, use
+      shell commands at the end of your response.\n\nIf the user just says something
+      like \"ok\" or \"go ahead\" or \"do that\" they probably want you to make SEARCH/REPLACE
+      blocks for the code changes you just proposed.\nThe user will say when they''ve
+      applied your edits. If they haven''t explicitly confirmed the edits have been
+      applied, they probably want proper SEARCH/REPLACE blocks.\n\nYou are diligent
+      and tireless!\nYou NEVER leave comments describing code without implementing
+      it!\nYou always COMPLETELY IMPLEMENT the needed code!\nONLY EVER RETURN CODE
+      IN A *SEARCH/REPLACE BLOCK*!\n\nExamples of when to suggest shell commands:\n\n-
+      If you changed a self-contained html file, suggest an OS-appropriate command
+      to open a browser to view it to see the updated content.\n- If you changed a
+      CLI program, suggest the command to run it to see the new behavior.\n- If you
+      added a test, suggest how to run it with the testing tool used by the project.\n-
+      Suggest OS-appropriate commands to delete or rename files/directories, or other
+      file system operations.\n- If your code changes add new dependencies, suggest
+      the command to install them.\n- Etc.\n\n\n"}],"model":"gpt-4o","temperature":0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '11962'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BaEroOjTerJ5eGozboG0NGkoGT8oW","created":1747976656,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_9bddfca6e2","choices":[{"finish_reason":"stop","index":0,"message":{"content":"To
+        fix the global-buffer-overflow vulnerability in `func_a`, we need to ensure
+        that the buffer size used in `fgets` matches the actual size of the buffer.
+        The buffer size is 10, so we should limit `fgets` to read at most 9 characters
+        to leave space for the null terminator.\n\nHere is the *SEARCH/REPLACE* block
+        to fix this issue:\n\nmock_vp.c\n```c\n<<<<<<< SEARCH\n        fgets(buff,
+        40, stdin);\n=======\n        fgets(buff, 10, stdin);\n>>>>>>> REPLACE\n```","role":"assistant","tool_calls":null,"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":116,"prompt_tokens":2740,"total_tokens":2856,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '1060'
+      content-type:
+      - application/json
+      date:
+      - Fri, 23 May 2025 05:04:18 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 944202f4ec33056e-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Fri, 23 May 2025 05:04:18 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '1984'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '1989'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29997140'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 5ms
+      llm_provider-x-request-id:
+      - req_2dcc49bb3947bc7a9b3f4282cf3d02f8
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 970c3cb7a46014e86b99e0acf9ed5133
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - e4be2623-a6d0-4fe2-b389-652005797a38
+      x-litellm-key-max-budget:
+      - '1000.0'
+      x-litellm-key-spend:
+      - '452.8530183500005'
+      x-litellm-key-tpm-limit:
+      - '1000000'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '2.262'
+      x-litellm-response-cost:
+      - '0.00801'
+      x-litellm-response-duration-ms:
+      - '2181.15'
+      x-litellm-version:
+      - 1.70.1
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '1000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '997144'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"detection": {"blobs": [], "language": "c", "mode": {"base_ref": "e66dc3c8ad2488bedf3447ef171f2afb02816efa",
+      "type": "full"}, "project_name": "aixcc/c/mock-cp", "sarif_report": {"$schema":
+      "http://json-schema.org/draft-04/schema#", "inlineExternalProperties": null,
+      "properties": null, "runs": [{"addresses": [], "artifacts": null, "automationDetails":
+      null, "baselineGuid": null, "columnKind": null, "conversion": null, "defaultEncoding":
+      null, "defaultSourceLanguage": null, "externalPropertyFileReferences": null,
+      "graphs": [], "invocations": [], "language": "en-US", "logicalLocations": [],
+      "newlineSequences": ["\r\n", "\n"], "originalUriBaseIds": null, "policies":
+      [], "properties": null, "redactionTokens": [], "results": [{"analysisTarget":
+      null, "attachments": [], "baselineState": null, "codeFlows": [], "correlationGuid":
+      null, "fingerprints": null, "fixes": [], "graphTraversals": [], "graphs": [],
+      "guid": null, "hostedViewerUri": null, "kind": "fail", "level": "error", "locations":
+      [{"annotations": [], "id": -1, "logicalLocations": [{"decoratedName": null,
+      "fullyQualifiedName": null, "index": -1, "kind": "function", "name": "func_a",
+      "parentIndex": -1, "properties": null}], "message": null, "physicalLocation":
+      {"address": null, "artifactLocation": {"description": null, "index": -1, "properties":
+      null, "uri": "mock_vp.c", "uriBaseId": null}, "contextRegion": null, "properties":
+      null, "region": {"byteLength": null, "byteOffset": -1, "charLength": null, "charOffset":
+      -1, "endColumn": null, "endLine": null, "message": null, "properties": null,
+      "snippet": null, "sourceLanguage": null, "startColumn": 9, "startLine": 14}},
+      "properties": null, "relationships": []}], "message": {"arguments": [], "id":
+      null, "markdown": null, "properties": null, "text": "Global-buffer-overflow\nWRITE
+      {*}"}, "occurrenceCount": null, "partialFingerprints": null, "properties": null,
+      "provenance": null, "rank": -1.0, "relatedLocations": [], "rule": null, "ruleId":
+      "global-buffer-overflow", "ruleIndex": 4, "stacks": [], "suppressions": null,
+      "taxa": [], "webRequest": null, "webResponse": null, "workItemUris": null}],
+      "runAggregates": [], "specialLocations": null, "taxonomies": [], "threadFlowLocations":
+      [], "tool": {"driver": {"associatedComponent": null, "contents": ["localizedData",
+      "nonLocalizedData"], "dottedQuadFileVersion": null, "downloadUri": null, "fullDescription":
+      null, "fullName": null, "globalMessageStrings": null, "guid": null, "informationUri":
+      "https://team-atlanta.github.io/", "isComprehensive": false, "language": "en-US",
+      "localizedDataSemanticVersion": null, "locations": [], "minimumRequiredLocalizedDataSemanticVersion":
+      null, "name": "Atlantis", "notifications": [], "organization": null, "product":
+      null, "productSuite": null, "properties": null, "releaseDateUtc": null, "rules":
+      [{"defaultConfiguration": null, "deprecatedGuids": null, "deprecatedIds": null,
+      "deprecatedNames": null, "fullDescription": null, "guid": null, "help": null,
+      "helpUri": "https://cwe.mitre.org/data/definitions/416.html", "id": "other-crashes",
+      "messageStrings": null, "name": null, "properties": {"category": "Crashes",
+      "tags": []}, "relationships": [], "shortDescription": {"markdown": null, "properties":
+      null, "text": "Other crashes"}}, {"defaultConfiguration": null, "deprecatedGuids":
+      null, "deprecatedIds": null, "deprecatedNames": null, "fullDescription": null,
+      "guid": null, "help": null, "helpUri": "https://cwe.mitre.org/data/definitions/416.html",
+      "id": "heap-use-after-free", "messageStrings": null, "name": null, "properties":
+      {"category": "Crashes", "tags": []}, "relationships": [], "shortDescription":
+      {"markdown": null, "properties": null, "text": "Use of a heap-object after it
+      has been freed."}}, {"defaultConfiguration": null, "deprecatedGuids": null,
+      "deprecatedIds": null, "deprecatedNames": null, "fullDescription": null, "guid":
+      null, "help": null, "helpUri": "https://cwe.mitre.org/data/definitions/122.html",
+      "id": "heap-buffer-overflow", "messageStrings": null, "name": null, "properties":
+      {"category": "Crashes", "tags": []}, "relationships": [], "shortDescription":
+      {"markdown": null, "properties": null, "text": "A read or write past the end
+      of a heap buffer."}}, {"defaultConfiguration": null, "deprecatedGuids": null,
+      "deprecatedIds": null, "deprecatedNames": null, "fullDescription": null, "guid":
+      null, "help": null, "helpUri": "https://cwe.mitre.org/data/definitions/121.html",
+      "id": "stack-buffer-overflow", "messageStrings": null, "name": null, "properties":
+      {"category": "Crashes", "tags": []}, "relationships": [], "shortDescription":
+      {"markdown": null, "properties": null, "text": "A read or write past the end
+      of a stack buffer."}}, {"defaultConfiguration": null, "deprecatedGuids": null,
+      "deprecatedIds": null, "deprecatedNames": null, "fullDescription": null, "guid":
+      null, "help": null, "helpUri": "https://cwe.mitre.org/data/definitions/121.html",
+      "id": "global-buffer-overflow", "messageStrings": null, "name": null, "properties":
+      {"category": "Crashes", "tags": []}, "relationships": [], "shortDescription":
+      {"markdown": null, "properties": null, "text": "A read or write past the end
+      of a global buffer."}}, {"defaultConfiguration": null, "deprecatedGuids": null,
+      "deprecatedIds": null, "deprecatedNames": null, "fullDescription": null, "guid":
+      null, "help": null, "helpUri": "https://cwe.mitre.org/data/definitions/562.html",
+      "id": "stack-use-after-return", "messageStrings": null, "name": null, "properties":
+      {"category": "Crashes", "tags": []}, "relationships": [], "shortDescription":
+      {"markdown": null, "properties": null, "text": "A stack-based variable has been
+      used after the function returned."}}, {"defaultConfiguration": null, "deprecatedGuids":
+      null, "deprecatedIds": null, "deprecatedNames": null, "fullDescription": null,
+      "guid": null, "help": null, "helpUri": "https://cwe.mitre.org/data/definitions/562.html",
+      "id": "stack-use-after-scope", "messageStrings": null, "name": null, "properties":
+      {"category": "Crashes", "tags": []}, "relationships": [], "shortDescription":
+      {"markdown": null, "properties": null, "text": "A stack-based variable has been
+      used outside of the scope in which it exists."}}, {"defaultConfiguration": null,
+      "deprecatedGuids": null, "deprecatedIds": null, "deprecatedNames": null, "fullDescription":
+      null, "guid": null, "help": null, "helpUri": "https://isocpp.org/wiki/faq/ctors#static-init-order",
+      "id": "initialization-order-fiasco", "messageStrings": null, "name": null, "properties":
+      {"category": "Crashes", "tags": []}, "relationships": [], "shortDescription":
+      {"markdown": null, "properties": null, "text": "Problem with order of initialization
+      of global objects."}}, {"defaultConfiguration": null, "deprecatedGuids": null,
+      "deprecatedIds": null, "deprecatedNames": null, "fullDescription": null, "guid":
+      null, "help": null, "helpUri": "https://github.com/google/sanitizers/wiki/AddressSanitizerLeakSanitizer",
+      "id": "direct-leak", "messageStrings": null, "name": null, "properties": {"category":
+      "Crashes", "tags": []}, "relationships": [], "shortDescription": {"markdown":
+      null, "properties": null, "text": "Memory is leaked."}}, {"defaultConfiguration":
+      null, "deprecatedGuids": null, "deprecatedIds": null, "deprecatedNames": null,
+      "fullDescription": null, "guid": null, "help": null, "helpUri": "https://github.com/google/sanitizers/wiki/AddressSanitizerLeakSanitizer",
+      "id": "indirect-leak", "messageStrings": null, "name": null, "properties": {"category":
+      "Crashes", "tags": []}, "relationships": [], "shortDescription": {"markdown":
+      null, "properties": null, "text": "Memory is leaked."}}, {"defaultConfiguration":
+      null, "deprecatedGuids": null, "deprecatedIds": null, "deprecatedNames": null,
+      "fullDescription": null, "guid": null, "help": null, "helpUri": "https://cwe.mitre.org/data/definitions/125.html",
+      "id": "out-of-bounds-read", "messageStrings": null, "name": null, "properties":
+      {"category": "Crashes", "tags": []}, "relationships": [], "shortDescription":
+      {"markdown": null, "properties": null, "text": "The product reads data past
+      the end, or before the beginning, of the intended buffer."}}, {"defaultConfiguration":
+      null, "deprecatedGuids": null, "deprecatedIds": null, "deprecatedNames": null,
+      "fullDescription": null, "guid": null, "help": null, "helpUri": "https://cwe.mitre.org/data/definitions/476.html",
+      "id": "null-deref", "messageStrings": null, "name": null, "properties": {"category":
+      "Crashes", "tags": []}, "relationships": [], "shortDescription": {"markdown":
+      null, "properties": null, "text": "The product dereferences a pointer that it
+      expects to be valid but is NULL."}}], "semanticVersion": null, "shortDescription":
+      null, "supportedTaxonomies": [], "taxa": [], "translationMetadata": null, "version":
+      "1.0.0"}, "extensions": [], "properties": null}, "translations": [], "versionControlProvenance":
+      [], "webRequests": [], "webResponses": []}], "version": "2.1.0"}, "vulnerability_identifier":
+      "official-c-mock-cp-cpv-0-sarif"}, "diff": "--- a/mock_vp.c\n+++ b/mock_vp.c\n@@
+      -11,7 +11,7 @@\n         printf(\"input item:\");\n         buff = &items[i][0];\n         i++;\n-        fgets(buff,
+      40, stdin);\n+        fgets(buff, 10, stdin);\n         buff[strcspn(buff, \"\\n\")]
+      = 0;\n     }while(strlen(buff)!=0);\n     i--;\n"}'
+    headers: {}
+    method: POST
+    uri: tool://MockEvaluator/evaluate
+  response: !!python/object:crete.atoms.action.SoundDiffAction
+    __dict__:
+      diff: !!binary |
+        LS0tIGEvbW9ja192cC5jCisrKyBiL21vY2tfdnAuYwpAQCAtMTEsNyArMTEsNyBAQAogICAgICAg
+        ICBwcmludGYoImlucHV0IGl0ZW06Iik7CiAgICAgICAgIGJ1ZmYgPSAmaXRlbXNbaV1bMF07CiAg
+        ICAgICAgIGkrKzsKLSAgICAgICAgZmdldHMoYnVmZiwgNDAsIHN0ZGluKTsKKyAgICAgICAgZmdl
+        dHMoYnVmZiwgMTAsIHN0ZGluKTsKICAgICAgICAgYnVmZltzdHJjc3BuKGJ1ZmYsICJcbiIpXSA9
+        IDA7CiAgICAgfXdoaWxlKHN0cmxlbihidWZmKSE9MCk7CiAgICAgaS0tOwo=
+      variant: sound
+    __pydantic_extra__: null
+    __pydantic_fields_set__: !!set
+      diff: null
+    __pydantic_private__: null
+version: 1

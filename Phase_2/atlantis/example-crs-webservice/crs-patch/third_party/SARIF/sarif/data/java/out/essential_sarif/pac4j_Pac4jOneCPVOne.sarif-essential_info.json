@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueMedium",
+    "message": "Server Side Request Forgery (SSRF)",
+    "loc_file_full_name": "JavaSerializationHelper.java",
+    "loc_file_short_name": "JavaSerializationHelper.java",
+    "loc_line": 82,
+    "loc_function_full_name": "org.pac4j.core.util.JavaSerializationHelper.deserializeFromBytes",
+    "loc_function_short_name": "deserializeFromBytes"
+}

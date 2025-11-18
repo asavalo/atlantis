@@ -1,0 +1,13 @@
+Below is a crash report containing detailed stack traces from a software project.
+Extract only the stack trace entries that correspond to the internal project code.
+Exclude all irrelevant entries, such as those related to external libraries, standard libraries, third-party tools, fuzzing frameworks, testing frameworks, and other external dependencies.
+Retain only stack trace items that explicitly reference the project’s internal codebase.
+The target project's code must never be excluded.
+
+{{project_name | to_xml("Project_Name")}}
+
+{{crash_log | to_xml("Crash_Log")}}
+
+If you are uncertain which stack trace entries to parse, refer to the SUMMARY message below for guidance on the relevant trace type.
+
+{{message | to_xml("Message")}} 

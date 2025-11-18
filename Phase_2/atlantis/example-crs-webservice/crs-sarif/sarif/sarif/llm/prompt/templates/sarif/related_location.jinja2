@@ -1,0 +1,15 @@
+<Instruction>
+Based on the given information, explain the location of the vulnerability and the reason behind it.
+</Instruction>
+
+<Approach>
+If a patch is provided, base your response on the location where the patch is applied and the content of the patch.
+</Approach>
+
+<Input>
+{{ sanitizer_output | to_xml("Sanitizer_Output") | adjust_indent(1) }}
+
+{{ patch_diff | to_xml("Patch_Diff") | adjust_indent(1) }}
+
+{{ vuln_info | to_xml("Vulnerability_Information") | adjust_indent(1) }}
+</Input>

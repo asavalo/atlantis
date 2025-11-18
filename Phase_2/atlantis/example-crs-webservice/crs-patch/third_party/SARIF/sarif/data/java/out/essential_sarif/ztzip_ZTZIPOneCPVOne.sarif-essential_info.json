@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "File read/write hook path: /tmp/../../../../../../../../../../../../../../../../../../../../../jazzer.xsl",
+    "loc_file_full_name": "FileUtils.java",
+    "loc_file_short_name": "FileUtils.java",
+    "loc_line": 54,
+    "loc_function_full_name": "org.zeroturnaround.zip.commons.FileUtils.copy",
+    "loc_function_short_name": "copy"
+}

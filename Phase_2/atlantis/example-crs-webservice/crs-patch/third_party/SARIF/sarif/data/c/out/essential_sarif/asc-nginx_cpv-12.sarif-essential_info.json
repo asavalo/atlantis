@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-buffer-overflow",
+    "message": "AddressSanitizer: heap-buffer-overflow /src/nginx/src/os/unix/ngx_linux_sendfile_chain.c:80:16 in ngx_sendfile_r",
+    "loc_file_full_name": "/src/nginx/src/os/unix/ngx_linux_sendfile_chain.c",
+    "loc_file_short_name": "ngx_linux_sendfile_chain.c",
+    "loc_line": 80,
+    "loc_function_full_name": "ngx_sendfile_r",
+    "loc_function_short_name": "ngx_sendfile_r"
+}

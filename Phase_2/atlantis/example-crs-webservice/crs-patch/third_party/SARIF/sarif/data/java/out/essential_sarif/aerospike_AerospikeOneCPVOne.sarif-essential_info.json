@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueHigh",
+    "message": "Remote Code Execution",
+    "loc_file_full_name": "Buffer.java",
+    "loc_file_short_name": "Buffer.java",
+    "loc_line": 311,
+    "loc_function_full_name": "com.aerospike.client.command.Buffer.bytesToObject",
+    "loc_function_short_name": "bytesToObject"
+}

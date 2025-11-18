@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueHigh",
+    "message": "XPath Injection",
+    "loc_file_full_name": "Config.java",
+    "loc_file_short_name": "Config.java",
+    "loc_line": 84,
+    "loc_function_full_name": "me.xdrop.fuzzywuzzy.Config.getTagXPath",
+    "loc_function_short_name": "getTagXPath"
+}

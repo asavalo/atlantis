@@ -1,0 +1,25 @@
+import java
+import safe_callable
+
+from SafeCallable caller, SafeCallable callee
+where
+  caller.polyCalls(callee)
+  // not isSystemCallable(caller) and
+  // not isSystemCallable(callee)
+
+select
+  caller as from_func,
+  caller.getSafeAbsolutePath() as from_file_abs,
+  caller.getSafeStartLineString() as from_start_line,
+  caller.getSafeEndLineString() as from_end_line,
+  caller.getSafeDeclaringTypeSimpleName() as from_class,
+  caller.getSafeFullSignature() as from_sig,
+  caller.getSafeMethodDesc() as from_method_desc,
+  callee as to_func,
+  callee.getSafeAbsolutePath() as to_file_abs,
+  callee.getSafeStartLineString() as to_start_line,
+  callee.getSafeEndLineString() as to_end_line,
+  callee.getSafeDeclaringTypeSimpleName() as to_class,
+  callee.getSafeFullSignature() as to_sig,
+  callee.getSafeMethodDesc() as to_method_desc,
+  caller.hasDirectCall(callee) as is_direct

@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "Script Engine Injection: Insecure user input was used in script engine invocation.",
+    "loc_file_full_name": "Script.java",
+    "loc_file_short_name": "Script.java",
+    "loc_line": 84,
+    "loc_function_full_name": "io.jenkins.plugins.toyplugin.Script.secureEval",
+    "loc_function_short_name": "secureEval"
+}

@@ -1,0 +1,75 @@
+*.egg-info
+**/symcc-pass/build
+**/z3/build
+**/env
+**/target
+!**/symqemu/target
+*.so
+concolicd
+.cache
+.cargo
+microservices/osv_analyzer/fuzz_corpus
+./libs/userspace-code-browser/.git*
+
+
+# Root level files
+./.github
+./.gitignore
+./.gitattributes
+./crs_scratch
+./cp_root
+./*.log
+./*.tmp
+./*.temp
+./oss-fuzz
+./_large_data
+
+
+# 1. Global VCS & editor cruft
+.git
+.gitignore
+.vscode/
+.idea/
+
+# 2. Python caches & bytecode
+**/.ruff_cache
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+
+# 3. Virtual-envs
+*/venv/
+*/.venv/
+env/
+ENV/
+
+# 4. Build & dist artefacts
+build/
+dist/
+eggs/
+*.egg-info/
+pip-wheel-metadata/
+
+# 5. Tests & coverage
+**/docs/
+**/tests/
+!./microservices/prebuilt-binaries/glib-2.66/**/tests/
+!./microservices/prebuilt-binaries/glib-2.66/**/docs
+htmlcov/
+.tox/
+.nox/
+.coverage*
+pytest_cache/
+
+# 6. OS files
+.DS_Store
+Thumbs.db
+
+# 7. Secrets & configs
+**/.env*
+*.pem
+*.key
+
+# 8. Logs & data
+**/logs/
+**/data/

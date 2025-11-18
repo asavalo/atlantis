@@ -1,0 +1,113 @@
+# Patch Analysis Based on Root Cause and Properties
+
+Based on the root cause analysis, the main issue is that freed notes remain accessible in the note_list array, violating the property "For any valid note_list[i], if the note exists (not freed), both note_list[i] and note_list[i]->page must point to valid allocated memory."
+
+To fix this, we need to:
+1. Set the note_list entry to NULL after freeing the note
+2. Add validation in view_note() to check if the note exists before accessing it
+3. Ensure proper state tracking of freed notes
+
+The patches will satisfy the properties as follows:
+
+1. Property "For any valid note_list[i], if the note exists (not freed), both note_list[i] and note_list[i]->page must point to valid allocated memory":
+   - Satisfied by nullifying note_list entries after free and checking for NULL before access
+   
+2. Property "When viewing a note, the offset + length must always be less than or equal to the note's total length":
+   - Maintained by adding NULL check before accessing note properties
+   
+3. Property "The note index (i) used in any operation must satisfy: 0 <= i < idx AND i < 20":
+   - Already satisfied, but enhanced by adding existence check
+
+Here are the necessary patches:
+
+[PATCH:`mock_vp.c`:135-155]
+void drop_note() {
+  unsigned long long note_idx;
+  struct note *ptr;
+
+  printf("Which note?\n");
+  scanf("%llu", &note_idx);
+
+  if (note_idx >= 20 || note_idx >= idx) {
+    printf("Invalid index.\n\n");
+    return;
+  }
+
+  printf("drop_note(%lld)\n", note_idx);
+
+  ptr = note_list[note_idx];
+  if (ptr == NULL) {
+    printf("Note already freed.\n\n");
+    return;
+  }
+  free(ptr->page);
+  free(ptr);
+  note_list[note_idx] = NULL;  // Properly nullify the entry
+
+  printf("done.\n\n");
+}
+[/PATCH:`mock_vp.c`:135-155]
+
+[PATCH:`mock_vp.c`:98-133]
+int view_note() {
+  unsigned long long note_idx;
+  struct note *ptr;
+  unsigned long long len;
+  unsigned long long offset;
+
+  printf("Which note?\n");
+  scanf("%llu", &note_idx);
+
+  if (note_idx >= 20 || note_idx >= idx) {
+    printf("Invalid index.\n\n");
+    return 0;
+  }
+
+  ptr = note_list[note_idx];
+  if (ptr == NULL) {
+    printf("Invalid note: note has been freed.\n\n");
+    return 0;
+  }
+
+  printf("Offset?\n");
+  scanf("%llu", &offset);
+
+  if (offset > ptr->len) {
+    printf("Invalid offset.\n\n");
+    return 0;
+  }
+
+  printf("Who long?\n");
+  scanf("%llu", &len);
+
+  printf("view_note(%lld, %llu)\n", offset, len);
+
+  if (offset + len > ptr->len) {
+    printf("Invalid lenght.\n\n");
+    return 0;
+  }
+
+  return secure_print(ptr->page + offset, len);
+}
+[/PATCH:`mock_vp.c`:98-133]
+
+Patch Explanation:
+
+1. First patch (drop_note function):
+   - Adds NULL check before freeing to prevent double-free
+   - Properly nullifies the note_list entry after freeing
+   - This ensures the property of memory consistency is maintained
+
+2. Second patch (view_note function):
+   - Adds NULL check after retrieving the note pointer
+   - Prevents use-after-free by detecting freed notes
+   - Maintains the property of accessing only valid memory
+
+These patches together ensure that:
+- Freed notes cannot be accessed
+- The note_list array properly tracks note status
+- Memory safety properties are maintained
+- All existing functionality remains intact
+- Double-free vulnerabilities are prevented
+
+The patches are minimal but complete, addressing both the immediate use-after-free vulnerability and potential related issues while maintaining all system properties.

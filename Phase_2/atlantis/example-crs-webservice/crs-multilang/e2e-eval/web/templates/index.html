@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRS-multilang Experiment Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles-cards.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CRS-multilang Experiment Reports</h1>
+
+        <!-- Cache Status -->
+        <div class="cache-status-section">
+            <small id="cache-status" style="transition: color 0.3s ease;">Loading cache status...</small>
+        </div>
+
+        <!-- Unified Controls Section -->
+        <div class="unified-controls">
+            <!-- Row 1: Controls -->
+            <div class="controls-row">
+                <div class="control-group">
+                    <label for="date-select">Date:</label>
+                    <select id="date-select" onchange="switchDate(this.value)">
+                        {% for date in available_dates %}
+                        <option value="{{ date }}" {{ 'selected' if date == current_date else '' }}>
+                            {{ date }}{{ ' (Latest)' if loop.first else '' }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="sort-select">Sort:</label>
+                    <select id="sort-select" onchange="sortExperiments(this.value)">
+                        <option value="target">Target</option>
+                        <option value="input-gen">Input Generation</option>
+                        <option value="harness">Harness</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="filter-select">Filter:</label>
+                    <select id="filter-select" onchange="applyFilterFromDropdown(this.value)">
+                        <option value="">All Experiments</option>
+                        {% for combo in unique_combinations %}
+                        <option value="{{ combo.hash }}">
+                            {{ combo.hash }} - {{ combo.input_gens }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                {% if git_info %}
+                <div class="control-group">
+                    <button id="git-info-button" class="action-button" onclick="showGitInfoModal()">
+                        🔗 Git Info ({{ git_info.main_commit[:7] }})
+                    </button>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <!-- Row 2: Downloads -->
+            <div class="downloads-row">
+                <div class="downloads-label">Downloads:</div>
+                <div class="downloads-buttons">
+                    {% if aggregate_zips.povs.available or aggregate_zips.workdirs.available or aggregate_zips.evals.available or aggregate_zips.stdout.available %}
+                        {% if aggregate_zips.povs and aggregate_zips.povs.available %}
+                        <a href="/date/{{ current_date }}/download/zipfiles/all-povs.zip" class="download-button">📦 All PoVs ({{ aggregate_zips.povs.size_display }})</a>
+                        {% else %}
+                        <span class="download-button disabled">📦 All PoVs (Not available)</span>
+                        {% endif %}
+                        {% if aggregate_zips.workdirs and aggregate_zips.workdirs.available %}
+                        <a href="/date/{{ current_date }}/download/zipfiles/all-workdirs.zip" class="download-button">📁 All Workdirs ({{ aggregate_zips.workdirs.size_display }})</a>
+                        {% else %}
+                        <span class="download-button disabled">📁 All Workdir (Not available)</span>
+                        {% endif %}
+                        {% if aggregate_zips.evals and aggregate_zips.evals.available %}
+                        <a href="/date/{{ current_date }}/download/zipfiles/all-evals.zip" class="download-button">📊 All Evaldirs ({{ aggregate_zips.evals.size_display }})</a>
+                        {% else %}
+                        <span class="download-button disabled">📊 All Evaldir (Not available)</span>
+                        {% endif %}
+                        {% if aggregate_zips.stdout and aggregate_zips.stdout.available %}
+                        <a href="/date/{{ current_date }}/download/zipfiles/all-stdout.zip" class="download-button">📋 All Stdout ({{ aggregate_zips.stdout.size_display }})</a>
+                        {% else %}
+                        <span class="download-button disabled">📋 All Stdout (Not available)</span>
+                        {% endif %}
+                    {% else %}
+                    <span class="download-button disabled">📦 All PoVs (Not available)</span>
+                    <span class="download-button disabled">📁 All Workdir (Not available)</span>
+                    <span class="download-button disabled">📊 All Evaldir (Not available)</span>
+                    <span class="download-button disabled">📋 All Stdout (Not available)</span>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Statistics Table -->
+        <div class="stats-table-container">
+            <table class="stats-table">
+                <thead>
+                    <tr class="stats-table-category-header">
+                        <th colspan="2" class="category-basic">Basic Info</th>
+                        <th colspan="4" class="category-povs">PoVs</th>
+                        <th colspan="4" class="category-llm">LLM Usage</th>
+                    </tr>
+                    <tr class="stats-table-header">
+                        <th>Input Generator Combination</th>
+                        <th>Finished</th>
+                        <th>Matched</th>
+                        <th>Extra</th>
+                        <th>Unintend</th>
+                        <th>Total</th>
+                        <th>Cost</th>
+                        <th>Tokens</th>
+                        <th>Cache</th>
+                        <th>Reqs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for combo_stats in input_gen_stats %}
+                <tr class="stats-table-row" data-input-gens="{{ combo_stats.input_gens }}">
+                    <td class="stats-cell combo-name">{{ combo_stats.input_gens }}</td>
+                    <td class="stats-cell experiment-count">{{ combo_stats.finished_count }} / {{ combo_stats.experiment_count }}</td>
+                    <td class="stats-cell matched-expected">
+                        <div class="pov-compact">
+                            <span class="pov-main">{{ combo_stats.capped_matched }}/{{ combo_stats.expected }}</span>
+                            <span class="pov-rate {% if combo_stats.success_rate >= 80 %}high{% elif combo_stats.success_rate >= 60 %}medium{% else %}low{% endif %}" data-rate="{{ combo_stats.success_rate }}">({{ combo_stats.success_rate }}%)</span>
+                        </div>
+                    </td>
+                    <td class="stats-cell extra-povs">{{ combo_stats.extra_povs }}</td>
+                    <td class="stats-cell unintended">{{ combo_stats.unintended }}</td>
+                    <td class="stats-cell total-found">{{ combo_stats.total_found }}</td>
+                    <td class="stats-cell litellm-cost">
+                        {{ combo_stats.total_spend|format_cost }}
+                    </td>
+                    <td class="stats-cell litellm-tokens">
+                        {{ combo_stats.total_tokens|format_tokens }}
+                    </td>
+                    <td class="stats-cell litellm-cache">
+                        {{ combo_stats.total_cache_read_tokens|format_tokens }}
+                    </td>
+                    <td class="stats-cell litellm-requests">
+                        {% if combo_stats.total_requests > 0 %}
+                        {{ combo_stats.total_successful_requests }} / {{ combo_stats.total_requests }}
+                        {% else %}
+                        -
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if input_gen_stats|length > 1 %}
+                <tr class="stats-table-row total-row">
+                    <td class="stats-cell combo-name"><strong>TOTAL</strong></td>
+                    <td class="stats-cell experiment-count"><strong>{{ aggregate_stats.total_finished }} / {{ reports|length }}</strong></td>
+                    <td class="stats-cell matched-expected">
+                        <div class="pov-compact">
+                            <span class="pov-main"><strong>{{ aggregate_stats.total_capped_matched }}/{{ aggregate_stats.total_expected }}</strong></span>
+                            <span class="pov-rate {% if aggregate_stats.overall_success_rate >= 80 %}high{% elif aggregate_stats.overall_success_rate >= 60 %}medium{% else %}low{% endif %}" data-rate="{{ aggregate_stats.overall_success_rate }}"><strong>({{ aggregate_stats.overall_success_rate }}%)</strong></span>
+                        </div>
+                    </td>
+                    <td class="stats-cell extra-povs"><strong>{{ aggregate_stats.total_extra_povs or 0 }}</strong></td>
+                    <td class="stats-cell unintended"><strong>{{ aggregate_stats.total_unintended or 0 }}</strong></td>
+                    <td class="stats-cell total-found"><strong>{{ input_gen_stats | sum(attribute='total_found') }}</strong></td>
+                    <td class="stats-cell litellm-cost">
+                        <strong>{{ aggregate_stats.total_spend|format_cost }}</strong>
+                    </td>
+                    <td class="stats-cell litellm-tokens">
+                        <strong>{{ aggregate_stats.total_tokens|format_tokens }}</strong>
+                    </td>
+                    <td class="stats-cell litellm-cache">
+                        <strong>{{ aggregate_stats.total_cache_read_tokens|format_tokens }}</strong>
+                    </td>
+                    <td class="stats-cell litellm-requests">
+                        {% if aggregate_stats.total_requests > 0 %}
+                        <strong>{{ aggregate_stats.total_successful_requests }} / {{ aggregate_stats.total_requests }}</strong>
+                        {% else %}
+                        <strong>-</strong>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="experiments-container">
+            {% for report in reports %}
+            <div class="experiment-card{% if not report.is_complete %} incomplete{% endif %}"
+                 data-target="{{ report.target }}"
+                 data-input-gens="{{ report.input_gens|join(', ') }}"
+                 data-harness="{{ report.harness_name }}">
+                <div class="experiment-header">
+                    <!-- <div class="experiment-index">#{{ loop.index }}</div> -->
+                    <div class="experiment-main">
+                        <div class="experiment-title clickable" onclick="window.location.href='/date/{{ current_date }}/reports/{{ report.experiment_name|urlencode }}/linux/'">{{ report.target }} → {{ report.harness_name }}</div>
+                        <!-- <div class="experiment-subtitle">{{ report.experiment_name }}</div> -->
+                    </div>
+                    <div class="header-buttons">
+                        <div class="button-group">
+                            {% if report.target_info %}
+                            <a href="https://github.com/Team-Atlanta/oss-fuzz/tree/main/projects/{{ report.target }}"
+                               target="_blank" class="target-link">🏠 Target</a>
+                            {% for harness in report.target_info.harness_info %}
+                                {% if harness.name == report.harness_name and harness.resolved_url %}
+                                <a href="{{ harness.resolved_url }}"
+                                   target="_blank" class="target-link">🔧 Harness</a>
+                                {% endif %}
+                            {% endfor %}
+                            {% if report.target_info.repo_url_web %}
+                            <a href="{{ report.target_info.repo_url_web }}"
+                               target="_blank" class="target-link">📂 Repo</a>
+                            {% endif %}
+                            {% endif %}
+                        </div>
+                        <div class="button-separator">|</div>
+                        <a href="/date/{{ current_date }}/experiment/{{ report.config_hash }}/{{ report.target }}/{{ report.harness_name }}/logs" class="view-logs">📋 View Logs</a>
+                        <a href="/date/{{ current_date }}/reports/{{ report.experiment_name|urlencode }}/linux/" class="view-report">📋 View Report</a>
+                    </div>
+                </div>
+
+                <div class="experiment-details">
+                    <!-- <div class="detail-item">
+                        <div class="detail-label">Target</div>
+                        <div class="detail-value">{{ report.target }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Harness</div>
+                        <div class="detail-value">{{ report.harness_name }}</div>
+                    </div> -->
+                    <div class="detail-item input-gen-item">
+                        <div class="detail-label">Input Generators</div>
+                        <div class="detail-value input-gens">
+                            {% if report.input_gens %}
+                                {{ report.input_gens|join(', ') }}
+                            {% else %}
+                                Not specified
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="detail-item pov-results-item">
+                        <div class="detail-label">PoV Results</div>
+                        <div class="detail-value pov-stats">
+                            {% if report.is_complete and report.experiment_stats %}
+                                {% set matched = report.experiment_stats.matched_povs %}
+                                {% set expected = report.experiment_stats.expected_cpvs %}
+                                {% set capped_matched = [matched, expected] | min %}
+                                {% set extra_povs = [0, matched - expected] | max %}
+                                {% set success_rate = ((capped_matched / expected * 100) | round | int) if expected > 0 else 0 %}
+
+                                <span class="matched">{{ capped_matched }}</span> / <span class="expected">{{ expected }}</span>
+                                {% if extra_povs > 0 %}
+                                <span class="extra"> (+{{ extra_povs }} extra)</span>
+                                {% endif %}
+                                <span class="success-rate {% if success_rate >= 80 %}high{% elif success_rate >= 60 %}medium{% else %}low{% endif %}" data-rate="{{ success_rate }}"> ({{ success_rate }}%)</span>
+                                {% if report.experiment_stats.unintended_povs > 0 %}
+                                <span class="unintended"> (+{{ report.experiment_stats.unintended_povs }} unintended)</span>
+                                {% endif %}
+                                <span class="total-separator"> : </span><span class="total-found">{{ report.experiment_stats.found_povs }} total</span>
+                            {% else %}
+                                <span class="status-incomplete">Not finished yet</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Config Hash</div>
+                        <div class="detail-value config-hash">{{ report.config_hash }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Start Time</div>
+                        <div class="detail-value">{{ report.experiment_start_time or 'N/A' }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">{{ report.experiment_duration or 'N/A' }}</div>
+                    </div>
+                    <div class="detail-item litellm-stats-item">
+                        <div class="detail-label">LiteLLM Usage (Per CP)</div>
+                        <div class="detail-value litellm-stats">
+                            {% if report.litellm_stats and report.litellm_stats.total_spend > 0 %}
+                            <div class="litellm-cost">💰 Cost: ${{ "%.4f"|format(report.litellm_stats.total_spend) }}</div>
+                            <div class="litellm-tokens">🔤 Tokens: {{ "{:,}".format(report.litellm_stats.total_tokens) }} ({{ "{:,}".format(report.litellm_stats.total_prompt_tokens) }} prompt + {{ "{:,}".format(report.litellm_stats.total_completion_tokens) }} completion)</div>
+                            <div class="litellm-requests">📡 Requests: {{ report.litellm_stats.total_successful_requests }} successful{% if report.litellm_stats.total_failed_requests > 0 %}, {{ report.litellm_stats.total_failed_requests }} failed{% endif %}</div>
+                            {% if report.litellm_stats.total_cache_read_input_tokens > 0 or report.litellm_stats.total_cache_creation_input_tokens > 0 %}
+                            <div class="litellm-cache">💾 Cache: {{ "{:,}".format(report.litellm_stats.total_cache_read_input_tokens) }} read, {{ "{:,}".format(report.litellm_stats.total_cache_creation_input_tokens) }} creation tokens</div>
+                            {% endif %}
+                            {% else %}
+                            <div class="litellm-none">No LiteLLM usage data available</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Individual download buttons -->
+                <div class="download-section">
+                    <div class="download-label">Downloads:</div>
+                    <div class="download-buttons{% if not report.is_complete %} disabled{% endif %}">
+                        {% if report.is_complete and report.zip_files %}
+                            {% if report.zip_files.povs and report.zip_files.povs.available %}
+                            <a href="/date/{{ current_date }}/download/zipfiles/{{ report.config_hash }}_{{ report.target.replace('/', '-') }}_{{ report.harness_name }}_povs.zip" class="download-button">📦 PoVs ({{ report.zip_files.povs.size_display }})</a>
+                            {% else %}
+                            <span class="download-button disabled">📦 PoVs (Not available)</span>
+                            {% endif %}
+                            {% if report.zip_files.workdir and report.zip_files.workdir.available %}
+                            <a href="/date/{{ current_date }}/download/zipfiles/{{ report.config_hash }}_{{ report.target.replace('/', '-') }}_{{ report.harness_name }}_workdir.zip" class="download-button">📁 Workdir ({{ report.zip_files.workdir.size_display }})</a>
+                            {% else %}
+                            <span class="download-button disabled">📁 Workdir (Not available)</span>
+                            {% endif %}
+                            {% if report.zip_files.eval and report.zip_files.eval.available %}
+                            <a href="/date/{{ current_date }}/download/zipfiles/{{ report.config_hash }}_{{ report.target.replace('/', '-') }}_{{ report.harness_name }}_eval.zip" class="download-button">📊 Evaldir ({{ report.zip_files.eval.size_display }})</a>
+                            {% else %}
+                            <span class="download-button disabled">📊 Evaldir (Not available)</span>
+                            {% endif %}
+                        {% else %}
+                            <span class="download-button disabled">📦 PoVs (Not available)</span>
+                            <span class="download-button disabled">📁 Workdir (Not available)</span>
+                            <span class="download-button disabled">📊 Evaldir (Not available)</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <!-- Git Info Modal -->
+    {% if git_info %}
+    <div id="git-info-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Git Repository Information</h3>
+                <button class="modal-close" onclick="hideGitInfoModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="git-info-table">
+                    <thead>
+                        <tr>
+                            <th>Repository</th>
+                            <th>Commit Hash</th>
+                            <th>Commit Date</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="repo-name">CRS-multilang (main)</td>
+                            <td class="commit-hash">{{ git_info.main_commit[:8] }}</td>
+                            <td class="commit-date">{{ git_info.main_commit_date }}</td>
+                            <td class="repo-link">
+                                <a href="https://github.com/Team-Atlanta/CRS-multilang/tree/{{ git_info.main_commit }}" target="_blank" class="git-link">View 🔗</a>
+                            </td>
+                        </tr>
+                        {% for submodule in git_info.submodules %}
+                        <tr>
+                            <td class="repo-name">{{ submodule.path }}</td>
+                            <td class="commit-hash">{{ submodule.commit }}</td>
+                            <td class="commit-date">{{ submodule.date_utc }}</td>
+                            <td class="repo-link">
+                                {% set repo_name = submodule.path.split('/')[-1] %}
+                                {% set repo_name = "oss-fuzz" if repo_name == "benchmarks" else repo_name %}
+                                <a href="https://github.com/Team-Atlanta/{{ repo_name }}/tree/{{ submodule.commit }}" target="_blank" class="git-link">View 🔗</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- {% if git_info.dirty %}
+                <div class="git-warning">
+                    ⚠️ Repository has uncommitted changes
+                </div>
+                {% endif %} -->
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/main-common.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main-cards.js') }}"></script>
+    <script type="application/json" id="cache-data">{{ cache_data|tojson|safe }}</script>
+    <script type="application/json" id="combinations-data">{{ unique_combinations|tojson|safe }}</script>
+    {% if git_info %}
+    <script type="application/json" id="git-info-data">{{ git_info|tojson|safe }}</script>
+    {% endif %}
+    <script>
+        // Cache data from Flask
+        window.cacheData = JSON.parse(document.getElementById('cache-data').textContent);
+        // Pass combinations data to JavaScript
+        window.uniqueCombinations = JSON.parse(document.getElementById('combinations-data').textContent);
+        // Pass git info data to JavaScript if available
+        var gitInfoElement = document.getElementById('git-info-data');
+        window.gitInfo = gitInfoElement ? JSON.parse(gitInfoElement.textContent) : null;
+        // console.log('Cache data:', window.cacheData);
+        // console.log('Unique combinations:', window.uniqueCombinations);
+    </script>
+</body>
+</html>

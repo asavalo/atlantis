@@ -1,0 +1,14 @@
+// RUN: component embed % --dummy-names legacy --async-callback | \
+//        component new | \
+//        validate -f cm-async
+
+package a:b;
+
+world c {
+  export name: interface {
+    resource n {
+      constructor();
+    }
+  }
+}
+

@@ -1,0 +1,15 @@
+It fixed the bug but now it introduces a new bug.
+
+Here's the new crash log:
+
+<crash_log>
+STDOUT
+</crash_log>
+
+This is the previous patch diff that I tried:
+
+<previous_patch_diff>
+DIFF
+</previous_patch_diff>
+
+Try again and give me another bug analysis report.

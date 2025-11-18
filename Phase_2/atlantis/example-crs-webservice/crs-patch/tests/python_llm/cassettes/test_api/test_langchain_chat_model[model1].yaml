@@ -1,0 +1,46 @@
+interactions:
+- request:
+    body: '{"max_tokens": 10, "messages": [{"content": [{"text": "Say \"Hello!\"",
+      "type": "text"}], "role": "user"}], "model": "claude-3-5-sonnet-20241022", "temperature":
+      1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      anthropic-version:
+      - '2023-06-01'
+      connection:
+      - keep-alive
+      content-length:
+      - '166'
+      content-type:
+      - application/json
+      user-agent:
+      - litellm/1.67.4.post1
+    method: POST
+    uri: https://llm-base/v1/messages
+  response:
+    body:
+      string: '{"id":"msg_01Ld1i5zuemzXwHyBGKa6Jb5","type":"message","role":"assistant","model":"claude-3-5-sonnet-20241022","content":[{"type":"text","text":"Hello!"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":11,"cache_creation_input_tokens":0,"cache_read_input_tokens":0,"output_tokens":5,"service_tier":"standard"}}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '332'
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Jun 2025 20:10:34 GMT
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 88c453f4a98853e571cabe3c258dab81
+      x-litellm-key-spend:
+      - '5633.291341470032'
+      x-litellm-version:
+      - 1.71.1
+    status:
+      code: 200
+      message: OK
+version: 1

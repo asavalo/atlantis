@@ -1,0 +1,833 @@
+/src /src/commons-compress
+/src/commons-compress
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< org.apache.commons:commons-compress >-----------------
+[INFO] Building Apache Commons Compress 1.28.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.0:clean (default-clean) @ commons-compress ---
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-maven-version) @ commons-compress ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (enforce-java-version) @ commons-compress ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- apache-rat:0.16.1:check (rat-check) @ commons-compress ---
+[INFO] RAT will not execute since it is configured to be skipped via system property 'rat.skip'.
+[INFO] 
+[INFO] --- artifact:3.5.3:check-buildplan (check-buildplan) @ commons-compress ---
+[INFO] No known issue in 22 plugins
+[INFO] 
+[INFO] --- build-helper:3.6.0:parse-version (parse-version) @ commons-compress ---
+[INFO] 
+[INFO] --- antrun:3.1.0:run (javadoc.resources) @ commons-compress ---
+[INFO] Executing tasks
+[INFO]      [copy] Copying 2 files to /src/commons-compress/target/apidocs/META-INF
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- remote-resources:3.2.0:process (process-resource-bundles) @ commons-compress ---
+[INFO] Skipping remote resources execution.
+[INFO] 
+[INFO] --- buildnumber:3.2.1:create (default) @ commons-compress ---
+[INFO] Executing: /bin/sh -c cd '/src/commons-compress' && 'git' 'log' '-1' '--no-merges' '--format=format:%H %aI %aE %aN'
+[INFO] Working directory: /src/commons-compress
+[INFO] Storing buildNumber: null at timestamp: 1749712105799
+[INFO] Executing: /bin/sh -c cd '/src/commons-compress' && 'git' 'symbolic-ref' 'HEAD'
+[INFO] Working directory: /src/commons-compress
+[INFO] Storing scmBranch: challenges/cc-delta-02
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ commons-compress ---
+[INFO] skip non existing resourceDirectory /src/commons-compress/src/main/resources
+[INFO] Copying 2 resources from  to target/classes/META-INF
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ commons-compress ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 406 source files with javac [debug release 8] to target/classes
+[INFO] /src/commons-compress/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java: Some input files use or override a deprecated API.
+[INFO] /src/commons-compress/src/main/java/org/apache/commons/compress/archivers/zip/ZipFile.java: Recompile with -Xlint:deprecation for details.
+[INFO] /src/commons-compress/src/main/java/org/apache/commons/compress/harmony/pack200/ClassBands.java: Some input files use unchecked or unsafe operations.
+[INFO] /src/commons-compress/src/main/java/org/apache/commons/compress/harmony/pack200/ClassBands.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- bundle:5.1.9:manifest (bundle-manifest) @ commons-compress ---
+[INFO] No MANIFEST.MF file found, generating manifest.
+[INFO] Writing manifest: /src/commons-compress/target/classes/META-INF/MANIFEST.MF
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ commons-compress ---
+[INFO] Copying 351 resources from src/test/resources to target/test-classes
+[INFO] Copying 2 resources from  to target/test-classes/META-INF
+[INFO] 
+[INFO] --- antrun:3.1.0:run (default) @ commons-compress ---
+[INFO] Executing tasks
+[INFO]     [untar] Expanding: /src/commons-compress/src/test/resources/zstd-tests.tar into /src/commons-compress/target/test-classes
+[INFO] Executed tasks
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ commons-compress ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 228 source files with javac [debug release 8] to target/test-classes
+[INFO] /src/commons-compress/src/test/java/org/apache/commons/compress/utils/ByteUtilsTest.java: Some input files use or override a deprecated API.
+[INFO] /src/commons-compress/src/test/java/org/apache/commons/compress/utils/ByteUtilsTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /src/commons-compress/src/test/java/org/apache/commons/compress/harmony/unpack200/BcBandsTest.java: /src/commons-compress/src/test/java/org/apache/commons/compress/harmony/unpack200/BcBandsTest.java uses unchecked or unsafe operations.
+[INFO] /src/commons-compress/src/test/java/org/apache/commons/compress/harmony/unpack200/BcBandsTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ commons-compress ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ commons-compress ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.apache.commons.compress.osgi.OsgiITest
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Creating bundle watcher with scanner [org.ops4j.pax.swissbox.extender.BundleManifestScanner@7ade50f]...
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.framework]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.inject]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.extender.service]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling SLF4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Jakarta Commons Logging API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Log4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Avalon Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling JULI Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Log4J v2 API support. Ignored FQCN: org.apache.logging.log4j.spi.AbstractLogger
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.logging.pax-logging-api]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.base]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.core]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.extender]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.lifecycle]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.tracker]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.geronimo.specs.geronimo-atinject_1.0_spec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.scr]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.configadmin]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.commons.commons-codec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.commons.commons-io]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.tipi.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.invoker.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.servicemix.bundles.hamcrest]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.commons.commons-compress]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [PAXEXAM-PROBE-e925516d-22ad-46ca-996f-5044ad990494]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Found resources [ManifestEntry{ key=PaxExam-Executable, value=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, }, ManifestEntry{ key=PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle }, ManifestEntry{ key=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac, value=org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a, value=org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle }]
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Use timeout value: 10000
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-Executable to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4 to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4" and expression="org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle"
+org.ops4j.pax.swissbox.tracker[org.ops4j.pax.swissbox.tracker.ServiceLookup] : Use timeout value: 10000
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac" and expression="org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv"
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa" and expression="org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv"
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a" and expression="org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle"
+org.ops4j.pax.exam.invoker.junit[org.ops4j.pax.exam.invoker.junit.internal.ContainerTestRunner] : running testProperlyDetectsRunningInsideOsgiEnv in reactor
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [PAXEXAM-PROBE-e925516d-22ad-46ca-996f-5044ad990494]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Un-registering [ManifestEntry{ key=PaxExam-Executable, value=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, }, ManifestEntry{ key=PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle }, ManifestEntry{ key=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac, value=org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a, value=org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle }]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.exam.raw.extender.intern.TestBundleObserver] : Unregistered testcase [org.ops4j.pax.exam.raw.extender.intern.Probe@405dfc83.]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.commons.commons-compress]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.servicemix.bundles.hamcrest]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.invoker.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.tipi.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.commons.commons-io]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.commons.commons-codec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.configadmin]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.scr]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.geronimo.specs.geronimo-atinject_1.0_spec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.tracker]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.lifecycle]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.extender]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.core]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.base]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling SLF4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Jakarta Commons Logging API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Log4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Avalon Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling JULI Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Log4J v2 API support. Ignored FQCN: org.apache.logging.log4j.spi.AbstractLogger
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.logging.pax-logging-api]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.extender.service]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.inject]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Creating bundle watcher with scanner [org.ops4j.pax.swissbox.extender.BundleManifestScanner@60047abc]...
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.framework]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.inject]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.extender.service]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling SLF4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Jakarta Commons Logging API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Log4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Avalon Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling JULI Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Log4J v2 API support. Ignored FQCN: org.apache.logging.log4j.spi.AbstractLogger
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.logging.pax-logging-api]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.base]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.core]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.extender]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.lifecycle]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.tracker]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.geronimo.specs.geronimo-atinject_1.0_spec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.scr]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.configadmin]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.commons.commons-codec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.commons.commons-io]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.tipi.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.invoker.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.servicemix.bundles.hamcrest]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.commons.commons-compress]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [PAXEXAM-PROBE-e925516d-22ad-46ca-996f-5044ad990494]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Found resources [ManifestEntry{ key=PaxExam-Executable, value=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, }, ManifestEntry{ key=PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle }, ManifestEntry{ key=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac, value=org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a, value=org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle }]
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Use timeout value: 10000
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-Executable to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4 to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4" and expression="org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle"
+org.ops4j.pax.swissbox.tracker[org.ops4j.pax.swissbox.tracker.ServiceLookup] : Use timeout value: 10000
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac" and expression="org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv"
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa" and expression="org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv"
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a" and expression="org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle"
+org.ops4j.pax.exam.invoker.junit[org.ops4j.pax.exam.invoker.junit.internal.ContainerTestRunner] : running testCanLoadBundle in reactor
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [PAXEXAM-PROBE-e925516d-22ad-46ca-996f-5044ad990494]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Un-registering [ManifestEntry{ key=PaxExam-Executable, value=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, }, ManifestEntry{ key=PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle }, ManifestEntry{ key=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac, value=org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a, value=org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle }]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.exam.raw.extender.intern.TestBundleObserver] : Unregistered testcase [org.ops4j.pax.exam.raw.extender.intern.Probe@6f49a104.]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.commons.commons-compress]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.servicemix.bundles.hamcrest]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.invoker.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.tipi.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.commons.commons-io]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.commons.commons-codec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.configadmin]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.scr]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.geronimo.specs.geronimo-atinject_1.0_spec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.tracker]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.lifecycle]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.extender]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.core]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.base]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling SLF4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Jakarta Commons Logging API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Log4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Avalon Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling JULI Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Log4J v2 API support. Ignored FQCN: org.apache.logging.log4j.spi.AbstractLogger
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.logging.pax-logging-api]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.inject]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.extender.service]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.265 s -- in org.apache.commons.compress.osgi.OsgiITest
+[INFO] Running org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Creating bundle watcher with scanner [org.ops4j.pax.swissbox.extender.BundleManifestScanner@26e7b5e1]...
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.framework]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.inject]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.extender.service]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling SLF4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Jakarta Commons Logging API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Log4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Avalon Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling JULI Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Log4J v2 API support. Ignored FQCN: org.apache.logging.log4j.spi.AbstractLogger
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.logging.pax-logging-api]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.base]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.core]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.extender]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.lifecycle]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.tracker]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.geronimo.specs.geronimo-atinject_1.0_spec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.scr]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.configadmin]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.tipi.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.invoker.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.servicemix.bundles.hamcrest]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.commons.commons-compress]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [PAXEXAM-PROBE-e925516d-22ad-46ca-996f-5044ad990494]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Found resources [ManifestEntry{ key=PaxExam-Executable, value=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, }, ManifestEntry{ key=PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle }, ManifestEntry{ key=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac, value=org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a, value=org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle }]
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Use timeout value: 10000
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-Executable to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4 to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4" and expression="org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle"
+org.ops4j.pax.swissbox.tracker[org.ops4j.pax.swissbox.tracker.ServiceLookup] : Use timeout value: 10000
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac" and expression="org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv"
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa" and expression="org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv"
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a" and expression="org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle"
+org.ops4j.pax.exam.invoker.junit[org.ops4j.pax.exam.invoker.junit.internal.ContainerTestRunner] : running testProperlyDetectsRunningInsideOsgiEnv in reactor
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [PAXEXAM-PROBE-e925516d-22ad-46ca-996f-5044ad990494]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Un-registering [ManifestEntry{ key=PaxExam-Executable, value=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, }, ManifestEntry{ key=PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle }, ManifestEntry{ key=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac, value=org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a, value=org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle }]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.exam.raw.extender.intern.TestBundleObserver] : Unregistered testcase [org.ops4j.pax.exam.raw.extender.intern.Probe@5ebc51bf.]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.commons.commons-compress]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.servicemix.bundles.hamcrest]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.invoker.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.tipi.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.configadmin]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.scr]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.geronimo.specs.geronimo-atinject_1.0_spec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.tracker]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.lifecycle]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.extender]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.core]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.base]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling SLF4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Jakarta Commons Logging API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Log4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Avalon Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling JULI Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Log4J v2 API support. Ignored FQCN: org.apache.logging.log4j.spi.AbstractLogger
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.logging.pax-logging-api]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.extender.service]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.inject]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Creating bundle watcher with scanner [org.ops4j.pax.swissbox.extender.BundleManifestScanner@f9537a8]...
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.framework]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.inject]
+[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.extender.service]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling SLF4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Jakarta Commons Logging API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Log4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Avalon Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling JULI Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Enabling Log4J v2 API support. Ignored FQCN: org.apache.logging.log4j.spi.AbstractLogger
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.logging.pax-logging-api]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.base]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.core]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.extender]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.lifecycle]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.swissbox.tracker]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.geronimo.specs.geronimo-atinject_1.0_spec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.scr]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.felix.configadmin]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.tipi.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.ops4j.pax.exam.invoker.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.servicemix.bundles.hamcrest]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [org.apache.commons.commons-compress]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Scanning bundle [PAXEXAM-PROBE-e925516d-22ad-46ca-996f-5044ad990494]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Found resources [ManifestEntry{ key=PaxExam-Executable, value=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, }, ManifestEntry{ key=PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle }, ManifestEntry{ key=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac, value=org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a, value=org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle }]
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Use timeout value: 10000
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-Executable to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4 to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4" and expression="org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle"
+org.ops4j.pax.swissbox.tracker[org.ops4j.pax.swissbox.tracker.ServiceLookup] : Use timeout value: 10000
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac" and expression="org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv"
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa" and expression="org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv"
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Test PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a to be in PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4,
+org.ops4j.pax.exam.extender.service[org.ops4j.pax.exam.raw.extender.intern.Parser] : Registering Service: org.ops4j.pax.exam.ProbeInvoker with Probe-Signature="PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a" and expression="org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle"
+org.ops4j.pax.exam.invoker.junit[org.ops4j.pax.exam.invoker.junit.internal.ContainerTestRunner] : running testCanLoadBundle in reactor
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [PAXEXAM-PROBE-e925516d-22ad-46ca-996f-5044ad990494]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Un-registering [ManifestEntry{ key=PaxExam-Executable, value=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac,PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a,PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa,PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, }, ManifestEntry{ key=PaxExam-81d97457-d67d-469d-b97c-3f23603f99d4, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testCanLoadBundle }, ManifestEntry{ key=PaxExam-950b607e-fac2-49a8-b7de-b36cb23ce6ac, value=org.apache.commons.compress.osgi.OsgiITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-83539862-6956-49f2-8463-396b7f0a0eaa, value=org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest;testProperlyDetectsRunningInsideOsgiEnv }, ManifestEntry{ key=PaxExam-104b5c3d-65aa-4b27-8b34-eea745ce0c2a, value=org.apache.commons.compress.osgi.OsgiITest;testCanLoadBundle }]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.exam.raw.extender.intern.TestBundleObserver] : Unregistered testcase [org.ops4j.pax.exam.raw.extender.intern.Probe@2136e0d4.]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.commons.commons-compress]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.servicemix.bundles.hamcrest]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.invoker.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.tipi.junit]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.configadmin]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.scr]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.geronimo.specs.geronimo-atinject_1.0_spec]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.tracker]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.lifecycle]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.extender]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.swissbox.core]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.base]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling SLF4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Jakarta Commons Logging API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Log4J API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Avalon Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling JULI Logger API support.
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.logging.internal.Activator] : Disabling Log4J v2 API support. Ignored FQCN: org.apache.logging.log4j.spi.AbstractLogger
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.logging.pax-logging-api]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.apache.felix.framework]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.inject]
+org.ops4j.pax.logging.pax-logging-api[org.ops4j.pax.swissbox.extender.BundleWatcher] : Releasing bundle [org.ops4j.pax.exam.extender.service]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.469 s -- in org.apache.commons.compress.osgi.OsgiWithoutOptionalDepsITest
+[INFO] Running org.apache.commons.compress.changes.ChangeSetRawTypesTest
+[INFO] Tests run: 65, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.357 s -- in org.apache.commons.compress.changes.ChangeSetRawTypesTest
+[INFO] Running org.apache.commons.compress.changes.ChangeSetSafeTypesTest
+[INFO] Tests run: 61, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.162 s -- in org.apache.commons.compress.changes.ChangeSetSafeTypesTest
+[INFO] Running org.apache.commons.compress.changes.ChangeTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.changes.ChangeTest
+[INFO] Running org.apache.commons.compress.DetectArchiverTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in org.apache.commons.compress.DetectArchiverTest
+[INFO] Running org.apache.commons.compress.ChainingTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in org.apache.commons.compress.ChainingTest
+[INFO] Running org.apache.commons.compress.IOMethodsTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in org.apache.commons.compress.IOMethodsTest
+[INFO] Running org.apache.commons.compress.ArchiveReadTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in org.apache.commons.compress.ArchiveReadTest
+[INFO] Running org.apache.commons.compress.java.util.jar.Pack200Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.java.util.jar.Pack200Test
+[INFO] Running org.apache.commons.compress.utils.ByteUtilsTest
+[INFO] Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in org.apache.commons.compress.utils.ByteUtilsTest
+[INFO] Running org.apache.commons.compress.utils.CountingStreamTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.utils.CountingStreamTest
+[INFO] Running org.apache.commons.compress.utils.ServiceLoaderIteratorTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.utils.ServiceLoaderIteratorTest
+[INFO] Running org.apache.commons.compress.utils.SetsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.utils.SetsTest
+[INFO] Running org.apache.commons.compress.utils.BoundedSeekableByteChannelInputStreamTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.utils.BoundedSeekableByteChannelInputStreamTest
+[INFO] Running org.apache.commons.compress.utils.MultiReadOnlySeekableByteChannelTest
+[WARNING] Tests run: 19, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.053 s -- in org.apache.commons.compress.utils.MultiReadOnlySeekableByteChannelTest
+[INFO] Running org.apache.commons.compress.utils.ChecksumCalculatingInputStreamTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.commons.compress.utils.ChecksumCalculatingInputStreamTest
+[INFO] Running org.apache.commons.compress.utils.TimeUtilsTest
+[INFO] Tests run: 101, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in org.apache.commons.compress.utils.TimeUtilsTest
+[INFO] Running org.apache.commons.compress.utils.ParsingUtilsTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in org.apache.commons.compress.utils.ParsingUtilsTest
+[INFO] Running org.apache.commons.compress.utils.FixedLengthBlockOutputStreamTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 s -- in org.apache.commons.compress.utils.FixedLengthBlockOutputStreamTest
+[INFO] Running org.apache.commons.compress.utils.FileNameUtilsTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.commons.compress.utils.FileNameUtilsTest
+[INFO] Running org.apache.commons.compress.utils.IOUtilsTest
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in org.apache.commons.compress.utils.IOUtilsTest
+[INFO] Running org.apache.commons.compress.utils.ExactMathTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.utils.ExactMathTest
+[INFO] Running org.apache.commons.compress.utils.ZipSplitReadOnlySeekableByteChannelTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in org.apache.commons.compress.utils.ZipSplitReadOnlySeekableByteChannelTest
+[INFO] Running org.apache.commons.compress.utils.CharsetsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.utils.CharsetsTest
+[INFO] Running org.apache.commons.compress.utils.SeekableInMemoryByteChannelTest
+[WARNING] Tests run: 27, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.021 s -- in org.apache.commons.compress.utils.SeekableInMemoryByteChannelTest
+[INFO] Running org.apache.commons.compress.utils.BitInputStreamTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.apache.commons.compress.utils.BitInputStreamTest
+[INFO] Running org.apache.commons.compress.utils.CharsetNamesTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.utils.CharsetNamesTest
+[INFO] Running org.apache.commons.compress.utils.ChecksumVerifyingInputStreamTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.utils.ChecksumVerifyingInputStreamTest
+[INFO] Running org.apache.commons.compress.utils.OsgiUtilsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.utils.OsgiUtilsTest
+[INFO] Running org.apache.commons.compress.utils.SkipShieldingInputStreamTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.utils.SkipShieldingInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.DeflateTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.commons.compress.compressors.DeflateTest
+[INFO] Running org.apache.commons.compress.compressors.GZipTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in org.apache.commons.compress.compressors.GZipTest
+[INFO] Running org.apache.commons.compress.compressors.pack200.Compress687Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.compressors.pack200.Compress687Test
+[INFO] Running org.apache.commons.compress.compressors.pack200.Pack200UtilsTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in org.apache.commons.compress.compressors.pack200.Pack200UtilsTest
+[INFO] Running org.apache.commons.compress.compressors.FramedSnappyTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.317 s -- in org.apache.commons.compress.compressors.FramedSnappyTest
+[INFO] Running org.apache.commons.compress.compressors.LZMATest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s -- in org.apache.commons.compress.compressors.LZMATest
+[INFO] Running org.apache.commons.compress.compressors.brotli.BrotliCompressorInputStreamTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in org.apache.commons.compress.compressors.brotli.BrotliCompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.Pack200Test
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in org.apache.commons.compress.compressors.Pack200Test
+[INFO] Running org.apache.commons.compress.compressors.xz.XZCompressorInputStreamTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in org.apache.commons.compress.compressors.xz.XZCompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.xz.XZCompressorOutputStreamTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in org.apache.commons.compress.compressors.xz.XZCompressorOutputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.xz.XZUtilsTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.compressors.xz.XZUtilsTest
+[INFO] Running org.apache.commons.compress.compressors.CompressorServiceLoaderTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.compressors.CompressorServiceLoaderTest
+[INFO] Running org.apache.commons.compress.compressors.snappy.SnappyRoundtripTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.921 s -- in org.apache.commons.compress.compressors.snappy.SnappyRoundtripTest
+[INFO] Running org.apache.commons.compress.compressors.snappy.FramedSnappyCompressorInputStreamTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.149 s -- in org.apache.commons.compress.compressors.snappy.FramedSnappyCompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.BZip2UtilsTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.compressors.BZip2UtilsTest
+[INFO] Running org.apache.commons.compress.compressors.deflate64.Deflate64BugsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in org.apache.commons.compress.compressors.deflate64.Deflate64BugsTest
+[INFO] Running org.apache.commons.compress.compressors.deflate64.HuffmanDecoderTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.compressors.deflate64.HuffmanDecoderTest
+[INFO] Running org.apache.commons.compress.compressors.deflate64.Deflate64CompressorInputStreamTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.253 s -- in org.apache.commons.compress.compressors.deflate64.Deflate64CompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.lzma.LZMAUtilsTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.compressors.lzma.LZMAUtilsTest
+[INFO] Running org.apache.commons.compress.compressors.GzipUtilsTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.compressors.GzipUtilsTest
+[INFO] Running org.apache.commons.compress.compressors.bzip2.BZip2Compress651Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.802 s -- in org.apache.commons.compress.compressors.bzip2.BZip2Compress651Test
+[INFO] Running org.apache.commons.compress.compressors.bzip2.PythonTruncatedBzip2Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in org.apache.commons.compress.compressors.bzip2.PythonTruncatedBzip2Test
+[INFO] Running org.apache.commons.compress.compressors.bzip2.Compress686Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in org.apache.commons.compress.compressors.bzip2.Compress686Test
+[INFO] Running org.apache.commons.compress.compressors.bzip2.BlockSortTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in org.apache.commons.compress.compressors.bzip2.BlockSortTest
+[INFO] Running org.apache.commons.compress.compressors.bzip2.BZip2NSelectorsOverflowTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.commons.compress.compressors.bzip2.BZip2NSelectorsOverflowTest
+[INFO] Running org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStreamTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.338 s -- in org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.XZTest
+XZTestCase: HeapMax=32178700288 bytes 30688.0 MB
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s -- in org.apache.commons.compress.compressors.XZTest
+[INFO] Running org.apache.commons.compress.compressors.z.ZCompressorInputStreamTest
+[ERROR] Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.009 s <<< FAILURE! -- in org.apache.commons.compress.compressors.z.ZCompressorInputStreamTest
+[ERROR] org.apache.commons.compress.compressors.z.ZCompressorInputStreamTest.testInvalidMaxCodeSize -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: value=-128 ==> Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.io.IOException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:45)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3180)
+	at org.apache.commons.compress.compressors.z.ZCompressorInputStreamTest.lambda$testInvalidMaxCodeSize$3(ZCompressorInputStreamTest.java:72)
+	at java.base/java.util.stream.Streams$RangeIntSpliterator.forEachRemaining(Streams.java:104)
+	at java.base/java.util.stream.IntPipeline$Head.forEach(IntPipeline.java:617)
+	at org.apache.commons.compress.compressors.z.ZCompressorInputStreamTest.lambda$testInvalidMaxCodeSize$4(ZCompressorInputStreamTest.java:70)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:762)
+	at org.apache.commons.compress.compressors.z.ZCompressorInputStreamTest.testInvalidMaxCodeSize(ZCompressorInputStreamTest.java:70)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.io.IOException: Invalid maxCodeSize in Z header: 0. Must be at least 9.
+	at org.apache.commons.compress.compressors.z.ZCompressorInputStream.<init>(ZCompressorInputStream.java:97)
+	at org.apache.commons.compress.compressors.z.ZCompressorInputStreamTest.lambda$testInvalidMaxCodeSize$1(ZCompressorInputStreamTest.java:72)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 12 more
+
+[INFO] Running org.apache.commons.compress.compressors.deflate.DeflateCompressorOutputStreamTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.compressors.deflate.DeflateCompressorOutputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.deflate.DeflateCompressorInputStreamTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.compressors.deflate.DeflateCompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.deflate.DeflateParametersTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.compressors.deflate.DeflateParametersTest
+[INFO] Running org.apache.commons.compress.compressors.gzip.SubFieldTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.compressors.gzip.SubFieldTest
+[INFO] Running org.apache.commons.compress.compressors.gzip.GzipParametersTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in org.apache.commons.compress.compressors.gzip.GzipParametersTest
+[INFO] Running org.apache.commons.compress.compressors.gzip.GzipCompressorOutputStreamTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in org.apache.commons.compress.compressors.gzip.GzipCompressorOutputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.gzip.GzipCompressorInputStreamTest
+[WARNING] Tests run: 6, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.007 s -- in org.apache.commons.compress.compressors.gzip.GzipCompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.gzip.ExtraFieldTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.compressors.gzip.ExtraFieldTest
+[INFO] Running org.apache.commons.compress.compressors.ZTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.compressors.ZTest
+[INFO] Running org.apache.commons.compress.compressors.zstandard.ZstdCompressorInputStreamTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in org.apache.commons.compress.compressors.zstandard.ZstdCompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.zstandard.ZstdRoundtripTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.apache.commons.compress.compressors.zstandard.ZstdRoundtripTest
+[INFO] Running org.apache.commons.compress.compressors.zstandard.ZstdUtilsTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.compressors.zstandard.ZstdUtilsTest
+[INFO] Running org.apache.commons.compress.compressors.lz4.FramedLZ4CompressorOutputStreamTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.compressors.lz4.FramedLZ4CompressorOutputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.lz4.XXHash32Test
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in org.apache.commons.compress.compressors.lz4.XXHash32Test
+[INFO] Running org.apache.commons.compress.compressors.lz4.BlockLZ4CompressorRoundtripTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.622 s -- in org.apache.commons.compress.compressors.lz4.BlockLZ4CompressorRoundtripTest
+[INFO] Running org.apache.commons.compress.compressors.lz4.BlockLZ4CompressorOutputStreamTest
+[WARNING] Tests run: 20, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.010 s -- in org.apache.commons.compress.compressors.lz4.BlockLZ4CompressorOutputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.lz4.FramedLZ4CompressorInputStreamTest
+[INFO] Tests run: 39, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in org.apache.commons.compress.compressors.lz4.FramedLZ4CompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.lz4.FramedLZ4CompressorRoundtripTest
+[INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.426 s -- in org.apache.commons.compress.compressors.lz4.FramedLZ4CompressorRoundtripTest
+[INFO] Running org.apache.commons.compress.compressors.lz4.FactoryTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.compressors.lz4.FactoryTest
+[INFO] Running org.apache.commons.compress.compressors.lz4.BlockLZ4CompressorInputStreamTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.compressors.lz4.BlockLZ4CompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.DetectCompressorTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in org.apache.commons.compress.compressors.DetectCompressorTest
+[INFO] Running org.apache.commons.compress.compressors.lz77support.ParametersTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.compressors.lz77support.ParametersTest
+[INFO] Running org.apache.commons.compress.compressors.lz77support.AbstractLZ77CompressorInputStreamTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.compressors.lz77support.AbstractLZ77CompressorInputStreamTest
+[INFO] Running org.apache.commons.compress.compressors.lz77support.LZ77CompressorBlockTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.compressors.lz77support.LZ77CompressorBlockTest
+[INFO] Running org.apache.commons.compress.compressors.lz77support.LZ77CompressorTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.compressors.lz77support.LZ77CompressorTest
+[INFO] Running org.apache.commons.compress.compressors.CompressorStreamFactoryRoundtripTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in org.apache.commons.compress.compressors.CompressorStreamFactoryRoundtripTest
+[INFO] Running org.apache.commons.compress.compressors.BZip2Test
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.commons.compress.compressors.BZip2Test
+[INFO] Running org.apache.commons.compress.MemoryLimitExceptionTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.MemoryLimitExceptionTest
+[INFO] Running org.apache.commons.compress.archivers.ListerTest
+[INFO] Tests run: 106, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.137 s -- in org.apache.commons.compress.archivers.ListerTest
+[INFO] Running org.apache.commons.compress.archivers.CpioTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in org.apache.commons.compress.archivers.CpioTest
+[INFO] Running org.apache.commons.compress.archivers.LongPathTest
+[INFO] Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s -- in org.apache.commons.compress.archivers.LongPathTest
+[INFO] Running org.apache.commons.compress.archivers.LongSymLinkTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.LongSymLinkTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipArchiveInputStreamTest
+[INFO] Tests run: 52, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.273 s -- in org.apache.commons.compress.archivers.zip.ZipArchiveInputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipIoUtilTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.040 s -- in org.apache.commons.compress.archivers.zip.ZipIoUtilTest
+[INFO] Running org.apache.commons.compress.archivers.zip.GeneralPurposeBitTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.zip.GeneralPurposeBitTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipShortTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.ZipShortTest
+[INFO] Running org.apache.commons.compress.archivers.zip.Crash_f2efd9eaeb86cda597d07b5e3c3d81363633c2da_Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.Crash_f2efd9eaeb86cda597d07b5e3c3d81363633c2da_Test
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipSplitOutputStreamTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in org.apache.commons.compress.archivers.zip.ZipSplitOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.zip.AsiExtraFieldTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.AsiExtraFieldTest
+[INFO] Running org.apache.commons.compress.archivers.zip.NioZipEncodingTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.zip.NioZipEncodingTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipCompressMethodZstdTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in org.apache.commons.compress.archivers.zip.ZipCompressMethodZstdTest
+[INFO] Running org.apache.commons.compress.archivers.zip.BinaryTreeTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.archivers.zip.BinaryTreeTest
+[INFO] Running org.apache.commons.compress.archivers.zip.FileRandomAccessOutputStreamTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.apache.commons.compress.archivers.zip.FileRandomAccessOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.zip.Maven221MultiVolumeTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s -- in org.apache.commons.compress.archivers.zip.Maven221MultiVolumeTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ExtraFieldUtilsTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.archivers.zip.ExtraFieldUtilsTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipFileTest
+[INFO] Tests run: 48, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s -- in org.apache.commons.compress.archivers.zip.ZipFileTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipEncodingTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in org.apache.commons.compress.archivers.zip.ZipEncodingTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipClassCoverageTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.ZipClassCoverageTest
+[INFO] Running org.apache.commons.compress.archivers.zip.CircularBufferTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.archivers.zip.CircularBufferTest
+[INFO] Running org.apache.commons.compress.archivers.zip.X000A_NTFSTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.archivers.zip.X000A_NTFSTest
+[INFO] Running org.apache.commons.compress.archivers.zip.EncryptedArchiveTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.EncryptedArchiveTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipArchiveOutputStreamTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.ZipArchiveOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipLongTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.ZipLongTest
+[INFO] Running org.apache.commons.compress.archivers.zip.RandomAccessOutputStreamTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in org.apache.commons.compress.archivers.zip.RandomAccessOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.zip.BitStreamTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.BitStreamTest
+[INFO] Running org.apache.commons.compress.archivers.zip.X5455_ExtendedTimestampTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in org.apache.commons.compress.archivers.zip.X5455_ExtendedTimestampTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipEightByteIntegerTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.zip.ZipEightByteIntegerTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ExplodeSupportTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in org.apache.commons.compress.archivers.zip.ExplodeSupportTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipFileIgnoringLocalFileHeaderTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.archivers.zip.ZipFileIgnoringLocalFileHeaderTest
+[INFO] Running org.apache.commons.compress.archivers.zip.PkWareExtraHeaderTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.PkWareExtraHeaderTest
+[INFO] Running org.apache.commons.compress.archivers.zip.DataDescriptorTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.zip.DataDescriptorTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ScatterSampleTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.apache.commons.compress.archivers.zip.ScatterSampleTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipCompressMethodXzTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in org.apache.commons.compress.archivers.zip.ZipCompressMethodXzTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipUtilTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.commons.compress.archivers.zip.ZipUtilTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ScatterZipOutputStreamTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.ScatterZipOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipMemoryFileSystemTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 s -- in org.apache.commons.compress.archivers.zip.ZipMemoryFileSystemTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ZipArchiveEntryTest
+[INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s -- in org.apache.commons.compress.archivers.zip.ZipArchiveEntryTest
+[INFO] Running org.apache.commons.compress.archivers.zip.ParallelScatterZipCreatorTest
+[WARNING] Tests run: 9, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.662 s -- in org.apache.commons.compress.archivers.zip.ParallelScatterZipCreatorTest
+[INFO] Running org.apache.commons.compress.archivers.zip.Zip64ExtendedInformationExtraFieldTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.archivers.zip.Zip64ExtendedInformationExtraFieldTest
+[INFO] Running org.apache.commons.compress.archivers.zip.StreamCompressorTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.zip.StreamCompressorTest
+[INFO] Running org.apache.commons.compress.archivers.zip.SeekableChannelRandomAccessOutputStreamTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s -- in org.apache.commons.compress.archivers.zip.SeekableChannelRandomAccessOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.zip.X7875_NewUnixTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.archivers.zip.X7875_NewUnixTest
+[INFO] Running org.apache.commons.compress.archivers.zip.UTF8ZipFilesTest
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 s -- in org.apache.commons.compress.archivers.zip.UTF8ZipFilesTest
+[INFO] Running org.apache.commons.compress.archivers.JarTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.JarTest
+[INFO] Running org.apache.commons.compress.archivers.cpio.CpioArchiveTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.archivers.cpio.CpioArchiveTest
+[INFO] Running org.apache.commons.compress.archivers.cpio.CpioArchiveEntryTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.archivers.cpio.CpioArchiveEntryTest
+[INFO] Running org.apache.commons.compress.archivers.cpio.CpioArchiveInputStreamTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.archivers.cpio.CpioArchiveInputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.cpio.CpioUtilTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.cpio.CpioUtilTest
+[INFO] Running org.apache.commons.compress.archivers.cpio.CpioArchiveOutputStreamTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.cpio.CpioArchiveOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.memory.MemoryArchiveTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.archivers.memory.MemoryArchiveTest
+[INFO] Running org.apache.commons.compress.archivers.ar.ArArchiveInputStreamTest
+[INFO] Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in org.apache.commons.compress.archivers.ar.ArArchiveInputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.ar.Compress678Test
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s -- in org.apache.commons.compress.archivers.ar.Compress678Test
+[INFO] Running org.apache.commons.compress.archivers.ar.ArArchiveOutputStreamTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.ar.ArArchiveOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.ArchiveServiceLoaderTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.ArchiveServiceLoaderTest
+[INFO] Running org.apache.commons.compress.archivers.ArchiveOutputStreamTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.apache.commons.compress.archivers.ArchiveOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.ArTest
+[WARNING] Tests run: 8, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.004 s -- in org.apache.commons.compress.archivers.ArTest
+[INFO] Running org.apache.commons.compress.archivers.tar.FileTimesIT
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in org.apache.commons.compress.archivers.tar.FileTimesIT
+[INFO] Running org.apache.commons.compress.archivers.tar.TarArchiveInputStreamTest
+[INFO] Tests run: 45, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.351 s -- in org.apache.commons.compress.archivers.tar.TarArchiveInputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.tar.SparseFilesTest
+[WARNING] Tests run: 13, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.188 s -- in org.apache.commons.compress.archivers.tar.SparseFilesTest
+[INFO] Running org.apache.commons.compress.archivers.tar.TarFileTest
+[INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s -- in org.apache.commons.compress.archivers.tar.TarFileTest
+[INFO] Running org.apache.commons.compress.archivers.tar.BigFilesIT
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 57.08 s -- in org.apache.commons.compress.archivers.tar.BigFilesIT
+[INFO] Running org.apache.commons.compress.archivers.tar.TarArchiveEntryTest
+[WARNING] Tests run: 23, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.043 s -- in org.apache.commons.compress.archivers.tar.TarArchiveEntryTest
+[INFO] Running org.apache.commons.compress.archivers.tar.TarMemoryFileSystemTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.apache.commons.compress.archivers.tar.TarMemoryFileSystemTest
+[INFO] Running org.apache.commons.compress.archivers.tar.TarUtilsTest
+[INFO] Tests run: 53, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in org.apache.commons.compress.archivers.tar.TarUtilsTest
+[INFO] Running org.apache.commons.compress.archivers.tar.TarArchiveOutputStreamTest
+[WARNING] Tests run: 32, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 2.040 s -- in org.apache.commons.compress.archivers.tar.TarArchiveOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.sevenz.FolderTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.sevenz.FolderTest
+[INFO] Running org.apache.commons.compress.archivers.sevenz.SevenZOutputFileTest
+[INFO] Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.526 s -- in org.apache.commons.compress.archivers.sevenz.SevenZOutputFileTest
+[INFO] Running org.apache.commons.compress.archivers.sevenz.Compress679Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in org.apache.commons.compress.archivers.sevenz.Compress679Test
+[INFO] Running org.apache.commons.compress.archivers.sevenz.SevenZFileTest
+[INFO] Tests run: 42, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.587 s -- in org.apache.commons.compress.archivers.sevenz.SevenZFileTest
+[INFO] Running org.apache.commons.compress.archivers.sevenz.SevenZMethodConfigurationTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.sevenz.SevenZMethodConfigurationTest
+[INFO] Running org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntryTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.sevenz.SevenZArchiveEntryTest
+[INFO] Running org.apache.commons.compress.archivers.sevenz.CoverageTest
+Analysing /dev/null/not-there
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.sevenz.CoverageTest
+[INFO] Running org.apache.commons.compress.archivers.sevenz.SevenZNativeHeapTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.archivers.sevenz.SevenZNativeHeapTest
+[INFO] Running org.apache.commons.compress.archivers.sevenz.AES256SHA256DecoderTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.sevenz.AES256SHA256DecoderTest
+[INFO] Running org.apache.commons.compress.archivers.ExceptionMessageTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.ExceptionMessageTest
+[INFO] Running org.apache.commons.compress.archivers.TarTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s -- in org.apache.commons.compress.archivers.TarTest
+[INFO] Running org.apache.commons.compress.archivers.arj.ArjArchiveInputStreamTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in org.apache.commons.compress.archivers.arj.ArjArchiveInputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.arj.CoverageTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.arj.CoverageTest
+[INFO] Running org.apache.commons.compress.archivers.SevenZTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.188 s -- in org.apache.commons.compress.archivers.SevenZTest
+[INFO] Running org.apache.commons.compress.archivers.ArchiveStreamFactoryTest
+[INFO] Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in org.apache.commons.compress.archivers.ArchiveStreamFactoryTest
+[INFO] Running org.apache.commons.compress.archivers.jar.JarMarkerTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.archivers.jar.JarMarkerTest
+[INFO] Running org.apache.commons.compress.archivers.jar.ExpandApkTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.361 s -- in org.apache.commons.compress.archivers.jar.ExpandApkTest
+[INFO] Running org.apache.commons.compress.archivers.jar.JarArchiveOutputStreamTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in org.apache.commons.compress.archivers.jar.JarArchiveOutputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.examples.ParameterizedExpanderTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in org.apache.commons.compress.archivers.examples.ParameterizedExpanderTest
+[INFO] Running org.apache.commons.compress.archivers.examples.SevenZArchiverTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in org.apache.commons.compress.archivers.examples.SevenZArchiverTest
+[INFO] Running org.apache.commons.compress.archivers.examples.ExpanderTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.108 s -- in org.apache.commons.compress.archivers.examples.ExpanderTest
+[INFO] Running org.apache.commons.compress.archivers.examples.ParameterizedArchiverTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in org.apache.commons.compress.archivers.examples.ParameterizedArchiverTest
+[INFO] Running org.apache.commons.compress.archivers.DumpTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.apache.commons.compress.archivers.DumpTest
+[INFO] Running org.apache.commons.compress.archivers.dump.DumpArchiveUtilTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.dump.DumpArchiveUtilTest
+[INFO] Running org.apache.commons.compress.archivers.dump.TapeInputStreamTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.archivers.dump.TapeInputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.dump.DumpArchiveInputStreamTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in org.apache.commons.compress.archivers.dump.DumpArchiveInputStreamTest
+[INFO] Running org.apache.commons.compress.archivers.dump.DumpArchiveEntryTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.archivers.dump.DumpArchiveEntryTest
+[INFO] Running org.apache.commons.compress.archivers.ZipTest
+[INFO] Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.259 s -- in org.apache.commons.compress.archivers.ZipTest
+[INFO] Running org.apache.commons.compress.ArchiveUtilsTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.ArchiveUtilsTest
+[INFO] Running org.apache.commons.compress.harmony.pack200.PackingOptionsTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.374 s -- in org.apache.commons.compress.harmony.pack200.PackingOptionsTest
+[INFO] Running org.apache.commons.compress.harmony.pack200.Compress626Test
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.harmony.pack200.Compress626Test
+[INFO] Running org.apache.commons.compress.harmony.pack200.RunCodecTest
+[WARNING] Tests run: 12, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.004 s -- in org.apache.commons.compress.harmony.pack200.RunCodecTest
+[INFO] Running org.apache.commons.compress.harmony.pack200.Compress628Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.harmony.pack200.Compress628Test
+[INFO] Running org.apache.commons.compress.harmony.pack200.ArchiveTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.461 s -- in org.apache.commons.compress.harmony.pack200.ArchiveTest
+[INFO] Running org.apache.commons.compress.harmony.pack200.PopulationCodecTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.harmony.pack200.PopulationCodecTest
+[INFO] Running org.apache.commons.compress.harmony.pack200.CodecEncodingTest
+[INFO] Tests run: 240, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s -- in org.apache.commons.compress.harmony.pack200.CodecEncodingTest
+[INFO] Running org.apache.commons.compress.harmony.pack200.BHSDCodecTest
+[INFO] Tests run: 116, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 s -- in org.apache.commons.compress.harmony.pack200.BHSDCodecTest
+[INFO] Running org.apache.commons.compress.harmony.pack200.CodecTest
+[INFO] Tests run: 287, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s -- in org.apache.commons.compress.harmony.pack200.CodecTest
+[INFO] Running org.apache.commons.compress.harmony.pack200.NewAttributeBandsTest
+[INFO] Tests run: 46, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in org.apache.commons.compress.harmony.pack200.NewAttributeBandsTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.SegmentUtilsTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.harmony.unpack200.SegmentUtilsTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.ArchiveTest
+[INFO] Tests run: 31, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.466 s -- in org.apache.commons.compress.harmony.unpack200.ArchiveTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.CodeAttributeTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in org.apache.commons.compress.harmony.unpack200.CodeAttributeTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.CPUTF8Test
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.harmony.unpack200.CPUTF8Test
+[INFO] Running org.apache.commons.compress.harmony.unpack200.ClassBandsTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.harmony.unpack200.ClassBandsTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.SegmentOptionsTest
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.harmony.unpack200.SegmentOptionsTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.BandSetTest
+[WARNING] Tests run: 6, Failures: 0, Errors: 0, Skipped: 5, Time elapsed: 0 s -- in org.apache.commons.compress.harmony.unpack200.BandSetTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.AttributeLayoutTest
+[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.apache.commons.compress.harmony.unpack200.AttributeLayoutTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.bytecode.ClassFileEntryTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.harmony.unpack200.bytecode.ClassFileEntryTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.bytecode.ConstantPoolTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.harmony.unpack200.bytecode.ConstantPoolTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.bytecode.ByteCodeTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.apache.commons.compress.harmony.unpack200.bytecode.ByteCodeTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.NewAttributeBandsTest
+[INFO] Tests run: 44, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in org.apache.commons.compress.harmony.unpack200.NewAttributeBandsTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.Codec_decodeInts_OutOfMemoryErrorTest
+[WARNING] Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0 s -- in org.apache.commons.compress.harmony.unpack200.Codec_decodeInts_OutOfMemoryErrorTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.BcBandsTest
+[WARNING] Tests run: 25, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.010 s -- in org.apache.commons.compress.harmony.unpack200.BcBandsTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.AttributeLayoutMapTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.harmony.unpack200.AttributeLayoutMapTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.ICTupleTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 s -- in org.apache.commons.compress.harmony.unpack200.ICTupleTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.SegmentConstantPoolArrayCacheTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in org.apache.commons.compress.harmony.unpack200.SegmentConstantPoolArrayCacheTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.SegmentTest
+[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in org.apache.commons.compress.harmony.unpack200.SegmentTest
+[INFO] Running org.apache.commons.compress.harmony.unpack200.SegmentConstantPoolTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.apache.commons.compress.harmony.unpack200.SegmentConstantPoolTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   ZCompressorInputStreamTest.testInvalidMaxCodeSize:70->lambda$testInvalidMaxCodeSize$4:70->lambda$testInvalidMaxCodeSize$3:72 value=-128 ==> Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.io.IOException>
+[INFO] 
+[ERROR] Tests run: 2905, Failures: 1, Errors: 0, Skipped: 28
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:47 min
+[INFO] Finished at: 2025-06-12T07:10:11Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.5.2:test (default-test) on project commons-compress: There are test failures.
+[ERROR] 
+[ERROR] See /src/commons-compress/target/surefire-reports for the individual test results.
+[ERROR] See dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+/dev/null/not-there doesn't exist or is a directory

@@ -1,0 +1,8 @@
+import java
+
+from File file
+where
+   {% for relative_path in relative_paths %}
+   file.getAbsolutePath().matches("%{{relative_path}}") {% if not loop.last %}or{% endif %}
+   {% endfor %}
+select file.getAbsolutePath() as abs_path, file.getBaseName() as base_name

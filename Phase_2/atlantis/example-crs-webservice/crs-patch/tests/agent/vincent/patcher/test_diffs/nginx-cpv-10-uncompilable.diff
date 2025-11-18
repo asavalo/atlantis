@@ -1,0 +1,29 @@
+diff --git a/src/http/modules/ngx_http_userid_filter_module.c b/src/http/modules/ngx_http_userid_filter_module.c
+index 07163a0..8605f1b 100644
+--- a/src/http/modules/ngx_http_userid_filter_module.c
++++ b/src/http/modules/ngx_http_userid_filter_module.c
+@@ -339,8 +339,10 @@ ngx_http_userid_get_uid(ngx_http_request_t *r, ngx_http_userid_conf_t *conf)
+     }
+ 
+     cookie = ngx_http_parse_multi_header_lines(r, r->headers_in.cookie,
+-                                               &conf->name, &ctx->cookie);
+-    if (cookie == NULL) {
++                                             &conf->name, &ctx->cookie);
++    if (cookie == NULL || ctx->cookie.len == 0) {
++        return ctx;
++    }
+         return ctx;
+     }
+ 
+@@ -443,6 +445,11 @@ ngx_http_userid_set_uid(ngx_http_request_t *r, ngx_http_userid_ctx_t *ctx,
+         }
+ 
+     } else {
++        if (ctx->cookie.len < 22) {
++            ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
++                         "userid cookie length is less than 22 bytes");
++            return NGX_ERROR;
++        }
+         p = ngx_cpymem(p, ctx->cookie.data, 22);
+         *p++ = conf->mark;
+         *p++ = '=';

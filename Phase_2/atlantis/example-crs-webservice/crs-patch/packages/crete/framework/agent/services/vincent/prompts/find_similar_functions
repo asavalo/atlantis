@@ -1,0 +1,9 @@
+Your target function is `^FUNC_NAME^`, which is implemented as follows:
+
+^FUNC_CODE^
+
+You have to find ^RESULT_COUNT^ functions that are the most similar with `^FUNC_NAME^`.
+
+Here is the source code to inspect:
+
+^SOURCE_CODE^

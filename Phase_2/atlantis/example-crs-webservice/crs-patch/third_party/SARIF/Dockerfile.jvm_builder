@@ -1,0 +1,72 @@
+#################################################################################
+## Build SARIF-BUILDER deps
+#################################################################################
+
+FROM ghcr.io/aixcc-finals/base-builder-jvm:v1.1.0 AS sarif-builder-jvm-builder
+
+RUN apt-get update && \
+    apt-get install -y openjdk-21-jdk libssl1.1 curl cargo
+
+## CodeQL
+ENV CODEQL_INSTALL_DIR=
+ENV CODEQL_VERSION=v2.20.4
+
+RUN cd /tmp && \
+    wget https://github.com/github/codeql-cli-binaries/releases/download/$CODEQL_VERSION/codeql-linux64.zip --no-check-certificate && \
+    unzip codeql-linux64.zip && \
+    mv codeql /opt/codeql
+
+## Joern
+ENV SBT_DIR=/opt/sbt
+ENV POC_GEN_DIR=/app/llm-poc-gen
+ENV JOERN_DIR=/opt/joern
+COPY joern $JOERN_DIR
+
+RUN cd /tmp && \
+    wget https://github.com/sbt/sbt/releases/download/v1.8.0/sbt-1.8.0.zip --no-check-certificate && \
+    unzip sbt-1.8.0.zip -d $SBT_DIR && \
+    cd $JOERN_DIR && \
+    SBT_OPTS="-Xmx12G -XX:+UseG1GC -Dsbt.ci=true" $SBT_DIR/sbt/bin/sbt -DskipTests=true clean update stage
+
+RUN cd $JOERN_DIR/joern-cli && \
+    rm -rf frontends/csharpsrc2cpg frontends/c2cpg \
+        frontends/ghidra2cpg frontends/gosrc2cpg \
+        frontends/jimple2cpg frontends/jssrc2cpg \
+        frontends/kotlin2cpg frontends/php2cpg \
+        frontends/pysrc2cpg frontends/rubysrc2cpg \
+        frontends/swiftsrc2cpg frontends/x2cpg
+
+
+
+#################################################################################
+## SARIF-BUILDER-JVM setup
+#################################################################################
+FROM ghcr.io/aixcc-finals/base-builder-jvm:v1.1.0
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+
+# Git config
+RUN git config --global user.email "atlanta@team.com"
+RUN git config --global user.name "Team Atlanta"
+
+## Copy pre-built CodeQL
+ENV CODEQL_INSTALL_DIR=/opt/codeql
+
+COPY --from=sarif-builder-jvm-builder /opt/codeql $CODEQL_INSTALL_DIR
+
+RUN ln -s $CODEQL_INSTALL_DIR/codeql /usr/local/bin/codeql
+
+RUN codeql pack download codeql/java-queries:codeql-java && \
+    codeql pack download codeql/cpp-queries:codeql-cpp && \
+    codeql resolve qlpacks
+
+## Copy pre-built Joern
+ENV SBT_DIR=/opt/sbt
+ENV POC_GEN_DIR=/app/llm-poc-gen
+ENV JOERN_DIR=/opt/joern
+
+COPY --from=sarif-builder-jvm-builder /opt/joern $JOERN_DIR
+
+ENV PATH=$PATH:$JOERN_DIR/joern-cli

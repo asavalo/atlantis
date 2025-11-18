@@ -1,0 +1,6 @@
+2078:    private enum VerificationResult {
+2079:        PASS,
+2080:        NOT_PROVIDED,
+2081:        NOT_COMPUTED,
+2082:        FAIL
+2083:    }

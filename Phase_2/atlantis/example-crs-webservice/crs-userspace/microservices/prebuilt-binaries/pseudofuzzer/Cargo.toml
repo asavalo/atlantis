@@ -1,0 +1,28 @@
+[package]
+name = "libfuzzer"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "fuzzer"
+path = "src/lib.rs"
+crate-type = ["staticlib"]
+
+[features]
+default = ["no_std"]
+no_std = []
+
+[profile.dev]
+debug = true 
+opt-level = 0
+panic = "abort"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+debug = true
+panic = "abort"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }

@@ -1,0 +1,6 @@
+---
+required: ["init_lib", "pragma"]
+should_exist: ["init_lib", "pragma"]
+init_lib: /root/data/fuzz_root/init_lib
+pragma: /root/data/fuzz_root/pragma
+db: sqlite

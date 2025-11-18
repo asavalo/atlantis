@@ -1,0 +1,682 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Extract the buggy function from the report:\n\nThis
+      is a test report with wrong format.\n        **File Path**: `/src/mock-c/mock.c`\n        **Buggy
+      Function**: `target_1`\n        ","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"BuggyFunction","description":"","parameters":{"properties":{"file_path":{"description":"Path
+      to the file where the bug is located","type":"string"},"function_name":{"description":"Name
+      of the function where the bug is located","type":"string"}},"required":["file_path","function_name"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '639'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.7
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BX0Sn9E6NUNX5FKeTWBU9le6zdrRA","created":1747206305,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_d8864f8b6b","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"file_path\":\"/src/mock-c/mock.c\",\"function_name\":\"target_1\"}","name":"BuggyFunction"},"id":"call_ZAvzOG8XOCxtoi01EDzA6HHT","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":30,"prompt_tokens":108,"total_tokens":138,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '777'
+      content-type:
+      - application/json
+      date:
+      - Wed, 14 May 2025 07:05:06 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 93f88b91bd7f05f1-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Wed, 14 May 2025 07:05:06 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '627'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '631'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999953'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_5ec302a91dfdb00178928bb17a63cf11
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 35e922f62c99b6cdf1ab30f6709e3433
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - ff81130f-3130-4a5d-987d-221342e8dd7e
+      x-litellm-key-spend:
+      - '589.297869750001'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '1.933'
+      x-litellm-response-cost:
+      - '0.00057'
+      x-litellm-response-duration-ms:
+      - '757.851'
+      x-litellm-version:
+      - 1.68.0
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999953'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Extract the buggy function from the report:\n\nThis
+      is a test report with wrong format.\n        **File Path**: `/src/mock-c/mock.c`\n        **Buggy
+      Function**: `target_1`\n        ","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"BuggyFunction","description":"","parameters":{"properties":{"file_path":{"description":"Path
+      to the file where the bug is located","type":"string"},"function_name":{"description":"Name
+      of the function where the bug is located","type":"string"}},"required":["file_path","function_name"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '639'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.7
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BX1E2SRmtSwmuT2lkI8rGVEXPA3TJ","created":1747209234,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_d8864f8b6b","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"file_path\":\"/src/mock-c/mock.c\",\"function_name\":\"target_1\"}","name":"BuggyFunction"},"id":"call_RB1OefldZ1oSsOPGeH1r405Z","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":30,"prompt_tokens":108,"total_tokens":138,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '777'
+      content-type:
+      - application/json
+      date:
+      - Wed, 14 May 2025 07:53:54 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 93f8d30fee6512ce-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Wed, 14 May 2025 07:53:54 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '605'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '610'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999953'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_e84f34765a09d392498656d6af43b29b
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 10aef790213528f4f78cce619d723e6a
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 14195c79-30c1-468a-ba49-0f3bdb491e94
+      x-litellm-key-spend:
+      - '589.4439529000015'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '2.167'
+      x-litellm-response-cost:
+      - '0.00057'
+      x-litellm-response-duration-ms:
+      - '742.911'
+      x-litellm-version:
+      - 1.68.0
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999953'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Extract the buggy function from the report:\n\nThis
+      is a test report with wrong format.\n        **File Path**: `/src/mock-c/mock.c`\n        **Buggy
+      Function**: `target_1`\n        ","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"BuggyFunction","description":"","parameters":{"properties":{"file_path":{"description":"Path
+      to the file where the bug is located","type":"string"},"function_name":{"description":"Name
+      of the function where the bug is located","type":"string"}},"required":["file_path","function_name"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '639'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.7
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BXODSzNVqYrjQ1TIgQTn9YibJ9Xk1","created":1747297610,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_d8864f8b6b","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"file_path\":\"/src/mock-c/mock.c\",\"function_name\":\"target_1\"}","name":"BuggyFunction"},"id":"call_XYpA4FfhCNyyv3P2Jh2UjF8f","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":30,"prompt_tokens":108,"total_tokens":138,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '777'
+      content-type:
+      - application/json
+      date:
+      - Thu, 15 May 2025 08:26:51 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 940140b33ccb05b0-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Thu, 15 May 2025 08:26:51 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '949'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '956'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999953'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_80478180c13a2674d801aca7c53a780e
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - ae0e3eb16c000e028c1ba7d89b78d9b4;o=1
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 05748ab1-7c97-4c15-abd6-e042f3f585d5
+      x-litellm-key-spend:
+      - '589.7921612600014'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '1.872'
+      x-litellm-response-cost:
+      - '0.00057'
+      x-litellm-response-duration-ms:
+      - '1123.343'
+      x-litellm-version:
+      - 1.68.0
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999953'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Extract the buggy function from the report:\n\nThis
+      is a test report with wrong format.\n        **File Path**: `/src/mock-c/mock.c`\n        **Buggy
+      Function**: `target_1`\n        ","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"BuggyFunction","description":"","parameters":{"properties":{"file_path":{"description":"Path
+      to the file where the bug is located","type":"string"},"function_name":{"description":"Name
+      of the function where the bug is located","type":"string"}},"required":["file_path","function_name"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '639'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.7
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BXUQcXwzie4fQvgbtIcLurfwoyxmC","created":1747321490,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_d8864f8b6b","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"file_path\":\"/src/mock-c/mock.c\",\"function_name\":\"target_1\"}","name":"BuggyFunction"},"id":"call_z4aobBlB3ksgoNXNLxZR0gm5","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":29,"prompt_tokens":108,"total_tokens":137,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '777'
+      content-type:
+      - application/json
+      date:
+      - Thu, 15 May 2025 15:04:51 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 940387b30d2305be-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Thu, 15 May 2025 15:04:51 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '853'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '867'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999953'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_7a2bb1f50320808ecdf4c43cce6d1908
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 4106d3ad2e675daf4fb937ec501bd40a
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 75391485-318c-4ad3-b15a-fc8b9a31b9bf
+      x-litellm-key-spend:
+      - '590.0533586200013'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '2.412'
+      x-litellm-response-cost:
+      - '0.00056'
+      x-litellm-response-duration-ms:
+      - '1117.057'
+      x-litellm-version:
+      - 1.68.0
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999953'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"messages":[{"content":"Extract the buggy function from the report:\n\nThis
+      is a test report with wrong format.\n        **File Path**: `/src/mock-c/mock.c`\n        **Buggy
+      Function**: `target_1`\n        ","role":"user"}],"model":"gpt-4o","temperature":1.0,"tool_choice":"required","tools":[{"type":"function","function":{"name":"BuggyFunction","description":"","parameters":{"properties":{"file_path":{"description":"Path
+      to the file where the bug is located","type":"string"},"function_name":{"description":"Name
+      of the function where the bug is located","type":"string"}},"required":["file_path","function_name"],"type":"object"}}}]}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '639'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.66.3
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.66.3
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.7
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BXYvXI1yOMRwNhAN4KIUGDkwxEqk8","created":1747338783,"model":"gpt-4o-2024-08-06","object":"chat.completion","system_fingerprint":"fp_d8864f8b6b","choices":[{"finish_reason":"tool_calls","index":0,"message":{"content":null,"role":"assistant","tool_calls":[{"function":{"arguments":"{\"file_path\":\"/src/mock-c/mock.c\",\"function_name\":\"target_1\"}","name":"BuggyFunction"},"id":"call_BCgkevELxTKJnRtAQqIdgfKB","type":"function"}],"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":30,"prompt_tokens":108,"total_tokens":138,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '777'
+      content-type:
+      - application/json
+      date:
+      - Thu, 15 May 2025 19:53:03 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 94052de28f7a07c5-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Thu, 15 May 2025 19:53:03 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '595'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '608'
+      llm_provider-x-ratelimit-limit-requests:
+      - '10000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '30000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '9999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '29999953'
+      llm_provider-x-ratelimit-reset-requests:
+      - 6ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_aa81915073a05552f3123391823cc25a
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - a40d2a7ec519a9988a53442f68a9c7f4;o=1
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - 86ba5e31-c659-4894-8e13-67035847f204
+      x-litellm-key-spend:
+      - '590.3337604800012'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o
+      x-litellm-model-id:
+      - 22f6c5335d58b28e5b3bbeef3a9baecba9edd8651de8ecab80330a018fea3271
+      x-litellm-overhead-duration-ms:
+      - '2.449'
+      x-litellm-response-cost:
+      - '0.00057'
+      x-litellm-response-duration-ms:
+      - '813.005'
+      x-litellm-version:
+      - 1.68.0
+      x-ratelimit-limit-requests:
+      - '10000'
+      x-ratelimit-limit-tokens:
+      - '30000000'
+      x-ratelimit-remaining-requests:
+      - '9999'
+      x-ratelimit-remaining-tokens:
+      - '29999953'
+    status:
+      code: 200
+      message: OK
+version: 1

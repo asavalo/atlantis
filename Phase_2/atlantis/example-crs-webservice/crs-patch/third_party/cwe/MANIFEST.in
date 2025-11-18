@@ -1,0 +1,2 @@
+include *.txt
+global-include *.pickle.gz *.json

@@ -1,0 +1,49 @@
+--- a/src/os/unix/ngx_linux_sendfile_chain.c
++++ b/src/os/unix/ngx_linux_sendfile_chain.c
+@@ -59,24 +59,38 @@
+     }
+ 
+     buf = ngx_palloc(c->pool, ngx_file_size(&sb));
+-
+     if (buf == NULL) {
+         return NGX_ERROR;
+     }
+ 
+-    if (read( file->file->fd, buf, ngx_file_size(&sb)) == NGX_ERROR) {
++    if (read(file->file->fd, buf, ngx_file_size(&sb)) == NGX_ERROR) {
+         return NGX_ERROR;
+     }
+ 
+     lseek(file->file->fd, 0, SEEK_SET);
+ 
+     rev = ngx_alloc(NGX_SENDFILE_R_MAXSIZE, c->log);
+-
+-    if ( rev == NULL ) {
+-        return NGX_ERROR;
+-    }
+-
+-    for ( int i = file->file_pos + size - 1, j = 0; i >= file->file_pos; i--, j++) {
++    if (rev == NULL) {
++        return NGX_ERROR;
++    }
++
++    {
++        off_t file_len = ngx_file_size(&sb);
++        off_t remain = file_len - file->file_pos;
++        if (remain < 0) {
++            remain = 0;
++        }
++
++        if (size > (size_t)remain) {
++            size = (size_t)remain;
++        }
++
++        if (size > NGX_SENDFILE_R_MAXSIZE) {
++            size = NGX_SENDFILE_R_MAXSIZE;
++        }
++    }
++
++    for (int i = file->file_pos + size - 1, j = 0; i >= (int)file->file_pos; i--, j++) {
+         rev[j] = buf[i];
+     }
+ 

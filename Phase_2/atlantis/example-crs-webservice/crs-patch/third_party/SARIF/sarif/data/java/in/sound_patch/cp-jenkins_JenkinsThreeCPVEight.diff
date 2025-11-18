@@ -1,0 +1,14 @@
+--- a/src/main/java/io/jenkins/plugins/toyplugin/AuthAction.java
++++ b/src/main/java/io/jenkins/plugins/toyplugin/AuthAction.java
+@@ -225,9 +225,9 @@
+                 writer.print("{\"status\": \"failure\"}");
+                 return;
+             }
+-            String searchFilter = "(&(objectClass=inetOrgPerson)(cn=" + username + ")(userPassword=" + key + "))";
++            String searchFilter = "(&(objectClass=inetOrgPerson)(cn={0})(userPassword={1}))";
+             NamingEnumeration<SearchResult> results = dirContext.search("ou=users,dc=example,dc=com", searchFilter,
+-                    controls);
++                    new Object[]{username, key}, controls);
+             if (results.hasMore()) {
+                 writer.print("{\"status\": \"success\"}");
+             } else {

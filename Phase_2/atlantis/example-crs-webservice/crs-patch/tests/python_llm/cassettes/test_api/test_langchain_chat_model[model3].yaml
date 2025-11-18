@@ -1,0 +1,76 @@
+interactions:
+- request:
+    body: '{"messages":[{"content":"Say \"Hello!\"","role":"user"}],"model":"gemini/gemini-2.0-flash","max_tokens":10,"temperature":1.0}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '125'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-4874a5f3-6152-4324-bb10-ae90d1cdaf0c","created":1748981435,"model":"gemini-2.0-flash","object":"chat.completion","system_fingerprint":null,"choices":[{"finish_reason":"stop","index":0,"message":{"content":"Hello!\n","role":"assistant","tool_calls":null,"function_call":null}}],"usage":{"completion_tokens":3,"prompt_tokens":4,"total_tokens":7,"completion_tokens_details":null,"prompt_tokens_details":{"audio_tokens":null,"cached_tokens":null}},"vertex_ai_grounding_metadata":[],"vertex_ai_safety_results":[],"vertex_ai_citation_metadata":[]}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '557'
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Jun 2025 20:10:36 GMT
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - 2f9b3844008c94ab830120894ae97042
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - c0735f4f-8a08-4253-bc4a-4ac660baa557
+      x-litellm-key-spend:
+      - '5633.291598970033'
+      x-litellm-model-api-base:
+      - https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent
+      x-litellm-model-group:
+      - gemini/gemini-2.0-flash
+      x-litellm-model-id:
+      - de29e17a3c1a591e8772af0708a3a512ebc27c1f758181a46af82b171ea9b4be
+      x-litellm-response-cost:
+      - '1.6e-06'
+      x-litellm-version:
+      - 1.71.1
+    status:
+      code: 200
+      message: OK
+version: 1

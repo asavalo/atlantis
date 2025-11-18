@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "OS Command Injection",
+    "loc_file_full_name": "XSLTProcessor.java",
+    "loc_file_short_name": "XSLTProcessor.java",
+    "loc_line": 262,
+    "loc_function_full_name": "org.htmlunit.javascript.host.xml.XSLTProcessor.transform",
+    "loc_function_short_name": "transform"
+}

@@ -1,0 +1,21 @@
+import cpp
+import safe_function
+
+string getClassIfLLVMFuzzer(SafeFunction f) {
+    if f.getName() = "LLVMFuzzerTestOneInput" 
+    then result = f.getALinkTarget().getBinary().getBaseName()
+    else result = "UNKNOWN"
+}
+
+from SafeFunction f
+where 
+  f.getFile().getAbsolutePath().matches("%{{ file_path }}%") and
+  {{ start_line }} <= f.getBlock().getLocation().getEndLine() and
+  f.getBlock().getLocation().getStartLine() <= {{end_line}}
+select 
+  f as func,
+  f.getSafeAbsolutePath() as file_abs,
+  f.getSafeSignature() as sig,
+  f.getSafeStartLineString() as start_line,
+  f.getSafeEndLineString() as end_line,
+  getClassIfLLVMFuzzer(f) as class_name

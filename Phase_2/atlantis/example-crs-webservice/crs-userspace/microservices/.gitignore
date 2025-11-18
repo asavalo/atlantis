@@ -1,0 +1,6 @@
+/build
+*.egg-info
+*_pb2.py
+*_pb2.pyi
+/env
+__pycache__

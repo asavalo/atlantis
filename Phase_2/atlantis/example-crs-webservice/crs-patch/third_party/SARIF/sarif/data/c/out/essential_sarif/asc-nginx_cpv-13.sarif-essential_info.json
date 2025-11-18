@@ -1,0 +1,9 @@
+{
+    "ruleId": "SEGV",
+    "message": "AddressSanitizer: SEGV /src/nginx/src/mail/ngx_mail_pop3_handler.c:377:42 in ngx_mail_pop3_pass",
+    "loc_file_full_name": "/src/nginx/src/mail/ngx_mail_pop3_handler.c",
+    "loc_file_short_name": "ngx_mail_pop3_handler.c",
+    "loc_line": 377,
+    "loc_function_full_name": "ngx_mail_pop3_pass",
+    "loc_function_short_name": "ngx_mail_pop3_pass"
+}

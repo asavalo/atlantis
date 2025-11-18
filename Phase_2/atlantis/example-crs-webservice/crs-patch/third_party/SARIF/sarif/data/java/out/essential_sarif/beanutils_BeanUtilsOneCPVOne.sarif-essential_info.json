@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "File read/write hook path: jazzer",
+    "loc_file_full_name": "BeanUtilsOne.java",
+    "loc_file_short_name": "BeanUtilsOne.java",
+    "loc_line": 79,
+    "loc_function_full_name": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz",
+    "loc_function_short_name": "fuzz"
+}

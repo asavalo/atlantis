@@ -1,0 +1,5 @@
+21:typedef struct {
+22:    WSAOVERLAPPED    ovlp;
+23:    ngx_event_t     *event;
+24:    int              error;
+25:} ngx_event_ovlp_t;

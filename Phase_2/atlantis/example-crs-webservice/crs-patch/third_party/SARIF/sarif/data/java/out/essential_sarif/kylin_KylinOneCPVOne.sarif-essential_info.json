@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "OS Command Injection",
+    "loc_file_full_name": "CliCommandExecutor.java",
+    "loc_file_short_name": "CliCommandExecutor.java",
+    "loc_line": 130,
+    "loc_function_full_name": "org.apache.kylin.common.util.CliCommandExecutor.runNativeCommand",
+    "loc_function_short_name": "runNativeCommand"
+}

@@ -1,0 +1,56 @@
+interactions:
+- request:
+    body: '{"blob": "jazze\u0001\u0000\u0000\u0000", "harness_name": "OssFuzz1"}'
+    headers: {}
+    method: POST
+    uri: tool://OssFuzzEnvironment/_run_pov
+  response: !!python/tuple
+  - "+ FUZZER=OssFuzz1\r\n+ shift\r\n+ '[' '!' -v TESTCASE ']'\r\n+ TESTCASE=/testcase\r\n+
+    '[' '!' -f /testcase ']'\r\n+ export RUN_FUZZER_MODE=interactive\r\n+ RUN_FUZZER_MODE=interactive\r\n+
+    export FUZZING_ENGINE=libfuzzer\r\n+ FUZZING_ENGINE=libfuzzer\r\n+ export SKIP_SEED_CORPUS=1\r\n+
+    SKIP_SEED_CORPUS=1\r\n+ run_fuzzer OssFuzz1 -runs=100 /testcase\r\nvm.mmap_rnd_bits
+    = 28\r\n/out/OssFuzz1 -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase < /dev/null\r\nOpenJDK
+    64-Bit Server VM warning: Option CriticalJNINatives was deprecated in version
+    16.0 and will likely be removed in a future release.\r\nOpenJDK 64-Bit Server
+    VM warning: Sharing is only supported for boot loader classes because bootstrap
+    classpath has been appended\r\nINFO: Loaded 272 hooks from com.code_intelligence.jazzer.runtime.TraceCmpHooks\r\nINFO:
+    Loaded 5 hooks from com.code_intelligence.jazzer.runtime.TraceDivHooks\r\nINFO:
+    Loaded 2 hooks from com.code_intelligence.jazzer.runtime.TraceIndirHooks\r\nINFO:
+    Loaded 4 hooks from com.code_intelligence.jazzer.runtime.NativeLibHooks\r\nINFO:
+    Loaded 2 hooks from com.code_intelligence.jazzer.sanitizers.ClojureLangHooks\r\nINFO:
+    Loaded 5 hooks from com.code_intelligence.jazzer.sanitizers.Deserialization\r\nINFO:
+    Loaded 5 hooks from com.code_intelligence.jazzer.sanitizers.ExpressionLanguageInjection\r\nINFO:
+    Loaded 32 hooks from com.code_intelligence.jazzer.sanitizers.FilePathTraversal\r\nINFO:
+    Loaded 70 hooks from com.code_intelligence.jazzer.sanitizers.LdapInjection\r\nINFO:
+    Loaded 46 hooks from com.code_intelligence.jazzer.sanitizers.NamingContextLookup\r\nINFO:
+    Loaded 1 hooks from com.code_intelligence.jazzer.sanitizers.OsCommandInjection\r\nINFO:
+    Loaded 48 hooks from com.code_intelligence.jazzer.sanitizers.ReflectiveCall\r\nINFO:
+    Loaded 8 hooks from com.code_intelligence.jazzer.sanitizers.RegexInjection\r\nINFO:
+    Loaded 16 hooks from com.code_intelligence.jazzer.sanitizers.RegexRoadblocks\r\nINFO:
+    Loaded 12 hooks from com.code_intelligence.jazzer.sanitizers.ScriptEngineInjection\r\nINFO:
+    Loaded 3 hooks from com.code_intelligence.jazzer.sanitizers.ServerSideRequestForgery\r\nINFO:
+    Loaded 19 hooks from com.code_intelligence.jazzer.sanitizers.SqlInjection\r\nINFO:
+    Loaded 6 hooks from com.code_intelligence.jazzer.sanitizers.XPathInjection\r\nINFO:
+    Instrumented OssFuzz1 (took 21 ms, size +17%)\r\nINFO: using inputs from: /testcase\r\nINFO:
+    found LLVMFuzzerCustomMutator (0x7f8872371a00). Disabling -len_control by default.\r\nINFO:
+    libFuzzer ignores flags that start with '--'\r\nINFO: Running with entropic power
+    schedule (0xFF, 100).\r\nINFO: Seed: 62350357\r\nINFO: Loaded 1 modules   (512
+    inline 8-bit counters): 512 [0x563434adf4b0, 0x563434adf6b0), \r\nINFO: Loaded
+    1 PC tables (512 PCs): 512 [0x563434aa8730,0x563434aaa730), \r\njazzer: Running
+    1 inputs 100 time(s) each.\r\nRunning: /testcase\r\nINFO: Instrumented com.aixcc.mock_java.App
+    (took 2 ms, size +13%)\r\n\r\n== Java Exception: com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical:
+    OS Command Injection\r\nExecuting OS commands with attacker-controlled data can
+    lead to remote code execution.\r\n\tat com.code_intelligence.jazzer.sanitizers.OsCommandInjection.processImplStartHook(OsCommandInjection.java:63)\r\n\tat
+    java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1110)\r\n\tat java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1073)\r\n\tat
+    com.aixcc.mock_java.App.executeCommand(App.java:17)\r\n\tat OssFuzz1.fuzzerTestOneInput(OssFuzz1.java:13)\r\nDEDUP_TOKEN:
+    da92647768f77bec\r\n== libFuzzer crashing input ==\r\nreproducer_path='.'; Java
+    reproducer written to ./Crash_a2450695a3964c3c16971128ffc8cab9c67f0d75.java\r\n\r\nsubprocess
+    command returned a non-zero exit status: 77\n"
+  - 'INFO:__main__:Running: docker run --privileged --shm-size=2g --platform linux/amd64
+    --rm -i -e HELPER=True -e ARCHITECTURE=x86_64 -v /home/haein/aixcc/crete/packages/python_oss_fuzz/.oss_fuzz/build/out/aixcc/jvm/mock-java:/out
+    -v /tmp/tmpk8bqagof:/testcase -t ghcr.io/aixcc-finals/base-runner:v1.2.1 reproduce
+    OssFuzz1 -runs=100.
+
+    '
+  - false
+version: 1

@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueHigh",
+    "message": "SQL Injection",
+    "loc_file_full_name": "UserNameAction.java",
+    "loc_file_short_name": "UserNameAction.java",
+    "loc_line": 74,
+    "loc_function_full_name": "io.jenkins.plugins.toyplugin.UserNameAction.doGetName",
+    "loc_function_short_name": "doGetName"
+}

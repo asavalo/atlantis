@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-buffer-overflow",
+    "message": "AddressSanitizer: heap-buffer-overflow /src/nginx/src/core/ngx_string.c:26:14 in ngx_strlow",
+    "loc_file_full_name": "/src/nginx/src/core/ngx_string.c",
+    "loc_file_short_name": "ngx_string.c",
+    "loc_line": 26,
+    "loc_function_full_name": "ngx_strlow",
+    "loc_function_short_name": "ngx_strlow"
+}

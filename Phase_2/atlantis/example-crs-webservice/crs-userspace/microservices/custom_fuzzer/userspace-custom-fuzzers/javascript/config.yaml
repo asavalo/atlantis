@@ -1,0 +1,19 @@
+fuzzilli:
+  targets:
+    - quickjs
+#    - spidermonkey
+    - njs
+  src_path: "/src"
+  oss_fuzz_path: "/oss-fuzz"
+  build_path: "/out"
+  corpus_path: "/root/fuzzilli/fuzz_root/corpus" 
+  corpus_files:
+    - "*.js"
+  crashes_path: "/root/fuzzilli/fuzz_root/crashes"
+  env_vars:
+    - "CORES" # comma separated cores
+    - "CP_NAME"
+    - "TARGET_NAME"
+  build_cmd: "bash -c '/root/fuzzilli/build.sh'"
+  fuzz_cmd: "bash -c '/root/fuzzilli/run.sh'"
+  type: "custom"

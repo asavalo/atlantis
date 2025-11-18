@@ -1,0 +1,9 @@
+Your patch segments in the previous patch report have resulted in the following diff.
+
+```
+^DIFF^
+```
+
+Now the program does not crash anymore with your patch, but it failed internal tests that diagnose the existing functionality.
+
+Please generate a patch that fixes the given bug while maintaining original functionality and provide me with a new patch report.

@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "File read/write hook path: /tmp/plugins/../../home/jazzer-traversal",
+    "loc_file_full_name": "PluginManager.java",
+    "loc_file_short_name": "PluginManager.java",
+    "loc_line": 1640,
+    "loc_function_full_name": "hudson.PluginManager.doPerformUpload",
+    "loc_function_short_name": "doPerformUpload"
+}

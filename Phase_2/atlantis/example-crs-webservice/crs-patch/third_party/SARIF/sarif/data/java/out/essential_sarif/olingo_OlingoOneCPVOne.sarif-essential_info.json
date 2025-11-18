@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueMedium",
+    "message": "Server Side Request Forgery (SSRF)",
+    "loc_file_full_name": "OlingoOne.java",
+    "loc_file_short_name": "OlingoOne.java",
+    "loc_line": 183,
+    "loc_function_full_name": "com.aixcc.olingo.harnesses.one.OlingoOne.fuzz",
+    "loc_function_short_name": "fuzz"
+}

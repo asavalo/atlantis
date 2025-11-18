@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  crs-sarif:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: crs-sarif:latest
+    ports:
+      - "4321:80"
+    container_name: crs-sarif
+    environment:
+      LITELLM_KEY: ${LITELLM_KEY}
+    privileged: true
+    # security_opt:
+    #   - seccomp:unconfined
+    env_file:
+      - path: .env.crs
+        required: true
+      - path: .env.crs_test
+        required: false
+    volumes:
+      - ${CRS_SARIF_HOST_VOLUME}:${CRS_SARIF_DOCKER_VOLUME}
+    depends_on:
+      - redis
+    networks:
+      - crs-network
+    # command: ["tail", "-f", "/dev/null"]
+
+  redis:
+    image: redis:latest
+    volumes:
+      - redis_data:/data
+    networks:
+      - crs-network
+
+networks:
+  crs-network:
+    driver: bridge
+
+volumes:
+  redis_data: 

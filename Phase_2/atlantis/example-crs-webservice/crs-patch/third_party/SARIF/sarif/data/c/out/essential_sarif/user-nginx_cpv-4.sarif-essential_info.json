@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-buffer-overflow",
+    "message": "AddressSanitizer: heap-buffer-overflow /src/nginx/src/http/modules/ngx_http_dav_module.c:980:9 in ngx_http_dav_copy_tree_file",
+    "loc_file_full_name": "/src/nginx/src/http/modules/ngx_http_dav_module.c",
+    "loc_file_short_name": "ngx_http_dav_module.c",
+    "loc_line": 980,
+    "loc_function_full_name": "ngx_http_dav_copy_tree_file",
+    "loc_function_short_name": "ngx_http_dav_copy_tree_file"
+}

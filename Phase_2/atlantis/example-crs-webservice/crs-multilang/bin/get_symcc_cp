@@ -1,0 +1,49 @@
+#!/bin/bash
+
+LOCKFILE=/var/lock/get_symcc_cp.lock
+exec {FD}<>$LOCKFILE
+
+echo "[*] Acquiring lock"
+flock $FD
+
+if [ -e /out/get_symcc_done.txt ]; then
+    echo "[*] get_symcc is already performed. Early exiting."
+    exit 1
+fi
+
+TARBALL_DIR=${TARBALL_DIR:-/tarballs}
+LOCAL_TARBALL_DIR="/tarballs"
+mkdir -p $LOCAL_TARBALL_DIR
+wait_for_file() {
+    if [ "$TARBALL_DIR" != "/tarballs" ]; then
+        local filepath="$TARBALL_DIR/$1"
+        while [ ! -e "$filepath" ]; do
+            echo "[*] Waiting for $filepath to be created..."
+            sleep 5
+        done
+    fi
+}
+
+rsync_with_retry() {
+    local source="$1"
+    local destination="$2"
+    if [[ "$source" == "$destination" ]]; then
+        return 0
+    fi
+    while true; do
+        rsync -a "$source" "$destination"
+        if [ $? -eq 0 ]; then
+            break
+        else
+            sleep 5
+        fi
+    done
+}
+
+wait_for_file "symcc.done"
+if [ -e $TARBALL_DIR/symcc.tar.gz ]; then 
+    rsync_with_retry $TARBALL_DIR/symcc.tar.gz $LOCAL_TARBALL_DIR/symcc.tar.gz
+    tar --use-compress-program=pigz -xf $LOCAL_TARBALL_DIR/symcc.tar.gz -C /out/
+fi
+
+touch /out/get_symcc_done.txt

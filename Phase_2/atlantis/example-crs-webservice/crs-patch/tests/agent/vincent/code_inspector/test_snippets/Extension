@@ -1,0 +1,76 @@
+39:/**
+40: * Marks a field, a method, or a class for automatic discovery, so that Hudson can locate
+41: * implementations of {@link ExtensionPoint}s automatically.
+42: *
+43: * <p>
+44: * (In contrast, in earlier Hudson, the registration was manual.)
+45: *
+46: * <p>
+47: * In a simplest case, put this on your class, and Hudson will create an instance of it
+48: * and register it to the appropriate {@link ExtensionList}.
+49: *
+50: * <p>
+51: * If you'd like Hudson to call
+52: * a factory method instead of a constructor, put this annotation on your static factory
+53: * method. Hudson will invoke it and if the method returns a non-null instance, it'll be
+54: * registered. The return type of the method is used to determine which {@link ExtensionList}
+55: * will get the instance.
+56: *
+57: * Finally, you can put this annotation on a static field if the field contains a reference
+58: * to an instance that you'd like to register.
+59: *
+60: * <p>
+61: * This is the default way of having your implementations auto-registered to Hudson,
+62: * but Hudson also supports arbitrary DI containers for hosting your implementations.
+63: * See {@link ExtensionFinder} for more details.
+64: *
+65: * @author Kohsuke Kawaguchi
+66: * @since 1.286
+67: * @see <a href="http://sezpoz.java.net/">SezPoz</a>
+68: * @see ExtensionFinder
+69: * @see ExtensionList
+70: */
+71:@Indexable
+72:@Retention(RUNTIME)
+73:@Target({TYPE, FIELD, METHOD})
+74:@Documented
+75:public @interface Extension {
+76:    /**
+77:     * Used for sorting extensions.
+78:     *
+79:     * Extensions will be sorted in the descending order of the ordinal. In other words,
+80:     * the extensions with the highest numbers will be chosen first.
+81:     * This is a rather poor approach to the problem, so its use is generally discouraged.
+82:     *
+83:     * @since 1.306
+84:     */
+85:    double ordinal() default 0;
+86:
+87:    /**
+88:     * If an extension is optional, don't log any class loading errors when reading it.
+89:     * @since 1.358
+90:     */
+91:    boolean optional() default false;
+92:
+93:    /**
+94:     * Marks whether this extension works with dynamic loading of a plugin.
+95:     *
+96:     * <p>
+97:     * "Yes" indicates an explicit sign-off from the developer indicating this component supports that.
+98:     * Similarly, "No" indicates that this extension is known not to support it, which forces Jenkins
+99:     * not to offer dynamic loading as an option.
+100:     *
+101:     * <p>
+102:     * The "MayBe" value indicates that there's no such explicit sign-off. So the dynamic loading may or may not
+103:     * work.
+104:     *
+105:     * <p>
+106:     * If your plugin contains any extension that has dynamic loadability set to NO, then Jenkins
+107:     * will prompt the user to restart Jenkins to have the plugin take effect. If every component
+108:     * is marked as YES, then Jenkins will simply dynamic load the plugin without asking the user.
+109:     * Otherwise, Jenkins will ask the user if he wants to restart, or go ahead and dynamically deploy.
+110:     *
+111:     * @since 1.442
+112:     */
+113:    YesNoMaybe dynamicLoadable() default MAYBE;
+114:}

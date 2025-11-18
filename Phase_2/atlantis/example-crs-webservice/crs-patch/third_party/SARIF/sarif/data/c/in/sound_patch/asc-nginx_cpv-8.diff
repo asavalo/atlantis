@@ -1,0 +1,17 @@
+--- a/src/mail/ngx_mail_pop3_handler.c
++++ b/src/mail/ngx_mail_pop3_handler.c
+@@ -329,12 +329,13 @@
+ 
+     arg = s->args.elts;
+     s->login.len = arg[0].len;
+-    s->login.data = ngx_pnalloc(c->pool, 100);
++    s->login.data = ngx_pnalloc(c->pool, s->login.len + 1);
+     if (s->login.data == NULL) {
+         return NGX_ERROR;
+     }
+ 
+     ngx_memcpy(s->login.data, arg[0].data, s->login.len);
++    s->login.data[s->login.len] = '\0';
+ 
+     ngx_log_debug1(NGX_LOG_DEBUG_MAIL, c->log, 0,
+                    "pop3 login: \"%V\"", &s->login);

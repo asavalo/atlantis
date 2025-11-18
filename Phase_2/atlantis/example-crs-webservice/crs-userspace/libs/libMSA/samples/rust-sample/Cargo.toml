@@ -1,0 +1,12 @@
+[package]
+name = "rust-sample"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libmsa = { path = "./libmsa" }
+prost = "0.13"
+tokio = { version = "1", features = ["full"] }
+
+[build-dependencies]
+prost-build = "0.13"

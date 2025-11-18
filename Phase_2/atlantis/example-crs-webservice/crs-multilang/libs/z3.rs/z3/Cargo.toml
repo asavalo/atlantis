@@ -1,0 +1,37 @@
+[package]
+name = "z3"
+version = "0.12.1"
+authors = ["Graydon Hoare <graydon@pobox.com>", "Bruce Mitchener <bruce.mitchener@gmail.com>", "Nick Fitzgerald <fitzgen@gmail.com>"]
+
+description = "High-level rust bindings for the Z3 SMT solver from Microsoft Research"
+license = "MIT"
+keywords = ["FFI", "SMT", "satisfiability", "solver"]
+categories = ["api-bindings"]
+readme = "README.md"
+documentation = "https://docs.rs/z3/"
+homepage = "https://github.com/prove-rs/z3.rs"
+repository = "https://github.com/prove-rs/z3.rs.git"
+edition = "2018"
+
+
+[features]
+default = []
+bundled = ["z3-sys/bundled"]
+vcpkg = ["z3-sys/vcpkg"]
+
+# This is a legacy feature here for short term compatibility.
+static-link-z3 = ["z3-sys/bundled", "z3-sys/deprecated-static-link-z3"]
+
+[dependencies]
+log = "0.4"
+
+# optional dependencies
+num = "0.4"
+
+[dev-dependencies]
+env_logger = "0.11"
+semver = "1"
+
+[dependencies.z3-sys]
+path = "../z3-sys"
+version = "0.8"

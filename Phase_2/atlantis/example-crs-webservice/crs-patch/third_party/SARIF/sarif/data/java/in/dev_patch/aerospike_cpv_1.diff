@@ -1,0 +1,447 @@
+diff --git a/client/src/com/aerospike/client/Bin.java b/client/src/com/aerospike/client/Bin.java
+index d311df38..7850e020 100644
+--- a/client/src/com/aerospike/client/Bin.java
++++ b/client/src/com/aerospike/client/Bin.java
+@@ -240,35 +240,6 @@ public final class Bin {
+ 		this.value = value;
+ 	}
+ 
+-	/**
+-	 * Create bin with an object value. This is the slowest of the Bin constructors because the type
+-	 * must be determined using multiple "instanceof" checks. If the object type is unrecognized,
+-	 * the default java serializer is used.
+-	 * <p>
+-	 * To disable this constructor, set {@link com.aerospike.client.Value#DisableSerializer} to true.
+-	 *
+-	 * @param name		bin name, current limit is 15 characters.
+-	 * @param value		bin value
+-	 */
+-	public Bin(String name, Object value) {
+-		this.name = name;
+-		this.value = Value.get(value);
+-	}
+-
+-	/**
+-	 * Create bin with a blob value.  The value will be java serialized.
+-	 * This method is faster than the bin object constructor because the blob is converted
+-	 * directly instead of using multiple "instanceof" type checks with a blob default.
+-	 * <p>
+-	 * To disable this method, set {@link com.aerospike.client.Value#DisableSerializer} to true.
+-	 *
+-	 * @param name		bin name, current limit is 15 characters.
+-	 * @param value		bin value
+-	 */
+-	public static Bin asBlob(String name, Object value) {
+-		return new Bin(name, Value.getAsBlob(value));
+-	}
+-
+ 	/**
+ 	 * Create bin with a null value. This is useful for bin deletions within a record.
+ 	 *
+diff --git a/client/src/com/aerospike/client/Value.java b/client/src/com/aerospike/client/Value.java
+index 992cce70..e35d3eaf 100644
+--- a/client/src/com/aerospike/client/Value.java
++++ b/client/src/com/aerospike/client/Value.java
+@@ -16,8 +16,6 @@
+  */
+ package com.aerospike.client;
+ 
+-import java.io.ByteArrayOutputStream;
+-import java.io.ObjectOutputStream;
+ import java.nio.ByteBuffer;
+ import java.util.Arrays;
+ import java.util.List;
+@@ -52,24 +50,6 @@ public abstract class Value {
+ 	 */
+ 	public static boolean UseBoolBin = true;
+ 
+-	/**
+-	 * Should default object serializer be disabled. If true, an exception will be thrown when
+-	 * a default object serialization is attempted. Default object serialization is triggered
+-	 * when a bin constructed by {@link com.aerospike.client.Bin#Bin(String, Object)} or
+-	 * {@link com.aerospike.client.Bin#asBlob(String, Object)} is used in a write command
+-	 * with an unrecognized object type.
+-	 */
+-	public static boolean DisableSerializer = false;
+-
+-	/**
+-	 * Should default object deserializer be disabled. If true, an exception will be thrown when
+-	 * a default object deserialization is attempted. Default object serialization is triggered
+-	 * when serialized data is read/parsed from the server. DisableDeserializer is separate from
+-	 * DisableSerializer because there may be cases when no new serialization is allowed, but
+-	 * existing serialized objects need to be supported.
+-	 */
+-	public static boolean DisableDeserializer = false;
+-
+ 	/**
+ 	 * Should the client return a map when {@link com.aerospike.client.cdt.MapReturnType#KEY_VALUE}
+ 	 * is specified in a map read operation and the server returns a list of key/value pairs.
+@@ -241,13 +221,6 @@ public abstract class Value {
+ 		return (value == null)? NullValue.INSTANCE : new ValueArray(value);
+ 	}
+ 
+-	/**
+-	 * Get blob or null value instance.
+-	 */
+-	public static Value getAsBlob(Object value) {
+-		return (value == null)? NullValue.INSTANCE : new BlobValue(value);
+-	}
+-
+ 	/**
+ 	 * Get GeoJSON or null value instance.
+ 	 */
+@@ -349,7 +322,7 @@ public abstract class Value {
+ 			return new BytesValue(bb.array());
+ 		}
+ 
+-		return new BlobValue(value);
++		throw new AerospikeException("Unsupported type: " + value.getClass().getName());
+ 	}
+ 
+ 	/**
+@@ -1260,88 +1233,6 @@ public abstract class Value {
+ 		}
+ 	}
+ 
+-	/**
+-	 * Blob value.
+-	 */
+-	public static final class BlobValue extends Value {
+-		private final Object object;
+-		private byte[] bytes;
+-
+-		public BlobValue(Object object) {
+-			this.object = object;
+-		}
+-
+-		@Override
+-		public int estimateSize() throws AerospikeException.Serialize {
+-			bytes = serialize(object);
+-			return bytes.length;
+-		}
+-
+-		public static byte[] serialize(Object val) {
+-			if (DisableSerializer) {
+-				throw new AerospikeException("Object serializer has been disabled");
+-			}
+-
+-			try (ByteArrayOutputStream bstream = new ByteArrayOutputStream()) {
+-				try (ObjectOutputStream ostream = new ObjectOutputStream(bstream)) {
+-					ostream.writeObject(val);
+-				}
+-				return bstream.toByteArray();
+-			}
+-			catch (Throwable e) {
+-				throw new AerospikeException.Serialize(e);
+-			}
+-		}
+-
+-		@Override
+-		public int write(byte[] buffer, int offset) {
+-			System.arraycopy(bytes, 0, buffer, offset, bytes.length);
+-			return bytes.length;
+-		}
+-
+-		@Override
+-		public void pack(Packer packer) {
+-			packer.packBlob(object);
+-		}
+-
+-		@Override
+-		public void validateKeyType() {
+-			throw new AerospikeException(ResultCode.PARAMETER_ERROR, "Invalid key type: jblob");
+-		}
+-
+-		@Override
+-		public int getType() {
+-			return ParticleType.JBLOB;
+-		}
+-
+-		@Override
+-		public Object getObject() {
+-			return object;
+-		}
+-
+-		@Override
+-		public LuaValue getLuaValue(LuaInstance instance) {
+-			return LuaString.valueOf(bytes);
+-		}
+-
+-		@Override
+-		public String toString() {
+-			return Buffer.bytesToHexString(bytes);
+-		}
+-
+-		@Override
+-		public boolean equals(Object other) {
+-			return (other != null &&
+-				this.getClass().equals(other.getClass()) &&
+-				this.object.equals(((BlobValue)other).object));
+-		}
+-
+-		@Override
+-		public int hashCode() {
+-			return object.hashCode();
+-		}
+-	}
+-
+ 	/**
+ 	 * GeoJSON value.
+ 	 */
+diff --git a/client/src/com/aerospike/client/command/Buffer.java b/client/src/com/aerospike/client/command/Buffer.java
+index fca43ec9..964f88e7 100644
+--- a/client/src/com/aerospike/client/command/Buffer.java
++++ b/client/src/com/aerospike/client/command/Buffer.java
+@@ -16,8 +16,6 @@
+  */
+ package com.aerospike.client.command;
+ 
+-import java.io.ByteArrayInputStream;
+-import java.io.ObjectInputStream;
+ import java.math.BigInteger;
+ import java.nio.charset.StandardCharsets;
+ import java.util.Arrays;
+@@ -69,9 +67,6 @@ public final class Buffer {
+ 		case ParticleType.BLOB:
+ 			return Arrays.copyOfRange(buf, offset, offset+len);
+ 
+-		case ParticleType.JBLOB:
+-			return Buffer.bytesToObject(buf, offset, len);
+-
+ 		case ParticleType.GEOJSON:
+ 			return Buffer.bytesToGeoJSON(buf, offset, len);
+ 
+@@ -297,25 +292,6 @@ public final class Buffer {
+ 		return sb.toString();
+ 	}
+ 
+-	public static Object bytesToObject(byte[] buf, int offset, int length) {
+-		if (length <= 0) {
+-			return null;
+-		}
+-
+-		if (Value.DisableDeserializer) {
+-			throw new AerospikeException.Serialize("Object deserializer has been disabled");
+-		}
+-
+-		try (ByteArrayInputStream bastream = new ByteArrayInputStream(buf, offset, length)) {
+-			try (ObjectInputStream oistream = new ObjectInputStream(bastream)) {
+-				return oistream.readObject();
+-			}
+-		}
+-		catch (Throwable e) {
+-			throw new AerospikeException.Serialize(e);
+-		}
+-	}
+-
+ 	public static Value bytesToLongValue(byte[] buf, int offset, int len) {
+ 		long val = 0;
+ 
+diff --git a/client/src/com/aerospike/client/command/ParticleType.java b/client/src/com/aerospike/client/command/ParticleType.java
+index f8e21356..5b1bd749 100644
+--- a/client/src/com/aerospike/client/command/ParticleType.java
++++ b/client/src/com/aerospike/client/command/ParticleType.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright 2012-2021 Aerospike, Inc.
++ * Copyright 2012-2023 Aerospike, Inc.
+  *
+  * Portions may be licensed to Aerospike, Inc. under one or more contributor
+  * license agreements WHICH ARE COMPATIBLE WITH THE APACHE LICENSE, VERSION 2.0.
+@@ -17,23 +17,14 @@
+ package com.aerospike.client.command;
+ 
+ /**
+- * Bin type for byte[] values.
++ * Server particle types.
+  */
+ public final class ParticleType {
+-	// Server particle types. Unsupported types are commented out.
+ 	public static final int NULL = 0;
+ 	public static final int INTEGER = 1;
+ 	public static final int DOUBLE = 2;
+ 	public static final int STRING = 3;
+ 	public static final int BLOB = 4;
+-	//public static final int TIMESTAMP = 5;
+-	//public static final int DIGEST = 6;
+-	public static final int JBLOB = 7;
+-	//public static final int CSHARP_BLOB = 8;
+-	//public static final int PYTHON_BLOB = 9;
+-	//public static final int RUBY_BLOB = 10;
+-	//public static final int PHP_BLOB = 11;
+-	//public static final int ERLANG_BLOB = 12;
+ 	public static final int BOOL = 17;
+ 	public static final int HLL = 18;
+ 	public static final int MAP = 19;
+diff --git a/client/src/com/aerospike/client/lua/LuaInstance.java b/client/src/com/aerospike/client/lua/LuaInstance.java
+index b05de0bd..4efdce08 100644
+--- a/client/src/com/aerospike/client/lua/LuaInstance.java
++++ b/client/src/com/aerospike/client/lua/LuaInstance.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright 2012-2021 Aerospike, Inc.
++ * Copyright 2012-2023 Aerospike, Inc.
+  *
+  * Portions may be licensed to Aerospike, Inc. under one or more contributor
+  * license agreements WHICH ARE COMPATIBLE WITH THE APACHE LICENSE, VERSION 2.0.
+@@ -171,10 +171,6 @@ public final class LuaInstance {
+ 			System.arraycopy(buf, offset, blob, 0, len);
+ 			return new LuaBytes(this, blob);
+ 
+-		case ParticleType.JBLOB:
+-			Object object = Buffer.bytesToObject(buf, offset, len);
+-			return new LuaJavaBlob(object);
+-
+ 		case ParticleType.LIST: {
+ 			LuaUnpacker unpacker = new LuaUnpacker(this, buf, offset, len);
+ 			return unpacker.unpackList();
+diff --git a/client/src/com/aerospike/client/lua/LuaJavaBlob.java b/client/src/com/aerospike/client/lua/LuaJavaBlob.java
+deleted file mode 100644
+index 47a76a5a..00000000
+--- a/client/src/com/aerospike/client/lua/LuaJavaBlob.java
++++ /dev/null
+@@ -1,30 +0,0 @@
+-/*
+- * Copyright 2012-2021 Aerospike, Inc.
+- *
+- * Portions may be licensed to Aerospike, Inc. under one or more contributor
+- * license agreements WHICH ARE COMPATIBLE WITH THE APACHE LICENSE, VERSION 2.0.
+- *
+- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+- * use this file except in compliance with the License. You may obtain a copy of
+- * the License at http://www.apache.org/licenses/LICENSE-2.0
+- *
+- * Unless required by applicable law or agreed to in writing, software
+- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+- * License for the specific language governing permissions and limitations under
+- * the License.
+- */
+-package com.aerospike.client.lua;
+-
+-import org.luaj.vm2.LuaUserdata;
+-
+-public final class LuaJavaBlob extends LuaUserdata implements LuaData {
+-
+-	public LuaJavaBlob(Object object) {
+-		super(object);
+-	}
+-
+-	public Object luaToObject() {
+-		return m_instance;
+-	}
+-}
+diff --git a/client/src/com/aerospike/client/lua/LuaUnpacker.java b/client/src/com/aerospike/client/lua/LuaUnpacker.java
+index 1a61a07e..b4c8b37c 100644
+--- a/client/src/com/aerospike/client/lua/LuaUnpacker.java
++++ b/client/src/com/aerospike/client/lua/LuaUnpacker.java
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright 2012-2021 Aerospike, Inc.
++ * Copyright 2012-2023 Aerospike, Inc.
+  *
+  * Portions may be licensed to Aerospike, Inc. under one or more contributor
+  * license agreements WHICH ARE COMPATIBLE WITH THE APACHE LICENSE, VERSION 2.0.
+@@ -46,11 +46,6 @@ public class LuaUnpacker extends Unpacker<LuaValue> {
+ 		return new LuaList(instance, value);
+ 	}
+ 
+-	@Override
+-	protected LuaValue getJavaBlob(Object value) {
+-		return new LuaJavaBlob(value);
+-	}
+-
+ 	@Override
+ 	protected LuaBytes getBlob(byte[] value) {
+ 		return new LuaBytes(instance, value);
+diff --git a/client/src/com/aerospike/client/util/Packer.java b/client/src/com/aerospike/client/util/Packer.java
+index c4548a7a..a61b449f 100644
+--- a/client/src/com/aerospike/client/util/Packer.java
++++ b/client/src/com/aerospike/client/util/Packer.java
+@@ -27,7 +27,6 @@ import java.util.UUID;
+ 
+ import com.aerospike.client.AerospikeException;
+ import com.aerospike.client.Value;
+-import com.aerospike.client.Value.BlobValue;
+ import com.aerospike.client.cdt.MapOrder;
+ import com.aerospike.client.command.Buffer;
+ import com.aerospike.client.command.ParticleType;
+@@ -206,13 +205,6 @@ public final class Packer {
+ 		packByteArray(b, offset, length);
+ 	}
+ 
+-	public void packBlob(Object val) {
+-		byte[] bytes = BlobValue.serialize(val);
+-		packByteArrayBegin(bytes.length + 1);
+-		packByte(ParticleType.JBLOB);
+-		packByteArray(bytes, 0, bytes.length);
+-	}
+-
+ 	public void packGeoJSON(String val) {
+ 		byte[] buffer = Buffer.stringToUtf8(val);
+ 		packByteArrayBegin(buffer.length + 1);
+@@ -323,7 +315,7 @@ public final class Packer {
+ 			return;
+ 		}
+ 
+-		packBlob(obj);
++		throw new AerospikeException("Unsupported type: " + obj.getClass().getName());
+ 	}
+ 
+ 	public void packByteBuffer(ByteBuffer bb) {
+diff --git a/client/src/com/aerospike/client/util/Unpacker.java b/client/src/com/aerospike/client/util/Unpacker.java
+index c5021cbd..74d5cdef 100644
+--- a/client/src/com/aerospike/client/util/Unpacker.java
++++ b/client/src/com/aerospike/client/util/Unpacker.java
+@@ -16,9 +16,7 @@
+  */
+ package com.aerospike.client.util;
+ 
+-import java.io.ByteArrayInputStream;
+ import java.io.IOException;
+-import java.io.ObjectInputStream;
+ import java.nio.ByteBuffer;
+ import java.util.AbstractMap;
+ import java.util.ArrayList;
+@@ -234,21 +232,6 @@ public abstract class Unpacker<T> {
+ 			val = getString(Buffer.utf8ToString(buffer, offset, count));
+ 			break;
+ 
+-		case ParticleType.JBLOB:
+-			if (Value.DisableDeserializer) {
+-				throw new AerospikeException.Serialize("Object deserializer has been disabled");
+-			}
+-
+-			try (ByteArrayInputStream bastream = new ByteArrayInputStream(buffer, offset, count)) {
+-				try (ObjectInputStream oistream = new ObjectInputStream(bastream)) {
+-					val = getJavaBlob(oistream.readObject());
+-				}
+-			}
+-			catch (Throwable e) {
+-				throw new AerospikeException.Serialize(e);
+-			}
+-			break;
+-
+ 		case ParticleType.GEOJSON:
+ 			val = getGeoJSON(Buffer.utf8ToString(buffer, offset, count));
+ 			break;
+@@ -451,7 +434,6 @@ public abstract class Unpacker<T> {
+ 
+ 	protected abstract T getMap(Map<T,T> value);
+ 	protected abstract T getList(List<T> value);
+-	protected abstract T getJavaBlob(Object value);
+ 	protected abstract T getBlob(byte[] value);
+ 	protected abstract T getString(String value);
+ 	protected abstract T getLong(long value);
+@@ -498,11 +480,6 @@ public abstract class Unpacker<T> {
+ 			return value;
+ 		}
+ 
+-		@Override
+-		protected Object getJavaBlob(Object value) {
+-			return value;
+-		}
+-
+ 		@Override
+ 		protected Object getBlob(byte[] value) {
+ 			return value;

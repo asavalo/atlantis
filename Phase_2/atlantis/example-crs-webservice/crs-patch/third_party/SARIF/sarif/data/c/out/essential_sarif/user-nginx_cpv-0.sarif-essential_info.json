@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-buffer-overflow",
+    "message": "AddressSanitizer: heap-buffer-overflow /src/nginx/src/core/ngx_string.c:1330:14 in ngx_decode_base64_internal",
+    "loc_file_full_name": "/src/nginx/src/core/ngx_string.c",
+    "loc_file_short_name": "ngx_string.c",
+    "loc_line": 1330,
+    "loc_function_full_name": "ngx_decode_base64_internal",
+    "loc_function_short_name": "ngx_decode_base64_internal"
+}

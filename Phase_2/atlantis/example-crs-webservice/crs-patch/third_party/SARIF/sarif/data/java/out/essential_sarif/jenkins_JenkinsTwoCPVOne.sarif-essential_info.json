@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "OS Command Injection",
+    "loc_file_full_name": "UtilMain.java",
+    "loc_file_short_name": "UtilMain.java",
+    "loc_line": 194,
+    "loc_function_full_name": "io.jenkins.plugins.UtilPlug.UtilMain.createUtils",
+    "loc_function_short_name": "createUtils"
+}

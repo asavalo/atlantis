@@ -1,0 +1,87 @@
+
+# stack/compose.yaml  (trimmed to two services)
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11435:11434"
+    environment:
+      - OLLAMA_KEEP_ALIVE=1h
+    command: ["serve"]
+
+  llm-gateway:
+    build:
+      context: ./services/llm-gateway
+      dockerfile: Dockerfile
+    environment:
+      - OLLAMA_URL=http://ollama:11434
+      - OLLAMA_MODEL=llama3:8b
+    depends_on:
+      - ollama
+    ports:
+      - "8080:8080"
+
+  atlantis:
+    build:
+      context: ../atlantis/example-crs-webservice
+      dockerfile: Dockerfile
+    environment:
+      - LLM_PROVIDER=ollama
+      - LLM_GATEWAY_URL=http://llm-gateway:8080
+      - OLLAMA_MODEL=llama3:8b
+      - CAPI_URL=http://capi:8000
+      #- CAPI_URL=http://host.docker.internal:8000
+#    extra_hosts: 
+#      - "host.docker.internal:host-gateway"
+    command: ["tail","-f","/dev/null"]  
+    depends_on:
+      - llm-gateway
+      # uncomment when you wire cAPI in the stack
+      # - capi
+    ports:
+      - "9000:9000"   # only if you run it as a web service      
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  capi:
+    build:
+      context: ../capi
+      dockerfile: Dockerfile
+    env_file:
+      - ../capi/env
+    # IMPORTANT: no bind mounts (no volumes: ../capi:/code), that caused /code perms issues
+    user: "0:0"        # keeps us clear of any lingering perms
+    expose:
+      - "8000"         # internal only; Atlantis talks over the network
+    restart: unless-stopped
+    environment:
+      - APP_MODULE=stack-capi
+    command: ["python","-m","uvicorn","${APP_MODULE:-competition_api.main:app}","--host","0.0.0.0","--port","8000"]
+    ports:
+      - "8001:8000"
+
+#  healthcheck:
+#    test: ["CMD-SHELL", "wget -qO- http://localhost:8000/docs >/dev/null 2>&1"]
+#    interval: 10s
+#    timeout: 3s
+#    retries: 5
+#    start_period: 5s
+
+
+
+
+
+
+  capi-webui:
+    build:
+      context: ../webui
+      dockerfile: Dockerfile
+      args:
+        VITE_CAPI_URL: http://localhost:8001
+    ports:
+      - "8082:80"
+    restart: unless-stopped
+networks:
+  default:  # This defines the network
+    name: stack_stack_default
+    external: true 

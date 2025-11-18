@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-buffer-overflow",
+    "message": "AddressSanitizer: heap-buffer-overflow /src/fuzz/../cp-user-itoa/mock_vp.c:24:14 in itoa",
+    "loc_file_full_name": "/src/fuzz/../cp-user-itoa/mock_vp.c",
+    "loc_file_short_name": "mock_vp.c",
+    "loc_line": 24,
+    "loc_function_full_name": "itoa",
+    "loc_function_short_name": "itoa"
+}

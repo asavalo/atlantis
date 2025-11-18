@@ -1,0 +1,9 @@
+{
+    "ruleId": "stack-buffer-overflow",
+    "message": "AddressSanitizer: stack-buffer-overflow /src/mock-c/mock.c:11:7 in target_1",
+    "loc_file_full_name": "/src/mock-c/mock.c",
+    "loc_file_short_name": "mock.c",
+    "loc_line": 11,
+    "loc_function_full_name": "target_1",
+    "loc_function_short_name": "target_1"
+}

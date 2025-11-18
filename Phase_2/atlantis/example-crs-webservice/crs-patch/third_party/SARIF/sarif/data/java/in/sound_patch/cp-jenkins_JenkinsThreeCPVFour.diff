@@ -1,0 +1,18 @@
+--- a/src/main/java/io/jenkins/plugins/coverage/CompatibleObjectInputStream.java
++++ b/src/main/java/io/jenkins/plugins/coverage/CompatibleObjectInputStream.java
+@@ -29,6 +29,15 @@
+         super(in);
+     }
+ 
++    @Override
++    protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
++        String className = desc.getName();
++        if (!allowList.contains(className)) {
++            throw new InvalidClassException("Unauthorized deserialization attempt", className);
++        }
++        return super.resolveClass(desc);
++    }
++
+ 
+     // See https://stackoverflow.com/questions/795470/how-to-deserialize-an-object-persisted-in-a-db-now-when-the-object-has-different?rq=1
+     @Override

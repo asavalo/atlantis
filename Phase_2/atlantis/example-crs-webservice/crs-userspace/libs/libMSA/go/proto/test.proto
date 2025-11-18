@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package userspace;
+
+option go_package = "sample/proto;proto";
+
+// service definition
+service Test {
+  // Sends a request
+  rpc TestService (TestRequest) returns (TestResponse);
+}
+
+// The request message
+message TestRequest {
+  string team_name = 1;
+}
+
+// The response message
+message TestResponse {
+  int32 cnt = 1;
+}

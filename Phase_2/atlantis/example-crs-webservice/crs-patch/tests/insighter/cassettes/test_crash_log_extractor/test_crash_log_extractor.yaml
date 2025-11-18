@@ -1,0 +1,221 @@
+interactions:
+- request:
+    body: '{"messages":[{"role":"user","content":"Extract the key information from
+      this crash log. Focus on:\n1. Error type/exception\n2. Root cause\n3. Stack
+      trace with relevant frames\n\nCrash log:\n```\n+ FUZZER=http_request_fuzzer\n+
+      shift\n+ ''['' ''!'' -v TESTCASE '']''\n+ TESTCASE=/testcase\n+ ''['' ''!''
+      -f /testcase '']''\n+ export RUN_FUZZER_MODE=interactive\n+ RUN_FUZZER_MODE=interactive\n+
+      export FUZZING_ENGINE=libfuzzer\n+ FUZZING_ENGINE=libfuzzer\n+ export SKIP_SEED_CORPUS=1\n+
+      SKIP_SEED_CORPUS=1\n+ run_fuzzer http_request_fuzzer -runs=100 /testcase\nvm.mmap_rnd_bits
+      = 28\n/out/http_request_fuzzer -rss_limit_mb=2560 -timeout=25 -runs=100 /testcase
+      -dict=http_request_fuzzer.dict < /dev/null\nINFO: found LLVMFuzzerCustomMutator
+      (0x55b8676a1df0). Disabling -len_control by default.\nDictionary: 141 entries\nINFO:
+      Running with entropic power schedule (0xFF, 100).\nINFO: Seed: 4254896542\nINFO:
+      Loaded 1 modules   (24033 inline 8-bit counters): 24033 [0x55b867c040e8, 0x55b867c09ec9),\nINFO:
+      Loaded 1 PC tables (24033 PCs): 24033 [0x55b867c09ed0,0x55b867c67ce0),\n/out/http_request_fuzzer:
+      Running 1 inputs 100 time(s) each.\nRunning: /testcase\n=================================================================\n==14==ERROR:
+      AddressSanitizer: heap-buffer-overflow on address 0x50200000b668 at pc 0x55b8678f0c44
+      bp 0x7ffefb8e97a0 sp 0x7ffefb8e9798\nREAD of size 8 at 0x50200000b668 thread
+      T0\nSCARINESS: 33 (8-byte-read-heap-buffer-overflow-far-from-bounds)\n    #0
+      0x55b8678f0c43 in ngx_http_process_custom_features /src/nginx/src/http/ngx_http_request.c:2006:5\n    #1
+      0x55b8678fc977 in ngx_http_process_request_headers /src/nginx/src/http/ngx_http_request.c:1507:23\n    #2
+      0x55b8678fb93b in ngx_http_process_request_line /src/nginx/src/http/ngx_http_request.c:1202:13\n    #3
+      0x55b8676a2b10 in TestOneProtoInput /src/nginx/src/fuzz/http_request_fuzzer.cc:315:3\n    #4
+      0x55b8676a2b10 in LLVMFuzzerTestOneInput /src/nginx/src/fuzz/http_request_fuzzer.cc:246:1\n    #5
+      0x55b867556250 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\n    #6
+      0x55b8675414c5 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\n    #7
+      0x55b867546f5f in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char
+      const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\n    #8
+      0x55b867572202 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\n    #9
+      0x7f295b2d8082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+      (BuildId: 0702430aef5fa3dda43986563e9ffcc47efbd75e)\n    #10 0x55b8675396ad
+      in _start (/out/http_request_fuzzer+0x1966ad)\n\nDEDUP_TOKEN: ngx_http_process_custom_features--ngx_http_process_request_headers--ngx_http_process_request_line\n0x50200000b668
+      is located 48 bytes after 8-byte region [0x50200000b630,0x50200000b638)\nallocated
+      by thread T0 here:\n    #0 0x55b86766201f in malloc /src/llvm-project/compiler-rt/lib/asan/asan_malloc_linux.cpp:68:3\n    #1
+      0x55b8678b42ef in ngx_alloc /src/nginx/src/os/unix/ngx_alloc.c:22:9\n    #2
+      0x55b8678366a1 in ngx_palloc_large /src/nginx/src/core/ngx_palloc.c:220:9\n    #3
+      0x55b867837097 in ngx_palloc /src/nginx/src/core/ngx_palloc.c:131:12\n    #4
+      0x55b867837097 in ngx_pcalloc /src/nginx/src/core/ngx_palloc.c:302:9\n    #5
+      0x55b8678f0afd in ngx_http_process_custom_features /src/nginx/src/http/ngx_http_request.c:1987:34\n    #6
+      0x55b8678fc977 in ngx_http_process_request_headers /src/nginx/src/http/ngx_http_request.c:1507:23\n    #7
+      0x55b8678fb93b in ngx_http_process_request_line /src/nginx/src/http/ngx_http_request.c:1202:13\n    #8
+      0x55b8676a2b10 in TestOneProtoInput /src/nginx/src/fuzz/http_request_fuzzer.cc:315:3\n    #9
+      0x55b8676a2b10 in LLVMFuzzerTestOneInput /src/nginx/src/fuzz/http_request_fuzzer.cc:246:1\n    #10
+      0x55b867556250 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\n    #11
+      0x55b8675414c5 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned
+      long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\n    #12
+      0x55b867546f5f in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char
+      const*, unsigned long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\n    #13
+      0x55b867572202 in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\n    #14
+      0x7f295b2d8082 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x24082)
+      (BuildId: 0702430aef5fa3dda43986563e9ffcc47efbd75e)\n\nDEDUP_TOKEN: __interceptor_malloc--ngx_alloc--ngx_palloc_large\nSUMMARY:
+      AddressSanitizer: heap-buffer-overflow /src/nginx/src/http/ngx_http_request.c:2006:5
+      in ngx_http_process_custom_features\nShadow bytes around the buggy address:\n  0x50200000b380:
+      fa fa 00 03 fa fa 00 02 fa fa 00 fa fa fa 00 06\n  0x50200000b400: fa fa 00
+      00 fa fa 00 fa fa fa 00 fa fa fa 00 fa\n  0x50200000b480: fa fa 00 fa fa fa
+      00 fa fa fa 00 fa fa fa 00 00\n  0x50200000b500: fa fa 00 00 fa fa 00 fa fa
+      fa 00 00 fa fa 00 00\n  0x50200000b580: fa fa 00 00 fa fa 00 07 fa fa 00 00
+      fa fa 04 fa\n=>0x50200000b600: fa fa 00 01 fa fa 00 fa fa fa fa fa fa[fa]fa
+      fa\n  0x50200000b680: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa\n  0x50200000b700:
+      fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa\n  0x50200000b780: fa fa fa
+      fa fa fa fa fa fa fa fa fa fa fa fa fa\n  0x50200000b800: fa fa fa fa fa fa
+      fa fa fa fa fa fa fa fa fa fa\n  0x50200000b880: fa fa fa fa fa fa fa fa fa
+      fa fa fa fa fa fa fa\nShadow byte legend (one shadow byte represents 8 application
+      bytes):\n  Addressable:           00\n  Partially addressable: 01 02 03 04 05
+      06 07\n  Heap left redzone:       fa\n  Freed heap region:       fd\n  Stack
+      left redzone:      f1\n  Stack mid redzone:       f2\n  Stack right redzone:     f3\n  Stack
+      after return:      f5\n  Stack use after scope:   f8\n  Global redzone:          f9\n  Global
+      init order:       f6\n  Poisoned by user:        f7\n  Container overflow:      fc\n  Array
+      cookie:            ac\n  Intra object redzone:    bb\n  ASan internal:           fe\n  Left
+      alloca redzone:     ca\n  Right alloca redzone:    cb\n==14==ABORTING\n\n```\nExtracted
+      information:"}],"model":"gpt-4o-mini"}'
+    headers:
+      accept:
+      - application/json
+      accept-encoding:
+      - gzip, deflate, zstd
+      connection:
+      - keep-alive
+      content-length:
+      - '6303'
+      content-type:
+      - application/json
+      user-agent:
+      - OpenAI/Python 1.76.0
+      x-stainless-arch:
+      - x64
+      x-stainless-async:
+      - 'false'
+      x-stainless-lang:
+      - python
+      x-stainless-os:
+      - Linux
+      x-stainless-package-version:
+      - 1.76.0
+      x-stainless-raw-response:
+      - 'true'
+      x-stainless-read-timeout:
+      - '600.0'
+      x-stainless-retry-count:
+      - '0'
+      x-stainless-runtime:
+      - CPython
+      x-stainless-runtime-version:
+      - 3.12.9
+    method: POST
+    uri: https://llm-base/chat/completions
+  response:
+    body:
+      string: '{"id":"chatcmpl-BeSDvw1IiVuHCcnJRKk2PPyYUgno4","created":1748981311,"model":"gpt-4o-mini-2024-07-18","object":"chat.completion","system_fingerprint":"fp_34a54ae93c","choices":[{"finish_reason":"stop","index":0,"message":{"content":"1.
+        **Error Type/Exception:**\n   - AddressSanitizer: heap-buffer-overflow\n\n2.
+        **Root Cause:**\n   - A heap-buffer overflow occurred while trying to read
+        8 bytes from an address (0x50200000b668) that is located outside the allocated
+        buffer. This happens in the function `ngx_http_process_custom_features` at
+        line 2006 of `ngx_http_request.c`.\n\n3. **Stack Trace with Relevant Frames:**\n   ```\n   #0  0x55b8678f0c43
+        in ngx_http_process_custom_features /src/nginx/src/http/ngx_http_request.c:2006:5\n   #1  0x55b8678fc977
+        in ngx_http_process_request_headers /src/nginx/src/http/ngx_http_request.c:1507:23\n   #2  0x55b8678fb93b
+        in ngx_http_process_request_line /src/nginx/src/http/ngx_http_request.c:1202:13\n   #3  0x55b8676a2b10
+        in TestOneProtoInput /src/nginx/src/fuzz/http_request_fuzzer.cc:315:3\n   #4  0x55b8676a2b10
+        in LLVMFuzzerTestOneInput /src/nginx/src/fuzz/http_request_fuzzer.cc:246:1\n   ```
+        \n\n   Additional frames in the execution context leading to the error:\n\n   ```\n   #5  0x55b867556250
+        in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerLoop.cpp:614:13\n   #6  0x55b8675414c5
+        in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:327:6\n   #7  0x55b867546f5f
+        in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned
+        long)) /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerDriver.cpp:862:9\n   #8  0x55b867572202
+        in main /src/llvm-project/compiler-rt/lib/fuzzer/FuzzerMain.cpp:20:10\n   ```","role":"assistant","tool_calls":null,"function_call":null,"annotations":[]}}],"usage":{"completion_tokens":495,"prompt_tokens":2193,"total_tokens":2688,"completion_tokens_details":{"accepted_prediction_tokens":0,"audio_tokens":0,"reasoning_tokens":0,"rejected_prediction_tokens":0},"prompt_tokens_details":{"audio_tokens":0,"cached_tokens":0}},"service_tier":"default"}'
+    headers:
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Content-Length:
+      - '2178'
+      content-type:
+      - application/json
+      date:
+      - Tue, 03 Jun 2025 20:08:39 GMT
+      llm_provider-access-control-expose-headers:
+      - X-Request-ID
+      llm_provider-alt-svc:
+      - h3=":443"; ma=86400
+      llm_provider-cf-cache-status:
+      - DYNAMIC
+      llm_provider-cf-ray:
+      - 94a1d2ad08c2819a-IAD
+      llm_provider-connection:
+      - keep-alive
+      llm_provider-content-encoding:
+      - gzip
+      llm_provider-content-type:
+      - application/json
+      llm_provider-date:
+      - Tue, 03 Jun 2025 20:08:38 GMT
+      llm_provider-openai-organization:
+      - team-atlanta-mk6yts
+      llm_provider-openai-processing-ms:
+      - '7327'
+      llm_provider-openai-version:
+      - '2020-10-01'
+      llm_provider-server:
+      - cloudflare
+      llm_provider-strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      llm_provider-transfer-encoding:
+      - chunked
+      llm_provider-x-content-type-options:
+      - nosniff
+      llm_provider-x-envoy-upstream-service-time:
+      - '7346'
+      llm_provider-x-ratelimit-limit-requests:
+      - '30000'
+      llm_provider-x-ratelimit-limit-tokens:
+      - '150000000'
+      llm_provider-x-ratelimit-remaining-requests:
+      - '29999'
+      llm_provider-x-ratelimit-remaining-tokens:
+      - '149998463'
+      llm_provider-x-ratelimit-reset-requests:
+      - 2ms
+      llm_provider-x-ratelimit-reset-tokens:
+      - 0s
+      llm_provider-x-request-id:
+      - req_30147bc7383b8988436c5ce6bdeecdb4
+      server:
+      - Google Frontend
+      x-cloud-trace-context:
+      - d6d53a1b27ce8709e09c94a2304c134f
+      x-litellm-attempted-fallbacks:
+      - '0'
+      x-litellm-attempted-retries:
+      - '0'
+      x-litellm-call-id:
+      - c5d456f3-3484-424e-abc0-8369828493e7
+      x-litellm-key-spend:
+      - '5633.264763020032'
+      x-litellm-model-api-base:
+      - https://api.openai.com
+      x-litellm-model-group:
+      - gpt-4o-mini
+      x-litellm-model-id:
+      - cdc23949a737d1c49699d408de4770b589fa2db9b564c7f650cfca06ac272139
+      x-litellm-overhead-duration-ms:
+      - '2.569'
+      x-litellm-response-cost:
+      - '0.00062595'
+      x-litellm-response-duration-ms:
+      - '7481.799'
+      x-litellm-version:
+      - 1.71.1
+      x-ratelimit-limit-requests:
+      - '30000'
+      x-ratelimit-limit-tokens:
+      - '150000000'
+      x-ratelimit-remaining-requests:
+      - '29999'
+      x-ratelimit-remaining-tokens:
+      - '149998463'
+    status:
+      code: 200
+      message: OK
+version: 1

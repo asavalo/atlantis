@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ name }}
+  namespace: crs-webservice
+  labels:
+    app: "crs-java"
+    task_id: {{ task_id }}
+    node_type: {{ node_type }}
+    {% if extra_labels %}
+    {% for key, value in extra_labels.items() %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+    {% endif %}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "crs-java"
+      task_id: {{ task_id }}
+      node_type: {{ node_type }}
+      {% if extra_labels %}
+      {% for key, value in extra_labels.items() %}
+      {{ key }}: {{ value }}
+      {% endfor %}
+      {% endif %}
+  template:
+    metadata:
+      labels:
+        app: "crs-java"
+        task_id: {{ task_id }}
+        node_type: {{ node_type }}
+        {% if extra_labels %}
+        {% for key, value in extra_labels.items() %}
+        {{ key }}: {{ value }}
+        {% endfor %}
+        {% endif %}
+    spec:
+      imagePullSecrets:
+      - name: registry-secret
+      serviceAccountName: k8s-full-control
+      volumes:
+        - name: shared-crs-fs-volume
+          persistentVolumeClaim:
+            claimName: shared-crs-fs
+        - name: tarball-fs-volume
+          persistentVolumeClaim:
+            claimName: tarball-fs
+        - name: registry-config
+          secret:
+            secretName: registry-secret
+        {% if extra_volumes %}
+        {{ extra_volumes | to_nice_yaml(indent=8) }} 
+        {% endif %}
+      restartPolicy: Always
+      containers:
+        - name: crs-java-container
+          image: {{ registry }}/crs-java:{{image_version}}
+          command: ["./run-crs-java.sh"]
+          workingDir: "/app/crs-cp-java"
+          volumeMounts:
+            - name: shared-crs-fs-volume
+              mountPath: /shared-crs-fs
+            - name: tarball-fs-volume
+              mountPath: /tarball-fs
+              readOnly: true
+            - name: registry-config
+              mountPath: /root/.docker/config.json
+              subPath: .dockerconfigjson
+            {% if extra_volume_mounts %}
+            {{ extra_volume_mounts | to_nice_yaml(indent=12) }}
+            {% endif %}
+          securityContext:
+            privileged: true
+          env:
+            - name: CRS_JAVA_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: CRS_JAVA_POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            {% if env_vars %}
+            {% for key, value in env_vars.items() %}
+            - name: {{ key }}
+              value: "{{ value }}"
+            {% endfor %}
+            {% endif %}
+          {% if resources %}
+          resources:
+            {{ resources | to_nice_yaml(indent=12) }}
+          {% endif %}
+      {% if node_selector %}
+      nodeSelector:
+        {{ node_selector | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if tolerations %}
+      tolerations:
+        {{ tolerations | to_nice_yaml(indent=8) }}
+      {% endif %}

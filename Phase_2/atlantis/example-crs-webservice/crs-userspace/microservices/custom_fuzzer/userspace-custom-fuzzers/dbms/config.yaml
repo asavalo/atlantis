@@ -1,0 +1,15 @@
+squirrel:
+  targets:
+    - sqlite
+  src_path: "/src"
+  oss_fuzz_path: "/oss-fuzz"
+  build_path: "/out"
+  corpus_path: "/root/data/fuzz_root/output" 
+  crashes_path: "/root/data/fuzz_root/dummy"
+  env_vars:
+    - "CORES" # comma separated cores
+    - "CP_NAME"
+    - "TARGET_NAME"
+  build_cmd: "bash -c 'echo aflplusplus!'"
+  fuzz_cmd: "bash -c 'python3 /root/run.py'"
+  type: "afl"

@@ -1,0 +1,198 @@
+{
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Atlantis",
+          "version": "1.0.0",
+          "notifications": [],
+          "rules": [
+            {
+              "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+              "shortDescription": {
+                "text": "OS Command Injection."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/78.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+              "shortDescription": {
+                "text": "Integer Overflow."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/190.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+              "shortDescription": {
+                "text": "Server Side Request Forgery (SSRF)."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/918.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+              "shortDescription": {
+                "text": "Remote Code Execution."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/94.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueHigh: SQL Injection",
+              "shortDescription": {
+                "text": "SQL Injection."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/89.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+              "shortDescription": {
+                "text": "Remote JNDI Lookup."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/502.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+              "shortDescription": {
+                "text": "LDAP Injection."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/90.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueHigh: XPath Injection",
+              "shortDescription": {
+                "text": "XPath Injection."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/643.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+              "shortDescription": {
+                "text": "load arbitrary library."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+              "shortDescription": {
+                "text": "Regular Expression Injection."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/777.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+              "shortDescription": {
+                "text": "Script Engine Injection."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/94.html",
+              "relationships": []
+            },
+            {
+              "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+              "shortDescription": {
+                "text": "File read/write hook path."
+              },
+              "helpUri": "https://cwe.mitre.org/data/definitions/22.html",
+              "relationships": []
+            }
+          ],
+          "taxa": [],
+          "locations": [],
+          "language": "en-US",
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false,
+          "supportedTaxonomies": []
+        },
+        "extensions": []
+      },
+      "invocations": [
+        {
+          "commandLine": "",
+          "startTimeUtc": "2025-03-09T22:10:48.179266Z",
+          "ruleConfigurationOverrides": [],
+          "notificationConfigurationOverrides": [],
+          "toolExecutionNotifications": [],
+          "toolConfigurationNotifications": [],
+          "executionSuccessful": true
+        }
+      ],
+      "language": "en-US",
+      "versionControlProvenance": [],
+      "logicalLocations": [],
+      "graphs": [],
+      "results": [
+        {
+          "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+          "ruleIndex": -1,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "File read/write hook path: /tmp/../../../../../../../../../../../../../../../../../../../../../jazzer.xsl",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "id": -1,
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "FileUtils.java",
+                  "index": -1
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 1,
+                  "charOffset": -1,
+                  "byteOffset": -1
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "org.zeroturnaround.zip.commons.FileUtils.copy",
+                  "index": -1,
+                  "parentIndex": -1,
+                  "kind": "function"
+                }
+              ],
+              "annotations": [],
+              "relationships": []
+            }
+          ],
+          "stacks": [],
+          "codeFlows": [],
+          "graphs": [],
+          "graphTraversals": [],
+          "relatedLocations": [],
+          "rank": -1.0,
+          "attachments": [],
+          "fixes": [],
+          "taxa": []
+        }
+      ],
+      "runAggregates": [],
+      "redactionTokens": [],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ],
+      "threadFlowLocations": [],
+      "taxonomies": [],
+      "addresses": [],
+      "translations": [],
+      "policies": [],
+      "webRequests": [],
+      "webResponses": []
+    }
+  ]
+}

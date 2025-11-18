@@ -1,0 +1,111 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ name }}
+  namespace: crs-webservice
+  labels:
+    app: "crs-multilang-joern"
+    task_id: {{ task_id }}
+    node_type: {{ node_type }}
+    {% if extra_labels %}
+    {% for key, value in extra_labels.items() %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+    {% endif %}
+spec:
+  imagePullSecrets:
+  - name: registry-secret
+  serviceAccountName: k8s-full-control
+  volumes:
+    - name: tarball-fs-volume
+      persistentVolumeClaim:
+        claimName: tarball-fs
+    - name: shared-crs-fs-volume
+      persistentVolumeClaim:
+        claimName: shared-crs-fs
+    - name: registry-config
+      secret:
+        secretName: registry-secret
+  restartPolicy: Always
+  containers:
+    - name: crs-multilang-joern-container
+      image: {{ registry }}/crs-multilang/multilang-runner-joern:{{image_version}}
+      resources:
+        limits:
+          memory: "200Gi"
+      volumeMounts:
+        - name: tarball-fs-volume
+          mountPath: /tarball-fs
+          readOnly: true
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+      securityContext:
+        privileged: true
+      {% if env_vars %}
+      env:
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+      {% endif %}
+      {% if resources %}
+      resources:
+        {{ resources | to_nice_yaml(indent=8) }}
+      {% endif %}
+    - name: crs-multilang-cov-runner
+      image: {{ registry }}/crs-multilang/crs-multilang:{{image_version}}
+      command: ["run_cov_runner"]
+      volumeMounts:
+        - name: shared-crs-fs-volume
+          mountPath: /shared-crs-fs
+        - name: tarball-fs-volume
+          mountPath: /tarball-fs
+          readOnly: true
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+      securityContext:
+        privileged: true
+      {% if env_vars_cov_runner %}
+      env:
+        {% for key, value in env_vars_cov_runner.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+      {% endif %}
+      {% if resources %}
+      resources:
+        {{ resources | to_nice_yaml(indent=8) }}
+      {% endif %}
+  {% if node_selector %}
+  nodeSelector:
+    {{ node_selector | to_nice_yaml(indent=4) }}
+  {% endif %}
+  {% if tolerations %}
+  tolerations:
+    {{ tolerations | to_nice_yaml(indent=4) }}
+  {% endif %}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ name }}
+  namespace: crs-webservice
+  labels:
+    app: "crs-multilang-joern"
+    task_id: {{ task_id }}
+    node_type: {{ node_type }}
+spec:
+  selector:
+    app: "crs-multilang-joern"
+    task_id: {{ task_id }}
+    node_type: {{ node_type }}
+  ports:
+    - name: joern
+      protocol: TCP
+      port: 9909
+      targetPort: 9909
+  type: {{ service_type | default("ClusterIP") }}
+

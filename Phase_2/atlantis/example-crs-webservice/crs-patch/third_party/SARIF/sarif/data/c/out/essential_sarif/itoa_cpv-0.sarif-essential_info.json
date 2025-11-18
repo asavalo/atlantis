@@ -1,0 +1,9 @@
+{
+    "ruleId": "stack-buffer-overflow",
+    "message": "AddressSanitizer: stack-buffer-overflow /src/fuzz/../cp-user-itoa/mock_vp.c:27:10 in itoa",
+    "loc_file_full_name": "/src/fuzz/../cp-user-itoa/mock_vp.c",
+    "loc_file_short_name": "mock_vp.c",
+    "loc_line": 27,
+    "loc_function_full_name": "itoa",
+    "loc_function_short_name": "itoa"
+}

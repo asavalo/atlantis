@@ -1,0 +1,6 @@
+/target
+/simple_target
+/libsymcc-rt.so
+/libsymcc-rt-multilang.so
+/scanf-test
+/symcc-venv

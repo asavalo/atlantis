@@ -1,0 +1,25 @@
+import cpp
+import semmle.code.cpp.pointsto.CallGraph
+import semmle.code.cpp.Print
+
+external predicate function_coverage(string file_name, string function_name);
+
+predicate isSystemFunction(Function f) {
+    f.getFile().getAbsolutePath().regexpMatch("^/(usr|lib|lib32|lib64|opt).*")
+}
+
+from Function source, Function sink
+where
+  // Source function criteria
+  function_coverage(source.getFile().getBaseName(), source.getName())
+  // Sink function criteria
+  and sink.getName() = "{{sink_function}}"
+  and sink.getFile().getBaseName() = "{{sink_filename}}"
+  // Reachability check
+  and allCalls*(source, sink)
+  and not isSystemFunction(sink)
+
+select sink.getName() as func_name, sink.getFile().getBaseName() as func_file_name
+// select sink.getName() as func_name, sink.getFile().getBaseName() as func_file_name, getIdentityString(sink) as func_sig, sink.getBlock().getLocation() as func_loc
+
+

@@ -1,0 +1,9 @@
+{
+    "ruleId": "SEGV",
+    "message": "AddressSanitizer: SEGV /src/nginx/src/http/ngx_http_variables.c:2851 in ngx_http_get_last_ip_variable",
+    "loc_file_full_name": "/src/nginx/src/http/ngx_http_variables.c",
+    "loc_file_short_name": "ngx_http_variables.c",
+    "loc_line": 2851,
+    "loc_function_full_name": "ngx_http_get_last_ip_variable",
+    "loc_function_short_name": "ngx_http_get_last_ip_variable"
+}

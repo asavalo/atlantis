@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-use-after-free",
+    "message": "AddressSanitizer: heap-use-after-free /src/nginx/src/core/ngx_cycle.c:1663:20 in ngx_black_list_remove",
+    "loc_file_full_name": "/src/nginx/src/core/ngx_cycle.c",
+    "loc_file_short_name": "ngx_cycle.c",
+    "loc_line": 1663,
+    "loc_function_full_name": "ngx_black_list_remove",
+    "loc_function_short_name": "ngx_black_list_remove"
+}

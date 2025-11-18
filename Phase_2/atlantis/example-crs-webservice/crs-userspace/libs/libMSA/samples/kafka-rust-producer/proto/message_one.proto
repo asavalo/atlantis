@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package userspace;
+
+message MessageOne {
+    string name = 1;
+}

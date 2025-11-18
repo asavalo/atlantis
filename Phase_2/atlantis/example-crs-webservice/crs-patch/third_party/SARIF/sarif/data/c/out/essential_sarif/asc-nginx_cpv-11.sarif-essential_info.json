@@ -1,0 +1,9 @@
+{
+    "ruleId": "heap-use-after-free",
+    "message": "AddressSanitizer: heap-use-after-free /src/nginx/src/http/ngx_http_variables.c:2870:64 in ngx_http_get_host_specs",
+    "loc_file_full_name": "/src/nginx/src/http/ngx_http_variables.c",
+    "loc_file_short_name": "ngx_http_variables.c",
+    "loc_line": 2870,
+    "loc_function_full_name": "ngx_http_get_host_specs",
+    "loc_function_short_name": "ngx_http_get_host_specs"
+}

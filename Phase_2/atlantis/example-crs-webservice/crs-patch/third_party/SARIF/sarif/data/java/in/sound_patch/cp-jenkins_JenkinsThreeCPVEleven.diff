@@ -1,0 +1,11 @@
+--- a/src/main/java/io/jenkins/plugins/toyplugin/AccessFilter.java
++++ b/src/main/java/io/jenkins/plugins/toyplugin/AccessFilter.java
+@@ -84,7 +84,7 @@
+             return;
+         }
+ 
+-        Pattern pattern = Pattern.compile(".*(" + ip + ").*");
++        Pattern pattern = Pattern.compile(".*(" + Pattern.quote(ip) + ").*");
+         List<String> result = new ArrayList<>();
+         for (String data : access) {
+             if (!pattern.matcher(data).matches()) {

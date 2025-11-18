@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueHigh",
+    "message": "Remote Code Execution",
+    "loc_file_full_name": "LocalFileKnowledgeBase.java",
+    "loc_file_short_name": "LocalFileKnowledgeBase.java",
+    "loc_line": 131,
+    "loc_function_full_name": "com.sonyericsson.jenkins.plugins.bfa.db.LocalFileKnowledgeBase.lambda$load$1",
+    "loc_function_short_name": "lambda$load$1"
+}

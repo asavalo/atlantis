@@ -1,0 +1,13 @@
+Your patch segments in the previous patch report have resulted in the following diff.
+
+```
+^DIFF^
+```
+
+However, your patch was not compilable with the following compilation error.
+
+```
+^BUILD_LOG^
+```
+
+Please fix the errors and provide me with a new patch report.

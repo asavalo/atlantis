@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueCritical",
+    "message": "LDAP Injection",
+    "loc_file_full_name": "AuthAction.java",
+    "loc_file_short_name": "AuthAction.java",
+    "loc_line": 229,
+    "loc_function_full_name": "io.jenkins.plugins.toyplugin.AuthAction.authenticateAsAdmin",
+    "loc_function_short_name": "authenticateAsAdmin"
+}

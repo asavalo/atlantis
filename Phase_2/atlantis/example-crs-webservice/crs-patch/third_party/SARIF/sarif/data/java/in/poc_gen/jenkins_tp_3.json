@@ -1,0 +1,1174 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                    "message": {
+                        "text": "Server Side Request Forgery (SSRF)"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                },
+                                "region": {
+                                    "startLine": 245,
+                                    "startColumn": 45
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 80,
+                                                        "startColumn": 36
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 89,
+                                                        "startColumn": 20
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 90,
+                                                        "startColumn": 33
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 96,
+                                                        "startColumn": 33
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 108,
+                                                        "startColumn": 53
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 150,
+                                                        "startColumn": 31
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.createHttpRequest:org.kohsuke.stapler.RequestImpl(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 158,
+                                                        "startColumn": 47
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.createHttpRequest:org.kohsuke.stapler.RequestImpl(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 135,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.readStringUntilNullByte:java.lang.String(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 136,
+                                                        "startColumn": 18
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.readStringUntilNullByte:java.lang.String(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 137,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.readStringUntilNullByte:java.lang.String(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 140,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.readStringUntilNullByte:java.lang.String(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 142,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.readStringUntilNullByte:java.lang.String(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 133,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.readStringUntilNullByte:java.lang.String(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 158,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.createHttpRequest:org.kohsuke.stapler.RequestImpl(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 159,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.createHttpRequest:org.kohsuke.stapler.RequestImpl(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 178,
+                                                        "startColumn": 20
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.createHttpRequest:org.kohsuke.stapler.RequestImpl(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 179,
+                                                        "startColumn": 35
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.createHttpRequest:org.kohsuke.stapler.RequestImpl(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 180,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.createHttpRequest:org.kohsuke.stapler.RequestImpl(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 145,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.createHttpRequest:org.kohsuke.stapler.RequestImpl(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 108,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/jenkins-harness-four/src/main/java/com/aixcc/jenkins/harnesses/four/JenkinsFour.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 109,
+                                                        "startColumn": 53
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.jenkins.harnesses.four.JenkinsFour.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 231,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 232,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 234,
+                                                        "startColumn": 94
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/LocalFileKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 194,
+                                                        "startColumn": 31
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.LocalFileKnowledgeBase.removeCause:com.sonyericsson.jenkins.plugins.bfa.model.FailureCause(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 234,
+                                                        "startColumn": 38
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 328,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.removeCause:com.sonyericsson.jenkins.plugins.bfa.model.FailureCause(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 765,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getJacksonCollection:org.mongojack.JacksonMongoCollection()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 767,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getJacksonCollection:org.mongojack.JacksonMongoCollection()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 739,
+                                                        "startColumn": 51
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getMongoConnection:com.mongodb.client.MongoClient()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 740,
+                                                        "startColumn": 24
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getMongoConnection:com.mongodb.client.MongoClient()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 741,
+                                                        "startColumn": 33
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getMongoConnection:com.mongodb.client.MongoClient()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 742,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getMongoConnection:com.mongodb.client.MongoClient()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 744,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getMongoConnection:com.mongodb.client.MongoClient()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 746,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getMongoConnection:com.mongodb.client.MongoClient()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 716,
+                                                        "startColumn": 5
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getMongoConnection:com.mongodb.client.MongoClient()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 767,
+                                                        "startColumn": 43
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getJacksonCollection:org.mongojack.JacksonMongoCollection()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 766,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getJacksonCollection:org.mongojack.JacksonMongoCollection()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 769,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getJacksonCollection:org.mongojack.JacksonMongoCollection()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 764,
+                                                        "startColumn": 26
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.getJacksonCollection:org.mongojack.JacksonMongoCollection()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 328,
+                                                        "startColumn": 43
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.removeCause:com.sonyericsson.jenkins.plugins.bfa.model.FailureCause(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 329,
+                                                        "startColumn": 28
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.removeCause:com.sonyericsson.jenkins.plugins.bfa.model.FailureCause(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 332,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.removeCause:com.sonyericsson.jenkins.plugins.bfa.model.FailureCause(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/db/MongoDBKnowledgeBase.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 324,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.db.MongoDBKnowledgeBase.removeCause:com.sonyericsson.jenkins.plugins.bfa.model.FailureCause(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 234,
+                                                        "startColumn": 30
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 235,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 237,
+                                                        "startColumn": 42
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/model/FailureCause.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 367,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.model.FailureCause.getComment:java.lang.String()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/model/FailureCause.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 366,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.model.FailureCause.getComment:java.lang.String()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 237,
+                                                        "startColumn": 32
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 238,
+                                                        "startColumn": 29
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 239,
+                                                        "startColumn": 36
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 242,
+                                                        "startColumn": 38
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 241,
+                                                        "startColumn": 41
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/plugins/build-failure-analyzer-plugin/src/main/java/com/sonyericsson/jenkins/plugins/bfa/CauseManagement.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 245,
+                                                        "startColumn": 45
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.sonyericsson.jenkins.plugins.bfa.CauseManagement.doRemoveConfirm:void(java.lang.String,org.kohsuke.stapler.StaplerRequest,org.kohsuke.stapler.StaplerResponse)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

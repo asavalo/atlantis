@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueMedium",
+    "message": "Server Side Request Forgery (SSRF)",
+    "loc_file_full_name": "text_xml.java",
+    "loc_file_short_name": "text_xml.java",
+    "loc_line": 95,
+    "loc_function_full_name": "org.eclipse.angus.mail.handlers.text_xml.writeTo",
+    "loc_function_short_name": "writeTo"
+}

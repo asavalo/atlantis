@@ -1,0 +1,60 @@
+--- a/src/http/ngx_http_request.c
++++ b/src/http/ngx_http_request.c
+@@ -4041,7 +4041,7 @@
+ static ngx_int_t
+ ngx_http_validate_from(ngx_str_t *from, ngx_pool_t *pool, ngx_uint_t alloc)
+ {
+-    u_char  *f, *u, ch;
++    u_char  *f, *u, ch, *start;
+     size_t   i;
+ 
+     enum {
+@@ -4066,6 +4066,8 @@
+         u = from->data;
+     }
+ 
++    start = u;
++
+     for (i = 0; i < from->len; i++) {
+         ch = f[i];
+ 
+@@ -4088,13 +4090,18 @@
+                 state = sw_username;
+             } else if (ch == '.') {
+                 state = sw_username_dot;
++                if ((size_t)(u - start) < 2) {
++                    return NGX_DECLINED;
++                }
+                 u -= 2;
+                 for ( ;; ) {
++                    if (u < start) {
++                        return NGX_DECLINED;
++                    }
+                     if (*u == '.') {
+                         u++;
+                         break;
+                     }
+-
+                     u--;
+                 }
+             } else {
+@@ -4130,7 +4137,6 @@
+             break;
+ 
+         default:
+-
+             return NGX_DECLINED;
+         }
+     }
+@@ -4139,8 +4145,9 @@
+         *u = '\0';
+ 
+         if (alloc) {
+-            from->data = u;
+-        }
++            from->data = start;
++        }
++
+         return NGX_OK;
+     } else {
+         return NGX_DECLINED;

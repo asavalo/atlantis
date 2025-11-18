@@ -1,0 +1,2237 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                    "message": {
+                        "text": "Script Engine Injection"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                },
+                                "region": {
+                                    "startLine": 2127,
+                                    "startColumn": 34
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 42,
+                                                        "startColumn": 33
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 47,
+                                                        "startColumn": 24
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 48,
+                                                        "startColumn": 25
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 55,
+                                                        "startColumn": 30
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 60,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 61,
+                                                        "startColumn": 37
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 62,
+                                                        "startColumn": 38
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 63,
+                                                        "startColumn": 37
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 65,
+                                                        "startColumn": 39
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/beanutils-harness-one/src/main/java/com/aixcc/beanutils/harnesses/one/BeanUtilsOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 75,
+                                                        "startColumn": 85
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.beanutils.harnesses.one.BeanUtilsOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 774,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 780,
+                                                        "startColumn": 35
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 164,
+                                                        "startColumn": 35
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.hasNested:boolean(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 780,
+                                                        "startColumn": 35
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 781,
+                                                        "startColumn": 47
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 223,
+                                                        "startColumn": 35
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.next:java.lang.String(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 228,
+                                                        "startColumn": 25
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.next:java.lang.String(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 229,
+                                                        "startColumn": 46
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.next:java.lang.String(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 232,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.next:java.lang.String(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 222,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.next:java.lang.String(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 781,
+                                                        "startColumn": 26
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 785,
+                                                        "startColumn": 42
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 201,
+                                                        "startColumn": 35
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.isMapped:boolean(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 785,
+                                                        "startColumn": 42
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 787,
+                                                        "startColumn": 43
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 179,
+                                                        "startColumn": 35
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.isIndexed:boolean(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 787,
+                                                        "startColumn": 43
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 788,
+                                                        "startColumn": 55
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 423,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 431,
+                                                        "startColumn": 39
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 80,
+                                                        "startColumn": 35
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 83,
+                                                        "startColumn": 25
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 84,
+                                                        "startColumn": 46
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 88,
+                                                        "startColumn": 27
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 89,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 92,
+                                                        "startColumn": 30
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 93,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 98,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 103,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/expression/DefaultResolver.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 79,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.expression.DefaultResolver.getIndex:int(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 431,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 437,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 446,
+                                                        "startColumn": 48
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 483,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String,int)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 473,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String,int)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 446,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 416,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIndexedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 788,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 792,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 797,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 783,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 790,
+                                                        "startColumn": 48
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getNestedProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1229,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1234,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1241,
+                                                        "startColumn": 50
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1253,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1266,
+                                                        "startColumn": 39
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 924,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 929,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 954,
+                                                        "startColumn": 65
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 2219,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIntrospectionData:org.apache.commons.beanutils.BeanIntrospectionData(java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 2224,
+                                                        "startColumn": 59
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIntrospectionData:org.apache.commons.beanutils.BeanIntrospectionData(java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/WeakFastHashMap.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 158,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.WeakFastHashMap.get:java.lang.Object(java.lang.Object)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/WeakFastHashMap.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 156,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.WeakFastHashMap.get:java.lang.Object(java.lang.Object)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 2224,
+                                                        "startColumn": 31
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIntrospectionData:org.apache.commons.beanutils.BeanIntrospectionData(java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 2225,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIntrospectionData:org.apache.commons.beanutils.BeanIntrospectionData(java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 2230,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIntrospectionData:org.apache.commons.beanutils.BeanIntrospectionData(java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 2218,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getIntrospectionData:org.apache.commons.beanutils.BeanIntrospectionData(java.lang.Class)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 954,
+                                                        "startColumn": 37
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 955,
+                                                        "startColumn": 37
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/BeanIntrospectionData.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 91,
+                                                        "startColumn": 44
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.BeanIntrospectionData.getDescriptor:java.beans.PropertyDescriptor(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/BeanIntrospectionData.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 80,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.BeanIntrospectionData.getDescriptors:java.beans.PropertyDescriptor[]()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/BeanIntrospectionData.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 79,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.BeanIntrospectionData.getDescriptors:java.beans.PropertyDescriptor[]()",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/BeanIntrospectionData.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 91
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.BeanIntrospectionData.getDescriptor:java.beans.PropertyDescriptor(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/BeanIntrospectionData.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 92,
+                                                        "startColumn": 29
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.BeanIntrospectionData.getDescriptor:java.beans.PropertyDescriptor(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/BeanIntrospectionData.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 93,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.BeanIntrospectionData.getDescriptor:java.beans.PropertyDescriptor(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/BeanIntrospectionData.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 90,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.BeanIntrospectionData.getDescriptor:java.beans.PropertyDescriptor(java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 955,
+                                                        "startColumn": 28
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 956,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 957,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 919,
+                                                        "startColumn": 12
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getPropertyDescriptor:java.beans.PropertyDescriptor(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1266,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1265,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1267,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1271,
+                                                        "startColumn": 66
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1202,
+                                                        "startColumn": 56
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getReadMethod:java.lang.reflect.Method(java.lang.Class,java.beans.PropertyDescriptor)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 777,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 782,
+                                                        "startColumn": 32
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 790,
+                                                        "startColumn": 25
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 791,
+                                                        "startColumn": 62
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 792,
+                                                        "startColumn": 52
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 798,
+                                                        "startColumn": 31
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 810,
+                                                        "startColumn": 54
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 873,
+                                                        "startColumn": 31
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethodFromInterfaceNest:java.lang.reflect.Method(java.lang.Class,java.lang.String,java.lang.Class[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 876,
+                                                        "startColumn": 30
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethodFromInterfaceNest:java.lang.reflect.Method(java.lang.Class,java.lang.String,java.lang.Class[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 880,
+                                                        "startColumn": 40
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethodFromInterfaceNest:java.lang.reflect.Method(java.lang.Class,java.lang.String,java.lang.Class[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 886,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethodFromInterfaceNest:java.lang.reflect.Method(java.lang.Class,java.lang.String,java.lang.Class[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 893,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethodFromInterfaceNest:java.lang.reflect.Method(java.lang.Class,java.lang.String,java.lang.Class[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 894,
+                                                        "startColumn": 21
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethodFromInterfaceNest:java.lang.reflect.Method(java.lang.Class,java.lang.String,java.lang.Class[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 867,
+                                                        "startColumn": 20
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethodFromInterfaceNest:java.lang.reflect.Method(java.lang.Class,java.lang.String,java.lang.Class[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 810,
+                                                        "startColumn": 17
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 809,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 815,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 821,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/MethodUtils.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 774,
+                                                        "startColumn": 19
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.MethodUtils.getAccessibleMethod:java.lang.reflect.Method(java.lang.Class,java.lang.reflect.Method)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1202,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getReadMethod:java.lang.reflect.Method(java.lang.Class,java.beans.PropertyDescriptor)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1201,
+                                                        "startColumn": 5
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getReadMethod:java.lang.reflect.Method(java.lang.Class,java.beans.PropertyDescriptor)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1271,
+                                                        "startColumn": 22
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1272,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 1278,
+                                                        "startColumn": 43
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.getSimpleProperty:java.lang.Object(java.lang.Object,java.lang.String)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/src/main/java/org/apache/commons/beanutils/PropertyUtilsBean.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 2127,
+                                                        "startColumn": 34
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.commons.beanutils.PropertyUtilsBean.invokeMethod:java.lang.Object(java.lang.reflect.Method,java.lang.Object,java.lang.Object[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

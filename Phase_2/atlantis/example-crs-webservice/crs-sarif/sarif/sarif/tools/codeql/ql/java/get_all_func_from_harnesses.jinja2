@@ -1,0 +1,24 @@
+import java
+
+predicate isSystemCallable(Callable c) {
+  exists(string qname | 
+    qname = c.getDeclaringType().getQualifiedName() and
+    (qname.matches("java.%") or qname.matches("javax.%"))
+  )
+}
+
+predicate directCalls(Callable caller, Callable callee) {
+  exists(Call ca |
+    ca.getCallee() = callee and
+    ca.getEnclosingCallable() = caller
+  )
+}
+
+
+from Callable caller, Callable root
+where
+  root.getDeclaringType().getFile().getBaseName() in ["{{harness_names | join('", "')}}"] and
+  directCalls*(root, caller) and
+  not isSystemCallable(caller)
+
+select caller.getName() as func_name, caller.getDeclaringType().getFile().getBaseName() as func_file_name

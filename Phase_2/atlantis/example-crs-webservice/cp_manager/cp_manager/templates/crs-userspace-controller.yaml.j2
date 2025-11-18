@@ -1,0 +1,540 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ name }}
+  namespace: crs-webservice
+  labels:
+    task_id: {{ task_id }}
+    crs: "crs-userspace"
+    node_type: "{{ node_type }}"
+    {% if extra_labels %}
+    {% for key, value in extra_labels.items() %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+    {% endif %}
+spec:
+  restartPolicy: Always
+  imagePullSecrets:
+  - name: registry-secret
+  serviceAccountName: k8s-full-control
+  volumes:
+    - name: registry-config
+      secret:
+        secretName: registry-secret
+  {% if shared_volumes %}
+    {{ shared_volumes | to_nice_yaml(indent=4) }}
+  {% endif %}
+  {% if extra_volumes %}
+    {{ extra_volumes | to_nice_yaml(indent=4) }} 
+  {% endif %}
+  {% if node_selector %}
+  nodeSelector:
+    {{ node_selector | to_nice_yaml(indent=4) }}
+  {% endif %}
+
+  containers:
+    # Kafka
+    - name: zookeeper
+      image: confluentinc/cp-zookeeper
+      env:
+        - name: ZOOKEEPER_CLIENT_PORT
+          value: "2181"
+        {% if kafka_env_vars %}
+        {% for key, value in kafka_env_vars.items() %}
+        - name: {{ key }}
+          value: '{{ value }}'
+        {% endfor %}
+        {% endif %}
+      ports:
+        - containerPort: 2181
+
+    - name: kafka
+      image: confluentinc/cp-kafka:7.9.2
+      env:
+        - name: KAFKA_ZOOKEEPER_CONNECT
+          value: {{ kafka_service_name }}:2181
+        - name: KAFKA_ADVERTISED_LISTENERS
+          value: PLAINTEXT_INTERNAL://{{ kafka_service_name }}:9092
+        - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+          value: PLAINTEXT_INTERNAL:PLAINTEXT
+        - name: KAFKA_INTER_BROKER_LISTENER_NAME
+          value: PLAINTEXT_INTERNAL
+        - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+          value: "1"
+        - name: KAFKA_TRANSACTION_STATE_LOG_MIN_ISR
+          value: "1"
+        - name: KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR
+          value: "1"
+        - name: KAFKA_AUTO_CREATE_TOPICS_ENABLE
+          value: "true"
+        {% if kafka_env_vars %}
+        {% for key, value in kafka_env_vars.items() %}
+        - name: {{ key }}
+          value: '{{ value }}'
+        {% endfor %}
+        {% endif %}
+      ports:
+        - containerPort: 9092
+    # controller level
+    - name: bootstrap
+      image: {{ registry }}/crs-userspace/bootstrap:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: '{{ value }}'
+        {% endfor %}
+        {% endif %}
+
+    - name: controller
+      image: {{ registry }}/crs-userspace/controller:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092    
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: osv-analyzer
+      image: {{ registry }}/crs-userspace/osv_analyzer:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+#    - name: telemetry-logger
+#      image: {{ registry }}/crs-userspace/telemetry_logger:{{ image_version }}
+#      volumeMounts:
+#        - name: registry-config
+#          mountPath: /root/.docker/config.json
+#          subPath: .dockerconfigjson
+#          readOnly: true
+#      {% if shared_volume_mounts %}
+#        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+#      {% endif %}
+#      {% if extra_volume_mounts %}
+#        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+#      {% endif %}
+#      securityContext:
+#        privileged: true
+#      env:
+#        - name: KAFKA_SERVER_ADDR
+#          value: {{ kafka_service_name }}:9092
+#        {% if env_vars %}
+#        {% for key, value in env_vars.items() %}
+#        - name: {{ key }}
+#          value: "{{ value }}"
+#        {% endfor %}
+#        {% endif %}
+
+    - name: coverage-service
+      image: {{ registry }}/crs-userspace/coverage_service:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: harness-reachability
+      image: {{ registry }}/crs-userspace/harness_reachability:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: seed-ensembler
+      image: {{ registry }}/crs-userspace/seed_ensembler:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if tmpfs_volume_mounts %}
+        {{ tmpfs_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: custom-fuzzer
+      image: {{ registry }}/crs-userspace/custom_fuzzer:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    # worker level
+    - name: harness-builder
+      image: {{ registry }}/crs-userspace/harness_builder:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: fuzzer-manager
+      image: {{ registry }}/crs-userspace/fuzzer_manager:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if ipc_sock_mounts %}
+        {{ ipc_sock_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if dshm_volume_mounts %}
+        {{ dshm_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: directed-fuzzing
+      image: {{ registry }}/crs-userspace/directed_fuzzing:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: deepgen-service
+      image: {{ registry }}/crs-userspace/deepgen_service:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if ipc_sock_mounts %}
+        {{ ipc_sock_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if dshm_volume_mounts %}
+        {{ dshm_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if tmpfs_volume_mounts %}
+        {{ tmpfs_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: codebrowser
+      image: {{ registry }}/crs-userspace/codebrowser:{{ image_version }}
+      command: ["./run.sh"]
+      ports:
+        - containerPort: 50051
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if tmpfs_volume_mounts %}
+        {{ tmpfs_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: c-llm
+      image: {{ registry }}/crs-userspace/c_llm:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: crash-collector
+      image: {{ registry }}/crs-userspace/crash_collector:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+    - name: seeds-collector
+      image: {{ registry }}/crs-userspace/seeds_collector:{{ image_version }}
+      volumeMounts:
+        - name: registry-config
+          mountPath: /root/.docker/config.json
+          subPath: .dockerconfigjson
+          readOnly: true
+      {% if shared_volume_mounts %}
+        {{ shared_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      {% if extra_volume_mounts %}
+        {{ extra_volume_mounts | to_nice_yaml(indent=8) }}
+      {% endif %}
+      securityContext:
+        privileged: true
+      env:
+        - name: KAFKA_SERVER_ADDR
+          value: {{ kafka_service_name }}:9092
+        {% if env_vars %}
+        {% for key, value in env_vars.items() %}
+        - name: {{ key }}
+          value: "{{ value }}"
+        {% endfor %}
+        {% endif %}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ name }}
+  namespace: crs-webservice
+  labels:
+    task_id: {{ task_id }}
+    crs: "crs-userspace"
+    node_type: "crs-userspace-{{ node_idx }}"
+    {% if extra_labels %}
+    {% for key, value in extra_labels.items() %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+    {% endif %}
+spec:
+  selector:
+    task_id: {{ task_id }}
+    crs: "crs-userspace"
+    node_type: "{{ node_type }}"
+    {% if extra_labels %}
+    {% for key, value in extra_labels.items() %}
+    {{ key }}: {{ value }}
+    {% endfor %}
+    {% endif %}
+  ports:
+    # Kafka
+    - name: kafka
+      port: 9092
+      targetPort: 9092
+    - name: zookeeper
+      port: 2181
+      targetPort: 2181
+    # crs-userspace
+    - name: codebrowser
+      port: 50051
+      targetPort: 50051

@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueHigh",
+    "message": "XPath Injection",
+    "loc_file_full_name": "PatSegment.java",
+    "loc_file_short_name": "PatSegment.java",
+    "loc_line": 93,
+    "loc_function_full_name": "org.apache.commons.imaging.formats.jpeg.segments.PatSegment.getEntryPointFromSegmentData",
+    "loc_function_short_name": "getEntryPointFromSegmentData"
+}

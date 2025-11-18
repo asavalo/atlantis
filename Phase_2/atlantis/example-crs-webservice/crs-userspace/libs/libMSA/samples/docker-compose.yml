@@ -1,0 +1,90 @@
+version: '3'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+    networks:
+      - crs-network
+
+  kafka:
+    image: confluentinc/cp-kafka
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT_INTERNAL://kafka:9092,PLAINTEXT_EXTERNAL://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT_INTERNAL:PLAINTEXT,PLAINTEXT_EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    networks:
+      - crs-network
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb:/data/db
+    networks:
+      - crs-network
+
+  connect:
+    image: confluentinc/cp-kafka-connect
+    depends_on:
+      - kafka
+      - mongodb
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: kafka:9092
+      CONNECT_REST_ADVERTISED_HOST_NAME: connect
+      CONNECT_GROUP_ID: "connect-cluster"
+      CONNECT_CONFIG_STORAGE_TOPIC: "connect-configs"
+      CONNECT_OFFSET_STORAGE_TOPIC: "connect-offsets"
+      CONNECT_STATUS_STORAGE_TOPIC: "connect-status"
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_KEY_CONVERTER: "org.apache.kafka.connect.storage.StringConverter"
+      CONNECT_VALUE_CONVERTER: "com.teamatlanta.kafka.converter.MongoDbConverter"
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
+      CONNECT_PLUGIN_PATH: "/usr/share/java,/etc/kafka-connect/jars"
+      CONNECT_REST_PORT: 8083
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./kafka-connect-plugins:/etc/kafka-connect/jars
+    networks:
+      - crs-network
+
+  rust-sample:
+    build:
+      context: ./rust-sample
+      dockerfile: Dockerfile
+    container_name: rust-sample
+    depends_on:
+      - kafka
+    command: [ "./target/release/rust-sample", "rust_sample", "3", "topic1", "rust-sample", "topic2" ]
+    working_dir: /usr/src/rust-sample
+    networks:
+      - crs-network
+
+  python-sample:
+    build:
+      context: ./python-sample
+      dockerfile: Dockerfile
+    container_name: python-sample
+    depends_on:
+      - kafka
+    command: [ "python3", "run.py", "python_sample", "2", "topic2", "python-sample", "topic3" ]
+    working_dir: /usr/src/python-sample
+    networks:
+      - crs-network
+
+networks:
+  crs-network:

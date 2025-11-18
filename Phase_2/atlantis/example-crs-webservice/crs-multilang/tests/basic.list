@@ -1,0 +1,41 @@
+aixcc/c/asc-nginx
+aixcc/c/babynginx
+aixcc/c/babynote
+aixcc/c/concolic-test
+#aixcc/c/concolic-test-no-symcc
+aixcc/c/itoa
+aixcc/c/libcue
+aixcc/c/mock-c
+aixcc/c/mock-cp
+aixcc/c/rpn-calculator
+aixcc/c/simple-switch
+aixcc/c/user-nginx
+aixcc/c/r2-freerdp
+aixcc/c/r2-integration-test
+aixcc/c/r2-sqlite3
+aixcc/c/r2-libxml2
+aixcc/c/r2-libpng
+aixcc/jvm/activemq
+aixcc/jvm/aerospike
+aixcc/jvm/batik
+aixcc/jvm/bcel
+#aixcc/jvm/beanutils
+#aixcc/jvm/cxf
+aixcc/jvm/fuzzy
+#aixcc/jvm/geonetwork
+#aixcc/jvm/htmlunit
+# aixcc/jvm/imaging # jazzer cannot catch OS cmd injection
+#aixcc/jvm/jackson-databind
+aixcc/jvm/jakarta-mail-api
+aixcc/jvm/jenkins
+#aixcc/jvm/kylin # jazzer cannot catch OS cmd injection
+aixcc/jvm/mock-java
+aixcc/jvm/olingo
+aixcc/jvm/oripa
+#aixcc/jvm/pac4j
+#aixcc/jvm/rdf4j
+#aixcc/jvm/tika # jazzer cannot catch OS cmd injection
+aixcc/jvm/widoco
+#aixcc/jvm/ztzip
+aixcc/jvm/r2-apache-commons-compress
+aixcc/jvm/r2-zookeeper

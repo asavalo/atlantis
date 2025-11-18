@@ -1,0 +1,9 @@
+{
+    "ruleId": "com.code_intelligence.jazzer.api.FuzzerSecurityIssueMedium",
+    "message": "Server Side Request Forgery (SSRF)",
+    "loc_file_full_name": "ResourceUtils.java",
+    "loc_file_short_name": "ResourceUtils.java",
+    "loc_line": 577,
+    "loc_function_full_name": "org.apache.cxf.jaxrs.utils.ResourceUtils.getResourceStream",
+    "loc_function_short_name": "getResourceStream"
+}

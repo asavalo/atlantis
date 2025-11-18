@@ -1,0 +1,319 @@
+{
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "llm-poc-gen",
+                    "rules": [
+                        {
+                            "id": "FuzzerSecurityIssueCritical: OS Command Injection",
+                            "shortDescription": {
+                                "text": "OS Command Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/78.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Integer Overflow",
+                            "shortDescription": {
+                                "text": "Integer Overflow."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/190.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueMedium: Server Side Request Forgery (SSRF)",
+                            "shortDescription": {
+                                "text": "Server Side Request Forgery (SSRF)."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/918.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: Remote Code Execution",
+                            "shortDescription": {
+                                "text": "Remote Code Execution."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: SQL Injection",
+                            "shortDescription": {
+                                "text": "SQL Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/89.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Remote JNDI Lookup",
+                            "shortDescription": {
+                                "text": "Remote JNDI Lookup."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/502.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: LDAP Injection",
+                            "shortDescription": {
+                                "text": "LDAP Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/90.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: XPath Injection",
+                            "shortDescription": {
+                                "text": "XPath Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/643.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueHigh: load arbitrary library",
+                            "shortDescription": {
+                                "text": "load arbitrary library."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueLow: Regular Expression Injection",
+                            "shortDescription": {
+                                "text": "Regular Expression Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/777.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: Script Engine Injection",
+                            "shortDescription": {
+                                "text": "Script Engine Injection."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/94.html"
+                        },
+                        {
+                            "id": "FuzzerSecurityIssueCritical: File read/write hook path",
+                            "shortDescription": {
+                                "text": "File read/write hook path."
+                            },
+                            "helpUri": "https://cwe.mitre.org/data/definitions/22.html"
+                        }
+                    ]
+                }
+            },
+            "results": [
+                {
+                    "ruleId": "FuzzerSecurityIssueHigh: load arbitrary library",
+                    "message": {
+                        "text": "load arbitrary library"
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "repo/batik-dom/src/main/java/org/apache/batik/dom/ExtensibleDOMImplementation.java"
+                                },
+                                "region": {
+                                    "startLine": 127,
+                                    "startColumn": 39
+                                }
+                            }
+                        }
+                    ],
+                    "codeFlows": [
+                        {
+                            "threadFlows": [
+                                {
+                                    "locations": [
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/batik-harness-one/src/main/java/com/aixcc/batik/harnesses/one/BatikOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 25,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.batik.harnesses.one.BatikOne.fuzzerTestOneInput:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/batik-harness-one/src/main/java/com/aixcc/batik/harnesses/one/BatikOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 36,
+                                                        "startColumn": 13
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.batik.harnesses.one.BatikOne.fuzz:void(byte[])",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "proj/fuzz/batik-harness-one/src/main/java/com/aixcc/batik/harnesses/one/BatikOne.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 54,
+                                                        "startColumn": 14
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "com.aixcc.batik.harnesses.one.BatikOne.test_jpegtranscoder:void(java.nio.ByteBuffer)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/batik-transcoder/src/main/java/org/apache/batik/transcoder/SVGAbstractTranscoder.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 158,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.batik.transcoder.SVGAbstractTranscoder.transcode:void(org.apache.batik.transcoder.TranscoderInput,org.apache.batik.transcoder.TranscoderOutput)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/batik-transcoder/src/main/java/org/apache/batik/transcoder/XMLAbstractTranscoder.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 75,
+                                                        "startColumn": 18
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.batik.transcoder.XMLAbstractTranscoder.transcode:void(org.apache.batik.transcoder.TranscoderInput,org.apache.batik.transcoder.TranscoderOutput)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/batik-transcoder/src/main/java/org/apache/batik/transcoder/SVGAbstractTranscoder.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 176,
+                                                        "startColumn": 14
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.batik.transcoder.SVGAbstractTranscoder.transcode:void(org.w3c.dom.Document,java.lang.String,org.apache.batik.transcoder.TranscoderOutput)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/batik-bridge/src/main/java/org/apache/batik/bridge/GVTBuilder.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 54,
+                                                        "startColumn": 9
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.batik.bridge.GVTBuilder.build:org.apache.batik.gvt.GraphicsNode(org.apache.batik.bridge.BridgeContext,org.w3c.dom.Document)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/batik-bridge/src/main/java/org/apache/batik/bridge/BridgeContext.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 376,
+                                                        "startColumn": 23
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.batik.bridge.BridgeContext.initializeDocument:void(org.w3c.dom.Document)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/batik-dom/src/main/java/org/apache/batik/dom/ExtensibleDOMImplementation.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 124,
+                                                        "startColumn": 16
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.batik.dom.ExtensibleDOMImplementation.createCSSEngine:org.apache.batik.css.engine.CSSEngine(org.apache.batik.dom.AbstractStylableDocument,org.apache.batik.css.engine.CSSContext)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "location": {
+                                                "physicalLocation": {
+                                                    "artifactLocation": {
+                                                        "uri": "repo/batik-dom/src/main/java/org/apache/batik/dom/ExtensibleDOMImplementation.java"
+                                                    },
+                                                    "region": {
+                                                        "startLine": 127,
+                                                        "startColumn": 39
+                                                    }
+                                                },
+                                                "logicalLocations": [
+                                                    {
+                                                        "fullyQualifiedName": "org.apache.batik.dom.ExtensibleDOMImplementation.createCSSEngine:org.apache.batik.css.engine.CSSEngine(org.apache.batik.dom.AbstractStylableDocument,org.apache.batik.css.engine.CSSContext)",
+                                                        "kind": "function"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
